@@ -3,43 +3,47 @@ using System.Collections.Generic;
 
 public class ArrowPool : MonoBehaviour
 {
-    [SerializeField] private int initPoolSize;
-    [SerializeField] private Arrow arrowPrefab;
-    private Stack<Arrow> stack;
+    [SerializeField] private ArrowFactory factory;
+    [SerializeField] private int amountPerType = 5;
     
-    private void Start() {
-        SetupPool();     
+    private Dictionary<ArrowType, Stack<Arrow>> pools = new Dictionary<ArrowType, Stack<Arrow>>();
+
+    private void Start()
+    {
+        InitialInstance(ArrowType.Base);
+        InitialInstance(ArrowType.Blood);
     }
 
-    private void SetupPool()
+    private void InitialInstance(ArrowType type)
     {
-        stack = new Stack<Arrow>();
-        for (int i = 0; i < initPoolSize; i++)
+        if (!pools.ContainsKey(type)) pools.Add(type, new Stack<Arrow>());
+        
+        for (int i = 0; i < amountPerType; i++)
         {
-            Arrow instance = Instantiate(arrowPrefab);
-            instance.Pool = this;
-            instance.gameObject.SetActive(false);
-            stack.Push(instance);
+            Arrow arrow = factory.CreateArrow(type, transform);
+            arrow.Pool = this;
+            arrow.gameObject.SetActive(false);
+            pools[type].Push(arrow);
         }
     }
 
-    public Arrow GetArrow()
+    public Arrow GetArrow(ArrowType type)
     {
-        if (stack.Count == 0)
+        if (pools.ContainsKey(type) && pools[type].Count > 0)
         {
-            Arrow newInstance = Instantiate(arrowPrefab);
-            newInstance.Pool = this;
-            return newInstance;
+            Arrow arrow = pools[type].Pop();
+            arrow.gameObject.SetActive(true);
+            return arrow;
         }
         
-        Arrow nextInstance = stack.Pop();
-        nextInstance.gameObject.SetActive(true);
-        return nextInstance;
+        Arrow extra = factory.CreateArrow(type, transform);
+        extra.Pool = this;
+        return extra;
     }
 
     public void ReturnToPool(Arrow arrow)
     {
-        stack.Push(arrow);
-        arrow.gameObject.SetActive(false); 
+        arrow.gameObject.SetActive(false);
+        pools[arrow.type].Push(arrow);
     }
 }

@@ -18,7 +18,6 @@ public class PlayerLook : MonoBehaviour
 
     void Start()
     {
-        // Usamos eulerAngles para evitar saltos bruscos al iniciar
         mYaw = transform.eulerAngles.y; 
         if (mPitchController != null) mPitch = mPitchController.localEulerAngles.x; 
         Cursor.lockState = CursorLockMode.Locked; 
@@ -26,7 +25,6 @@ public class PlayerLook : MonoBehaviour
 
     void Update()
     {
-        // Restaurado tu cálculo exacto con Time.deltaTime
         mYaw += mLookDirection.x * rotationSpeed * Time.deltaTime;
         mPitch -= mLookDirection.y * rotationSpeed * Time.deltaTime;
 

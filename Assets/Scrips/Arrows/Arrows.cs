@@ -1,37 +1,34 @@
 using UnityEngine;
 
-public class Arrow : MonoBehaviour
+public abstract class Arrow : MonoBehaviour
 {
+    [HideInInspector] public ArrowPool Pool; 
+    [SerializeField] protected float speed = 25f;
+    
+    public abstract ArrowType type { get; }
 
-    [SerializeField]
-    public ArrowPool Pool; 
-    [SerializeField] private float speed = 20f;
-    [SerializeField] private float lifeTime = 3f;
-    private Rigidbody rb;
+    protected Rigidbody rb;
 
-    private void Awake() {
-        rb = GetComponent<Rigidbody>();
-        
+    protected virtual void Awake() => rb = GetComponent<Rigidbody>();
+
+    public void Launch() {
+        rb.linearVelocity = Vector3.zero; 
+        rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+        Invoke(nameof(ReturnToPool), 3f);
     }
-public void Launch() {
-    rb.linearVelocity = Vector3.zero; 
-    rb.AddForce(transform.forward * speed, ForceMode.Impulse);
-    Invoke(nameof(ReturnToPool), lifeTime);
-}
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Collision enter" + other.tag);
-        if (other.CompareTag("Enemy") || other.CompareTag("Wall"))
-        {
+
+    protected virtual void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Enemy") || other.CompareTag("Wall")) {
+            OnHit(other);
             ReturnToPool();
         }
     }
 
-    private void ReturnToPool()
-    {
-        if (Pool != null)
-            Pool.ReturnToPool(this);
-        else
-            gameObject.SetActive(false);
+    protected abstract void OnHit(Collider other);
+
+    public void ReturnToPool() {
+        CancelInvoke();
+        gameObject.SetActive(false);
+        if (Pool != null) Pool.ReturnToPool(this);
     }
 }

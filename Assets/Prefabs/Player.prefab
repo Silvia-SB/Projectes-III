@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   maxSpeed: 5
-  sprintMultiplier: 1.5
+  sprintMultiplier: 3
   jumpSpeed: 5
 --- !u!114 &7954406729464564383
 MonoBehaviour:
@@ -517,7 +517,6 @@ MonoBehaviour:
   arrowPool: {fileID: 0}
   firePoint: {fileID: 3219722898466904694}
   fireRate: 1
-  reloadVisualTime: 0.2
   maxChargeTime: 2
   currentArrowType: 0
 --- !u!114 &7469301177835586816

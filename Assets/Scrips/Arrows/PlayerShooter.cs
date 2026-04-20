@@ -6,14 +6,14 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private ArrowPool arrowPool;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float fireRate = 0.5f;
-    [SerializeField] private float reloadVisualTime = 0.2f;
-    [SerializeField] private float maxChargeTime = 2f;
+    [SerializeField] private float maxChargeTime = 4f;
     [SerializeField] private ArrowType currentArrowType = ArrowType.Base;
 
     private Arrow currentArrowInstance;
     private float nextFireTime;
     private float reloadTimer;
     private bool isWaitingForReload;
+    private bool isCharging;
     private float chargeStartTime;
 
     private void Start() => PrepareArrow();
@@ -29,17 +29,18 @@ public class PlayerShooter : MonoBehaviour
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-        if (context.started && !isWaitingForReload && Time.time >= nextFireTime && currentArrowInstance != null)
+        if (context.started && !isWaitingForReload && currentArrowInstance != null)
         {
             chargeStartTime = Time.time;
+            isCharging = true; 
         }
-        else if (context.canceled && currentArrowInstance != null)
+        else if (context.canceled && isCharging && currentArrowInstance != null)
         {
+            isCharging = false; 
             float chargePercent = Mathf.Clamp01((Time.time - chargeStartTime) / maxChargeTime);
             Shoot(chargePercent);
         }
     }
-
     public void OnSelectBase(InputAction.CallbackContext context)
     {
         if (context.performed && currentArrowType != ArrowType.Base) ChangeArrowType(ArrowType.Base);
@@ -61,7 +62,7 @@ public class PlayerShooter : MonoBehaviour
         currentArrowInstance.Launch(chargePercent);
         currentArrowInstance = null;
 
-        reloadTimer = Time.time + reloadVisualTime;
+        reloadTimer = Time.time + reloadTimer;
         isWaitingForReload = true;
     }
 

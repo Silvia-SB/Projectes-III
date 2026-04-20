@@ -6,32 +6,85 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private ArrowPool arrowPool;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float fireRate = 0.5f;
-    
-    [SerializeField] private ArrowType currentArrowType = ArrowType.Base; 
+    [SerializeField] private float reloadVisualTime = 0.2f;
+    [SerializeField] private ArrowType currentArrowType = ArrowType.Base;
 
+    private Arrow currentArrowInstance;
     private float nextFireTime;
+    private float reloadTimer;
+    private bool isWaitingForReload;
 
-    public void OnShoot(InputAction.CallbackContext context) {
+    private void Start() => PrepareArrow();
+
+    private void Update()
+    {
+        if (isWaitingForReload && Time.time >= reloadTimer)
+        {
+            isWaitingForReload = false;
+            PrepareArrow();
+        }
+    }
+
+    public void OnShoot(InputAction.CallbackContext context)
+    {
         if (context.performed) Shoot();
     }
 
-    public void OnSelectBase(InputAction.CallbackContext context) {
-        if (context.performed) currentArrowType = ArrowType.Base;
+    public void OnSelectBase(InputAction.CallbackContext context)
+    {
+        if (context.performed && currentArrowType != ArrowType.Base) ChangeArrowType(ArrowType.Base);
     }
 
-    public void OnSelectBlood(InputAction.CallbackContext context) {
-        if (context.performed) currentArrowType = ArrowType.Blood;
+    public void OnSelectBlood(InputAction.CallbackContext context)
+    {
+        if (context.performed && currentArrowType != ArrowType.Blood) ChangeArrowType(ArrowType.Blood);
     }
 
-    private void Shoot() {
-        if (Time.time < nextFireTime) return;
+    private void Shoot()
+    {
+        if (Time.time < nextFireTime || isWaitingForReload || currentArrowInstance == null) return;
+
         nextFireTime = Time.time + fireRate;
 
-        Arrow arrow = arrowPool.GetArrow(currentArrowType);
-        if (arrow != null) {
-            arrow.transform.position = firePoint.position;
-            arrow.transform.rotation = firePoint.rotation;
-            arrow.Launch();
+        currentArrowInstance.transform.SetParent(null);
+        Rigidbody rb = currentArrowInstance.GetComponent<Rigidbody>();
+        if (rb != null) rb.isKinematic = false;
+
+        currentArrowInstance.Launch();
+        currentArrowInstance = null;
+
+        reloadTimer = Time.time + reloadVisualTime;
+        isWaitingForReload = true;
+    }
+
+    private void PrepareArrow()
+    {
+        if (currentArrowInstance != null) return;
+
+        currentArrowInstance = arrowPool.GetArrow(currentArrowType);
+        if (currentArrowInstance != null)
+        {
+            currentArrowInstance.transform.SetParent(firePoint);
+            currentArrowInstance.transform.localPosition = Vector3.zero;
+            currentArrowInstance.transform.localRotation = Quaternion.identity;
+            
+            Rigidbody rb = currentArrowInstance.GetComponent<Rigidbody>();
+            if (rb != null) rb.isKinematic = true;
+
+            Collider col = currentArrowInstance.GetComponent<Collider>();
+            if (col != null) col.enabled = false; 
         }
+    }
+
+    private void ChangeArrowType(ArrowType newType)
+    {
+        if (currentArrowInstance != null)
+        {
+            currentArrowInstance.ReturnToPool();
+            currentArrowInstance = null;
+        }
+
+        currentArrowType = newType;
+        if (!isWaitingForReload) PrepareArrow();
     }
 }

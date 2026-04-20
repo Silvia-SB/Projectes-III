@@ -1,16 +1,22 @@
 using UnityEngine;
 
-public class ChaseState : MonoBehaviour
+public class ChaseState : IZombieState
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Transform playerTransform;
+    public ChaseState(Transform playerTransform)
     {
-        
+        this.playerTransform = playerTransform;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Enter()
     {
-        
+    }
+
+    public void Update()
+    {
+    }
+
+    public void Exit()
+    {
     }
 }

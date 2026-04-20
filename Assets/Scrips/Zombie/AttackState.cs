@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class AttackState : MonoBehaviour
+public class AttackState : IZombieState
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Enter()
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        
+    }
+
+    public void Exit()
+    {
     }
 }

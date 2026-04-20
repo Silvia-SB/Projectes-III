@@ -4,9 +4,9 @@ public abstract class Arrow : MonoBehaviour
 {
     [HideInInspector] public ArrowPool Pool; 
     [SerializeField] protected float speed = 25f;
+    private float damageMultiplier;
     
     public abstract ArrowType type { get; }
-    public float damage { get; set; }
 
     protected Rigidbody rb;
     protected Collider col;
@@ -17,9 +17,10 @@ public abstract class Arrow : MonoBehaviour
         col = GetComponent<Collider>();
     }
 
-    public void Launch()
+    public void Launch(float chargePercent)
     {
         if (col != null) col.enabled = true;
+        damageMultiplier = Mathf.Lerp(1f, 3f, chargePercent);
         rb.linearVelocity = Vector3.zero; 
         rb.AddForce(transform.forward * speed, ForceMode.Impulse);
         Invoke(nameof(ReturnToPool), 3f);
@@ -27,20 +28,14 @@ public abstract class Arrow : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        IDamageable target = other.GetComponent<IDamageable>();
-        if (target != null)
+        if (other.CompareTag("Enemy") || other.CompareTag("Wall"))
         {
-            target.TakeDamage(damage);
-            OnHit(other);
-            ReturnToPool();
-        }
-        else if (other.CompareTag("Wall"))
-        {
+            OnHit(other, damageMultiplier);
             ReturnToPool();
         }
     }
 
-    protected abstract void OnHit(Collider other);
+    protected abstract void OnHit(Collider other, float damageMultiplier);
 
     public void ReturnToPool()
     {

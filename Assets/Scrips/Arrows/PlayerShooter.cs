@@ -11,7 +11,6 @@ public class PlayerShooter : MonoBehaviour
 
     private Arrow currentArrowInstance;
     private float nextFireTime;
-    private float reloadTimer;
     private bool isWaitingForReload;
     private bool isCharging;
     private float chargeStartTime;
@@ -20,7 +19,7 @@ public class PlayerShooter : MonoBehaviour
 
     private void Update()
     {
-        if (isWaitingForReload && Time.time >= reloadTimer)
+        if (isWaitingForReload && Time.time >= nextFireTime)
         {
             isWaitingForReload = false;
             PrepareArrow();
@@ -29,7 +28,7 @@ public class PlayerShooter : MonoBehaviour
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-        if (context.started && !isWaitingForReload && currentArrowInstance != null)
+        if (context.started && !isWaitingForReload && Time.time >= nextFireTime && currentArrowInstance != null)
         {
             chargeStartTime = Time.time;
             isCharging = true; 
@@ -41,6 +40,7 @@ public class PlayerShooter : MonoBehaviour
             Shoot(chargePercent);
         }
     }
+
     public void OnSelectBase(InputAction.CallbackContext context)
     {
         if (context.performed && currentArrowType != ArrowType.Base) ChangeArrowType(ArrowType.Base);
@@ -62,7 +62,6 @@ public class PlayerShooter : MonoBehaviour
         currentArrowInstance.Launch(chargePercent);
         currentArrowInstance = null;
 
-        reloadTimer = Time.time + reloadTimer;
         isWaitingForReload = true;
     }
 

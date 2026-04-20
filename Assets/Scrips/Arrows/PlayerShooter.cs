@@ -7,12 +7,14 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private float reloadVisualTime = 0.2f;
+    [SerializeField] private float maxChargeTime = 2f;
     [SerializeField] private ArrowType currentArrowType = ArrowType.Base;
 
     private Arrow currentArrowInstance;
     private float nextFireTime;
     private float reloadTimer;
     private bool isWaitingForReload;
+    private float chargeStartTime;
 
     private void Start() => PrepareArrow();
 
@@ -27,7 +29,15 @@ public class PlayerShooter : MonoBehaviour
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-        if (context.performed) Shoot();
+        if (context.started && !isWaitingForReload && Time.time >= nextFireTime && currentArrowInstance != null)
+        {
+            chargeStartTime = Time.time;
+        }
+        else if (context.canceled && currentArrowInstance != null)
+        {
+            float chargePercent = Mathf.Clamp01((Time.time - chargeStartTime) / maxChargeTime);
+            Shoot(chargePercent);
+        }
     }
 
     public void OnSelectBase(InputAction.CallbackContext context)
@@ -40,17 +50,15 @@ public class PlayerShooter : MonoBehaviour
         if (context.performed && currentArrowType != ArrowType.Blood) ChangeArrowType(ArrowType.Blood);
     }
 
-    private void Shoot()
+    private void Shoot(float chargePercent)
     {
-        if (Time.time < nextFireTime || isWaitingForReload || currentArrowInstance == null) return;
-
         nextFireTime = Time.time + fireRate;
 
         currentArrowInstance.transform.SetParent(null);
         Rigidbody rb = currentArrowInstance.GetComponent<Rigidbody>();
         if (rb != null) rb.isKinematic = false;
 
-        currentArrowInstance.Launch();
+        currentArrowInstance.Launch(chargePercent);
         currentArrowInstance = null;
 
         reloadTimer = Time.time + reloadVisualTime;

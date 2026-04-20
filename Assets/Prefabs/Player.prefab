@@ -453,6 +453,22 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8412333504912581657}
         m_TargetAssemblyTypeName: PlayerShooter, Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5fe92d12-89f9-49a6-a69c-52f2b7cffc26
+    m_ActionName: 'Player/Shoot[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8412333504912581657}
+        m_TargetAssemblyTypeName: PlayerShooter, Assembly-CSharp
         m_MethodName: OnSelectBase
         m_Mode: 0
         m_Arguments:
@@ -463,8 +479,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: f29d9da4-4947-4e64-9219-22ef31877fc4
-    m_ActionName: 'Player/SelectBase[/Keyboard/1]'
+    m_ActionId: d544d24d-a946-4383-a03d-cc4313136f4b
+    m_ActionName: 'Player/BaseArrow[/Keyboard/1]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8412333504912581657}
@@ -479,8 +495,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 1a6748db-aa6b-422a-b1ba-48b588f72411
-    m_ActionName: 'Player/SelectBlood[/Keyboard/2]'
+    m_ActionId: 065fc80c-b679-42b8-8f78-79177c993681
+    m_ActionName: 'Player/BloodArrow[/Keyboard/2]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: 
@@ -502,6 +518,7 @@ MonoBehaviour:
   firePoint: {fileID: 3219722898466904694}
   fireRate: 1
   reloadVisualTime: 0.2
+  maxChargeTime: 2
   currentArrowType: 0
 --- !u!114 &7469301177835586816
 MonoBehaviour:
@@ -581,7 +598,7 @@ Transform:
   m_GameObject: {fileID: 7323899031425264184}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.60599995, z: 0.304}
+  m_LocalPosition: {x: 0, y: 0.703, z: 0.292}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -717,8 +734,8 @@ Transform:
   m_GameObject: {fileID: 9175438509592271022}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.381, y: -0.17175102, z: 0.504}
-  m_LocalScale: {x: 0.13913245, y: 0.10457589, z: 0.80172}
+  m_LocalPosition: {x: 0.188, y: -0.181, z: 1.74}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6567033776697428958}

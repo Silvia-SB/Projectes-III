@@ -3,14 +3,16 @@ using UnityEngine;
 public class BaseArrow : Arrow 
 {
     public override ArrowType type => ArrowType.Base;
-    [SerializeField] private float baseDamage = 10f;
+    [SerializeField] private float baseDamage = 5f;
+    [SerializeField] private float maxDamage = 15f;
 
     protected override void OnHit(Collider other) 
     {
         IDamageable damageable = other.GetComponentInParent<IDamageable>();
         if (damageable != null) 
         {
-            damageable.TakeDamage(baseDamage * damageMultiplier);
+            float finalDamage = isFullyCharged ? maxDamage : baseDamage;
+            damageable.TakeDamage(finalDamage);
         }
     }
 }

@@ -8,7 +8,6 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private float maxChargeTime = 4f;
     [SerializeField] private ArrowType currentArrowType = ArrowType.Base;
-    [SerializeField] private float maxDamageMultiplier = 3f;
 
     private Arrow currentArrowInstance;
     private float nextFireTime;
@@ -56,7 +55,6 @@ public class PlayerShooter : MonoBehaviour
     {
         nextFireTime = Time.time + fireRate;
 
-        currentArrowInstance.damageMultiplier = Mathf.Lerp(1f, maxDamageMultiplier, chargePercent);
         currentArrowInstance.isFullyCharged = chargePercent >= 1f;
 
         currentArrowInstance.transform.SetParent(null);

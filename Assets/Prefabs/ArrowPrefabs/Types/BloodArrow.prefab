@@ -129,7 +129,11 @@ MonoBehaviour:
   Pool: {fileID: 0}
   speed: 25
   baseDamage: 15
-  aoeRadius: 7
+  maxDamage: 45
+  innerAoeRadius: 2
+  outerAoeRadius: 10
+  dotTicks: 5
+  dotInterval: 5
 --- !u!54 &7591157102281329915
 Rigidbody:
   m_ObjectHideFlags: 0

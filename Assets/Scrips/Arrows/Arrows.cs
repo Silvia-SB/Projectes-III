@@ -6,7 +6,6 @@ public abstract class Arrow : MonoBehaviour
     [SerializeField] protected float speed = 25f;
     
     public abstract ArrowType type { get; }
-    public float damageMultiplier { get; set; }
     public bool isFullyCharged { get; set; }
 
     protected Rigidbody rb;

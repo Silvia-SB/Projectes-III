@@ -7,20 +7,23 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private EnemyMovement zombieMovement;
     [SerializeField] private bool isPlayerInAttackRange;
     [SerializeField] private EnemyAttackRangeDetector attackRangeDetector;
+    [SerializeField] private float damage;
+    [SerializeField] private float damageInterval;
     private EnemyStateMachine stateMachine;
     
-
     public void OnEnable()
     {
         if (target == null || attackRangeDetector == null) return;
         stateMachine = new EnemyStateMachine(this);
         stateMachine.Initialize(stateMachine.ChaseState);
         attackRangeDetector.playerInRange += HandlePlayerRangeChange;
+        stateMachine.AttackState.makeDamage += DamageTarget;
     }
 
     public void OnDisable()
     {
         attackRangeDetector.playerInRange -= HandlePlayerRangeChange;
+        stateMachine.AttackState.makeDamage -= DamageTarget;
     }
 
     void Update()
@@ -32,6 +35,19 @@ public class EnemyController : MonoBehaviour
     private void HandlePlayerRangeChange(bool inRange)
     {
         isPlayerInAttackRange = inRange;
+    }
+    
+    private void DamageTarget(float damageAmount)
+    {
+        if (target != null)
+        {
+            Health playerHealth = target.GetComponent<Health>();
+            
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damageAmount);
+            }
+        }
     }
     
     public bool GetIsPlayerInAttackRange()
@@ -49,5 +65,14 @@ public class EnemyController : MonoBehaviour
     public Transform GetTarget()
     {
         return target;
+    }
+    public float GetDamage()
+    {
+        return damage;
+    }
+
+    public float GetDamageInterval()
+    {
+        return damageInterval;
     }
 }

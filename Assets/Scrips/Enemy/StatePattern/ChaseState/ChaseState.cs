@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class ChaseState : IEnemyState
 {
-    private EnemyController zombieController;
+    private EnemyController enemyController;
     private EnemyStateMachine stateMachine;
-    public ChaseState(EnemyController zombieController, EnemyStateMachine stateMachine)
+    public ChaseState(EnemyController enemyController, EnemyStateMachine stateMachine)
     {
-        this.zombieController = zombieController;
+        this.enemyController = enemyController;
         this.stateMachine = stateMachine;
     }
 
@@ -17,12 +17,12 @@ public class ChaseState : IEnemyState
 
     public void Update()
     {
-        if (zombieController.GetIsPlayerInAttackRange())
+        if (enemyController.GetIsPlayerInAttackRange())
         {
                 stateMachine.TransitionTo(stateMachine.AttackState);
         }
         
-        zombieController.GetZombieMovement().MoveTo(zombieController.GetTarget().position);
+        enemyController.GetZombieMovement().MoveTo(enemyController.GetTarget().position);
     }
 
     public void Exit()

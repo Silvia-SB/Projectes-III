@@ -677,6 +677,7 @@ GameObject:
   - component: {fileID: 1787731690}
   - component: {fileID: 1787731689}
   - component: {fileID: 1787731688}
+  - component: {fileID: 1787731691}
   m_Layer: 0
   m_Name: BasicZombie
   m_TagString: Enemy
@@ -854,6 +855,8 @@ MonoBehaviour:
   zombieMovement: {fileID: 1787731690}
   isPlayerInAttackRange: 0
   attackRangeDetector: {fileID: 1787731688}
+  damage: 20
+  damageInterval: 2
 --- !u!114 &1787731690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -868,6 +871,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ZombieMovement
   speed: 2
   turnSpeed: 30
+--- !u!114 &1787731691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787731681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355ceb86d178d8d339ff7637f2c8affa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  maxHealth: 100
+  currentHealth: 0
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  mainRenderer: {fileID: 0}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1001 &2079646005
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
+using Debug = UnityEngine.Debug;
 
 public class Health : MonoBehaviour, IDamageable
 {
@@ -17,7 +18,7 @@ public class Health : MonoBehaviour, IDamageable
     private float recurrentDamageInterval;
     private int recurrentDamageTicksRemaining;
     private float recurrentTimer;
-
+    
     private void Awake()
     {
         currentHealth = maxHealth;

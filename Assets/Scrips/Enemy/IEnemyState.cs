@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IZombieState
+public interface IEnemyState
 {
     public void Enter();
 

@@ -2,7 +2,7 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ZombieAttackRangeDetector : MonoBehaviour
+public class EnemyAttackRangeDetector : MonoBehaviour
 {
     public event Action <bool> playerInRange;
 

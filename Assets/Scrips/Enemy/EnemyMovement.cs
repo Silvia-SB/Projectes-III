@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ZombieMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 2f;
     [SerializeField] private float turnSpeed = 30f;

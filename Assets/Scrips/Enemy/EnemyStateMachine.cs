@@ -1,9 +1,9 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ZombieStateMachine
+public class EnemyStateMachine
 {
-    public IZombieState CurrentState { get; private set; }
+    public IEnemyState CurrentState { get; private set; }
 
     public ChaseState ChaseState;
     public AttackState AttackState;
@@ -11,20 +11,20 @@ public class ZombieStateMachine
     public HitState HitState;
     public StunnedState StunnedState;
     
-    public ZombieStateMachine(ZombieController zombieController)
+    public EnemyStateMachine(EnemyController enemyController)
     {
-        ChaseState = new ChaseState(zombieController);
-        AttackState = new AttackState();
+        ChaseState = new ChaseState(enemyController, this);
+        AttackState = new AttackState(enemyController, this);
         DeathState = new DeathState();
         HitState = new HitState();
         StunnedState = new StunnedState();
     }
-    public void Initialize(IZombieState startingState)
+    public void Initialize(IEnemyState startingState)
     {
         CurrentState = startingState;
         startingState.Enter();
     }
-    public void TransitionTo(IZombieState nextState)
+    public void TransitionTo(IEnemyState nextState)
     {
         CurrentState.Exit();
         CurrentState = nextState;

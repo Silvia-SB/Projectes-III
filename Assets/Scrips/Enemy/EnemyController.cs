@@ -1,19 +1,19 @@
 using System;
 using UnityEngine;
 
-public class ZombieController : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     [SerializeField] private Transform target;
-    [SerializeField] private ZombieMovement zombieMovement;
+    [SerializeField] private EnemyMovement zombieMovement;
     [SerializeField] private bool isPlayerInAttackRange;
-    [SerializeField] private ZombieAttackRangeDetector attackRangeDetector;
-    private ZombieStateMachine stateMachine;
+    [SerializeField] private EnemyAttackRangeDetector attackRangeDetector;
+    private EnemyStateMachine stateMachine;
     
 
     public void OnEnable()
     {
         if (target == null || attackRangeDetector == null) return;
-        stateMachine = new ZombieStateMachine(this);
+        stateMachine = new EnemyStateMachine(this);
         stateMachine.Initialize(stateMachine.ChaseState);
         attackRangeDetector.playerInRange += HandlePlayerRangeChange;
     }
@@ -38,11 +38,11 @@ public class ZombieController : MonoBehaviour
     {
         return isPlayerInAttackRange;
     }
-    public ZombieStateMachine GetStateMachine()
+    public EnemyStateMachine GetStateMachine()
     {
         return stateMachine;
     }
-    public ZombieMovement GetZombieMovement()
+    public EnemyMovement GetZombieMovement()
     {
         return zombieMovement;
     }

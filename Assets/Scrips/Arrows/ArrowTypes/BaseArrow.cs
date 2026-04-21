@@ -5,7 +5,7 @@ public class BaseArrow : Arrow
     public override ArrowType type => ArrowType.Base;
     [SerializeField] private float baseDamage = 10f;
 
-    protected override void OnHit(Collider other, float damageMultiplier) 
+    protected override void OnHit(Collider other) 
     {
         IDamageable damageable = other.GetComponentInParent<IDamageable>();
         if (damageable != null) 

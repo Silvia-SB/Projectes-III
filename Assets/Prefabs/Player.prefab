@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 7954406729464564383}
   - component: {fileID: 8412333504912581657}
   - component: {fileID: 7469301177835586816}
+  - component: {fileID: 7891934178190400758}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -487,6 +488,7 @@ MonoBehaviour:
   fireRate: 1
   maxChargeTime: 2
   currentArrowType: 0
+  maxDamageMultiplier: 3
 --- !u!114 &7469301177835586816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,6 +506,23 @@ MonoBehaviour:
   invertPitch: 0
   maxPitch: 80
   minPitch: -80
+--- !u!114 &7891934178190400758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2636149956801692309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355ceb86d178d8d339ff7637f2c8affa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  maxHealth: 100
+  currentHealth: 0
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6995459615907193826
 GameObject:
   m_ObjectHideFlags: 0

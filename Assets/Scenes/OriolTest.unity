@@ -171,11 +171,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2636149956801692309, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412333504912581657, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+--- !u!4 &693287705 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1115770617865515308, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+  m_PrefabInstance: {fileID: 693287704}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &777021022
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,6 +554,10 @@ GameObject:
   - component: {fileID: 1787731684}
   - component: {fileID: 1787731683}
   - component: {fileID: 1787731682}
+  - component: {fileID: 1787731687}
+  - component: {fileID: 1787731690}
+  - component: {fileID: 1787731689}
+  - component: {fileID: 1787731688}
   m_Layer: 0
   m_Name: BasicZombie
   m_TagString: Untagged
@@ -668,6 +685,69 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1787731687
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787731681}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.8405633, y: 1.0540102, z: 2.2331848}
+  m_Center: {x: -0.02556777, y: 0.47299492, z: 0.08207512}
+--- !u!114 &1787731688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787731681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a78a0a25ae5784f965085986e36ef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieAttackRangeDetector
+--- !u!114 &1787731689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787731681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fa253e18ea80d4c84812db55510279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieController
+  target: {fileID: 693287705}
+  zombieMovement: {fileID: 1787731690}
+  isPlayerInAttackRange: 0
+  attackRangeDetector: {fileID: 1787731688}
+--- !u!114 &1787731690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787731681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0843adc34cc21438ef2c03a24c8258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieMovement
+  speed: 2
+  turnSpeed: 30
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

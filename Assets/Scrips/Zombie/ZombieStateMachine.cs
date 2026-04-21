@@ -11,9 +11,9 @@ public class ZombieStateMachine
     public HitState HitState;
     public StunnedState StunnedState;
     
-    public ZombieStateMachine(Transform playerTransform)
+    public ZombieStateMachine(ZombieController zombieController)
     {
-        ChaseState = new ChaseState(playerTransform);
+        ChaseState = new ChaseState(zombieController);
         AttackState = new AttackState();
         DeathState = new DeathState();
         HitState = new HitState();

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HitState : IZombieState
+public class DeathState : IEnemyState
 {
     public void Enter()
     {

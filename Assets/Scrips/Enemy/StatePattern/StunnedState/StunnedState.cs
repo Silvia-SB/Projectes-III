@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StunnedState : IZombieState
+public class StunnedState : IEnemyState
 {
     public void Enter()
     {

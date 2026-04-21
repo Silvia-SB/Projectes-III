@@ -584,7 +584,6 @@ GameObject:
   - component: {fileID: 578679928}
   - component: {fileID: 578679927}
   - component: {fileID: 578679926}
-  - component: {fileID: 578679925}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Enemy
@@ -592,18 +591,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &578679925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 578679924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88a78a0a25ae5784f965085986e36ef0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackRangeDetector
 --- !u!114 &578679926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1264,6 +1251,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1086576156 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8412333504912581657, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+  m_PrefabInstance: {fileID: 2595131986358954485}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7868fe372aacadde2bde051ca74b6b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerShooter
 --- !u!1 &1321209308
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,6 +1735,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_ActionId
+      value: e5b22c15-ef82-4f44-841e-eed75156ccf0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_ActionName
+      value: 'Player/PirciengArrow[/Keyboard/3]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1086576156}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSelectPiercing
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerShooter, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8412333504912581657, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
       propertyPath: arrowPool
       value: 
@@ -1806,6 +1844,10 @@ PrefabInstance:
       propertyPath: bloodPrefab
       value: 
       objectReference: {fileID: 7188577940708486281, guid: bc0ecbdb66f5a3f6b956bee96da5dfbd, type: 3}
+    - target: {fileID: 5788956529557874113, guid: 4b03997cd09032cabb99745064940637, type: 3}
+      propertyPath: piercingPrefab
+      value: 
+      objectReference: {fileID: 7188577940708486281, guid: 3fb2e0e2bca3854edbc26fc7261cf0a7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

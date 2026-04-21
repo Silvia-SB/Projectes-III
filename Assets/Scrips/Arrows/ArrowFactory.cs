@@ -6,6 +6,8 @@ public class ArrowFactory : MonoBehaviour
 
     [SerializeField] private GameObject basePrefab;
     [SerializeField] private GameObject bloodPrefab;
+    [SerializeField] private GameObject piercingPrefab;
+
 
     public Arrow CreateArrow(ArrowType type, Transform parent)
     {
@@ -18,6 +20,9 @@ public class ArrowFactory : MonoBehaviour
                 break;
             case ArrowType.Blood:
                 obj = Instantiate(bloodPrefab, parent);
+                break;
+            case ArrowType.Piercing:
+                obj = Instantiate(piercingPrefab, parent);
                 break;
             default:
                 obj = Instantiate(basePrefab, parent);

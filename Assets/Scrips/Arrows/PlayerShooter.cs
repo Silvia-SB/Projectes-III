@@ -50,6 +50,10 @@ public class PlayerShooter : MonoBehaviour
     {
         if (context.performed && currentArrowType != ArrowType.Blood) ChangeArrowType(ArrowType.Blood);
     }
+    public void OnSelectPiercing(InputAction.CallbackContext context)
+    {
+        if (context.performed && currentArrowType != ArrowType.Piercing) ChangeArrowType(ArrowType.Piercing);
+    }
 
     private void Shoot(float chargePercent)
     {

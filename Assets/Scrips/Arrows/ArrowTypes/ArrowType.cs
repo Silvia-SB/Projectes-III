@@ -1,5 +1,6 @@
 public enum ArrowType
 {
     Base,
-    Blood
+    Blood,
+    Piercing
 } 

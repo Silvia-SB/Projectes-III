@@ -466,6 +466,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 597dabc8-70c1-48c3-91f1-db6ce7e5d8aa
     m_ActionName: 'Player/BloodArrow[/Keyboard/2]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8412333504912581657}
+        m_TargetAssemblyTypeName: PlayerShooter, Assembly-CSharp
+        m_MethodName: OnSelectPiercing
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 79a62210-cff9-4704-b7cc-3a8297a8fe9b
+    m_ActionName: 'Player/PiercingArrow[/Keyboard/3]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: 
@@ -488,7 +504,6 @@ MonoBehaviour:
   fireRate: 1
   maxChargeTime: 2
   currentArrowType: 0
-  maxDamageMultiplier: 3
 --- !u!114 &7469301177835586816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,6 +538,8 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
+  mainRenderer: {fileID: 0}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &6995459615907193826
 GameObject:
   m_ObjectHideFlags: 0

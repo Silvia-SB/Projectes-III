@@ -34,13 +34,13 @@ public class Health : MonoBehaviour, IDamageable
             if (recurrentTimer >= recurrentDamageInterval)
             {
                 recurrentTimer -= recurrentDamageInterval;
-                TakeDamage(recurrentDamageAmount, recurrentDamageType); 
+                TakeDamage(recurrentDamageAmount); 
                 recurrentDamageTicksRemaining--;
             }
         }
     }
 
-    public virtual void TakeDamage(float amount, ArrowType damageType)
+    public virtual void TakeDamage(float amount)
     {
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
@@ -50,13 +50,12 @@ public class Health : MonoBehaviour, IDamageable
         if (currentHealth <= 0) Die();
     }
 
-    public virtual void TakeRecurrentDamage(float amount, float interval, int ticks, ArrowType damageType)
+    public virtual void TakeRecurrentDamage(float amount, float interval, int ticks)
     {
         recurrentDamageAmount = amount;
         recurrentDamageInterval = interval;
         recurrentDamageTicksRemaining = ticks;
         recurrentTimer = 0f;
-        recurrentDamageType = damageType;
     }
 
     protected virtual void Die()

@@ -30,8 +30,7 @@ public class Contagion : MonoBehaviour
             target.TakeRecurrentDamage(
                 myHealth.CurrentDoTAmount, 
                 myHealth.CurrentDoTInterval, 
-                myHealth.CurrentDoTTicks, 
-                myHealth.CurrentDoTType
+                myHealth.CurrentDoTTicks
             );
         }
     }

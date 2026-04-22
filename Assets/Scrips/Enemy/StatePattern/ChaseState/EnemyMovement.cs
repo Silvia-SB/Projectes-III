@@ -4,7 +4,9 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 2f;
     [SerializeField] private float turnSpeed = 30f;
+    [SerializeField] private float gravity = -9.81f;
     private CharacterController controller;
+    private Vector3 velocity;
     
     private void Awake()
     {
@@ -31,7 +33,13 @@ public class EnemyMovement : MonoBehaviour
             turnSpeed * Time.deltaTime
         );
 
-        Vector3 movement = direction * speed * Time.deltaTime;
-        controller.Move(movement);
+        
+        if (controller.isGrounded && velocity.y < 2) velocity.y = 0f;
+        else velocity.y += gravity * Time.deltaTime;
+        
+        Vector3 movement = direction * speed;
+        movement.y = velocity.y;
+        
+        controller.Move(movement * Time.deltaTime);
     }
 }

@@ -1,7 +1,5 @@
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
-using Debug = UnityEngine.Debug;
 
 public class Health : MonoBehaviour, IDamageable
 {
@@ -18,56 +16,52 @@ public class Health : MonoBehaviour, IDamageable
     private float recurrentDamageInterval;
     private int recurrentDamageTicksRemaining;
     private float recurrentTimer;
-    
-    private void Awake()
-    {
-        currentHealth = maxHealth;
-    }
+    private ArrowType recurrentDamageType;
+
+    public bool IsSufferingDoT => recurrentDamageTicksRemaining > 0;
+    public float CurrentDoTAmount => recurrentDamageAmount;
+    public float CurrentDoTInterval => recurrentDamageInterval;
+    public int CurrentDoTTicks => recurrentDamageTicksRemaining;
+    public ArrowType CurrentDoTType => recurrentDamageType;
+
+    private void Awake() => currentHealth = maxHealth;
 
     private void Update()
     {
         if (recurrentDamageTicksRemaining > 0)
         {
             recurrentTimer += Time.deltaTime;
-
             if (recurrentTimer >= recurrentDamageInterval)
             {
                 recurrentTimer -= recurrentDamageInterval;
-                TakeDamage(recurrentDamageAmount);
+                TakeDamage(recurrentDamageAmount, recurrentDamageType); 
                 recurrentDamageTicksRemaining--;
             }
         }
     }
 
-    public void TakeDamage(float amount)
+    public virtual void TakeDamage(float amount, ArrowType damageType)
     {
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-        if (mainRenderer != null)
-        {
-            mainRenderer.material.color = damageColor;
-        }
+        if (mainRenderer != null) mainRenderer.material.SetColor("_BaseColor", damageColor);
 
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-
+        if (currentHealth <= 0) Die();
     }
 
-    public void TakeRecurrentDamage(float amount, float interval, int ticks)
+    public virtual void TakeRecurrentDamage(float amount, float interval, int ticks, ArrowType damageType)
     {
         recurrentDamageAmount = amount;
         recurrentDamageInterval = interval;
         recurrentDamageTicksRemaining = ticks;
-        recurrentTimer = 0f; 
+        recurrentTimer = 0f;
+        recurrentDamageType = damageType;
     }
 
-    private void Die()
+    protected virtual void Die()
     {
-        recurrentDamageTicksRemaining = 0; 
-        OnDeath?.Invoke();
+        recurrentDamageTicksRemaining = 0;
         gameObject.SetActive(false);
     }
 }

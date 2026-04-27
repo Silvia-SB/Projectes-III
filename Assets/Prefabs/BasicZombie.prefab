@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 6511058640952644518}
   - component: {fileID: 7380739549408206577}
   - component: {fileID: 6166795719175101195}
+  - component: {fileID: 7561159584540022760}
   m_Layer: 11
   m_Name: BasicZombie
   m_TagString: Enemy
@@ -255,6 +256,18 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7561159584540022760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6783574212443565757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92806d9c07d52fd418c089877a330d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Contagion
 --- !u!1 &7751661698201232521
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ public abstract class Arrow : MonoBehaviour
     {
         IDamageable target = other.GetComponentInParent<IDamageable>();
         
-        if (target != null || other.CompareTag("Wall"))
+        if (target != null || other.CompareTag("Wall")|| other.CompareTag("Liquid"))
         {
             OnHit(other);
             ReturnToPool();

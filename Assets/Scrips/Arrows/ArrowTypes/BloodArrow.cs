@@ -17,6 +17,11 @@ public class BloodArrow : Arrow
 
     protected override void OnHit(Collider other) 
     {
+        if (other != null && other.CompareTag("Liquid"))
+        {
+            CorruptTarget(other);
+        }
+
         if (isFullyCharged) 
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, outerAoeRadius);
@@ -25,41 +30,40 @@ public class BloodArrow : Arrow
             foreach (Collider col in colliders)
             {
                 if (col.CompareTag("Player")) continue; 
+                if (col.CompareTag("Liquid"))
+                {
+                    CorruptTarget(col);
+                    continue; 
+                }
 
                 IDamageable target = col.GetComponentInParent<IDamageable>();
-                
                 if (target != null && !processedTargets.Contains(target))
                 {
                     float distance = Vector3.Distance(transform.position, col.ClosestPoint(transform.position));
+                    float damageToApply = (distance <= innerAoeRadius) ? maxDamage : baseDamage;
                     
-                    if (distance <= innerAoeRadius)
-                    {
-                        target.TakeDamage(maxDamage);
-                    }
-                    else
-                    {
-                        target.TakeDamage(baseDamage);
-                    }
-                    
+                    target.TakeDamage(damageToApply);
                     target.TakeRecurrentDamage(baseDamage, dotInterval, dotTicks);
                     processedTargets.Add(target);
                 }
             }
         }
-        else 
+        else if (other != null && !other.CompareTag("Liquid")) 
         {
-            IDamageable directTarget = null;
-            if (other != null)
-            {
-                directTarget = other.GetComponentInParent<IDamageable>();
-            }
-            
+            IDamageable directTarget = other.GetComponentInParent<IDamageable>();
             if (directTarget != null) 
             {
                 directTarget.TakeDamage(baseDamage);
-                
                 directTarget.TakeRecurrentDamage(baseDamage, dotInterval, dotTicks);
             }
         }
+    }
+
+    private void CorruptTarget(Collider col)
+    {
+        if (!col.TryGetComponent(out CorruptedLiquid liquid))
+            liquid = col.gameObject.AddComponent<CorruptedLiquid>();
+        
+        liquid.Activate(baseDamage, dotInterval, dotTicks);
     }
 }

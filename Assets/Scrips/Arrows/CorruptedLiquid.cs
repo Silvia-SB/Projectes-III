@@ -3,56 +3,79 @@ using System.Collections.Generic;
 
 public class CorruptedLiquid : MonoBehaviour
 {
-    [SerializeField] private float damage;
-    [SerializeField] private float interval;
-    [SerializeField] private int ticksOnExit;
-    private bool active = false;
+    [SerializeField] private float damage = 5f;
+    [SerializeField] private float interval = 0.4f;
+    [SerializeField] private int ticksOnExit = 5;
     
-    // Ahora el diccionario guarda cualquier cosa que sea "dañable"
-    private Dictionary<IDamageable, float> timers = new Dictionary<IDamageable, float>();
+    private Collider col; 
+    private bool active = false;
+    private float nextPulse;
+    
+    private List<IDamageable> targets = new List<IDamageable>();
 
-    public void Activate(float d, float i, int t) {
+    private void Awake() {
+        col = GetComponent<Collider>();
+        if (col != null) col.isTrigger = false;
+    }
+
+    public void Activate() {
+        if (active) return;
+        
         active = true;
+        nextPulse = Time.time + interval;
+
         if (TryGetComponent(out Renderer r)) r.material.color = Color.red;
+        
+        if (col != null) {
+            col.isTrigger = true;
+
+            Collider[] overlaps = Physics.OverlapBox(col.bounds.center, col.bounds.extents, transform.rotation);
+            foreach (Collider c in overlaps) {
+                IDamageable target = c.GetComponentInParent<IDamageable>();
+                if (target != null && !targets.Contains(target)) {
+                    targets.Add(target);
+                    target.TakeDamage(damage);
+                }
+            }
+        }
     }
 
     private void Update() {
         if (!active) return;
-        List<IDamageable> toRemove = new List<IDamageable>();
         
-        foreach (var entry in timers) {
-            MonoBehaviour targetObj = entry.Key as MonoBehaviour;
+        if (Time.time >= nextPulse) {
+            nextPulse = Time.time + interval;
             
-            if (targetObj == null || !targetObj.gameObject.activeInHierarchy) {
-                toRemove.Add(entry.Key); 
-                continue;
-            }
-            
-            if (Time.time >= entry.Value) {
-                entry.Key.TakeDamage(damage); 
-                timers[entry.Key] = Time.time + interval;
+            for (int i = targets.Count - 1; i >= 0; i--) {
+                IDamageable t = targets[i];
+                MonoBehaviour obj = t as MonoBehaviour;
+                
+                if (obj == null || !obj.gameObject.activeInHierarchy) {
+                    targets.RemoveAt(i);
+                } else {
+                    t.TakeDamage(damage);
+                }
             }
         }
-        foreach (var h in toRemove) timers.Remove(h);
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(!active) return;
+        if (!active) return;
         IDamageable target = other.GetComponentInParent<IDamageable>();
         
-        if (target != null && !timers.ContainsKey(target)) {
+        if (target != null && !targets.Contains(target)) {
+            targets.Add(target);
             target.TakeDamage(damage);
-            timers.Add(target, Time.time + interval);
         }
     }
 
     private void OnTriggerExit(Collider other) {
-        if(!active) return;
+        if (!active) return;
         IDamageable target = other.GetComponentInParent<IDamageable>();
         
-        if (target != null && timers.ContainsKey(target)) {
-            target.TakeRecurrentDamage(damage, interval, ticksOnExit); 
-            timers.Remove(target);
+        if (target != null && targets.Contains(target)) {
+            targets.Remove(target);
+            target.TakeRecurrentDamage(damage, interval, ticksOnExit);
         }
     }
 }

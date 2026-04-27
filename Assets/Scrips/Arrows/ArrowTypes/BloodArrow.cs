@@ -64,6 +64,6 @@ public class BloodArrow : Arrow
         if (!col.TryGetComponent(out CorruptedLiquid liquid))
             liquid = col.gameObject.AddComponent<CorruptedLiquid>();
         
-        liquid.Activate(baseDamage, dotInterval, dotTicks);
+        liquid.Activate();
     }
 }

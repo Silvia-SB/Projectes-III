@@ -13,9 +13,11 @@ public class EnemyMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
     }
 
-    public void MoveTo(Vector3 destination)
+    public void MoveTo(EnemyController enemyController)
     {
-        Vector3 direction = destination - transform.position;
+        enemyController.navMeshAgent.SetDestination(enemyController.GetTarget().position);
+        
+        /*Vector3 direction = destination - transform.position;
 
         direction.y = 0f;
 
@@ -40,6 +42,6 @@ public class EnemyMovement : MonoBehaviour
         Vector3 movement = direction * speed;
         movement.y = velocity.y;
         
-        controller.Move(movement * Time.deltaTime);
+        controller.Move(movement * Time.deltaTime);*/
     }
 }

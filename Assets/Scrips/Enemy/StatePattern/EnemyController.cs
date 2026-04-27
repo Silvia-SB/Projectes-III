@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] private float damageInterval;
     private EnemyStateMachine stateMachine;
-    
+    [SerializeField] public NavMeshAgent navMeshAgent;
     public void OnEnable()
     {
         if (target == null || attackRangeDetector == null) return;

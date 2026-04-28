@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(StatusEffectManager))]
 public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] private float maxHealth = 100f;
@@ -12,35 +13,19 @@ public class Health : MonoBehaviour, IDamageable
     [SerializeField] private Renderer mainRenderer;
     [SerializeField] private Color damageColor = Color.red;
 
-    private float recurrentDamageAmount;
-    private float recurrentDamageInterval;
-    private int recurrentDamageTicksRemaining;
-    private float recurrentTimer;
-    private ArrowType recurrentDamageType;
+    protected StatusEffectManager statusManager;
 
-    public bool IsSufferingDoT => recurrentDamageTicksRemaining > 0;
-    public float CurrentDoTAmount => recurrentDamageAmount;
-    public float CurrentDoTInterval => recurrentDamageInterval;
-    public int CurrentDoTTicks => recurrentDamageTicksRemaining;
-    public ArrowType CurrentDoTType => recurrentDamageType;
-
-    private void Awake() => currentHealth = maxHealth;
-
-    private void Update()
+    protected virtual void Awake() 
     {
-        if (recurrentDamageTicksRemaining > 0)
+        currentHealth = maxHealth;
+        statusManager = GetComponent<StatusEffectManager>();
+        if (statusManager == null)
         {
-            recurrentTimer += Time.deltaTime;
-            if (recurrentTimer >= recurrentDamageInterval)
-            {
-                recurrentTimer -= recurrentDamageInterval;
-                TakeDamage(recurrentDamageAmount); 
-                recurrentDamageTicksRemaining--;
-            }
+            statusManager = gameObject.AddComponent<StatusEffectManager>();
         }
     }
 
-    public virtual void TakeDamage(float amount)
+    public virtual void TakeDamage(float amount, DamageType damageType)
     {
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
@@ -50,17 +35,19 @@ public class Health : MonoBehaviour, IDamageable
         if (currentHealth <= 0) Die();
     }
 
-    public virtual void TakeRecurrentDamage(float amount, float interval, int ticks)
+    public virtual void TakeRecurrentDamage(float amount, float interval, int ticks, DamageType damageType)
     {
-        recurrentDamageAmount = amount;
-        recurrentDamageInterval = interval;
-        recurrentDamageTicksRemaining = ticks;
-        recurrentTimer = 0f;
+        if (statusManager != null)
+        {
+            statusManager.ApplyStatus(amount, interval, ticks, damageType);
+        }
+
+        if (mainRenderer != null) mainRenderer.material.SetColor("_BaseColor", damageColor);
     }
 
     protected virtual void Die()
     {
-        recurrentDamageTicksRemaining = 0;
+        if (statusManager != null) statusManager.ClearAllStatuses();
         gameObject.SetActive(false);
     }
 }

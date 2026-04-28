@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class BloodArrow : Arrow 
 {
     public override ArrowType type => ArrowType.Blood;
+    public override DamageType damageType => DamageType.Blood;
     
     [Header("Hit damage")]
     [SerializeField] private float baseDamage = 5f;
@@ -42,8 +43,8 @@ public class BloodArrow : Arrow
                     float distance = Vector3.Distance(transform.position, col.ClosestPoint(transform.position));
                     float damageToApply = (distance <= innerAoeRadius) ? maxDamage : baseDamage;
                     
-                    target.TakeDamage(damageToApply);
-                    target.TakeRecurrentDamage(baseDamage, dotInterval, dotTicks);
+                    target.TakeDamage(damageToApply, damageType);
+                    target.TakeRecurrentDamage(baseDamage, dotInterval, dotTicks, damageType);
                     processedTargets.Add(target);
                 }
             }
@@ -53,8 +54,8 @@ public class BloodArrow : Arrow
             IDamageable directTarget = other.GetComponentInParent<IDamageable>();
             if (directTarget != null) 
             {
-                directTarget.TakeDamage(baseDamage);
-                directTarget.TakeRecurrentDamage(baseDamage, dotInterval, dotTicks);
+                directTarget.TakeDamage(baseDamage, damageType);
+                directTarget.TakeRecurrentDamage(baseDamage, dotInterval, dotTicks, damageType);
             }
         }
     }

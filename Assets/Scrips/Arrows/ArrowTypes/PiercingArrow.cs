@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class PiercingArrow : Arrow 
 {
     public override ArrowType type => ArrowType.Piercing;
+    public override DamageType damageType => DamageType.Piercing;
     
     [SerializeField] private float damage = 40f;
 
@@ -29,7 +30,7 @@ public class PiercingArrow : Arrow
         if (target != null && !hitTargets.Contains(target))
         {
             hitTargets.Add(target);
-            target.TakeDamage(damage);
+            target.TakeDamage(damage, damageType);
 
             if (!isFullyCharged)
             {

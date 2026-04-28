@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private EnemyAttackRangeDetector attackRangeDetector;
     [SerializeField] private float damage;
     [SerializeField] private float damageInterval;
+    [SerializeField] private DamageType attackDamageType = DamageType.Base;
     private EnemyStateMachine stateMachine;
     [SerializeField] public NavMeshAgent navMeshAgent;
     public void OnEnable()
@@ -46,7 +47,7 @@ public class EnemyController : MonoBehaviour
             
             if (playerHealth != null)
             {
-                playerHealth.TakeDamage(damageAmount);
+                playerHealth.TakeDamage(damageAmount, attackDamageType);
             }
         }
     }

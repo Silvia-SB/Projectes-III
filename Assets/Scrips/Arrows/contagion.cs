@@ -1,67 +1,88 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(Health))]
-public class Contagion : MonoBehaviour
+[RequireComponent(typeof(StatusEffectManager))]
+public class EnemyContagion : MonoBehaviour
 {
-    private Health myHealth;
+    [SerializeField] private List<DamageType> contagiousDamageTypes = new List<DamageType> { DamageType.Blood };
+    private StatusEffectManager myStatusManager;
     private List<IDamageable> touchingTargets = new List<IDamageable>();
-    private float nextPulseTime;
+    private Dictionary<DamageType, bool> previouslyInfected = new Dictionary<DamageType, bool>();
 
     private void Awake()
     {
-        myHealth = GetComponent<Health>();
+        myStatusManager = GetComponent<StatusEffectManager>();
     }
 
     private void Update()
     {
-        if (!myHealth.IsSufferingDoT) return;
-
-        if (Time.time >= nextPulseTime)
+        foreach (DamageType damageType in contagiousDamageTypes)
         {
-            nextPulseTime = Time.time + myHealth.CurrentDoTInterval;
+            bool isCurrentlyInfected = myStatusManager.HasStatus(damageType);
+            bool wasInfected = previouslyInfected.ContainsKey(damageType) && previouslyInfected[damageType];
 
-            for (int i = touchingTargets.Count - 1; i >= 0; i--)
+            // Si acabamos de recibir el estado alterado, contagiamos a todos los que ya estábamos tocando
+            if (isCurrentlyInfected && !wasInfected)
             {
-                IDamageable target = touchingTargets[i];
-                MonoBehaviour targetObj = target as MonoBehaviour;
-
-                if (targetObj == null || !targetObj.gameObject.activeInHierarchy)
-                {
-                    touchingTargets.RemoveAt(i);
-                    continue;
-                }
-
-                if (targetObj.TryGetComponent(out Health targetHealth) && !targetHealth.IsSufferingDoT)
-                {
-                    target.TakeRecurrentDamage(
-                        myHealth.CurrentDoTAmount, 
-                        myHealth.CurrentDoTInterval, 
-                        myHealth.CurrentDoTTicks
-                    );
-                }
+                InfectTouchingTargets(damageType);
             }
+
+            previouslyInfected[damageType] = isCurrentlyInfected;
+        }
+    }
+
+    private void InfectTouchingTargets(DamageType damageType)
+    {
+        var dot = myStatusManager.GetStatus(damageType);
+        if (dot == null) return;
+
+        for (int i = touchingTargets.Count - 1; i >= 0; i--)
+        {
+            IDamageable target = touchingTargets[i];
+            MonoBehaviour targetObj = target as MonoBehaviour;
+
+            if (targetObj == null || !targetObj.gameObject.activeInHierarchy)
+            {
+                touchingTargets.RemoveAt(i);
+                continue;
+            }
+
+            ApplyContagion(target, targetObj, damageType, dot);
+        }
+    }
+
+    private void ApplyContagion(IDamageable target, MonoBehaviour targetObj, DamageType damageType, DoTInstance dot)
+    {
+        bool canInfect = true;
+        int ticksToApply = dot.TicksRemaining;
+
+        if (targetObj != null && targetObj.TryGetComponent(out StatusEffectManager targetStatus))
+        {
+            canInfect = !targetStatus.HasStatus(damageType);
+        }
+
+        if (canInfect)
+        {
+            target.TakeRecurrentDamage(dot.Amount, dot.Interval, ticksToApply, damageType);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         IDamageable target = other.GetComponentInParent<IDamageable>();
+        MonoBehaviour targetObj = target as MonoBehaviour;
         
-        if (target != null && target != (IDamageable)myHealth && !touchingTargets.Contains(target))
+        if (target != null && targetObj != null && targetObj.gameObject != gameObject && !touchingTargets.Contains(target))
         {
             touchingTargets.Add(target);
 
-            if (myHealth.IsSufferingDoT)
+            // Si un objeto nos toca y ya estamos infectados, le pasamos el daño instantáneamente
+            foreach (DamageType damageType in contagiousDamageTypes)
             {
-                MonoBehaviour targetObj = target as MonoBehaviour;
-                if (targetObj != null && targetObj.TryGetComponent(out Health targetHealth) && !targetHealth.IsSufferingDoT)
+                if (myStatusManager.HasStatus(damageType))
                 {
-                    target.TakeRecurrentDamage(
-                        myHealth.CurrentDoTAmount, 
-                        myHealth.CurrentDoTInterval, 
-                        myHealth.CurrentDoTTicks
-                    );
+                    var dot = myStatusManager.GetStatus(damageType);
+                    ApplyContagion(target, targetObj, damageType, dot);
                 }
             }
         }

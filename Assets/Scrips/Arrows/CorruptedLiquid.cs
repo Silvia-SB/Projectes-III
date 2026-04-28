@@ -1,11 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class CorruptedLiquid : MonoBehaviour
+public class CorruptedLiquid : MonoBehaviour, IDamageable
 {
     [SerializeField] private float damage = 5f;
     [SerializeField] private float interval = 0.4f;
     [SerializeField] private int ticksOnExit = 5;
+    [SerializeField] private DamageType damageType = DamageType.Blood;
     
     private Collider col; 
     private bool active = false;
@@ -16,6 +17,16 @@ public class CorruptedLiquid : MonoBehaviour
     private void Awake() {
         col = GetComponent<Collider>();
         if (col != null) col.isTrigger = false;
+    }
+
+    public void TakeDamage(float amount, DamageType incomingDamageType)
+    {
+        if (incomingDamageType == this.damageType) Activate();
+    }
+
+    public void TakeRecurrentDamage(float amount, float interval, int ticks, DamageType incomingDamageType)
+    {
+        if (incomingDamageType == this.damageType) Activate();
     }
 
     public void Activate() {
@@ -34,7 +45,7 @@ public class CorruptedLiquid : MonoBehaviour
                 IDamageable target = c.GetComponentInParent<IDamageable>();
                 if (target != null && !targets.Contains(target)) {
                     targets.Add(target);
-                    target.TakeDamage(damage);
+                    target.TakeDamage(damage, this.damageType);
                 }
             }
         }
@@ -53,7 +64,7 @@ public class CorruptedLiquid : MonoBehaviour
                 if (obj == null || !obj.gameObject.activeInHierarchy) {
                     targets.RemoveAt(i);
                 } else {
-                    t.TakeDamage(damage);
+                    t.TakeDamage(damage, this.damageType);
                 }
             }
         }
@@ -65,7 +76,7 @@ public class CorruptedLiquid : MonoBehaviour
         
         if (target != null && !targets.Contains(target)) {
             targets.Add(target);
-            target.TakeDamage(damage);
+            target.TakeDamage(damage, this.damageType);
         }
     }
 
@@ -75,7 +86,7 @@ public class CorruptedLiquid : MonoBehaviour
         
         if (target != null && targets.Contains(target)) {
             targets.Remove(target);
-            target.TakeRecurrentDamage(damage, interval, ticksOnExit);
+            target.TakeRecurrentDamage(damage, interval, ticksOnExit, this.damageType);
         }
     }
 }

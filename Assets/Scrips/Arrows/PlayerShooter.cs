@@ -30,6 +30,11 @@ public class PlayerShooter : MonoBehaviour
     {
         if (context.started && !isWaitingForReload && Time.time >= nextFireTime && currentArrowInstance != null)
         {
+            if (SoulManager.Instance != null && SoulManager.Instance.CurrentSouls < SoulManager.Instance.GetArrowCost(currentArrowType))
+            {
+                ChangeArrowType(ArrowType.Base);
+                return;
+            }
             chargeStartTime = Time.time;
             isCharging = true; 
         }
@@ -48,15 +53,30 @@ public class PlayerShooter : MonoBehaviour
 
     public void OnSelectBlood(InputAction.CallbackContext context)
     {
-        if (context.performed && currentArrowType != ArrowType.Blood) ChangeArrowType(ArrowType.Blood);
+        if (context.performed && currentArrowType != ArrowType.Blood) 
+        {
+            if (SoulManager.Instance == null || SoulManager.Instance.CurrentSouls >= SoulManager.Instance.GetArrowCost(ArrowType.Blood))
+                ChangeArrowType(ArrowType.Blood);
+            else
+                Debug.Log("¡No tienes suficientes almas para la Flecha de Sangre!");
+        }
     }
+
     public void OnSelectPiercing(InputAction.CallbackContext context)
     {
-        if (context.performed && currentArrowType != ArrowType.Piercing) ChangeArrowType(ArrowType.Piercing);
+        if (context.performed && currentArrowType != ArrowType.Piercing) 
+        {
+            if (SoulManager.Instance == null || SoulManager.Instance.CurrentSouls >= SoulManager.Instance.GetArrowCost(ArrowType.Piercing))
+                ChangeArrowType(ArrowType.Piercing);
+            else
+                Debug.Log("¡No tienes suficientes almas para la Flecha Perforante!");
+        }
     }
 
     private void Shoot(float chargePercent)
     {
+        if (SoulManager.Instance != null && !SoulManager.Instance.TryConsumeSouls(currentArrowType)) return;
+
         nextFireTime = Time.time + fireRate;
 
         currentArrowInstance.isFullyCharged = chargePercent >= 1f;
@@ -69,6 +89,11 @@ public class PlayerShooter : MonoBehaviour
         currentArrowInstance = null;
 
         isWaitingForReload = true;
+
+        if (SoulManager.Instance != null && SoulManager.Instance.CurrentSouls < SoulManager.Instance.GetArrowCost(currentArrowType))
+        {
+            currentArrowType = ArrowType.Base;
+        }
     }
 
     private void PrepareArrow()

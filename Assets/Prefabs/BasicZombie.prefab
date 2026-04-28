@@ -20,6 +20,8 @@ GameObject:
   - component: {fileID: 7380739549408206577}
   - component: {fileID: 6166795719175101195}
   - component: {fileID: 7561159584540022760}
+  - component: {fileID: 7381250687332683635}
+  - component: {fileID: 1130090049170172958}
   m_Layer: 11
   m_Name: BasicZombie
   m_TagString: Enemy
@@ -202,6 +204,7 @@ MonoBehaviour:
   attackRangeDetector: {fileID: 6511058640952644518}
   damage: 20
   damageInterval: 2
+  attackDamageType: 0
   navMeshAgent: {fileID: 6166795719175101195}
 --- !u!114 &6511058640952644518
 MonoBehaviour:
@@ -268,6 +271,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92806d9c07d52fd418c089877a330d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Contagion
+  contagiousDamageTypes: 01000000
+--- !u!114 &7381250687332683635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6783574212443565757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dcc4d3b804c2d02eb33519eca900feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectManager
+--- !u!114 &1130090049170172958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6783574212443565757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b855487188cde9faedebc2a5291386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoulDropper
+  soulsToDrop: 10
 --- !u!1 &7751661698201232521
 GameObject:
   m_ObjectHideFlags: 0

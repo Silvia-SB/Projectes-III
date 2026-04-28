@@ -54,6 +54,7 @@ public class Health : MonoBehaviour, IDamageable
 
     protected virtual void Die()
     {
+        OnDeath?.Invoke();
         statusManager?.ClearAllStatuses();
         gameObject.SetActive(false);
     }

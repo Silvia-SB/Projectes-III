@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4664237897489837324}
   - component: {fileID: 6158020455428269514}
   - component: {fileID: 5788956529557874113}
+  - component: {fileID: 3795783055897515309}
   m_Layer: 0
   m_Name: ArrowManager
   m_TagString: Untagged
@@ -61,3 +62,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArrowFactory
   basePrefab: {fileID: 7188577940708486281, guid: 10dd2efb1d0216a579e22abc9b776f7d, type: 3}
   bloodPrefab: {fileID: 7188577940708486281, guid: bc0ecbdb66f5a3f6b956bee96da5dfbd, type: 3}
+  piercingPrefab: {fileID: 7188577940708486281, guid: 3fb2e0e2bca3854edbc26fc7261cf0a7, type: 3}
+--- !u!114 &3795783055897515309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888012573576880270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d50104a39f6fa3da31760e97ee0240, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoulManager
+  maxSouls: 100
+  bloodArrowCost: 15
+  piercingArrowCost: 20
+  electricArrowCost: 25

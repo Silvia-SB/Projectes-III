@@ -9,84 +9,117 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable
     [SerializeField] private DamageType damageType = DamageType.Blood;
     
     private Collider col; 
-    private bool active = false;
-    private float nextPulse;
+    private Renderer meshRenderer;
+    private bool isActive;
+    private float nextPulseTime;
     
-    private List<IDamageable> targets = new List<IDamageable>();
+    private readonly List<IDamageable> targets = new List<IDamageable>();
 
-    private void Awake() {
+    private void Awake() 
+    {
         col = GetComponent<Collider>();
-        if (col != null) col.isTrigger = false;
+        meshRenderer = GetComponent<Renderer>();
+        
+        if (col != null) 
+        {
+            col.isTrigger = false;
+        }
     }
 
     public void TakeDamage(float amount, DamageType incomingDamageType)
     {
-        if (incomingDamageType == this.damageType) Activate();
+        if (incomingDamageType == damageType) 
+        {
+            Activate();
+        }
     }
 
     public void TakeRecurrentDamage(float amount, float interval, int ticks, DamageType incomingDamageType)
     {
-        if (incomingDamageType == this.damageType) Activate();
+        if (incomingDamageType == damageType) 
+        {
+            Activate();
+        }
     }
 
-    public void Activate() {
-        if (active) return;
+    public void Activate() 
+    {
+        if (isActive) return;
         
-        active = true;
-        nextPulse = Time.time + interval;
+        isActive = true;
+        nextPulseTime = Time.time + interval;
 
-        if (TryGetComponent(out Renderer r)) r.material.color = Color.red;
+        if (meshRenderer != null) 
+        {
+            meshRenderer.material.color = Color.red;
+        }
         
-        if (col != null) {
+        if (col != null) 
+        {
             col.isTrigger = true;
-
-            Collider[] overlaps = Physics.OverlapBox(col.bounds.center, col.bounds.extents, transform.rotation);
-            foreach (Collider c in overlaps) {
-                IDamageable target = c.GetComponentInParent<IDamageable>();
-                if (target != null && !targets.Contains(target)) {
-                    targets.Add(target);
-                    target.TakeDamage(damage, this.damageType);
-                }
-            }
+            ApplyInitialOverlapDamage();
         }
     }
 
-    private void Update() {
-        if (!active) return;
+    private void ApplyInitialOverlapDamage()
+    {
+        Collider[] overlaps = Physics.OverlapBox(col.bounds.center, col.bounds.extents, transform.rotation);
         
-        if (Time.time >= nextPulse) {
-            nextPulse = Time.time + interval;
+        foreach (Collider c in overlaps) 
+        {
+            IDamageable target = c.GetComponentInParent<IDamageable>();
             
-            for (int i = targets.Count - 1; i >= 0; i--) {
-                IDamageable t = targets[i];
-                MonoBehaviour obj = t as MonoBehaviour;
-                
-                if (obj == null || !obj.gameObject.activeInHierarchy) {
-                    targets.RemoveAt(i);
-                } else {
-                    t.TakeDamage(damage, this.damageType);
-                }
+            if (target != null && !targets.Contains(target)) 
+            {
+                targets.Add(target);
+                target.TakeDamage(damage, damageType);
             }
         }
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (!active) return;
-        IDamageable target = other.GetComponentInParent<IDamageable>();
+    private void Update() 
+    {
+        if (!isActive || Time.time < nextPulseTime) return;
         
-        if (target != null && !targets.Contains(target)) {
-            targets.Add(target);
-            target.TakeDamage(damage, this.damageType);
+        nextPulseTime = Time.time + interval;
+        
+        for (int i = targets.Count - 1; i >= 0; i--) 
+        {
+            IDamageable target = targets[i];
+            
+            if (target is not MonoBehaviour obj || !obj.gameObject.activeInHierarchy) 
+            {
+                targets.RemoveAt(i);
+            } 
+            else 
+            {
+                target.TakeDamage(damage, damageType);
+            }
         }
     }
 
-    private void OnTriggerExit(Collider other) {
-        if (!active) return;
+    private void OnTriggerEnter(Collider other) 
+    {
+        if (!isActive) return;
+        
         IDamageable target = other.GetComponentInParent<IDamageable>();
         
-        if (target != null && targets.Contains(target)) {
-            targets.Remove(target);
-            target.TakeRecurrentDamage(damage, interval, ticksOnExit, this.damageType);
+        if (target != null && !targets.Contains(target)) 
+        {
+            targets.Add(target);
+            target.TakeDamage(damage, damageType);
+        }
+    }
+
+    private void OnTriggerExit(Collider other) 
+    {
+        if (!isActive) return;
+        
+        IDamageable target = other.GetComponentInParent<IDamageable>();
+        
+        if (target != null && targets.Remove(target)) 
+        {
+            target.TakeRecurrentDamage(damage, interval, ticksOnExit, damageType);
         }
     }
 }

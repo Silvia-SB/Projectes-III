@@ -41,6 +41,8 @@ public abstract class Arrow : MonoBehaviour
 
     public void ReturnToPool()
     {
+        if (!gameObject.activeInHierarchy) return;
+        
         CancelInvoke();
         gameObject.SetActive(false);
         if (Pool != null) Pool.ReturnToPool(this);

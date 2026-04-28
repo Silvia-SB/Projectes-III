@@ -9,7 +9,7 @@ public class Health : MonoBehaviour, IDamageable
 
     public UnityEvent OnDeath;
 
-    [Header("Visuales")]
+    [Header("Visuals")]
     [SerializeField] private Renderer mainRenderer;
     [SerializeField] private Color damageColor = Color.red;
 
@@ -18,8 +18,8 @@ public class Health : MonoBehaviour, IDamageable
     protected virtual void Awake() 
     {
         currentHealth = maxHealth;
-        statusManager = GetComponent<StatusEffectManager>();
-        if (statusManager == null)
+        
+        if (!TryGetComponent(out statusManager))
         {
             statusManager = gameObject.AddComponent<StatusEffectManager>();
         }
@@ -30,24 +30,31 @@ public class Health : MonoBehaviour, IDamageable
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-        if (mainRenderer != null) mainRenderer.material.SetColor("_BaseColor", damageColor);
+        ApplyDamageVisuals();
 
-        if (currentHealth <= 0) Die();
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
     }
 
     public virtual void TakeRecurrentDamage(float amount, float interval, int ticks, DamageType damageType)
     {
-        if (statusManager != null)
-        {
-            statusManager.ApplyStatus(amount, interval, ticks, damageType);
-        }
+        statusManager?.ApplyStatus(amount, interval, ticks, damageType);
+        ApplyDamageVisuals();
+    }
 
-        if (mainRenderer != null) mainRenderer.material.SetColor("_BaseColor", damageColor);
+    private void ApplyDamageVisuals()
+    {
+        if (mainRenderer != null)
+        {
+            mainRenderer.material.SetColor("_BaseColor", damageColor);
+        }
     }
 
     protected virtual void Die()
     {
-        if (statusManager != null) statusManager.ClearAllStatuses();
+        statusManager?.ClearAllStatuses();
         gameObject.SetActive(false);
     }
 }

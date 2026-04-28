@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class ArrowFactory : MonoBehaviour
 {
-    float var;
-
     [SerializeField] private GameObject basePrefab;
     [SerializeField] private GameObject bloodPrefab;
     [SerializeField] private GameObject piercingPrefab;

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 public class ArrowPool : MonoBehaviour
 {
-    float var;
-
     [SerializeField] private ArrowFactory factory;
     [SerializeField] private int amountPerType = 5;
     
@@ -42,6 +40,7 @@ public class ArrowPool : MonoBehaviour
         
         Arrow extra = factory.CreateArrow(type, transform);
         extra.Pool = this;
+        extra.gameObject.SetActive(true);
         return extra;
     }
 

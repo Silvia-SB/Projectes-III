@@ -1,47 +1,77 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 2f;
-    [SerializeField] private float turnSpeed = 30f;
-    [SerializeField] private float gravity = -9.81f;
-    private CharacterController controller;
-    private Vector3 velocity;
-    
-    private void Awake()
+    private EnemyConfig config;
+    private float nextRefreshTime;
+
+    public void Configure(EnemyConfig config)
     {
-        controller = GetComponent<CharacterController>();
+        this.config = config;
     }
 
     public void MoveTo(EnemyController enemyController)
     {
-        enemyController.navMeshAgent.SetDestination(enemyController.GetTarget().position);
-        
-        /*Vector3 direction = destination - transform.position;
+        if (config == null) return;
 
-        direction.y = 0f;
+        NavMeshAgent agent = enemyController.navMeshAgent;
+        Transform target = enemyController.GetTarget();
 
-        float distance = direction.magnitude;
+        if (agent == null || target == null) return;
+        if (!agent.isOnNavMesh) return;
 
-        if (distance < 0.1f)
-            return;
+        if (Time.time < nextRefreshTime) return;
 
-        direction.Normalize();
+        Vector3 desiredPosition;
 
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(
-            transform.rotation,
-            targetRotation,
-            turnSpeed * Time.deltaTime
+        if (config.isRanged)
+        {
+            desiredPosition = GetRangedPosition(enemyController);
+        }
+        else
+        {
+            desiredPosition = GetMeleePosition(target.position);
+        }
+
+        if (NavMesh.SamplePosition(desiredPosition, out NavMeshHit hit, 3f, NavMesh.AllAreas))
+        {
+            agent.SetDestination(hit.position);
+        }
+
+        nextRefreshTime = Time.time + Random.Range(
+            config.destinationRefreshMin,
+            config.destinationRefreshMax
         );
+    }
 
-        
-        if (controller.isGrounded && velocity.y < 2) velocity.y = 0f;
-        else velocity.y += gravity * Time.deltaTime;
-        
-        Vector3 movement = direction * speed;
-        movement.y = velocity.y;
-        
-        controller.Move(movement * Time.deltaTime);*/
+    private Vector3 GetMeleePosition(Vector3 targetPosition)
+    {
+        Vector3 randomOffset = Random.insideUnitSphere * config.targetOffsetRadius;
+        randomOffset.y = 0f;
+
+        return targetPosition + randomOffset;
+    }
+
+    private Vector3 GetRangedPosition(EnemyController enemyController)
+    {
+        Transform target = enemyController.GetTarget();
+
+        Vector3 directionAwayFromPlayer = (transform.position - target.position).normalized;
+        Vector3 sideOffset = transform.right * Random.Range(-2f, 2f);
+
+        return target.position 
+               + directionAwayFromPlayer * config.preferredDistance 
+               + sideOffset;
+    }
+
+    public void Stop(EnemyController enemyController)
+    {
+        NavMeshAgent agent = enemyController.navMeshAgent;
+
+        if (agent != null && agent.isOnNavMesh)
+        {
+            agent.ResetPath();
+        }
     }
 }

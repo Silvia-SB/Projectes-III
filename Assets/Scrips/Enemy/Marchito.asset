@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad68a175890e9e4ea73f19cccc7647d, type: 3}
+  m_Name: Marchito
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
+  speed: 1.8
+  acceleration: 5
+  angularSpeed: 180
+  stoppingDistance: 1.1
+  radius: 0.45
+  damage: 8
+  damageInterval: 1
+  targetOffsetRadius: 1.8
+  destinationRefreshMin: 0.35
+  destinationRefreshMax: 0.9
+  isRanged: 0
+  preferredDistance: 0

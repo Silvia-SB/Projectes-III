@@ -20,6 +20,7 @@ public class ChaseState : IEnemyState
         if (enemyController.GetIsPlayerInAttackRange())
         {
                 stateMachine.TransitionTo(stateMachine.AttackState);
+                return;
         }
         
         enemyController.GetZombieMovement().MoveTo(enemyController);

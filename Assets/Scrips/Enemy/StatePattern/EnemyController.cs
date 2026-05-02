@@ -1,9 +1,9 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
+    [SerializeField] private EnemyConfig config;
     [SerializeField] private Transform target;
     [SerializeField] private EnemyMovement zombieMovement;
     [SerializeField] private bool isPlayerInAttackRange;
@@ -11,11 +11,14 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] private float damageInterval;
     [SerializeField] private DamageType attackDamageType = DamageType.Base;
-    private EnemyStateMachine stateMachine;
     [SerializeField] public NavMeshAgent navMeshAgent;
+    private EnemyStateMachine stateMachine;
+
     public void OnEnable()
     {
         if (target == null || attackRangeDetector == null) return;
+        
+        ApplyConfig();
         stateMachine = new EnemyStateMachine(this);
         stateMachine.Initialize(stateMachine.ChaseState);
         attackRangeDetector.playerInRange += HandlePlayerRangeChange;
@@ -32,6 +35,17 @@ public class EnemyController : MonoBehaviour
     {
         if (stateMachine == null || stateMachine.CurrentState == null) return;
         stateMachine.Update();  
+    }
+    
+    private void ApplyConfig()
+    {
+        navMeshAgent.speed = config.speed;
+        navMeshAgent.acceleration = config.acceleration;
+        navMeshAgent.angularSpeed = config.angularSpeed;
+        navMeshAgent.stoppingDistance = config.stoppingDistance;
+        navMeshAgent.radius = config.radius;
+
+        zombieMovement.Configure(config);
     }
     
     private void HandlePlayerRangeChange(bool inRange)
@@ -52,29 +66,11 @@ public class EnemyController : MonoBehaviour
         }
     }
     
-    public bool GetIsPlayerInAttackRange()
-    {
-        return isPlayerInAttackRange;
-    }
-    public EnemyStateMachine GetStateMachine()
-    {
-        return stateMachine;
-    }
-    public EnemyMovement GetZombieMovement()
-    {
-        return zombieMovement;
-    }
-    public Transform GetTarget()
-    {
-        return target;
-    }
-    public float GetDamage()
-    {
-        return damage;
-    }
+    public bool GetIsPlayerInAttackRange() => isPlayerInAttackRange;
+    public EnemyMovement GetZombieMovement() => zombieMovement;
+    public Transform GetTarget() => target;
+    public EnemyConfig GetConfig() => config;
+    public float GetDamage() => config.damage;
+    public float GetDamageInterval() => config.damageInterval;
 
-    public float GetDamageInterval()
-    {
-        return damageInterval;
-    }
 }

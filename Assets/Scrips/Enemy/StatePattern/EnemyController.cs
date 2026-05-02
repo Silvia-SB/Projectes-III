@@ -5,7 +5,7 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] private EnemyConfig config;
     [SerializeField] private Transform target;
-    [SerializeField] private EnemyMovement zombieMovement;
+    [SerializeField] private EnemyMovement enemyMovement;
     [SerializeField] private bool isPlayerInAttackRange;
     [SerializeField] private EnemyAttackRangeDetector attackRangeDetector;
     [SerializeField] private float damage;
@@ -16,7 +16,17 @@ public class EnemyController : MonoBehaviour
 
     public void OnEnable()
     {
-        if (target == null || attackRangeDetector == null) return;
+        if (target == null || attackRangeDetector == null || config == null || 
+            navMeshAgent == null || enemyMovement == null)
+        {
+            Debug.LogError(" Falta posar al inpector aquest objecte: " +
+                           (target == null ? "Target " : "") +
+                           (attackRangeDetector == null ? "AttackRangeDetector " : "") +
+                           (config == null ? "Config " : "") +
+                           (navMeshAgent == null ? "NavMeshAgent" : "") +
+                           (enemyMovement == null ? "EnemyMovement" : ""));
+             return;
+        }
         
         ApplyConfig();
         stateMachine = new EnemyStateMachine(this);
@@ -45,7 +55,7 @@ public class EnemyController : MonoBehaviour
         navMeshAgent.stoppingDistance = config.stoppingDistance;
         navMeshAgent.radius = config.radius;
 
-        zombieMovement.Configure(config);
+        enemyMovement.Configure(config);
     }
     
     private void HandlePlayerRangeChange(bool inRange)
@@ -67,7 +77,7 @@ public class EnemyController : MonoBehaviour
     }
     
     public bool GetIsPlayerInAttackRange() => isPlayerInAttackRange;
-    public EnemyMovement GetZombieMovement() => zombieMovement;
+    public EnemyMovement GetEnemyMovement() => enemyMovement;
     public Transform GetTarget() => target;
     public EnemyConfig GetConfig() => config;
     public float GetDamage() => config.damage;

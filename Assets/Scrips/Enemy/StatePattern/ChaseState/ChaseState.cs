@@ -23,7 +23,7 @@ public class ChaseState : IEnemyState
                 return;
         }
         
-        enemyController.GetZombieMovement().MoveTo(enemyController);
+        enemyController.GetEnemyMovement().MoveTo(enemyController);
     }
 
     public void Exit()

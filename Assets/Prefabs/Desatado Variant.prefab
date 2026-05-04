@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6026104302223505352, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
+      propertyPath: enemyAttack
+      value: 
+      objectReference: {fileID: 6036897681599817756}
     - target: {fileID: 6783574212443565757, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
       propertyPath: m_Name
       value: Desatado Variant
@@ -65,3 +69,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
+--- !u!114 &6036897681599817756 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6511058640952644518, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
+  m_PrefabInstance: {fileID: 692625405019601850}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a78a0a25ae5784f965085986e36ef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieAttackRangeDetector

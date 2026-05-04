@@ -6,8 +6,6 @@ public class AttackState : IEnemyState
     private EnemyController enemyController;
     private EnemyStateMachine stateMachine;
     private float recurrentTimer;
-    public event Action <float> performAttack;
-
 
     public AttackState(EnemyController enemyController,  EnemyStateMachine stateMachine)
     {
@@ -16,9 +14,12 @@ public class AttackState : IEnemyState
     }
     public void Enter()
     {
+        enemyController.GetNavMeshAgent().isStopped = true;
+        enemyController.GetNavMeshAgent().velocity = Vector3.zero;
+        enemyController.GetNavMeshAgent().ResetPath();
+
         recurrentTimer = enemyController.GetDamageInterval();
-        performAttack?.Invoke(enemyController.GetDamage());
-        recurrentTimer = 0f;
+        enemyController.PerformAttack();
     }
 
     public void Update()
@@ -26,6 +27,7 @@ public class AttackState : IEnemyState
         if(!enemyController.CanAttackTarget())
         {
             stateMachine.TransitionTo(stateMachine.ChaseState);
+            return;
         }
         if (enemyController.CanAttackTarget() && recurrentTimer >= enemyController.GetDamageInterval())
         {

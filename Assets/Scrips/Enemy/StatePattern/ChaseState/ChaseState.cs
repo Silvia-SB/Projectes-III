@@ -12,6 +12,7 @@ public class ChaseState : IEnemyState
 
     public void Enter()
     {
+        enemyController.GetNavMeshAgent().isStopped = false;
     }
 
     public void Update()

@@ -30,7 +30,7 @@ public class PlayerShooter : MonoBehaviour
     {
         if (context.started && !isWaitingForReload && Time.time >= nextFireTime && currentArrowInstance != null)
         {
-            if (SoulManager.Instance != null && SoulManager.Instance.CurrentSouls < SoulManager.Instance.GetArrowCost(currentArrowType))
+            if (!CanAffordArrow(currentArrowType))
             {
                 ChangeArrowType(ArrowType.Base);
                 return;
@@ -55,7 +55,7 @@ public class PlayerShooter : MonoBehaviour
     {
         if (context.performed && currentArrowType != ArrowType.Blood) 
         {
-            if (SoulManager.Instance == null || SoulManager.Instance.CurrentSouls >= SoulManager.Instance.GetArrowCost(ArrowType.Blood))
+            if (CanAffordArrow(ArrowType.Blood))
                 ChangeArrowType(ArrowType.Blood);
             else
                 Debug.Log("¡No tienes suficientes almas para la Flecha de Sangre!");
@@ -66,7 +66,7 @@ public class PlayerShooter : MonoBehaviour
     {
         if (context.performed && currentArrowType != ArrowType.Piercing) 
         {
-            if (SoulManager.Instance == null || SoulManager.Instance.CurrentSouls >= SoulManager.Instance.GetArrowCost(ArrowType.Piercing))
+            if (CanAffordArrow(ArrowType.Piercing))
                 ChangeArrowType(ArrowType.Piercing);
             else
                 Debug.Log("¡No tienes suficientes almas para la Flecha Perforante!");
@@ -90,10 +90,16 @@ public class PlayerShooter : MonoBehaviour
 
         isWaitingForReload = true;
 
-        if (SoulManager.Instance != null && SoulManager.Instance.CurrentSouls < SoulManager.Instance.GetArrowCost(currentArrowType))
+        if (!CanAffordArrow(currentArrowType))
         {
             currentArrowType = ArrowType.Base;
         }
+    }
+
+    private bool CanAffordArrow(ArrowType type)
+    {
+        if (SoulManager.Instance == null) return true;
+        return SoulManager.Instance.CurrentSouls >= SoulManager.Instance.GetArrowCost(type);
     }
 
     private void PrepareArrow()

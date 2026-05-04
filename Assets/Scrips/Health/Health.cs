@@ -4,8 +4,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(StatusEffectManager))]
 public class Health : MonoBehaviour, IDamageable
 {
-    [SerializeField] private float maxHealth = 100f;
-    [SerializeField] private float currentHealth;
+    [SerializeField] protected float maxHealth = 100f;
+    [SerializeField] protected float currentHealth;
 
     public UnityEvent OnDeath;
 
@@ -36,6 +36,12 @@ public class Health : MonoBehaviour, IDamageable
         {
             Die();
         }
+    }
+
+    public virtual void Heal(float amount)
+    {
+        currentHealth += amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
     }
 
     public virtual void TakeRecurrentDamage(float amount, float interval, int ticks, DamageType damageType)

@@ -41,18 +41,23 @@ public class SoulManager : MonoBehaviour
             ArrowType.Base => 0,
             ArrowType.Blood => bloodArrowCost,
             ArrowType.Piercing => piercingArrowCost,
+            _ => 0
         };
     }
 
-    public bool TryConsumeSouls(ArrowType type)
+    public bool TryConsumeSouls(int amount)
     {
-        int cost = GetArrowCost(type);
-        if (currentSouls >= cost)
+        if (currentSouls >= amount)
         {
-            currentSouls -= cost;
+            currentSouls -= amount;
             OnSoulsChanged?.Invoke(currentSouls, maxSouls);
             return true;
         }
         return false;
+    }
+
+    public bool TryConsumeSouls(ArrowType type)
+    {
+        return TryConsumeSouls(GetArrowCost(type));
     }
 }

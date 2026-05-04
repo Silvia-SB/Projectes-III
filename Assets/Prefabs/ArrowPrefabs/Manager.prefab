@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5788956529557874113}
   - component: {fileID: 3795783055897515309}
   m_Layer: 0
-  m_Name: ArrowManager
+  m_Name: Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,6 +76,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoulManager
   maxSouls: 100
+  currentSouls: 0
   bloodArrowCost: 15
   piercingArrowCost: 20
-  electricArrowCost: 25

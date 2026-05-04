@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 8412333504912581657}
   - component: {fileID: 7469301177835586816}
   - component: {fileID: 2489017004968937989}
-  - component: {fileID: 1116702968537725341}
+  - component: {fileID: 2424066731286731188}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -410,9 +410,9 @@ MonoBehaviour:
     m_ActionName: 'Player/BloodArrow[/Keyboard/2]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8412333504912581657}
-        m_TargetAssemblyTypeName: PlayerShooter, Assembly-CSharp
-        m_MethodName: OnSelectPiercing
+      - m_Target: {fileID: 2489017004968937989}
+        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+        m_MethodName: OnHeal
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -422,8 +422,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 810b140b-af47-449b-8f3a-d4ca8ac741e3
-    m_ActionName: 'Player/PiercingArrow[/Keyboard/3]'
+    m_ActionId: 315f145e-933d-4cf0-b5b7-f4319e2d8a7a
+    m_ActionName: 'Player/Heal[/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: 
@@ -482,7 +482,9 @@ MonoBehaviour:
       m_Calls: []
   mainRenderer: {fileID: 0}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
---- !u!114 &1116702968537725341
+  healAmount: 25
+  soulCostToHeal: 10
+--- !u!114 &2424066731286731188
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -491,16 +493,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2636149956801692309}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 355ceb86d178d8d339ff7637f2c8affa, type: 3}
+  m_Script: {fileID: 11500000, guid: 7dcc4d3b804c2d02eb33519eca900feb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
-  currentHealth: 0
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  mainRenderer: {fileID: 0}
-  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectManager
 --- !u!1 &6995459615907193826
 GameObject:
   m_ObjectHideFlags: 0

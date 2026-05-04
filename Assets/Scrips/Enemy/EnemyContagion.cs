@@ -21,7 +21,6 @@ public class EnemyContagion : MonoBehaviour
             bool isCurrentlyInfected = myStatusManager.HasStatus(damageType);
             bool wasInfected = previouslyInfected.ContainsKey(damageType) && previouslyInfected[damageType];
 
-            // Si acabamos de recibir el estado alterado, contagiamos a todos los que ya estábamos tocando
             if (isCurrentlyInfected && !wasInfected)
             {
                 InfectTouchingTargets(damageType);
@@ -76,7 +75,6 @@ public class EnemyContagion : MonoBehaviour
         {
             touchingTargets.Add(target);
 
-            // Si un objeto nos toca y ya estamos infectados, le pasamos el daño instantáneamente
             foreach (DamageType damageType in contagiousDamageTypes)
             {
                 if (myStatusManager.HasStatus(damageType))

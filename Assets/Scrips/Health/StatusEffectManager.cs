@@ -71,6 +71,8 @@ public class StatusEffectManager : MonoBehaviour
                 
                 damageable?.TakeDamage(dot.Amount, kvp.Key); 
                 
+                if (!gameObject.activeInHierarchy) return;
+                
                 dot.TicksRemaining--;
                 
                 if (dot.TicksRemaining <= 0)

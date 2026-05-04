@@ -17,7 +17,7 @@ public class ChaseState : IEnemyState
 
     public void Update()
     {
-        if (enemyController.GetIsPlayerInAttackRange())
+        if (enemyController.GetConfig().stoppingDistance >= Vector3.Distance(enemyController.transform.position, enemyController.GetTarget().position))
         {
                 stateMachine.TransitionTo(stateMachine.AttackState);
                 return;

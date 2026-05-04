@@ -16,7 +16,6 @@ public class AttackState : IEnemyState
     }
     public void Enter()
     {
-        //Debug.Log("Entering Attack State");
         recurrentTimer = enemyController.GetDamageInterval();
         makeDamage?.Invoke(enemyController.GetDamage());
         recurrentTimer = 0f;
@@ -24,7 +23,7 @@ public class AttackState : IEnemyState
 
     public void Update()
     {
-        if(!enemyController.GetIsPlayerInAttackRange())
+        if(enemyController.GetConfig().stoppingDistance < Vector3.Distance(enemyController.transform.position, enemyController.GetTarget().position))
         {
             stateMachine.TransitionTo(stateMachine.ChaseState);
         }

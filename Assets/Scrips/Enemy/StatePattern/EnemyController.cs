@@ -3,25 +3,23 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private EnemyConfig config;
     [SerializeField] private Transform target;
     [SerializeField] private EnemyMovement enemyMovement;
-    [SerializeField] private bool isPlayerInAttackRange;
-    [SerializeField] private EnemyAttackRangeDetector attackRangeDetector;
-    [SerializeField] private float damage;
-    [SerializeField] private float damageInterval;
-    [SerializeField] private DamageType attackDamageType = DamageType.Base;
+    //[SerializeField] private EnemyAttack enemyAttack;
     [SerializeField] public NavMeshAgent navMeshAgent;
+    
+    private DamageType attackDamageType = DamageType.Base;
     private EnemyStateMachine stateMachine;
 
     public void OnEnable()
     {
-        if (target == null || attackRangeDetector == null || config == null || 
+        if (target == null || config == null || 
             navMeshAgent == null || enemyMovement == null)
         {
             Debug.LogError(" Falta posar al inpector aquest objecte: " +
                            (target == null ? "Target " : "") +
-                           (attackRangeDetector == null ? "AttackRangeDetector " : "") +
                            (config == null ? "Config " : "") +
                            (navMeshAgent == null ? "NavMeshAgent" : "") +
                            (enemyMovement == null ? "EnemyMovement" : ""));
@@ -31,13 +29,11 @@ public class EnemyController : MonoBehaviour
         ApplyConfig();
         stateMachine = new EnemyStateMachine(this);
         stateMachine.Initialize(stateMachine.ChaseState);
-        attackRangeDetector.playerInRange += HandlePlayerRangeChange;
         stateMachine.AttackState.makeDamage += DamageTarget;
     }
 
     public void OnDisable()
     {
-        attackRangeDetector.playerInRange -= HandlePlayerRangeChange;
         stateMachine.AttackState.makeDamage -= DamageTarget;
     }
 
@@ -58,11 +54,6 @@ public class EnemyController : MonoBehaviour
         enemyMovement.Configure(config);
     }
     
-    private void HandlePlayerRangeChange(bool inRange)
-    {
-        isPlayerInAttackRange = inRange;
-    }
-    
     private void DamageTarget(float damageAmount)
     {
         if (target != null)
@@ -76,7 +67,6 @@ public class EnemyController : MonoBehaviour
         }
     }
     
-    public bool GetIsPlayerInAttackRange() => isPlayerInAttackRange;
     public EnemyMovement GetEnemyMovement() => enemyMovement;
     public Transform GetTarget() => target;
     public EnemyConfig GetConfig() => config;

@@ -7,8 +7,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private EnemyConfig config;
     [SerializeField] private Transform target;
     [SerializeField] private EnemyMovement enemyMovement;
-    //[SerializeField] private EnemyAttack enemyAttack;
-    [SerializeField] public NavMeshAgent navMeshAgent;
+    [SerializeField] private NavMeshAgent navMeshAgent;
+    [SerializeField] private EnemyAttack enemyAttack;
     
     private DamageType attackDamageType = DamageType.Base;
     private EnemyStateMachine stateMachine;
@@ -29,14 +29,8 @@ public class EnemyController : MonoBehaviour
         ApplyConfig();
         stateMachine = new EnemyStateMachine(this);
         stateMachine.Initialize(stateMachine.ChaseState);
-        stateMachine.AttackState.makeDamage += DamageTarget;
     }
-
-    public void OnDisable()
-    {
-        stateMachine.AttackState.makeDamage -= DamageTarget;
-    }
-
+    
     void Update()
     {
         if (stateMachine == null || stateMachine.CurrentState == null) return;
@@ -54,23 +48,27 @@ public class EnemyController : MonoBehaviour
         enemyMovement.Configure(config);
     }
     
-    private void DamageTarget(float damageAmount)
+    public bool CanAttackTarget()
     {
-        if (target != null)
+        float distanceToTarget = Vector3.Distance(transform.position, target.position);
+        return distanceToTarget <= config.attackRange;
+    }
+    
+    public void PerformAttack()
+    {
+        if(config.isRanged)
         {
-            Health playerHealth = target.GetComponent<Health>();
-            
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(damageAmount, attackDamageType);
-            }
+            enemyAttack.PlagueDoctorAttack(target.position, attackDamageType, config.damage);
+        }
+        else
+        {
+            enemyAttack.MeleeAttack(target, attackDamageType, config.damage);
         }
     }
     
     public EnemyMovement GetEnemyMovement() => enemyMovement;
     public Transform GetTarget() => target;
-    public EnemyConfig GetConfig() => config;
     public float GetDamage() => config.damage;
     public float GetDamageInterval() => config.damageInterval;
-
+    public NavMeshAgent  GetNavMeshAgent() => navMeshAgent;
 }

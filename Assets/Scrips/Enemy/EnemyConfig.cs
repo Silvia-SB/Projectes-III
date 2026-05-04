@@ -8,6 +8,7 @@ public class EnemyConfig : ScriptableObject
     public float acceleration = 8f;
     public float angularSpeed = 240f;
     public float stoppingDistance = 1f;
+    public float attackRange = 1.4f;
     public float radius = 0.5f;
 
     [Header("Combat")]

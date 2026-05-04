@@ -12,12 +12,11 @@ public class ChaseState : IEnemyState
 
     public void Enter()
     {
-        //Debug.Log("Entering Chase State");
     }
 
     public void Update()
     {
-        if (enemyController.GetConfig().stoppingDistance >= Vector3.Distance(enemyController.transform.position, enemyController.GetTarget().position))
+        if (enemyController.CanAttackTarget())
         {
                 stateMachine.TransitionTo(stateMachine.AttackState);
                 return;

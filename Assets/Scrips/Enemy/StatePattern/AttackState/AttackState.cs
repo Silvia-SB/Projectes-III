@@ -6,7 +6,7 @@ public class AttackState : IEnemyState
     private EnemyController enemyController;
     private EnemyStateMachine stateMachine;
     private float recurrentTimer;
-    public event Action <float> makeDamage;
+    public event Action <float> performAttack;
 
 
     public AttackState(EnemyController enemyController,  EnemyStateMachine stateMachine)
@@ -17,19 +17,19 @@ public class AttackState : IEnemyState
     public void Enter()
     {
         recurrentTimer = enemyController.GetDamageInterval();
-        makeDamage?.Invoke(enemyController.GetDamage());
+        performAttack?.Invoke(enemyController.GetDamage());
         recurrentTimer = 0f;
     }
 
     public void Update()
     {
-        if(enemyController.GetConfig().stoppingDistance < Vector3.Distance(enemyController.transform.position, enemyController.GetTarget().position))
+        if(!enemyController.CanAttackTarget())
         {
             stateMachine.TransitionTo(stateMachine.ChaseState);
         }
-        if (recurrentTimer >= enemyController.GetDamageInterval())
+        if (enemyController.CanAttackTarget() && recurrentTimer >= enemyController.GetDamageInterval())
         {
-            makeDamage?.Invoke(enemyController.GetDamage());
+            enemyController.PerformAttack();
         
             recurrentTimer -= enemyController.GetDamageInterval(); 
         }

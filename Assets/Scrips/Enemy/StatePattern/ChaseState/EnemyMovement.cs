@@ -15,7 +15,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (config == null) return;
 
-        NavMeshAgent agent = enemyController.navMeshAgent;
+        NavMeshAgent agent = enemyController.GetNavMeshAgent();
         Transform target = enemyController.GetTarget();
 
         if (agent == null || target == null) return;
@@ -67,7 +67,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void Stop(EnemyController enemyController)
     {
-        NavMeshAgent agent = enemyController.navMeshAgent;
+        NavMeshAgent agent = enemyController.GetNavMeshAgent();
 
         if (agent != null && agent.isOnNavMesh)
         {

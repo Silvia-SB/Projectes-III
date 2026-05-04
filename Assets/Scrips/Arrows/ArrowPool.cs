@@ -13,7 +13,7 @@ public class ArrowPool : MonoBehaviour
         InitialInstance(ArrowType.Base);
         InitialInstance(ArrowType.Blood);
         InitialInstance(ArrowType.Piercing);
-
+        InitialInstance(ArrowType.Electric);
     }
 
     private void InitialInstance(ArrowType type)

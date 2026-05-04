@@ -73,6 +73,17 @@ public class PlayerShooter : MonoBehaviour
         }
     }
 
+    public void OnSelectElectric(InputAction.CallbackContext context)
+    {
+        if (context.performed && currentArrowType != ArrowType.Electric) 
+        {
+            if (CanAffordArrow(ArrowType.Electric))
+                ChangeArrowType(ArrowType.Electric);
+            else
+                Debug.Log("¡No tienes suficientes almas para la Flecha Eléctrica!");
+        }
+    }
+
     private void Shoot(float chargePercent)
     {
         if (SoulManager.Instance != null && !SoulManager.Instance.TryConsumeSouls(currentArrowType)) return;

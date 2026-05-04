@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class EnemyContagion : MonoBehaviour
 {
     [SerializeField] private List<DamageType> contagiousDamageTypes = new List<DamageType> { DamageType.Blood };
+    [SerializeField] private float contagiousSlowFactor = 0.5f; // Cuánto ralentiza al contagiarse
     private StatusEffectManager myStatusManager;
     private List<IDamageable> touchingTargets = new List<IDamageable>();
     private Dictionary<DamageType, bool> previouslyInfected = new Dictionary<DamageType, bool>();
@@ -63,6 +64,13 @@ public class EnemyContagion : MonoBehaviour
         if (canInfect)
         {
             target.TakeRecurrentDamage(dot.Amount, dot.Interval, ticksToApply, damageType);
+
+            // Si el daño es de tipo eléctrico, aplicamos la ralentización
+            if (damageType == DamageType.Electric)
+            {
+                ISlowable slowable = targetObj.GetComponentInParent<ISlowable>();
+                slowable?.ApplySlow(contagiousSlowFactor, ticksToApply * dot.Interval);
+            }
         }
     }
 

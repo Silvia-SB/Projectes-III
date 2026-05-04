@@ -12,6 +12,7 @@ public class SoulManager : MonoBehaviour
     [Header("Costes de Flechas")]
     [SerializeField] private int bloodArrowCost = 15;
     [SerializeField] private int piercingArrowCost = 20;
+    [SerializeField] private int electricArrowCost = 25;
     public int CurrentSouls => currentSouls;
     public int MaxSouls => maxSouls;
 
@@ -41,6 +42,7 @@ public class SoulManager : MonoBehaviour
             ArrowType.Base => 0,
             ArrowType.Blood => bloodArrowCost,
             ArrowType.Piercing => piercingArrowCost,
+            ArrowType.Electric => electricArrowCost,
             _ => 0
         };
     }

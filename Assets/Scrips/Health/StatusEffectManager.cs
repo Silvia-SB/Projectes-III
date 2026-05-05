@@ -12,7 +12,7 @@ public class DoTInstance
 public class StatusEffectManager : MonoBehaviour
 {
     private readonly Dictionary<DamageType, DoTInstance> activeStatuses = new Dictionary<DamageType, DoTInstance>();
-    private readonly List<DamageType> keysToRemove = new List<DamageType>();
+    private readonly List<DamageType> activeKeys = new List<DamageType>();
     
     private IDamageable damageable;
 
@@ -36,6 +36,7 @@ public class StatusEffectManager : MonoBehaviour
         }
         else
         {
+            activeKeys.Add(damageType);
             activeStatuses[damageType] = new DoTInstance 
             { 
                 Amount = amount, 
@@ -49,27 +50,29 @@ public class StatusEffectManager : MonoBehaviour
     public void RemoveStatus(DamageType damageType)
     {
         activeStatuses.Remove(damageType);
+        activeKeys.Remove(damageType);
     }
 
     public void ClearAllStatuses()
     {
         activeStatuses.Clear();
+        activeKeys.Clear();
     }
 
     private void Update()
     {
-        keysToRemove.Clear();
-        
-        foreach (var kvp in activeStatuses)
+        for (int i = activeKeys.Count - 1; i >= 0; i--)
         {
-            DoTInstance dot = kvp.Value;
+            DamageType key = activeKeys[i];
+            DoTInstance dot = activeStatuses[key];
+            
             dot.Timer += Time.deltaTime;
             
             if (dot.Timer >= dot.Interval)
             {
                 dot.Timer -= dot.Interval;
                 
-                damageable?.TakeDamage(dot.Amount, kvp.Key); 
+                damageable?.TakeDamage(dot.Amount, key); 
                 
                 if (!gameObject.activeInHierarchy) return;
                 
@@ -77,14 +80,10 @@ public class StatusEffectManager : MonoBehaviour
                 
                 if (dot.TicksRemaining <= 0)
                 {
-                    keysToRemove.Add(kvp.Key);
+                    activeStatuses.Remove(key);
+                    activeKeys.RemoveAt(i);
                 }
             }
-        }
-        
-        foreach (DamageType key in keysToRemove)
-        {
-            activeStatuses.Remove(key);
         }
     }
 }

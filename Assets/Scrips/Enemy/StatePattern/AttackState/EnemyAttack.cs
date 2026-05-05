@@ -14,5 +14,15 @@ public class EnemyAttack : MonoBehaviour
         // Aquí puedes implementar la lógica específica para el ataque cuerpo a cuerpo.
         // Por ejemplo, podrías aplicar daño directamente al objetivo.
         Debug.Log($"Melee attack on {target.name} with {damage} damage of type {damageType}");
+        
+        // Solo hacemos daño si el objetivo tiene el tag "Player" para evitar fuego amigo
+        if (target != null && target.CompareTag("Player"))
+        {
+            IDamageable damageable = target.GetComponentInParent<IDamageable>();
+            if (damageable != null)
+            {
+                damageable.TakeDamage(damage, damageType);
+            }
+        }
     }
 }

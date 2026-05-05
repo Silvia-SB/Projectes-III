@@ -2,10 +2,13 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(StatusEffectManager))]
-public class Health : MonoBehaviour, IDamageable
+public abstract class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] protected float maxHealth = 100f;
     [SerializeField] protected float currentHealth;
+
+    public float CurrentHealth => currentHealth;
+    public float MaxHealth => maxHealth;
 
     public UnityEvent OnDeath;
 
@@ -14,14 +17,17 @@ public class Health : MonoBehaviour, IDamageable
     [SerializeField] private Color damageColor = Color.red;
 
     protected StatusEffectManager statusManager;
+    private MaterialPropertyBlock propBlock;
 
     protected virtual void Awake() 
     {
         currentHealth = maxHealth;
         
-        if (!TryGetComponent(out statusManager))
+        statusManager = GetComponent<StatusEffectManager>();
+        
+        if (mainRenderer != null)
         {
-            statusManager = gameObject.AddComponent<StatusEffectManager>();
+            propBlock = new MaterialPropertyBlock();
         }
     }
 
@@ -52,9 +58,11 @@ public class Health : MonoBehaviour, IDamageable
 
     private void ApplyDamageVisuals()
     {
-        if (mainRenderer != null)
+        if (mainRenderer != null && propBlock != null)
         {
-            mainRenderer.material.SetColor("_BaseColor", damageColor);
+            mainRenderer.GetPropertyBlock(propBlock);
+            propBlock.SetColor("_BaseColor", damageColor);
+            mainRenderer.SetPropertyBlock(propBlock);
         }
     }
 

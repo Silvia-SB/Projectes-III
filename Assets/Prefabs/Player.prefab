@@ -185,7 +185,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
@@ -408,22 +408,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 597dabc8-70c1-48c3-91f1-db6ce7e5d8aa
     m_ActionName: 'Player/BloodArrow[/Keyboard/2]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2489017004968937989}
-        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-        m_MethodName: OnHeal
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 315f145e-933d-4cf0-b5b7-f4319e2d8a7a
-    m_ActionName: 'Player/Heal[/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: 
@@ -482,8 +466,8 @@ MonoBehaviour:
       m_Calls: []
   mainRenderer: {fileID: 0}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
-  healAmount: 25
   soulCostToHeal: 10
+  healAmount: 25
 --- !u!114 &2424066731286731188
 MonoBehaviour:
   m_ObjectHideFlags: 0

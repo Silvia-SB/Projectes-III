@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 public class PlayerHealth : Health
 {
     [Header("Healing")]
     [SerializeField] private int soulCostToHeal = 20;
     [SerializeField] private float healAmount = 30f;
+
+    public event Action<float, float> OnHealthChanged;
 
     protected override void Awake()
     {
@@ -16,6 +19,23 @@ public class PlayerHealth : Health
         {
             OnDeath.AddListener(gm.ReloadCurrentScene);
         }
+    }
+
+    private void Start()
+    {
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+
+    public override void TakeDamage(float amount, DamageType damageType)
+    {
+        base.TakeDamage(amount, damageType);
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+
+    public override void Heal(float amount)
+    {
+        base.Heal(amount);
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
     public void OnHeal(InputAction.CallbackContext context)

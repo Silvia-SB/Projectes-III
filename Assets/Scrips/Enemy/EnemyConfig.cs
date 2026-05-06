@@ -10,6 +10,7 @@ public class EnemyConfig : ScriptableObject
     public float stoppingDistance = 1f;
     public float attackRange = 1.4f;
     public float radius = 0.5f;
+    
 
     [Header("Combat")]
     public float damage = 10f;

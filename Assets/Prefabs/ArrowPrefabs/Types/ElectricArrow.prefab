@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2427435545611713955}
   - component: {fileID: 705149141350011287}
   - component: {fileID: 7591157102281329915}
-  - component: {fileID: 6568624414355162149}
+  - component: {fileID: 2904138902599264153}
   m_Layer: 7
   m_Name: ElectricArrow
   m_TagString: Untagged
@@ -141,7 +141,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6568624414355162149
+--- !u!114 &2904138902599264153
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7188577940708486281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9fac7f10d86a0aa8b417dbd8ce8deb8, type: 3}
+  m_Script: {fileID: 11500000, guid: 672e432088134cb5486a6d3a7b6bd1dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElectricArrow
   Pool: {fileID: 0}

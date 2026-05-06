@@ -64,19 +64,65 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1130090049170172958, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
+    - {fileID: 7380739549408206577, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6783574212443565757, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4756694626591974488}
+    - targetCorrespondingSourceObject: {fileID: 6783574212443565757, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1174612367492111800}
   m_SourcePrefab: {fileID: 100100000, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
 --- !u!114 &6036897681599817756 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6511058640952644518, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
   m_PrefabInstance: {fileID: 692625405019601850}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6320991111219795207}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88a78a0a25ae5784f965085986e36ef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombieAttackRangeDetector
+--- !u!1 &6320991111219795207 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6783574212443565757, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
+  m_PrefabInstance: {fileID: 692625405019601850}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4756694626591974488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6320991111219795207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a5aafe5bd72c230b4e5ba43aabf4cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 100
+  currentHealth: 0
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  mainRenderer: {fileID: 0}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  soulsToDrop: 15
+--- !u!114 &1174612367492111800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6320991111219795207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b855487188cde9faedebc2a5291386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoulDropper
+  soulsToDrop: 10

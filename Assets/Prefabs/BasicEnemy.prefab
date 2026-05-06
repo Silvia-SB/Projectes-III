@@ -16,11 +16,9 @@ GameObject:
   - component: {fileID: 5300547036142657930}
   - component: {fileID: 6026104302223505352}
   - component: {fileID: 6511058640952644518}
-  - component: {fileID: 7380739549408206577}
   - component: {fileID: 6166795719175101195}
   - component: {fileID: 7561159584540022760}
   - component: {fileID: 7381250687332683635}
-  - component: {fileID: 1130090049170172958}
   m_Layer: 11
   m_Name: BasicEnemy
   m_TagString: Enemy
@@ -172,12 +170,8 @@ MonoBehaviour:
   config: {fileID: 0}
   target: {fileID: 1115770617865515308, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
   enemyMovement: {fileID: 5300547036142657930}
-  isPlayerInAttackRange: 0
-  attackRangeDetector: {fileID: 6511058640952644518}
-  damage: 20
-  damageInterval: 2
-  attackDamageType: 0
   navMeshAgent: {fileID: 6166795719175101195}
+  enemyAttack: {fileID: 0}
 --- !u!114 &6511058640952644518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,25 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a78a0a25ae5784f965085986e36ef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombieAttackRangeDetector
---- !u!114 &7380739549408206577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6783574212443565757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 355ceb86d178d8d339ff7637f2c8affa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 20
-  currentHealth: 0
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  mainRenderer: {fileID: 2582877304656549086}
-  damageColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!195 &6166795719175101195
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -244,6 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Contagion
   contagiousDamageTypes: 01000000
+  contagiousSlowFactor: 0.5
 --- !u!114 &7381250687332683635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,19 +232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dcc4d3b804c2d02eb33519eca900feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatusEffectManager
---- !u!114 &1130090049170172958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6783574212443565757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88b855487188cde9faedebc2a5291386, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SoulDropper
-  soulsToDrop: 10
 --- !u!1 &7751661698201232521
 GameObject:
   m_ObjectHideFlags: 0

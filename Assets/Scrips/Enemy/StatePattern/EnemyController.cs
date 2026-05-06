@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,13 +14,17 @@ public class EnemyController : MonoBehaviour
     private DamageType attackDamageType = DamageType.Base;
     private EnemyStateMachine stateMachine;
 
+    public void Awake()
+    {
+        if (target == null) target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     public void OnEnable()
     {
-        if (target == null || config == null || 
+        if (config == null || 
             navMeshAgent == null || enemyMovement == null)
         {
             Debug.LogError(" Falta posar al inpector aquest objecte: " +
-                           (target == null ? "Target " : "") +
                            (config == null ? "Config " : "") +
                            (navMeshAgent == null ? "NavMeshAgent" : "") +
                            (enemyMovement == null ? "EnemyMovement" : ""));

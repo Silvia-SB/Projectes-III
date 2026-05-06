@@ -5,6 +5,8 @@ public class EnemyConfig : ScriptableObject
 {
     [Header("Movement")]
     public float speed = 2f;
+    public float stunnedSpeed = 0.5f;
+    public float timeStunned = 7f;
     public float acceleration = 8f;
     public float angularSpeed = 240f;
     public float stoppingDistance = 1f;

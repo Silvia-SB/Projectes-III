@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, ISlowable
 {
     [Header("References")]
     [SerializeField] private EnemyConfig config;
@@ -12,6 +12,10 @@ public class EnemyController : MonoBehaviour
     
     private DamageType attackDamageType = DamageType.Base;
     private EnemyStateMachine stateMachine;
+    private float slowTimer;
+    private bool isSlowed;
+
+    public EnemyConfig Config => config;
 
     public void OnEnable()
     {
@@ -33,6 +37,16 @@ public class EnemyController : MonoBehaviour
     
     void Update()
     {
+        if (isSlowed)
+        {
+            slowTimer -= Time.deltaTime;
+            if (slowTimer <= 0f)
+            {
+                isSlowed = false;
+                navMeshAgent.speed = config.speed;
+            }
+        }
+
         if (stateMachine == null || stateMachine.CurrentState == null) return;
         stateMachine.Update();  
     }
@@ -71,4 +85,11 @@ public class EnemyController : MonoBehaviour
     public float GetDamage() => config.damage;
     public float GetDamageInterval() => config.damageInterval;
     public NavMeshAgent  GetNavMeshAgent() => navMeshAgent;
+
+    public void ApplySlow(float slowFactor, float duration)
+    {
+        navMeshAgent.speed = config.speed * slowFactor;
+        slowTimer = duration;
+        isSlowed = true;
+    }
 }

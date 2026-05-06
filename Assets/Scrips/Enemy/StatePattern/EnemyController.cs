@@ -11,6 +11,8 @@ public class EnemyController : MonoBehaviour, ISlowable
     [SerializeField] private NavMeshAgent navMeshAgent;
     [SerializeField] private EnemyAttack enemyAttack;
     
+    private Health health;
+    
     private DamageType attackDamageType = DamageType.Base;
     private EnemyStateMachine stateMachine;
     private float slowTimer;
@@ -24,6 +26,12 @@ public class EnemyController : MonoBehaviour, ISlowable
 
     public void OnEnable()
     {
+        if (health == null) health = GetComponent<Health>();
+        if (health != null)
+        {
+            health.OnDeath.AddListener(OnEnemyDeath);
+        }
+
         if (config == null || 
             navMeshAgent == null || enemyMovement == null)
         {
@@ -39,6 +47,22 @@ public class EnemyController : MonoBehaviour, ISlowable
         stateMachine.Initialize(stateMachine.ChaseState);
     }
     
+    private void OnDisable()
+    {
+        if (health != null)
+        {
+            health.OnDeath.RemoveListener(OnEnemyDeath);
+        }
+    }
+
+    private void OnEnemyDeath()
+    {
+        if (stateMachine != null && stateMachine.CurrentState != stateMachine.DeathState)
+        {
+            stateMachine.TransitionTo(stateMachine.DeathState);
+        }
+    }
+
     void Update()
     {
         if (isSlowed)

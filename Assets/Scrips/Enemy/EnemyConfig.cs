@@ -3,6 +3,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemies/Enemy Config")]
 public class EnemyConfig : ScriptableObject
 {
+    
+    [Header("Type")]
+    public EnemyType type;
+
+
     [Header("Movement")]
     public float speed = 2f;
     public float stunnedSpeed = 0.5f;

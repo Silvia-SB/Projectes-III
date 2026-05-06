@@ -21,8 +21,6 @@ public abstract class Health : MonoBehaviour, IDamageable
 
     protected virtual void Awake() 
     {
-        currentHealth = maxHealth;
-        
         statusManager = GetComponent<StatusEffectManager>();
         
         if (mainRenderer == null)
@@ -34,6 +32,11 @@ public abstract class Health : MonoBehaviour, IDamageable
         {
             propBlock = new MaterialPropertyBlock();
         }
+    }
+
+    protected virtual void OnEnable()
+    {
+        currentHealth = maxHealth;
     }
 
     public virtual void TakeDamage(float amount, DamageType damageType)
@@ -75,6 +78,6 @@ public abstract class Health : MonoBehaviour, IDamageable
     {
         OnDeath?.Invoke();
         statusManager?.ClearAllStatuses();
-        gameObject.SetActive(false);
+
     }
 }

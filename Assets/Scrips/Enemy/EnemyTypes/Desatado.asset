@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad68a175890e9e4ea73f19cccc7647d, type: 3}
   m_Name: Desatado
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
+  type: 1
   speed: 4.5
+  stunnedSpeed: 0.5
+  timeStunned: 7
   acceleration: 15
   angularSpeed: 420
   stoppingDistance: 2.5

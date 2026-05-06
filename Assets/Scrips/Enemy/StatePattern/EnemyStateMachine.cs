@@ -15,9 +15,10 @@ public class EnemyStateMachine
     {
         ChaseState = new ChaseState(enemyController, this);
         AttackState = new AttackState(enemyController, this);
-        DeathState = new DeathState();
+        DeathState = new DeathState(enemyController);
         HitState = new HitState();
         StunnedState = new StunnedState();
+    
     }
     public void Initialize(IEnemyState startingState)
     {

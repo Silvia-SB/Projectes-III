@@ -25,6 +25,11 @@ public abstract class Health : MonoBehaviour, IDamageable
         
         statusManager = GetComponent<StatusEffectManager>();
         
+        if (mainRenderer == null)
+        {
+            mainRenderer = GetComponentInChildren<Renderer>();
+        }
+
         if (mainRenderer != null)
         {
             propBlock = new MaterialPropertyBlock();

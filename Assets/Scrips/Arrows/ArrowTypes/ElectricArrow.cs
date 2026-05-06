@@ -42,9 +42,9 @@ public class ElectricArrow : Arrow
         if (target != null)
         {
             target.TakeDamage(quickDamage, damageType);
-            ApplySlow(other.gameObject);
+            float appliedDuration = ApplySlow(other.gameObject);
 
-            int ticks = Mathf.CeilToInt(slowDuration);
+            int ticks = Mathf.CeilToInt(appliedDuration);
             float interval = 1f;
             target.TakeRecurrentDamage(0f, interval, ticks, DamageType.Electric);
         }
@@ -64,13 +64,29 @@ public class ElectricArrow : Arrow
         }
     }
 
-    private void ApplySlow(GameObject targetObj)
+    private float ApplySlow(GameObject targetObj)
     {
         ISlowable slowable = targetObj.GetComponentInParent<ISlowable>();
+        EnemyController enemy = targetObj.GetComponentInParent<EnemyController>();
+        
+        float appliedDuration = slowDuration; // Valor por defecto (útil si golpeas objetos que no son enemigos)
+
         if (slowable != null)
         {
-            slowable.ApplySlow(slowFactor, slowDuration);
+            if (enemy != null && enemy.Config != null)
+            {
+                // Calculamos el factor de ralentización necesario para que la velocidad final sea "stunnedSpeed"
+                float calculatedSlowFactor = enemy.Config.stunnedSpeed / enemy.Config.speed;
+                appliedDuration = enemy.Config.timeStunned;
+                slowable.ApplySlow(calculatedSlowFactor, appliedDuration);
+            }
+            else
+            {
+                slowable.ApplySlow(slowFactor, appliedDuration);
+            }
         }
+
+        return appliedDuration;
     }
 
     private void OnDrawGizmosSelected()

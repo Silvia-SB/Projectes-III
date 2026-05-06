@@ -14,7 +14,7 @@ public class PlayerHealth : Health
     {
         base.Awake();
         
-        GameManager gm = FindObjectOfType<GameManager>();
+        GameManager gm = FindFirstObjectByType<GameManager>();
         if (gm != null)
         {
             OnDeath.AddListener(gm.ReloadCurrentScene);

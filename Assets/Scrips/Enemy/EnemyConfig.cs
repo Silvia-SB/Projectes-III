@@ -10,8 +10,7 @@ public class EnemyConfig : ScriptableObject
 
     [Header("Movement")]
     public float speed = 2f;
-    public float stunnedSpeed = 0.5f;
-    public float timeStunned = 7f;
+
     public float acceleration = 8f;
     public float angularSpeed = 240f;
     public float stoppingDistance = 1f;
@@ -31,4 +30,9 @@ public class EnemyConfig : ScriptableObject
     [Header("Behaviour")]
     public bool isRanged;
     public float preferredDistance = 0f;
+
+    [Header("Electric Status")]
+    public float electricContagionDamage = 15f; 
+    public float stunnedSpeed = 0.5f;
+    public float timeStunned = 7f;
 }

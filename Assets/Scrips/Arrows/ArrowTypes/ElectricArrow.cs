@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ElectricArrow : Arrow
 {
@@ -9,10 +10,6 @@ public class ElectricArrow : Arrow
     [SerializeField] private float aoeRadius = 4f;
     [SerializeField] private float chargedDamage = 25f;
 
-    [Header("Slow Effect")]
-    [SerializeField] private float slowFactor = 0.5f;
-    [SerializeField] private float slowDuration = 2f;
-
     public override ArrowType type => ArrowType.Electric;
     public override DamageType damageType => DamageType.Electric;
 
@@ -21,8 +18,7 @@ public class ElectricArrow : Arrow
         ConductiveSurface surface = other.GetComponent<ConductiveSurface>();
         if (surface != null)
         {
-            float electrifyDuration = isFullyCharged ? slowDuration * 2.0f : slowDuration;
-            surface.Electrify(electrifyDuration);
+            surface.Electrify();
             return;
         }
 
@@ -42,51 +38,39 @@ public class ElectricArrow : Arrow
         if (target != null)
         {
             target.TakeDamage(quickDamage, damageType);
-            float appliedDuration = ApplySlow(other.gameObject);
+            ApplySlow(other.gameObject);
 
-            int ticks = Mathf.CeilToInt(appliedDuration);
-            float interval = 1f;
-            target.TakeRecurrentDamage(0f, interval, ticks, DamageType.Electric);
+            EnemyController enemy = other.GetComponentInParent<EnemyController>();
+            float markerDuration = enemy != null && enemy.Config != null ? enemy.Config.timeStunned : 3f;
+            target.TakeRecurrentDamage(0f, markerDuration, 1, damageType);
         }
     }
 
     private void ApplyAoEDamage()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, aoeRadius);
+        HashSet<IDamageable> processedTargets = new HashSet<IDamageable>();
+
         foreach (Collider col in colliders)
         {
             IDamageable target = col.GetComponentInParent<IDamageable>();
-            if (target != null)
+            if (target != null && !processedTargets.Contains(target))
             {
+                processedTargets.Add(target);
                 target.TakeDamage(chargedDamage, damageType);
                 ApplySlow(col.gameObject);
+
+                EnemyController enemy = col.GetComponentInParent<EnemyController>();
+                float markerDuration = enemy != null && enemy.Config != null ? enemy.Config.timeStunned : 3f;
+                target.TakeRecurrentDamage(0f, markerDuration, 1, damageType);
             }
         }
     }
 
-    private float ApplySlow(GameObject targetObj)
+    private void ApplySlow(GameObject targetObj)
     {
         ISlowable slowable = targetObj.GetComponentInParent<ISlowable>();
-        EnemyController enemy = targetObj.GetComponentInParent<EnemyController>();
-        
-        float appliedDuration = slowDuration; // Valor por defecto (útil si golpeas objetos que no son enemigos)
-
-        if (slowable != null)
-        {
-            if (enemy != null && enemy.Config != null)
-            {
-                // Calculamos el factor de ralentización necesario para que la velocidad final sea "stunnedSpeed"
-                float calculatedSlowFactor = enemy.Config.stunnedSpeed / enemy.Config.speed;
-                appliedDuration = enemy.Config.timeStunned;
-                slowable.ApplySlow(calculatedSlowFactor, appliedDuration);
-            }
-            else
-            {
-                slowable.ApplySlow(slowFactor, appliedDuration);
-            }
-        }
-
-        return appliedDuration;
+        slowable?.ApplySlow();
     }
 
     private void OnDrawGizmosSelected()

@@ -1,69 +1,145 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public class ConductiveSurface : MonoBehaviour
 {
-    [Header("Electrification")]
-    [SerializeField] private float defaultElectrifiedDuration = 4f;
-    [SerializeField] private float slowFactor = 0.4f;
-    [SerializeField] private float slowDuration = 1.5f;
-    // Aquí podrías añadir un efecto visual para cuando el agua esté electrificada
+    [Header("Electrification Settings")]
+    [SerializeField] private float electrificationDuration = 5f;
+    [SerializeField] private float electricDamage = 25f;
+    [SerializeField] private Color electrifiedColor = Color.blue;
+    [SerializeField] private Color normalColor = Color.gray;
 
     private bool isElectrified = false;
-    private Coroutine electrificationCoroutine;
-    private readonly List<ISlowable> targetsInContact = new List<ISlowable>();
+    private float electrificationTimer;
+    private readonly HashSet<GameObject> affectedThisIteration = new HashSet<GameObject>();
 
-    public void Electrify(float duration)
+    private Renderer surfaceRenderer;
+    private Collider surfaceCollider;
+
+    private void Awake()
     {
-        if (electrificationCoroutine != null)
+        surfaceCollider = GetComponent<Collider>();
+        surfaceRenderer = GetComponent<Renderer>();
+        if (surfaceRenderer == null) surfaceRenderer = GetComponentInChildren<Renderer>();
+
+        if (surfaceRenderer != null)
         {
-            StopCoroutine(electrificationCoroutine);
+            surfaceRenderer.material.color = normalColor;
         }
-        electrificationCoroutine = StartCoroutine(ElectrificationTimer(duration));
     }
 
-    private IEnumerator ElectrificationTimer(float duration)
+    public void Electrify()
     {
+        if (isElectrified) return;
+        
+        electrificationTimer = electrificationDuration;
         isElectrified = true;
+        affectedThisIteration.Clear();
 
-        // Aplicamos el efecto a todas las entidades que ya están en el agua
-        foreach (var target in targetsInContact)
+        if (surfaceRenderer != null)
         {
-            target?.ApplySlow(slowFactor, slowDuration);
+            surfaceRenderer.material.color = electrifiedColor;
         }
 
-        yield return new WaitForSeconds(duration);
-
-        isElectrified = false;
-        electrificationCoroutine = null;
+        ApplyToObjectsInBounds();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        // Si un enemigo con el estado eléctrico entra en el agua, la electrifica.
-        StatusEffectManager status = other.GetComponentInParent<StatusEffectManager>();
-        if (status != null && status.HasStatus(DamageType.Electric) && !isElectrified)
+        if (isElectrified)
         {
-            Electrify(defaultElectrifiedDuration);
-        }
+            electrificationTimer -= Time.deltaTime;
+            
+            ApplyToObjectsInBounds();
 
-        ISlowable slowable = other.GetComponentInParent<ISlowable>();
-        if (slowable != null)
-        {
-            if (!targetsInContact.Contains(slowable)) targetsInContact.Add(slowable);
-
-            // Si el agua ya está electrificada, ralentiza a quien entre.
-            if (isElectrified)
+            if (electrificationTimer <= 0f)
             {
-                slowable.ApplySlow(slowFactor, slowDuration);
+                isElectrified = false;
+                affectedThisIteration.Clear();
+
+                if (surfaceRenderer != null)
+                {
+                    surfaceRenderer.material.color = normalColor;
+                }
+            }
+        }
+        else
+        {
+            CheckForElectrifiedObjectsInBounds();
+        }
+    }
+
+    private void CheckForElectrifiedObjectsInBounds()
+    {
+        if (surfaceCollider == null) return;
+        Collider[] overlaps = Physics.OverlapBox(surfaceCollider.bounds.center, surfaceCollider.bounds.extents + Vector3.up * 0.1f, Quaternion.identity);
+        foreach (Collider col in overlaps)
+        {
+            if (col.gameObject == gameObject) continue;
+            StatusEffectManager status = col.GetComponentInParent<StatusEffectManager>();
+            if (status != null && status.HasStatus(DamageType.Electric))
+            {
+                Electrify();
+                break;
             }
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void ApplyToObjectsInBounds()
     {
-        ISlowable slowable = other.GetComponentInParent<ISlowable>();
-        if (slowable != null) targetsInContact.Remove(slowable);
+        if (surfaceCollider == null) return;
+
+        Collider[] overlaps = Physics.OverlapBox(surfaceCollider.bounds.center, surfaceCollider.bounds.extents + Vector3.up * 0.1f, Quaternion.identity);
+        
+        foreach (Collider col in overlaps)
+        {
+            if (col.gameObject == gameObject) continue;
+            ApplyEffectsToTarget(col.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        CheckForElectricContagion(other);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        CheckForElectricContagion(collision.collider);
+    }
+
+    private void CheckForElectricContagion(Collider other)
+    {
+        if (isElectrified) return;
+
+        StatusEffectManager status = other.GetComponentInParent<StatusEffectManager>();
+        if (status != null && status.HasStatus(DamageType.Electric))
+        {
+            Electrify();
+        }
+    }
+
+    private void ApplyEffectsToTarget(GameObject targetObj)
+    {
+        ISlowable slowable = targetObj.GetComponentInParent<ISlowable>();
+        IDamageable damageable = targetObj.GetComponentInParent<IDamageable>();
+        
+        if (damageable == null && slowable == null) return;
+
+        GameObject entityRoot = damageable != null ? ((MonoBehaviour)damageable).gameObject : targetObj;
+
+        if (affectedThisIteration.Contains(entityRoot)) return;
+        affectedThisIteration.Add(entityRoot);
+
+        slowable?.ApplySlow();
+
+        if (damageable != null)
+        {
+            damageable.TakeDamage(electricDamage, DamageType.Electric);
+
+            EnemyController enemy = targetObj.GetComponentInParent<EnemyController>();
+            float markerDuration = enemy != null && enemy.Config != null ? enemy.Config.timeStunned : 3f;
+            damageable.TakeRecurrentDamage(0f, markerDuration, 1, DamageType.Electric);
+        }
     }
 }

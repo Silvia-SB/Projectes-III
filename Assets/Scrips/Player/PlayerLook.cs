@@ -7,7 +7,7 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] private Transform mPitchController;
 
     [Header("Configurable Variables")]
-    [SerializeField] private float rotationSpeed = 10.0f; // Restaurado a 10.0f
+    [SerializeField] private float rotationSpeed = 10.0f;
     [SerializeField] private bool invertPitch;
     [SerializeField] private float maxPitch = 85f;
     [SerializeField] private float minPitch = -85f;

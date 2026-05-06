@@ -114,10 +114,10 @@ public class EnemyController : MonoBehaviour, ISlowable
     public float GetDamageInterval() => config.damageInterval;
     public NavMeshAgent  GetNavMeshAgent() => navMeshAgent;
 
-    public void ApplySlow(float slowFactor, float duration)
+    public void ApplySlow()
     {
-        navMeshAgent.speed = config.speed * slowFactor;
-        slowTimer = duration;
+        navMeshAgent.speed = config.stunnedSpeed;
+        slowTimer = config.timeStunned;
         isSlowed = true;
     }
 }

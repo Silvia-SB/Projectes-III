@@ -7,11 +7,11 @@ public class PlayerHUD : MonoBehaviour
     [Header("Health UI")]
     [SerializeField] private Slider healthBar;
     [SerializeField] private PlayerHealth playerHealth;
-    [SerializeField] private float healthLerpSpeed = 5f; // Velocidad de la animación de la barra
+    [SerializeField] private float healthLerpSpeed = 5f;
 
     [Header("Souls UI")]
     [SerializeField] private TextMeshProUGUI soulsText;
-    [SerializeField] private float soulsLerpSpeed = 10f; // Velocidad de la animación de las almas
+    [SerializeField] private float soulsLerpSpeed = 10f;
 
     private float targetHealthValue;
     private float currentDisplayedSouls;
@@ -23,7 +23,6 @@ public class PlayerHUD : MonoBehaviour
         {
             playerHealth.OnHealthChanged += OnHealthChanged;
             
-            // Inicializar directamente (Snap) para evitar desincronizaciones al cargar la escena
             if (playerHealth.MaxHealth > 0 && healthBar != null)
             {
                 targetHealthValue = playerHealth.CurrentHealth / playerHealth.MaxHealth;
@@ -38,7 +37,6 @@ public class PlayerHUD : MonoBehaviour
         {
             SoulManager.Instance.OnSoulsChanged += UpdateSoulsUI;
             
-            // Inicializar el UI con los valores exactos (Snap) al inicio para evitar animaciones largas
             targetSoulsValue = SoulManager.Instance.CurrentSouls;
             currentDisplayedSouls = targetSoulsValue;
             if (soulsText != null)
@@ -50,7 +48,6 @@ public class PlayerHUD : MonoBehaviour
 
     private void OnDisable()
     {
-        // Always unsubscribe from events to prevent memory leaks and null reference exceptions!
         if (playerHealth != null)
         {
             playerHealth.OnHealthChanged -= OnHealthChanged;

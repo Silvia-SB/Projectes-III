@@ -44,7 +44,7 @@ public abstract class Health : MonoBehaviour, IDamageable
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-        ApplyDamageVisuals();
+        if (amount > 0) ApplyDamageVisuals();
 
         if (currentHealth <= 0)
         {
@@ -61,7 +61,7 @@ public abstract class Health : MonoBehaviour, IDamageable
     public virtual void TakeRecurrentDamage(float amount, float interval, int ticks, DamageType damageType)
     {
         statusManager?.ApplyStatus(amount, interval, ticks, damageType);
-        ApplyDamageVisuals();
+        if (amount > 0) ApplyDamageVisuals();
     }
 
     private void ApplyDamageVisuals()

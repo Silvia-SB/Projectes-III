@@ -57,8 +57,6 @@ public class PlayerShooter : MonoBehaviour
         {
             if (CanAffordArrow(ArrowType.Blood))
                 ChangeArrowType(ArrowType.Blood);
-            else
-                Debug.Log("¡No tienes suficientes almas para la Flecha de Sangre!");
         }
     }
 
@@ -68,8 +66,6 @@ public class PlayerShooter : MonoBehaviour
         {
             if (CanAffordArrow(ArrowType.Piercing))
                 ChangeArrowType(ArrowType.Piercing);
-            else
-                Debug.Log("¡No tienes suficientes almas para la Flecha Perforante!");
         }
     }
 
@@ -79,8 +75,6 @@ public class PlayerShooter : MonoBehaviour
         {
             if (CanAffordArrow(ArrowType.Electric))
                 ChangeArrowType(ArrowType.Electric);
-            else
-                Debug.Log("¡No tienes suficientes almas para la Flecha Eléctrica!");
         }
     }
 

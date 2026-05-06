@@ -18,7 +18,6 @@ public class DeathState : IEnemyState
         }
         else
         {
-            Debug.LogWarning($"EnemyPool no se ha encontrado en la escena. El enemigo {enemyController.name} solo se ha desactivado.");
             enemyController.gameObject.SetActive(false);
         }
     }

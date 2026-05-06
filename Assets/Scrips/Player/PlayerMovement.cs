@@ -2,18 +2,24 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, ISlowable
 {
     [Header("Configurable Variables")]
     [SerializeField] private float maxSpeed;
     [SerializeField] private float sprintMultiplier = 1.5f;
     [SerializeField] private float jumpSpeed = 5.0f;
 
+    [Header("Slow Effect")]
+    [SerializeField] private float stunnedSpeed = 2.0f;
+    [SerializeField] private float stunnedDuration = 3.0f;
+
     private CharacterController controller;
     private Vector2 mDirection;
     private float mVerticalSpeed;
     private bool isSprinting;
     private bool IsGrounded;
+    private bool isSlowed;
+    private float slowTimer;
 
     void Start()
     {
@@ -22,9 +28,20 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Vector3 finalDirection = (transform.forward * mDirection.y + transform.right * mDirection.x) * (maxSpeed * Time.deltaTime);
+        if (isSlowed)
+        {
+            slowTimer -= Time.deltaTime;
+            if (slowTimer <= 0f)
+            {
+                isSlowed = false;
+            }
+        }
 
-        if (isSprinting) finalDirection *= sprintMultiplier; 
+        float currentSpeed = isSlowed ? stunnedSpeed : maxSpeed;
+
+        Vector3 finalDirection = (transform.forward * mDirection.y + transform.right * mDirection.x) * (currentSpeed * Time.deltaTime);
+
+        if (isSprinting && !isSlowed) finalDirection *= sprintMultiplier; 
 
         if (!IsGrounded) 
         {
@@ -55,5 +72,13 @@ public class PlayerMovement : MonoBehaviour
     public void OnJump(InputAction.CallbackContext c)
     {
         if (c.performed && IsGrounded) mVerticalSpeed = jumpSpeed;
+    }
+
+    public void ApplySlow()
+    {
+        if (isSlowed) return;
+
+        isSlowed = true;
+        slowTimer = stunnedDuration;
     }
 }

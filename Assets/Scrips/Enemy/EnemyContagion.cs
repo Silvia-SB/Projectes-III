@@ -4,8 +4,7 @@ using System.Collections.Generic;
 [RequireComponent(typeof(StatusEffectManager))]
 public class EnemyContagion : MonoBehaviour
 {
-    [SerializeField] private List<DamageType> contagiousDamageTypes = new List<DamageType> { DamageType.Blood };
-    [SerializeField] private float contagiousSlowFactor = 0.5f; // Cuánto ralentiza al contagiarse
+    [SerializeField] private List<DamageType> contagiousDamageTypes = new List<DamageType> { DamageType.Blood, DamageType.Electric };
     private StatusEffectManager myStatusManager;
     private List<IDamageable> touchingTargets = new List<IDamageable>();
     private Dictionary<DamageType, bool> previouslyInfected = new Dictionary<DamageType, bool>();
@@ -13,6 +12,12 @@ public class EnemyContagion : MonoBehaviour
     private void Awake()
     {
         myStatusManager = GetComponent<StatusEffectManager>();
+        
+        if (!contagiousDamageTypes.Contains(DamageType.Electric))
+            contagiousDamageTypes.Add(DamageType.Electric);
+            
+        if (!contagiousDamageTypes.Contains(DamageType.Blood))
+            contagiousDamageTypes.Add(DamageType.Blood);
     }
 
     private void Update()
@@ -63,13 +68,21 @@ public class EnemyContagion : MonoBehaviour
 
         if (canInfect)
         {
-            target.TakeRecurrentDamage(dot.Amount, dot.Interval, ticksToApply, damageType);
-
-            // Si el daño es de tipo eléctrico, aplicamos la ralentización
             if (damageType == DamageType.Electric)
             {
+                EnemyController enemy = targetObj.GetComponentInParent<EnemyController>();
+                float contagionDamage = enemy != null && enemy.Config != null ? enemy.Config.electricContagionDamage : 15f;
+                float markerDuration = enemy != null && enemy.Config != null ? enemy.Config.timeStunned : 3f;
+
+                target.TakeDamage(contagionDamage, DamageType.Electric);
+                target.TakeRecurrentDamage(0f, markerDuration, 1, DamageType.Electric);
+
                 ISlowable slowable = targetObj.GetComponentInParent<ISlowable>();
-                slowable?.ApplySlow(contagiousSlowFactor, ticksToApply * dot.Interval);
+                slowable?.ApplySlow();
+            }
+            else
+            {
+                target.TakeRecurrentDamage(dot.Amount, dot.Interval, ticksToApply, damageType);
             }
         }
     }

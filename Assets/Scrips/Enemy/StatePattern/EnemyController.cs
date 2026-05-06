@@ -17,6 +17,10 @@ public class EnemyController : MonoBehaviour, ISlowable
     private bool isSlowed;
 
     public EnemyConfig Config => config;
+    public void Awake()
+    {
+        if (target == null) target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
     public void Awake()
     {

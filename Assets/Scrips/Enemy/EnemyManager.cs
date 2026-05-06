@@ -24,6 +24,11 @@ public class EnemyManager : MonoBehaviour
     public static EnemyManager Instance { get; private set; }
     private Dictionary<EnemyType, Queue<GameObject>> enemyPool;
 
+    public void OnEnable()
+    {
+        
+    }
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -53,5 +58,14 @@ public class EnemyManager : MonoBehaviour
             return enemy;
         }
         return null;
+    }
+
+    public void ReturnEnemyToPool(EnemyType enemyType, GameObject gameObject)
+    {
+        gameObject.SetActive(false);
+        if (enemyPool.ContainsKey(enemyType))
+        {
+            enemyPool[enemyType].Enqueue(gameObject);
+        }
     }
 }

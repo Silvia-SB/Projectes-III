@@ -22,11 +22,6 @@ public class EnemyController : MonoBehaviour, ISlowable
         if (target == null) target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    public void Awake()
-    {
-        if (target == null) target = GameObject.FindGameObjectWithTag("Player").transform;
-    }
-
     public void OnEnable()
     {
         if (config == null || 

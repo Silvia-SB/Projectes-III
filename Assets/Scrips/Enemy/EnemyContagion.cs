@@ -4,9 +4,17 @@ using System.Collections.Generic;
 [RequireComponent(typeof(StatusEffectManager))]
 public class EnemyContagion : MonoBehaviour
 {
+    [Header("Contagion Settings")]
+    [SerializeField] private float contagionRadius = 3f;
     [SerializeField] private List<DamageType> contagiousDamageTypes = new List<DamageType> { DamageType.Blood, DamageType.Electric };
+
+    [Header("Current States")]
+    [SerializeField] private bool isCurrentlyContagious = false;
+    [SerializeField] private bool isBloodContagious = false;
+    [SerializeField] private bool isElectricContagious = false;
+
     private StatusEffectManager myStatusManager;
-    private List<IDamageable> touchingTargets = new List<IDamageable>();
+    private HashSet<IDamageable> targetsInRange = new HashSet<IDamageable>();
     private Dictionary<DamageType, bool> previouslyInfected = new Dictionary<DamageType, bool>();
 
     private void Awake()
@@ -22,6 +30,19 @@ public class EnemyContagion : MonoBehaviour
 
     private void Update()
     {
+        isBloodContagious = myStatusManager.HasStatus(DamageType.Blood);
+        isElectricContagious = myStatusManager.HasStatus(DamageType.Electric);
+        isCurrentlyContagious = isBloodContagious || isElectricContagious;
+
+        if (isCurrentlyContagious)
+        {
+            CheckSphere();
+        }
+        else
+        {
+            targetsInRange.Clear();
+        }
+
         foreach (DamageType damageType in contagiousDamageTypes)
         {
             bool isCurrentlyInfected = myStatusManager.HasStatus(damageType);
@@ -29,30 +50,61 @@ public class EnemyContagion : MonoBehaviour
 
             if (isCurrentlyInfected && !wasInfected)
             {
-                InfectTouchingTargets(damageType);
+                InfectAllInRange(damageType);
             }
 
             previouslyInfected[damageType] = isCurrentlyInfected;
         }
     }
 
-    private void InfectTouchingTargets(DamageType damageType)
+    private void CheckSphere()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, contagionRadius);
+        HashSet<IDamageable> currentFrameTargets = new HashSet<IDamageable>();
+
+        foreach (Collider col in colliders)
+        {
+            if (col.gameObject == gameObject) continue;
+
+            IDamageable target = col.GetComponentInParent<IDamageable>();
+            MonoBehaviour targetObj = target as MonoBehaviour;
+
+            if (target != null && targetObj != null && targetObj.gameObject.activeInHierarchy)
+            {
+                currentFrameTargets.Add(target);
+
+                if (!targetsInRange.Contains(target))
+                {
+                    targetsInRange.Add(target);
+
+                    foreach (DamageType damageType in contagiousDamageTypes)
+                    {
+                        if (myStatusManager.HasStatus(damageType))
+                        {
+                            var dot = myStatusManager.GetStatus(damageType);
+                            ApplyContagion(target, targetObj, damageType, dot);
+                        }
+                    }
+                }
+            }
+        }
+
+        targetsInRange.IntersectWith(currentFrameTargets);
+    }
+
+    private void InfectAllInRange(DamageType damageType)
     {
         var dot = myStatusManager.GetStatus(damageType);
         if (dot == null) return;
 
-        for (int i = touchingTargets.Count - 1; i >= 0; i--)
+        foreach (IDamageable target in targetsInRange)
         {
-            IDamageable target = touchingTargets[i];
             MonoBehaviour targetObj = target as MonoBehaviour;
 
-            if (targetObj == null || !targetObj.gameObject.activeInHierarchy)
+            if (targetObj != null && targetObj.gameObject.activeInHierarchy)
             {
-                touchingTargets.RemoveAt(i);
-                continue;
+                ApplyContagion(target, targetObj, damageType, dot);
             }
-
-            ApplyContagion(target, targetObj, damageType, dot);
         }
     }
 
@@ -87,33 +139,9 @@ public class EnemyContagion : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnDrawGizmosSelected()
     {
-        IDamageable target = other.GetComponentInParent<IDamageable>();
-        MonoBehaviour targetObj = target as MonoBehaviour;
-        
-        if (target != null && targetObj != null && targetObj.gameObject != gameObject && !touchingTargets.Contains(target))
-        {
-            touchingTargets.Add(target);
-
-            foreach (DamageType damageType in contagiousDamageTypes)
-            {
-                if (myStatusManager.HasStatus(damageType))
-                {
-                    var dot = myStatusManager.GetStatus(damageType);
-                    ApplyContagion(target, targetObj, damageType, dot);
-                }
-            }
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        IDamageable target = other.GetComponentInParent<IDamageable>();
-        
-        if (target != null && touchingTargets.Contains(target))
-        {
-            touchingTargets.Remove(target);
-        }
+        Gizmos.color = new Color(1f, 0.5f, 0f, 0.5f);
+        Gizmos.DrawWireSphere(transform.position, contagionRadius);
     }
 }

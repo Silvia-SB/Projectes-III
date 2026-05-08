@@ -26,7 +26,7 @@ public class BloodArrow : Arrow
         if (isFullyCharged) 
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, outerAoeRadius);
-            HashSet<IDamageable> processedTargets = new HashSet<IDamageable>();
+            Dictionary<IDamageable, float> minTargetDistances = new Dictionary<IDamageable, float>();
                 
             foreach (Collider col in colliders)
             {
@@ -38,15 +38,22 @@ public class BloodArrow : Arrow
                 }
 
                 IDamageable target = col.GetComponentInParent<IDamageable>();
-                if (target != null && !processedTargets.Contains(target))
+                if (target != null)
                 {
                     float distance = Vector3.Distance(transform.position, col.ClosestPoint(transform.position));
-                    float damageToApply = (distance <= innerAoeRadius) ? maxDamage : baseDamage;
                     
-                    target.TakeDamage(damageToApply, damageType);
-                    target.TakeRecurrentDamage(baseDamage, dotInterval, dotTicks, damageType);
-                    processedTargets.Add(target);
+                    if (!minTargetDistances.ContainsKey(target) || distance < minTargetDistances[target])
+                    {
+                        minTargetDistances[target] = distance;
+                    }
                 }
+            }
+            
+            foreach (var kvp in minTargetDistances)
+            {
+                float damageToApply = (kvp.Value <= innerAoeRadius) ? maxDamage : baseDamage;
+                kvp.Key.TakeDamage(damageToApply, damageType);
+                kvp.Key.TakeRecurrentDamage(baseDamage, dotInterval, dotTicks, damageType);
             }
         }
         else if (other != null && !other.CompareTag("Liquid")) 
@@ -54,7 +61,8 @@ public class BloodArrow : Arrow
             IDamageable directTarget = other.GetComponentInParent<IDamageable>();
             if (directTarget != null) 
             {
-                directTarget.TakeDamage(baseDamage, damageType);
+                float multiplier = GetDamageMultiplier(other);
+                directTarget.TakeDamage(baseDamage * multiplier, damageType);
                 directTarget.TakeRecurrentDamage(baseDamage, dotInterval, dotTicks, damageType);
             }
         }

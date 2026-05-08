@@ -31,7 +31,7 @@ public abstract class Arrow : MonoBehaviour
     {
         IDamageable target = other.GetComponentInParent<IDamageable>();
         
-        if (target != null || other.CompareTag("Wall")|| other.CompareTag("Liquid"))
+        if (target != null || other.CompareTag("Liquid") || other.CompareTag("Wall"))
         {
             OnHit(other);
             StickToTarget(other);
@@ -50,6 +50,16 @@ public abstract class Arrow : MonoBehaviour
     }
 
     protected abstract void OnHit(Collider other);
+
+    protected float GetDamageMultiplier(Collider other)
+    {
+        HitboxManager manager = other.GetComponentInParent<HitboxManager>();
+        if (manager != null)
+        {
+            return manager.GetMultiplier(other);
+        }
+        return 1f;
+    }
 
     public void ReturnToPool()
     {

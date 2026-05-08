@@ -37,7 +37,8 @@ public class ElectricArrow : Arrow
         IDamageable target = other.GetComponentInParent<IDamageable>();
         if (target != null)
         {
-            target.TakeDamage(quickDamage, damageType);
+            float multiplier = GetDamageMultiplier(other);
+            target.TakeDamage(quickDamage * multiplier, damageType);
             ApplySlow(other.gameObject);
 
             EnemyController enemy = other.GetComponentInParent<EnemyController>();

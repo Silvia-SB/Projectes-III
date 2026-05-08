@@ -30,7 +30,8 @@ public class PiercingArrow : Arrow
         if (target != null && !hitTargets.Contains(target))
         {
             hitTargets.Add(target);
-            target.TakeDamage(damage, damageType);
+            float multiplier = GetDamageMultiplier(other);
+            target.TakeDamage(damage * multiplier, damageType);
 
             if (!isFullyCharged)
             {

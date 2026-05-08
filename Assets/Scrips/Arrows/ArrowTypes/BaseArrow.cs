@@ -13,7 +13,8 @@ public class BaseArrow : Arrow
         if (damageable != null) 
         {
             float finalDamage = isFullyCharged ? maxDamage : baseDamage;
-            damageable.TakeDamage(finalDamage, damageType);
+            float multiplier = GetDamageMultiplier(other);
+            damageable.TakeDamage(finalDamage * multiplier, damageType);
         }
     }
 }

@@ -39,14 +39,12 @@ public class ArrowPool : MonoBehaviour
                 if (!arrow.gameObject.activeInHierarchy)
                 {
                     pools[type].RemoveAt(i);
-                    pools[type].Add(arrow); // La movemos al final para saber que es de las más recientes
+                    pools[type].Add(arrow);
                     arrow.gameObject.SetActive(true);
                     return arrow;
                 }
             }
             
-            // Si llegamos aquí, la pool se vació (todas las flechas están clavadas en el mundo).
-            // Reusamos la más antigua que se encuentra al principio de la lista.
             Arrow oldestArrow = pools[type][0];
             oldestArrow.ReturnToPool();
             

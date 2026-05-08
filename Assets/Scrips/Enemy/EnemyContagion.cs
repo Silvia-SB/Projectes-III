@@ -9,6 +9,9 @@ public class EnemyContagion : MonoBehaviour
     private List<IDamageable> touchingTargets = new List<IDamageable>();
     private Dictionary<DamageType, bool> previouslyInfected = new Dictionary<DamageType, bool>();
 
+    [Header("Knight Contagion Bonus")]
+    [SerializeField] private float knightMultiplier = 1.5f;
+
     private void Awake()
     {
         myStatusManager = GetComponent<StatusEffectManager>();
@@ -80,7 +83,14 @@ public class EnemyContagion : MonoBehaviour
                 float contagionDamage = enemy != null && enemy.Config != null ? enemy.Config.electricContagionDamage : 15f;
                 float markerDuration = enemy != null && enemy.Config != null ? enemy.Config.timeStunned : 3f;
 
-                target.TakeDamage(contagionDamage, DamageType.Electric);
+                float bonus = 1f;
+                if (enemy != null && enemy.Config != null)
+                {
+                    string typeName = enemy.Config.type.ToString().ToLower();
+                    if (typeName.Contains("caballero") || typeName.Contains("knight")) bonus = knightMultiplier;
+                }
+
+                target.TakeDamage(contagionDamage * bonus, DamageType.Electric);
                 target.TakeRecurrentDamage(0f, markerDuration, 1, DamageType.Electric);
 
                 ISlowable slowable = targetObj.GetComponentInParent<ISlowable>();

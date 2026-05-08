@@ -10,6 +10,9 @@ public class ElectricArrow : Arrow
     [SerializeField] private float aoeRadius = 4f;
     [SerializeField] private float chargedDamage = 25f;
 
+    [Header("Knight Bonus")]
+    [SerializeField] private float knightMultiplier = 1.5f;
+
     public override ArrowType type => ArrowType.Electric;
     public override DamageType damageType => DamageType.Electric;
 
@@ -37,11 +40,13 @@ public class ElectricArrow : Arrow
         IDamageable target = other.GetComponentInParent<IDamageable>();
         if (target != null)
         {
+            EnemyController enemy = other.GetComponentInParent<EnemyController>();
             float multiplier = GetDamageMultiplier(other);
-            target.TakeDamage(quickDamage * multiplier, damageType);
+            float bonus = GetKnightBonus(enemy);
+            
+            target.TakeDamage(quickDamage * multiplier * bonus, damageType);
             ApplySlow(other.gameObject);
 
-            EnemyController enemy = other.GetComponentInParent<EnemyController>();
             float markerDuration = enemy != null && enemy.Config != null ? enemy.Config.timeStunned : 3f;
             target.TakeRecurrentDamage(0f, markerDuration, 1, damageType);
         }
@@ -58,14 +63,27 @@ public class ElectricArrow : Arrow
             if (target != null && !processedTargets.Contains(target))
             {
                 processedTargets.Add(target);
-                target.TakeDamage(chargedDamage, damageType);
+                
+                EnemyController enemy = col.GetComponentInParent<EnemyController>();
+                float bonus = GetKnightBonus(enemy);
+                
+                target.TakeDamage(chargedDamage * bonus, damageType);
                 ApplySlow(col.gameObject);
 
-                EnemyController enemy = col.GetComponentInParent<EnemyController>();
                 float markerDuration = enemy != null && enemy.Config != null ? enemy.Config.timeStunned : 3f;
                 target.TakeRecurrentDamage(0f, markerDuration, 1, damageType);
             }
         }
+    }
+
+    private float GetKnightBonus(EnemyController enemy)
+    {
+        if (enemy != null && enemy.Config != null)
+        {
+            string typeName = enemy.Config.type.ToString().ToLower();
+            if (typeName.Contains("caballero") || typeName.Contains("knight")) return knightMultiplier;
+        }
+        return 1f;
     }
 
     private void ApplySlow(GameObject targetObj)

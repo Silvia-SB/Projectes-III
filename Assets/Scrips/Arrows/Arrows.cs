@@ -4,6 +4,7 @@ public abstract class Arrow : MonoBehaviour
 {
     [HideInInspector] public ArrowPool Pool; 
     [SerializeField] protected float speed = 25f;
+    [SerializeField] protected float stuckDuration = 15f; // Tiempo que pasa clavada antes de desaparecer
     
     public abstract ArrowType type { get; }
     public abstract DamageType damageType { get; }
@@ -23,7 +24,7 @@ public abstract class Arrow : MonoBehaviour
         if (col != null) col.enabled = true;
         rb.linearVelocity = Vector3.zero; 
         rb.AddForce(transform.forward * speed, ForceMode.Impulse);
-        Invoke(nameof(ReturnToPool), 3f);
+            Invoke(nameof(ReturnToPool), 10f);
     }
 
     protected virtual void OnTriggerEnter(Collider other)
@@ -33,8 +34,19 @@ public abstract class Arrow : MonoBehaviour
         if (target != null || other.CompareTag("Wall")|| other.CompareTag("Liquid"))
         {
             OnHit(other);
-            ReturnToPool();
+            StickToTarget(other);
         }
+    }
+
+    protected void StickToTarget(Collider other)
+    {
+        CancelInvoke(nameof(ReturnToPool));
+        rb.linearVelocity = Vector3.zero;
+        rb.isKinematic = true;
+        if (col != null) col.enabled = false;
+        transform.SetParent(other.transform, true);
+
+        Invoke(nameof(ReturnToPool), stuckDuration); 
     }
 
     protected abstract void OnHit(Collider other);
@@ -45,6 +57,7 @@ public abstract class Arrow : MonoBehaviour
         
         CancelInvoke();
         gameObject.SetActive(false);
+        if (Pool != null) transform.SetParent(Pool.transform);
         if (Pool != null) Pool.ReturnToPool(this);
     }
 }

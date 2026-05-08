@@ -19,7 +19,7 @@ public class PiercingArrow : Arrow
     {
         if (other.CompareTag("Wall"))
         {
-            ReturnToPool();
+            StickToTarget(other);
             return;
         }
 
@@ -34,7 +34,7 @@ public class PiercingArrow : Arrow
 
             if (!isFullyCharged)
             {
-                ReturnToPool();
+                StickToTarget(other);
             }
         }
     }

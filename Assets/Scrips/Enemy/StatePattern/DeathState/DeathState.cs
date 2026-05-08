@@ -12,6 +12,13 @@ public class DeathState : IEnemyState
 
     public void Enter()
     {
+        // Retirar flechas clavadas antes de desactivar al enemigo
+        Arrow[] attachedArrows = enemyController.GetComponentsInChildren<Arrow>();
+        foreach (Arrow arrow in attachedArrows)
+        {
+            arrow.ReturnToPool();
+        }
+
         if (EnemyPool.Instance != null)
         {
             EnemyPool.Instance.ReturnEnemyToPool(enemyController.Config.type, enemyController.gameObject);

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 705149141350011287}
   - component: {fileID: 7591157102281329915}
   - component: {fileID: -2884385578363140509}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BaseArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,5 +155,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BaseArrow
   Pool: {fileID: 0}
   speed: 35
+  stuckDuration: 15
   baseDamage: 5
   maxDamage: 15

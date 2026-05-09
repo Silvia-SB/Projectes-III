@@ -24,7 +24,10 @@ public class SettingsMenuManager : MonoBehaviour
     private Scene currentScene;
     
     [SerializeField] private Button closeButton;
-    //[SerializeField] private Panel saveButton;
+    [SerializeField] private Image optionsImage;
+    [SerializeField] private Image mainMenuImage;
+    [SerializeField] private Image pauseMenuImage;
+    
 
     public void OnEnable()
     {
@@ -56,14 +59,16 @@ public class SettingsMenuManager : MonoBehaviour
     
     public void CloseSettingsMenu()
     {
-        if (currentScene.name == "Menu")
+        if (currentScene.name == "MainMenu")
         {
-            gameObject.SetActive(false);
+            optionsImage.gameObject.SetActive(false);
+            mainMenuImage.gameObject.SetActive(true);
 
         }
         else
         {
-            
+            optionsImage.gameObject.SetActive(false);
+            pauseMenuImage.gameObject.SetActive(true);
         }
     }
 }

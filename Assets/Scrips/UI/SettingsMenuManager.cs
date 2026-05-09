@@ -3,6 +3,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
+
 
 public class SettingsMenuManager : MonoBehaviour
 {
@@ -19,6 +21,16 @@ public class SettingsMenuManager : MonoBehaviour
     [SerializeField] private Slider sensitivitySlider;
     public static event Action <float> OnSensibilityChanged;
     
+    private Scene currentScene;
+    
+    [SerializeField] private Button closeButton;
+    //[SerializeField] private Panel saveButton;
+
+    public void OnEnable()
+    {
+        currentScene = SceneManager.GetActiveScene();
+    }
+
     public void ChangeGraphicsQuality()
     {
         Debug.Log(graphicsDropdown.value);
@@ -40,5 +52,18 @@ public class SettingsMenuManager : MonoBehaviour
     public void ChangeSensibility()
     {
         OnSensibilityChanged?.Invoke(sensitivitySlider.value);
+    }
+    
+    public void CloseSettingsMenu()
+    {
+        if (currentScene.name == "Menu")
+        {
+            gameObject.SetActive(false);
+
+        }
+        else
+        {
+            
+        }
     }
 }

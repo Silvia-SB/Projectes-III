@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 705149141350011287}
   - component: {fileID: 7591157102281329915}
   - component: {fileID: -4266764661819372509}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PirciengArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,4 +155,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PiercingArrow
   Pool: {fileID: 0}
   speed: 25
+  stuckDuration: 15
   damage: 40

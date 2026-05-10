@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +15,9 @@ public class PlayerShooter : MonoBehaviour
     private bool isWaitingForReload;
     private bool isCharging;
     private float chargeStartTime;
+
+    public event Action OnChargeStart;
+    public event Action OnChargeEnd;
 
     private void Start() => PrepareArrow();
 
@@ -37,10 +41,12 @@ public class PlayerShooter : MonoBehaviour
             }
             chargeStartTime = Time.time;
             isCharging = true; 
+            OnChargeStart?.Invoke();
         }
         else if (context.canceled && isCharging && currentArrowInstance != null)
         {
             isCharging = false; 
+            OnChargeEnd?.Invoke();
             float chargePercent = Mathf.Clamp01((Time.time - chargeStartTime) / maxChargeTime);
             Shoot(chargePercent);
         }

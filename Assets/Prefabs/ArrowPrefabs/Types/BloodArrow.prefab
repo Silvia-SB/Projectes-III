@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 705149141350011287}
   - component: {fileID: 8197932164890604446}
   - component: {fileID: 7591157102281329915}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BloodArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BloodArrow
   Pool: {fileID: 0}
   speed: 25
+  stuckDuration: 15
   baseDamage: 15
   maxDamage: 45
   innerAoeRadius: 2

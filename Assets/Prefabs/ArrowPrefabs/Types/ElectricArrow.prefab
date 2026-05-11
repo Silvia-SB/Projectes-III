@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 705149141350011287}
   - component: {fileID: 7591157102281329915}
   - component: {fileID: 2904138902599264153}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: ElectricArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,8 +155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ElectricArrow
   Pool: {fileID: 0}
   speed: 25
+  stuckDuration: 15
   quickDamage: 10
   aoeRadius: 4
   chargedDamage: 25
-  slowFactor: 0.5
-  slowDuration: 2
+  knightMultiplier: 1.5

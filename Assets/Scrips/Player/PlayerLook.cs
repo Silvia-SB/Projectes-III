@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +16,17 @@ public class PlayerLook : MonoBehaviour
     private float mYaw;  
     private float mPitch; 
     private Vector2 mLookDirection;
+
+    public void OnEnable()
+    {
+        SettingsMenuManager.OnSensibilityChanged += SetRotationSpeed;
+    }
+
+    public void OnDisable()
+    {
+        SettingsMenuManager.OnSensibilityChanged -= SetRotationSpeed;
+
+    }
 
     void Start()
     {
@@ -43,4 +55,5 @@ public class PlayerLook : MonoBehaviour
         if (c.performed || c.canceled)
             mLookDirection = c.ReadValue<Vector2>();
     }
+    private void SetRotationSpeed(float speed) => rotationSpeed = speed;
 }

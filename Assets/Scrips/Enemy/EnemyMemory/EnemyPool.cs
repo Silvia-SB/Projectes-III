@@ -10,17 +10,8 @@ public enum EnemyType
     Medico
 }
 
-public class EnemyPool: MonoBehaviour
+public class EnemyPool : MonoBehaviour
 {
-    [Serializable]
-    public struct EnemyInMemory
-    {
-        public EnemyType enemyType;
-        public GameObject enemyGameObject;
-        public int quantityInMemory;
-    }
-    
-    public List<EnemyInMemory> poolSettings;
     public static EnemyPool Instance { get; private set; }
     private Dictionary<EnemyType, Queue<GameObject>> enemyPool;
 
@@ -30,17 +21,29 @@ public class EnemyPool: MonoBehaviour
         else Destroy(gameObject);
 
         enemyPool = new Dictionary<EnemyType, Queue<GameObject>>();
-        
-        foreach (EnemyInMemory config in poolSettings)
+    }
+
+    private void Start()
+    {
+        InitializePool();
+    }
+
+    private void InitializePool()
+    {
+        foreach (var blueprint in EnemyFactory.Instance.enemyBlueprints)
         {
             Queue<GameObject> newQueue = new Queue<GameObject>();
-            for (int i = 0; i < config.quantityInMemory; i++)
+            
+            for (int i = 0; i < blueprint.initialQuantity; i++)
             {
-                GameObject enemyInstance = Instantiate(config.enemyGameObject, transform);
+                GameObject enemyInstance = EnemyFactory.Instance.CreateEnemy(blueprint.enemyType);
+                
+                enemyInstance.transform.SetParent(this.transform); 
                 enemyInstance.SetActive(false);
                 newQueue.Enqueue(enemyInstance);
             }
-            enemyPool.Add(config.enemyType, newQueue);
+            
+            enemyPool.Add(blueprint.enemyType, newQueue);
         }
     }
 
@@ -48,10 +51,13 @@ public class EnemyPool: MonoBehaviour
     {
         if (enemyPool.ContainsKey(enemyType) && enemyPool[enemyType].Count > 0)
         {
-            GameObject enemy = enemyPool[enemyType].Dequeue();
-            return enemy;
+            return enemyPool[enemyType].Dequeue();
         }
-        return null;
+        
+        GameObject newEnemy = EnemyFactory.Instance.CreateEnemy(enemyType);
+        newEnemy.transform.SetParent(this.transform);
+        
+        return newEnemy;
     }
 
     public void ReturnEnemyToPool(EnemyType enemyType, GameObject enemyToReturn)

@@ -13,6 +13,10 @@ public class PlayerMovement : MonoBehaviour, ISlowable
     [SerializeField] private float stunnedSpeed = 2.0f;
     [SerializeField] private float stunnedDuration = 3.0f;
 
+    [Header("Shooting Config")]
+    [SerializeField] private PlayerShooter playerShooter;
+    [SerializeField] private float chargeSpeedMultiplier = 0.5f;
+
     private CharacterController controller;
     private Vector2 mDirection;
     private float mVerticalSpeed;
@@ -20,11 +24,38 @@ public class PlayerMovement : MonoBehaviour, ISlowable
     private bool IsGrounded;
     private bool isSlowed;
     private float slowTimer;
+    private bool isChargingArrow;
+
+    private void Awake()
+    {
+        if (playerShooter == null) playerShooter = GetComponent<PlayerShooter>();
+    }
+
+    private void OnEnable()
+    {
+        if (playerShooter != null)
+        {
+            playerShooter.OnChargeStart += OnChargeStart;
+            playerShooter.OnChargeEnd += OnChargeEnd;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (playerShooter != null)
+        {
+            playerShooter.OnChargeStart -= OnChargeStart;
+            playerShooter.OnChargeEnd -= OnChargeEnd;
+        }
+    }
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
     }
+
+    private void OnChargeStart() => isChargingArrow = true;
+    private void OnChargeEnd() => isChargingArrow = false;
 
     void Update()
     {
@@ -38,10 +69,11 @@ public class PlayerMovement : MonoBehaviour, ISlowable
         }
 
         float currentSpeed = isSlowed ? stunnedSpeed : maxSpeed;
+        if (isChargingArrow) currentSpeed *= chargeSpeedMultiplier;
 
         Vector3 finalDirection = (transform.forward * mDirection.y + transform.right * mDirection.x) * (currentSpeed * Time.deltaTime);
 
-        if (isSprinting && !isSlowed) finalDirection *= sprintMultiplier; 
+        if (isSprinting && !isSlowed && !isChargingArrow) finalDirection *= sprintMultiplier; 
 
         if (!IsGrounded) 
         {

@@ -14,9 +14,14 @@ public class AttackState : IEnemyState
     }
     public void Enter()
     {
-        enemyController.GetNavMeshAgent().isStopped = true;
-        enemyController.GetNavMeshAgent().velocity = Vector3.zero;
-        enemyController.GetNavMeshAgent().ResetPath();
+        var agent = enemyController.GetNavMeshAgent();
+
+        if (agent.isActiveAndEnabled && agent.isOnNavMesh)
+        {
+            agent.isStopped = true;
+            agent.velocity = Vector3.zero;
+            agent.ResetPath();
+        }
 
         recurrentTimer = enemyController.GetDamageInterval();
         enemyController.PerformAttack();
@@ -24,6 +29,10 @@ public class AttackState : IEnemyState
 
     public void Update()
     {
+        if (EnemyType.Cuervo.Equals(enemyController.Config.type))
+        {
+            enemyController.PerformAttack();
+        }
         if(!enemyController.CanAttackTarget())
         {
             stateMachine.TransitionTo(stateMachine.ChaseState);

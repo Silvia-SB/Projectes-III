@@ -98,6 +98,12 @@ public class EnemyController : MonoBehaviour, ISlowable
     
     public void PerformAttack()
     {
+        if (EnemyType.Cuervo.Equals(config.type))
+        {
+            stateMachine.TransitionTo(stateMachine.DeathState);
+            enemyAttack.MeleeAttack(target, attackDamageType, config.damage);
+            
+        }
         if(config.isRanged)
         {
             enemyAttack.PlagueDoctorAttack();

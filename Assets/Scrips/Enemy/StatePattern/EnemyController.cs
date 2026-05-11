@@ -100,7 +100,7 @@ public class EnemyController : MonoBehaviour, ISlowable
     {
         if(config.isRanged)
         {
-            enemyAttack.PlagueDoctorAttack(target.position, attackDamageType, config.damage);
+            enemyAttack.PlagueDoctorAttack();
         }
         else
         {

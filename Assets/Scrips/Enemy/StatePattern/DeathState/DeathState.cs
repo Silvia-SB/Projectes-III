@@ -17,7 +17,7 @@ public class DeathState : IEnemyState
         {
             arrow.ReturnToPool();
         }
-
+        
         if (EnemyPool.Instance != null)
         {
             EnemyPool.Instance.ReturnEnemyToPool(enemyController.Config.type, enemyController.gameObject);

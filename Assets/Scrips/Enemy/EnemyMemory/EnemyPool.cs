@@ -7,7 +7,8 @@ public enum EnemyType
     Caballero,
     Desatado,
     Marchito,
-    Medico
+    Medico,
+    Cuervo
 }
 
 public class EnemyPool : MonoBehaviour

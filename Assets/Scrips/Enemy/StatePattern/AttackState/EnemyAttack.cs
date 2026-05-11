@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public void PlagueDoctorAttack(Vector3 targetPosition, DamageType damageType, float damage)
+    [SerializeField] private ShootCrow shootCrow;
+    
+    public void PlagueDoctorAttack()
     {
+        shootCrow.ShootingCrow();
     }
     
     public void MeleeAttack(Transform target, DamageType damageType, float damage)

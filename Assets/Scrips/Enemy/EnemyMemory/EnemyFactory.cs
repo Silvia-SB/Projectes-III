@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyFactory : MonoBehaviour
 {
-    // Renombramos la estructura para que tenga sentido en la Fábrica
     [Serializable]
     public struct EnemyBlueprint
     {
@@ -13,7 +12,6 @@ public class EnemyFactory : MonoBehaviour
         public int initialQuantity; 
     }
 
-    [Header("Configuración de Fabricación")]
     public List<EnemyBlueprint> enemyBlueprints = new List<EnemyBlueprint>();
     
     public static EnemyFactory Instance { get; private set; }
@@ -34,7 +32,6 @@ public class EnemyFactory : MonoBehaviour
             }
         }
         
-        Debug.LogError($"[EnemyFactory] ¡No se encontró un Prefab para el enemigo de tipo {type}!");
         return null;
     }
 }

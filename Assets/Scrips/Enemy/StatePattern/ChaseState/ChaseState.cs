@@ -18,10 +18,14 @@ public class ChaseState : IEnemyState
 
     public void Update()
     {
+        if (EnemyType.Cuervo.Equals(enemyController.Config.type))
+        {
+            enemyController.GetNavMeshAgent().SetDestination(enemyController.GetTarget().position);
+        }
         if (enemyController.CanAttackTarget())
         {
-                stateMachine.TransitionTo(stateMachine.AttackState);
-                return;
+            stateMachine.TransitionTo(stateMachine.AttackState);
+            return;
         }
         float distanceToPlayer = Vector3.Distance(enemyController.GetTarget().position, enemyController.transform.position);
 

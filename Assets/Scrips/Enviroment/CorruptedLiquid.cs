@@ -58,38 +58,6 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable
         {
             c.isTrigger = true;
         }
-        
-        ApplyInitialOverlapDamage();
-    }
-
-    private void ApplyInitialOverlapDamage()
-    {
-        foreach (Collider c in colliders)
-        {
-            Collider[] overlaps;
-
-            if (c is BoxCollider boxCol)
-            {
-                Vector3 center = transform.TransformPoint(boxCol.center);
-                Vector3 halfExtents = Vector3.Scale(boxCol.size, transform.lossyScale) * 0.5f;
-                overlaps = Physics.OverlapBox(center, halfExtents, transform.rotation);
-            }
-            else
-            {
-                overlaps = Physics.OverlapBox(c.bounds.center, c.bounds.extents, transform.rotation);
-            }
-            
-            foreach (Collider hit in overlaps) 
-            {
-                IDamageable target = hit.GetComponentInParent<IDamageable>();
-                
-                if (target != null && !targets.Contains(target)) 
-                {
-                    targets.Add(target);
-                    target.TakeDamage(damage, damageType);
-                }
-            }
-        }
     }
 
     private void Update() 

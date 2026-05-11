@@ -12,6 +12,7 @@ public class ConductiveSurface : MonoBehaviour
     private bool isElectrified = false;
     private float electrificationTimer;
     private readonly HashSet<GameObject> affectedThisIteration = new HashSet<GameObject>();
+    private readonly HashSet<GameObject> objectsOnSurface = new HashSet<GameObject>();
 
     private Renderer surfaceRenderer;
     private Collider[] surfaceColliders;
@@ -25,6 +26,10 @@ public class ConductiveSurface : MonoBehaviour
         if (surfaceRenderer != null)
         {
             surfaceRenderer.material.color = normalColor;
+        }
+        foreach (Collider c in surfaceColliders)
+        {
+            c.isTrigger = true;
         }
     }
 
@@ -71,73 +76,46 @@ public class ConductiveSurface : MonoBehaviour
 
     private void CheckForElectrifiedObjectsInBounds()
     {
-        if (surfaceColliders == null || surfaceColliders.Length == 0) return;
+        objectsOnSurface.RemoveWhere(obj => obj == null || !obj.activeInHierarchy);
         
-        foreach (Collider c in surfaceColliders)
+        foreach (GameObject obj in objectsOnSurface)
         {
-            Vector3 center = c.bounds.center;
-            Vector3 halfExtents = c.bounds.extents + Vector3.up * 0.1f;
-            Quaternion rotation = Quaternion.identity;
-
-            if (c is BoxCollider boxCol)
+            if (obj == gameObject) continue;
+            StatusEffectManager status = obj.GetComponentInParent<StatusEffectManager>();
+            if (status != null && status.HasStatus(DamageType.Electric))
             {
-                center = transform.TransformPoint(boxCol.center);
-                halfExtents = Vector3.Scale(boxCol.size, transform.lossyScale) * 0.5f + Vector3.up * 0.1f;
-                rotation = transform.rotation;
+                Electrify();
+                break;
             }
-
-            Collider[] overlaps = Physics.OverlapBox(center, halfExtents, rotation);
-            bool electrified = false;
-            foreach (Collider col in overlaps)
-            {
-                if (col.gameObject == gameObject) continue;
-                StatusEffectManager status = col.GetComponentInParent<StatusEffectManager>();
-                if (status != null && status.HasStatus(DamageType.Electric))
-                {
-                    Electrify();
-                    electrified = true;
-                    break;
-                }
-            }
-            if (electrified) break;
         }
     }
 
     private void ApplyToObjectsInBounds()
     {
-        if (surfaceColliders == null || surfaceColliders.Length == 0) return;
+        objectsOnSurface.RemoveWhere(obj => obj == null || !obj.activeInHierarchy);
 
-        foreach (Collider c in surfaceColliders)
+        foreach (GameObject obj in objectsOnSurface)
         {
-            Vector3 center = c.bounds.center;
-            Vector3 halfExtents = c.bounds.extents + Vector3.up * 0.1f;
-            Quaternion rotation = Quaternion.identity;
-
-            if (c is BoxCollider boxCol)
-            {
-                center = transform.TransformPoint(boxCol.center);
-                halfExtents = Vector3.Scale(boxCol.size, transform.lossyScale) * 0.5f + Vector3.up * 0.1f;
-                rotation = transform.rotation;
-            }
-
-            Collider[] overlaps = Physics.OverlapBox(center, halfExtents, rotation);
-            
-            foreach (Collider col in overlaps)
-            {
-                if (col.gameObject == gameObject) continue;
-                ApplyEffectsToTarget(col.gameObject);
-            }
+            if (obj == gameObject) continue;
+            ApplyEffectsToTarget(obj);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject != gameObject)
+        {
+            objectsOnSurface.Add(other.gameObject);
         CheckForElectricContagion(other);
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        CheckForElectricContagion(collision.collider);
+        if (other.gameObject != gameObject)
+        {
+            objectsOnSurface.Remove(other.gameObject);
+        }
     }
 
     private void CheckForElectricContagion(Collider other)

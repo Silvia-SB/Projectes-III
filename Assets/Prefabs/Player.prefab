@@ -231,6 +231,10 @@ MonoBehaviour:
   maxSpeed: 5
   sprintMultiplier: 1.5
   jumpSpeed: 3
+  stunnedSpeed: 2
+  stunnedDuration: 3
+  playerShooter: {fileID: 0}
+  chargeSpeedMultiplier: 0.5
 --- !u!114 &7954406729464564383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,22 +414,6 @@ MonoBehaviour:
     m_ActionName: 'Player/BloodArrow[/Keyboard/2]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2489017004968937989}
-        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-        m_MethodName: OnHeal
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 0fee5af0-8ada-4534-a6b6-f85734b1deb1
-    m_ActionName: 'Player/Heal[/Keyboard/e]'
-  - m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: 8412333504912581657}
         m_TargetAssemblyTypeName: PlayerShooter, Assembly-CSharp
         m_MethodName: OnSelectPiercing
@@ -438,8 +426,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 044e9e86-e73f-418c-9258-d2e1a6c6dc1e
+    m_ActionId: ea919264-a23c-4b71-851e-b2563ee9bbe3
     m_ActionName: 'Player/PiercingArrow[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2489017004968937989}
+        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+        m_MethodName: OnHeal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: eeb69e37-3c2a-4200-910c-b5b0acf23da3
+    m_ActionName: 'Player/Heal[/Keyboard/e]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8412333504912581657}
@@ -454,7 +458,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 6acc4a6b-1164-4b33-b898-dcb25f043ea5
+    m_ActionId: f8fd76c2-d46c-4031-8b54-6bf372558835
     m_ActionName: 'Player/ElectricArrow[/Keyboard/4]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
@@ -491,7 +495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLook
   mPitchController: {fileID: 2593594428364634398}
-  rotationSpeed: 8
+  rotationSpeed: 18.34
   invertPitch: 0
   maxPitch: 80
   minPitch: -80

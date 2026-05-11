@@ -14,11 +14,11 @@ public class ConductiveSurface : MonoBehaviour
     private readonly HashSet<GameObject> affectedThisIteration = new HashSet<GameObject>();
 
     private Renderer surfaceRenderer;
-    private Collider surfaceCollider;
+    private Collider[] surfaceColliders;
 
     private void Awake()
     {
-        surfaceCollider = GetComponent<Collider>();
+        surfaceColliders = GetComponents<Collider>();
         surfaceRenderer = GetComponent<Renderer>();
         if (surfaceRenderer == null) surfaceRenderer = GetComponentInChildren<Renderer>();
 
@@ -71,30 +71,62 @@ public class ConductiveSurface : MonoBehaviour
 
     private void CheckForElectrifiedObjectsInBounds()
     {
-        if (surfaceCollider == null) return;
-        Collider[] overlaps = Physics.OverlapBox(surfaceCollider.bounds.center, surfaceCollider.bounds.extents + Vector3.up * 0.1f, Quaternion.identity);
-        foreach (Collider col in overlaps)
+        if (surfaceColliders == null || surfaceColliders.Length == 0) return;
+        
+        foreach (Collider c in surfaceColliders)
         {
-            if (col.gameObject == gameObject) continue;
-            StatusEffectManager status = col.GetComponentInParent<StatusEffectManager>();
-            if (status != null && status.HasStatus(DamageType.Electric))
+            Vector3 center = c.bounds.center;
+            Vector3 halfExtents = c.bounds.extents + Vector3.up * 0.1f;
+            Quaternion rotation = Quaternion.identity;
+
+            if (c is BoxCollider boxCol)
             {
-                Electrify();
-                break;
+                center = transform.TransformPoint(boxCol.center);
+                halfExtents = Vector3.Scale(boxCol.size, transform.lossyScale) * 0.5f + Vector3.up * 0.1f;
+                rotation = transform.rotation;
             }
+
+            Collider[] overlaps = Physics.OverlapBox(center, halfExtents, rotation);
+            bool electrified = false;
+            foreach (Collider col in overlaps)
+            {
+                if (col.gameObject == gameObject) continue;
+                StatusEffectManager status = col.GetComponentInParent<StatusEffectManager>();
+                if (status != null && status.HasStatus(DamageType.Electric))
+                {
+                    Electrify();
+                    electrified = true;
+                    break;
+                }
+            }
+            if (electrified) break;
         }
     }
 
     private void ApplyToObjectsInBounds()
     {
-        if (surfaceCollider == null) return;
+        if (surfaceColliders == null || surfaceColliders.Length == 0) return;
 
-        Collider[] overlaps = Physics.OverlapBox(surfaceCollider.bounds.center, surfaceCollider.bounds.extents + Vector3.up * 0.1f, Quaternion.identity);
-        
-        foreach (Collider col in overlaps)
+        foreach (Collider c in surfaceColliders)
         {
-            if (col.gameObject == gameObject) continue;
-            ApplyEffectsToTarget(col.gameObject);
+            Vector3 center = c.bounds.center;
+            Vector3 halfExtents = c.bounds.extents + Vector3.up * 0.1f;
+            Quaternion rotation = Quaternion.identity;
+
+            if (c is BoxCollider boxCol)
+            {
+                center = transform.TransformPoint(boxCol.center);
+                halfExtents = Vector3.Scale(boxCol.size, transform.lossyScale) * 0.5f + Vector3.up * 0.1f;
+                rotation = transform.rotation;
+            }
+
+            Collider[] overlaps = Physics.OverlapBox(center, halfExtents, rotation);
+            
+            foreach (Collider col in overlaps)
+            {
+                if (col.gameObject == gameObject) continue;
+                ApplyEffectsToTarget(col.gameObject);
+            }
         }
     }
 

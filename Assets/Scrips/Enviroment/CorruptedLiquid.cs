@@ -8,7 +8,7 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable
     [SerializeField] private int ticksOnExit = 5;
     [SerializeField] private DamageType damageType = DamageType.Blood;
     
-    private Collider col; 
+    private Collider[] colliders; 
     private Renderer meshRenderer;
     private bool isActive;
     private float nextPulseTime;
@@ -17,12 +17,12 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable
 
     private void Awake() 
     {
-        col = GetComponent<Collider>();
+        colliders = GetComponents<Collider>();
         meshRenderer = GetComponent<Renderer>();
         
-        if (col != null) 
+        foreach (Collider c in colliders)
         {
-            col.isTrigger = false;
+            c.isTrigger = false;
         }
     }
 
@@ -54,25 +54,40 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable
             meshRenderer.material.color = Color.red;
         }
         
-        if (col != null) 
+        foreach (Collider c in colliders)
         {
-            col.isTrigger = true;
-            ApplyInitialOverlapDamage();
+            c.isTrigger = true;
         }
+        
+        ApplyInitialOverlapDamage();
     }
 
     private void ApplyInitialOverlapDamage()
     {
-        Collider[] overlaps = Physics.OverlapBox(col.bounds.center, col.bounds.extents, transform.rotation);
-        
-        foreach (Collider c in overlaps) 
+        foreach (Collider c in colliders)
         {
-            IDamageable target = c.GetComponentInParent<IDamageable>();
-            
-            if (target != null && !targets.Contains(target)) 
+            Collider[] overlaps;
+
+            if (c is BoxCollider boxCol)
             {
-                targets.Add(target);
-                target.TakeDamage(damage, damageType);
+                Vector3 center = transform.TransformPoint(boxCol.center);
+                Vector3 halfExtents = Vector3.Scale(boxCol.size, transform.lossyScale) * 0.5f;
+                overlaps = Physics.OverlapBox(center, halfExtents, transform.rotation);
+            }
+            else
+            {
+                overlaps = Physics.OverlapBox(c.bounds.center, c.bounds.extents, transform.rotation);
+            }
+            
+            foreach (Collider hit in overlaps) 
+            {
+                IDamageable target = hit.GetComponentInParent<IDamageable>();
+                
+                if (target != null && !targets.Contains(target)) 
+                {
+                    targets.Add(target);
+                    target.TakeDamage(damage, damageType);
+                }
             }
         }
     }

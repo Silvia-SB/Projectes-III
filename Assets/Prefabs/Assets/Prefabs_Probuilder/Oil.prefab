@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5324958996625420350}
   - component: {fileID: 3525580129489117522}
   - component: {fileID: 3760379222172134209}
-  - component: {fileID: 8458147168141068934}
   - component: {fileID: 2910355911428887414}
+  - component: {fileID: 3149349087864111838}
   m_Layer: 0
   m_Name: Oil
   m_TagString: Liquid
@@ -91,7 +91,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: e4f95fd1bbefb19ec9ba3212235a282f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -636,28 +636,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424986083637651593}
   m_Mesh: {fileID: 0}
---- !u!64 &8458147168141068934
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 424986083637651593}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!114 &2910355911428887414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -674,3 +652,24 @@ MonoBehaviour:
   interval: 0.4
   ticksOnExit: 5
   damageType: 1
+--- !u!65 &3149349087864111838
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424986083637651593}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.380829, y: 0.1, z: 4.057617}
+  m_Center: {x: -0.39717102, y: 0.05, z: -0.6278076}

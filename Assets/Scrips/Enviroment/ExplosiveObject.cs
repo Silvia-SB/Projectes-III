@@ -44,6 +44,7 @@ public class ExplosiveObject : Health
         }
         
         base.Die();
+        Destroy(gameObject);
     }
 
     private void Explode()

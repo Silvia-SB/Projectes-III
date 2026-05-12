@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 7098341805983379666}
   - component: {fileID: 4196209082629110480}
   - component: {fileID: 7787235335425264439}
-  - component: {fileID: 852683993730992771}
   - component: {fileID: 2673050888431204558}
+  - component: {fileID: 5471716765245204353}
   m_Layer: 0
   m_Name: water
   m_TagString: Liquid
@@ -636,28 +636,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8942586879291511836}
   m_Mesh: {fileID: 0}
---- !u!64 &852683993730992771
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8942586879291511836}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!114 &2673050888431204558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -674,3 +652,24 @@ MonoBehaviour:
   electricDamage: 25
   electrifiedColor: {r: 0, g: 0, b: 1, a: 1}
   normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+--- !u!65 &5471716765245204353
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8942586879291511836}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.2062378, y: 0.10000038, z: 2.0326538}
+  m_Center: {x: 0.00015258789, y: 0.05000019, z: -0.48727417}

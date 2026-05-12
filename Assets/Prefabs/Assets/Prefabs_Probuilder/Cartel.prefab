@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 971907215547135672}
   - component: {fileID: 1065701698066943443}
   - component: {fileID: 2817814400989570985}
-  - component: {fileID: 8246981907672432849}
+  - component: {fileID: 761353852925134108}
   m_Layer: 0
   m_Name: Cartel
   m_TagString: Wall
@@ -279,8 +279,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3261797084137297807}
   m_Mesh: {fileID: 0}
---- !u!64 &8246981907672432849
-MeshCollider:
+--- !u!65 &761353852925134108
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -297,7 +297,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 1.2000003, y: 1.4210855e-14, z: 1}
+  m_Center: {x: 0.016021732, y: -0.000000015504664, z: -0.1282959}

@@ -681,14 +681,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2748d889b9c63baaf968f2d72bcde0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExplosiveObject
-  maxHealth: 100
+  maxHealth: 20
   currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
   mainRenderer: {fileID: 636337202450160306}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
-  explosionRadius: 5
+  explosionRadius: 3
   instantDamage: 50
   dotAmount: 5
   dotInterval: 0.4

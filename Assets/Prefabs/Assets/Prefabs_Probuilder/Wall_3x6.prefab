@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2391983181077371935}
   - component: {fileID: 491870037767486998}
   - component: {fileID: 5587475892701703602}
-  - component: {fileID: 7065243483422237338}
+  - component: {fileID: 6821777769023236919}
   m_Layer: 0
   m_Name: Wall_3x6
   m_TagString: Wall
@@ -334,8 +334,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2542094164006576020}
   m_Mesh: {fileID: 0}
---- !u!64 &7065243483422237338
-MeshCollider:
+--- !u!65 &6821777769023236919
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -352,7 +352,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 3.0000007, y: 6, z: 1.0000001}
+  m_Center: {x: -1.5390629, y: 0, z: -0.9590459}

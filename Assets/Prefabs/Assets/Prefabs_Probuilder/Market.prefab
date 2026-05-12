@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1411074417130520691}
   - component: {fileID: 1590823321207421400}
   - component: {fileID: 7706670474543658370}
-  - component: {fileID: 1142006459722332041}
+  - component: {fileID: 2930888722396389983}
   m_Layer: 0
   m_Name: Market
   m_TagString: Wall
@@ -1294,8 +1294,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1966334440443603235}
   m_Mesh: {fileID: 0}
---- !u!64 &1142006459722332041
-MeshCollider:
+--- !u!65 &2930888722396389983
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1312,7 +1312,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 2.0001328, y: 3.112454, z: 1.2917461}
+  m_Center: {x: -0.4763627, y: 0.1459232, z: 0.14576465}

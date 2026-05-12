@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7872567571048006618}
   - component: {fileID: 2883821827644897891}
   - component: {fileID: 4193740890610917585}
-  - component: {fileID: 7189953262288371676}
+  - component: {fileID: 7069223379195060058}
   m_Layer: 0
   m_Name: House
   m_TagString: Wall
@@ -334,8 +334,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3982271681116939549}
   m_Mesh: {fileID: 0}
---- !u!64 &7189953262288371676
-MeshCollider:
+--- !u!65 &7069223379195060058
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -352,10 +352,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 3.0000005, y: 1.5, z: 3.0000005}
+  m_Center: {x: -1.3914605, y: -0.1516819, z: 0.35498515}
 --- !u!1 &4823312227008565932
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +368,7 @@ GameObject:
   - component: {fileID: 6478844159136804422}
   - component: {fileID: 4670699606419522607}
   - component: {fileID: 4582810524850123983}
-  - component: {fileID: 8305928983320704028}
+  - component: {fileID: 4982608720793114583}
   m_Layer: 0
   m_Name: House
   m_TagString: Wall
@@ -690,8 +689,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4823312227008565932}
   m_Mesh: {fileID: 0}
---- !u!64 &8305928983320704028
-MeshCollider:
+--- !u!65 &4982608720793114583
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -708,10 +707,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 3.0000005, y: 1.5, z: 3.0000005}
+  m_Center: {x: -1.3914605, y: -0.1516819, z: 0.35498515}
 --- !u!1 &4972890775192261577
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,7 +723,7 @@ GameObject:
   - component: {fileID: 3160493147594990140}
   - component: {fileID: 7116004575329263402}
   - component: {fileID: 5549901511864359131}
-  - component: {fileID: 5962014960165742390}
+  - component: {fileID: 5592438483548199563}
   m_Layer: 0
   m_Name: House
   m_TagString: Wall
@@ -1046,8 +1044,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4972890775192261577}
   m_Mesh: {fileID: 0}
---- !u!64 &5962014960165742390
-MeshCollider:
+--- !u!65 &5592438483548199563
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1064,10 +1062,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 3.0000005, y: 1.5, z: 3.0000005}
+  m_Center: {x: -1.3914605, y: -0.1516819, z: 0.35498515}
 --- !u!1 &5691622957349095027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,7 +1078,7 @@ GameObject:
   - component: {fileID: 8845906069355214522}
   - component: {fileID: 6140599633183262886}
   - component: {fileID: 7971986021799531012}
-  - component: {fileID: 5492004797940463900}
+  - component: {fileID: 7758084836126561044}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -1402,8 +1399,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5691622957349095027}
   m_Mesh: {fileID: 0}
---- !u!64 &5492004797940463900
-MeshCollider:
+--- !u!65 &7758084836126561044
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1420,10 +1417,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2.25, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5964569703129242882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,7 +1470,7 @@ GameObject:
   - component: {fileID: 507266847492919127}
   - component: {fileID: 2621925575900632049}
   - component: {fileID: 2677899248057705384}
-  - component: {fileID: 2524728769100915451}
+  - component: {fileID: 5057229545239943286}
   m_Layer: 0
   m_Name: House
   m_TagString: Wall
@@ -1795,8 +1791,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8241285915423046685}
   m_Mesh: {fileID: 0}
---- !u!64 &2524728769100915451
-MeshCollider:
+--- !u!65 &5057229545239943286
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1813,10 +1809,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 3.0000005, y: 1.5, z: 3.0000005}
+  m_Center: {x: -1.3914605, y: -0.1516819, z: 0.35498515}
 --- !u!1 &9169501309969638780
 GameObject:
   m_ObjectHideFlags: 0
@@ -1830,7 +1825,7 @@ GameObject:
   - component: {fileID: 5488153691284829219}
   - component: {fileID: 6382342915926682015}
   - component: {fileID: 2347649795514178001}
-  - component: {fileID: 4315475658711299661}
+  - component: {fileID: 1151784383551022978}
   m_Layer: 0
   m_Name: Roof
   m_TagString: Untagged
@@ -2396,8 +2391,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9169501309969638780}
   m_Mesh: {fileID: 0}
---- !u!64 &4315475658711299661
-MeshCollider:
+--- !u!65 &1151784383551022978
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2414,7 +2409,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 4.000001, y: 0.99999994, z: 6.0000014}
+  m_Center: {x: 0.05474873, y: -0.000000029802322, z: -1.2224734}

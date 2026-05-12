@@ -11,6 +11,7 @@ public class EnemyContagion : MonoBehaviour
 
     [Header("Knight Contagion Bonus")]
     [SerializeField] private float knightMultiplier = 1.5f;
+    [SerializeField] private float knightAoERadius = 4f;
 
     private void Awake()
     {
@@ -65,7 +66,7 @@ public class EnemyContagion : MonoBehaviour
         }
     }
 
-    private void ApplyContagion(IDamageable target, MonoBehaviour targetObj, DamageType damageType, DoTInstance dot)
+    private void ApplyContagion(IDamageable target, MonoBehaviour targetObj, DamageType damageType, DoTInstance dot, bool isFromAoE = false)
     {
         bool canInfect = true;
         int ticksToApply = dot.TicksRemaining;
@@ -84,10 +85,15 @@ public class EnemyContagion : MonoBehaviour
                 float markerDuration = enemy != null && enemy.Config != null ? enemy.Config.timeStunned : 3f;
 
                 float bonus = 1f;
+                bool isKnight = false;
                 if (enemy != null && enemy.Config != null)
                 {
                     string typeName = enemy.Config.type.ToString().ToLower();
-                    if (typeName.Contains("caballero") || typeName.Contains("knight")) bonus = knightMultiplier;
+                    if (typeName.Contains("caballero") || typeName.Contains("knight"))
+                    {
+                        bonus = knightMultiplier;
+                        isKnight = true;
+                    }
                 }
 
                 target.TakeDamage(contagionDamage * bonus, DamageType.Electric);
@@ -95,10 +101,30 @@ public class EnemyContagion : MonoBehaviour
 
                 ISlowable slowable = targetObj.GetComponentInParent<ISlowable>();
                 slowable?.ApplySlow();
+
+                if (isKnight && !isFromAoE)
+                {
+                    TriggerKnightAoE(targetObj.transform.position, dot, targetObj);
+                }
             }
             else
             {
                 target.TakeRecurrentDamage(dot.Amount, dot.Interval, ticksToApply, damageType);
+            }
+        }
+    }
+
+    private void TriggerKnightAoE(Vector3 center, DoTInstance dot, MonoBehaviour sourceObj)
+    {
+        Collider[] colliders = Physics.OverlapSphere(center, knightAoERadius);
+        foreach (Collider col in colliders)
+        {
+            IDamageable aoeTarget = col.GetComponentInParent<IDamageable>();
+            MonoBehaviour aoeTargetObj = aoeTarget as MonoBehaviour;
+
+            if (aoeTarget != null && aoeTargetObj != null && aoeTargetObj != sourceObj)
+            {
+                ApplyContagion(aoeTarget, aoeTargetObj, DamageType.Electric, dot, true);
             }
         }
     }

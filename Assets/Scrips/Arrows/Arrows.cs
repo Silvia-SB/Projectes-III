@@ -34,6 +34,11 @@ public abstract class Arrow : MonoBehaviour
     {
         if (rb != null && !rb.isKinematic)
         {
+            if (rb.linearVelocity.sqrMagnitude > 0.1f)
+            {
+                transform.rotation = Quaternion.LookRotation(rb.linearVelocity);
+            }
+
             Vector3 direction = transform.position - lastPosition;
             float distance = direction.magnitude;
 

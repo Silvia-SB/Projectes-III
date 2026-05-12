@@ -592,9 +592,25 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3092811816058660921, guid: 7fec266a40d84a0539fe65a7449402b1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.18
+      objectReference: {fileID: 0}
     - target: {fileID: 3225029934434090317, guid: 7fec266a40d84a0539fe65a7449402b1, type: 3}
       propertyPath: m_Name
       value: light
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397026267883530126, guid: 7fec266a40d84a0539fe65a7449402b1, type: 3}
+      propertyPath: m_Range
+      value: 2.8755212
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397026267883530126, guid: 7fec266a40d84a0539fe65a7449402b1, type: 3}
+      propertyPath: m_Intensity
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397026267883530126, guid: 7fec266a40d84a0539fe65a7449402b1, type: 3}
+      propertyPath: m_BounceIntensity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

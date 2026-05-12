@@ -18,6 +18,7 @@ public class PlayerShooter : MonoBehaviour
 
     public event Action OnChargeStart;
     public event Action OnChargeEnd;
+    public event Action<float, float> OnChargeUpdate;
 
     private void Start() => PrepareArrow();
 
@@ -27,6 +28,12 @@ public class PlayerShooter : MonoBehaviour
         {
             isWaitingForReload = false;
             PrepareArrow();
+        }
+
+        if (isCharging)
+        {
+            float currentCharge = Time.time - chargeStartTime;
+            OnChargeUpdate?.Invoke(currentCharge, maxChargeTime);
         }
     }
 

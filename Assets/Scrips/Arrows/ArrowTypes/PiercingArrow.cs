@@ -15,29 +15,37 @@ public class PiercingArrow : Arrow
         hitTargets.Clear();
     }
 
-    protected override void OnTriggerEnter(Collider other)
+    protected override bool ProcessCollision(Collider other, Vector3 hitPoint)
     {
-        if (other.CompareTag("Wall"))
-        {
-            StickToTarget(other);
-            return;
-        }
-
-        if (other.CompareTag("Player")) return; 
+        if (other.CompareTag("Player") || other == col) return false; 
 
         IDamageable target = other.GetComponentInParent<IDamageable>();
         
-        if (target != null && !hitTargets.Contains(target))
+        if (other.CompareTag("Wall") || (!other.isTrigger && target == null))
         {
-            hitTargets.Add(target);
-            float multiplier = GetDamageMultiplier(other);
-            target.TakeDamage(damage * multiplier, damageType);
+            transform.position = hitPoint - transform.forward * (arrowLength - penetrationDepth);
+            StickToTarget(other);
+            return true;
+        }
+
+        if (target != null)
+        {
+            if (!hitTargets.Contains(target))
+            {
+                hitTargets.Add(target);
+                float multiplier = GetDamageMultiplier(other);
+                target.TakeDamage(damage * multiplier, damageType);
+            }
 
             if (!isFullyCharged)
             {
+                transform.position = hitPoint - transform.forward * (arrowLength - penetrationDepth);
                 StickToTarget(other);
+                return true;
             }
         }
+        
+        return false;
     }
 
     protected override void OnHit(Collider other) 

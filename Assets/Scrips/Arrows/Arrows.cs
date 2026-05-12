@@ -5,6 +5,8 @@ public abstract class Arrow : MonoBehaviour
     [HideInInspector] public ArrowPool Pool; 
     [SerializeField] protected float speed = 25f;
     [SerializeField] protected float stuckDuration = 15f; // Tiempo que pasa clavada antes de desaparecer
+    [SerializeField] protected float arrowLength = 1f; // Distancia desde el pivote (atrás) hasta la punta
+    [SerializeField] protected float penetrationDepth = 0.4f; // Cuánto se hunde la flecha al clavarse
     
     public abstract ArrowType type { get; }
     public abstract DamageType damageType { get; }
@@ -39,40 +41,27 @@ public abstract class Arrow : MonoBehaviour
                 transform.rotation = Quaternion.LookRotation(rb.linearVelocity);
             }
 
-            Vector3 direction = transform.position - lastPosition;
+            Vector3 tipOffset = transform.forward * arrowLength;
+            Vector3 lastTipPosition = lastPosition + tipOffset;
+            Vector3 currentTipPosition = transform.position + tipOffset;
+            
+            Vector3 direction = currentTipPosition - lastTipPosition;
             float distance = direction.magnitude;
 
             if (distance > 0.001f)
             {
                 // Usamos RaycastAll para ignorar el propio collider de la flecha
-                RaycastHit[] hits = Physics.RaycastAll(lastPosition, direction.normalized, distance, ~0, QueryTriggerInteraction.Collide);
+                RaycastHit[] hits = Physics.RaycastAll(lastTipPosition, direction.normalized, distance, ~0, QueryTriggerInteraction.Collide);
                 
-                bool foundHit = false;
-                RaycastHit closestHit = default;
-                float minDistance = float.MaxValue;
+                // Ordenamos los impactos por distancia para procesarlos de más cercano a más lejano
+                System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
 
                 foreach (RaycastHit hit in hits)
                 {
-                    if (hit.collider == col) continue; // Ignoramos la flecha en sí
-
-                    IDamageable target = hit.collider.GetComponentInParent<IDamageable>();
-                    if (target != null || hit.collider.CompareTag("Liquid") || hit.collider.CompareTag("Wall"))
+                    if (ProcessCollision(hit.collider, hit.point))
                     {
-                        if (hit.distance < minDistance)
-                        {
-                            minDistance = hit.distance;
-                            closestHit = hit;
-                            foundHit = true;
-                        }
+                        return;
                     }
-                }
-
-                if (foundHit)
-                {
-                    transform.position = closestHit.point;
-                    OnHit(closestHit.collider);
-                    StickToTarget(closestHit.collider);
-                    return;
                 }
             }
             lastPosition = transform.position;
@@ -83,17 +72,31 @@ public abstract class Arrow : MonoBehaviour
     {
         if (rb != null && rb.isKinematic) return;
 
-        IDamageable target = other.GetComponentInParent<IDamageable>();
+        Vector3 tipPosition = transform.position + transform.forward * arrowLength;
+        Vector3 hitPoint = other.ClosestPoint(tipPosition);
         
-        if (target != null || other.CompareTag("Liquid") || other.CompareTag("Wall"))
+        ProcessCollision(other, hitPoint);
+    }
+
+    // Retorna true si la flecha debe detenerse (clavarse), false si la ignora o la atraviesa
+    protected virtual bool ProcessCollision(Collider other, Vector3 hitPoint)
+    {
+        if (other.CompareTag("Player") || other == col) return false;
+
+        IDamageable target = other.GetComponentInParent<IDamageable>();
+        bool isConductive = other.GetComponent<ConductiveSurface>() != null;
+        
+        if (target != null || other.CompareTag("Liquid") || other.CompareTag("Wall") || !other.isTrigger || isConductive)
         {
-            // Si OnTriggerEnter salta tarde, forzamos la flecha a retroceder hasta la superficie de impacto
-            Vector3 hitPoint = other.ClosestPoint(lastPosition);
-            transform.position = hitPoint;
+            // Ajustamos la posición para que la punta quede en el punto de impacto, considerando la penetración
+            transform.position = hitPoint - transform.forward * (arrowLength - penetrationDepth);
 
             OnHit(other);
             StickToTarget(other);
+            return true;
         }
+
+        return false;
     }
 
     protected void StickToTarget(Collider other)

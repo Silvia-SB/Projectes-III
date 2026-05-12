@@ -22,7 +22,7 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable
         
         foreach (Collider c in colliders)
         {
-            c.isTrigger = false;
+            c.isTrigger = true;
         }
     }
 

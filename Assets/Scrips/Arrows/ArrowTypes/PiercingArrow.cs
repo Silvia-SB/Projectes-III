@@ -20,8 +20,15 @@ public class PiercingArrow : Arrow
         if (other.CompareTag("Player") || other == col) return false; 
 
         IDamageable target = other.GetComponentInParent<IDamageable>();
+        bool isConductive = other.GetComponent<ConductiveSurface>() != null;
         
-        if (other.CompareTag("Wall") || (!other.isTrigger && target == null))
+        if (other.CompareTag("Liquid") || other.CompareTag("Surface") || isConductive)
+        {
+            OnHit(other);
+            return false; // Continúa el vuelo a través del líquido/superficie
+        }
+
+        if (other.CompareTag("Wall") || other.CompareTag("Explosive"))
         {
             transform.position = hitPoint - transform.forward * (arrowLength - penetrationDepth);
             StickToTarget(other);

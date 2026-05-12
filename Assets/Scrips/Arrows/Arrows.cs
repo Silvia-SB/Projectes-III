@@ -4,9 +4,9 @@ public abstract class Arrow : MonoBehaviour
 {
     [HideInInspector] public ArrowPool Pool; 
     [SerializeField] protected float speed = 25f;
-    [SerializeField] protected float stuckDuration = 15f; // Tiempo que pasa clavada antes de desaparecer
-    [SerializeField] protected float arrowLength = 1f; // Distancia desde el pivote (atrás) hasta la punta
-    [SerializeField] protected float penetrationDepth = 0.4f; // Cuánto se hunde la flecha al clavarse
+    [SerializeField] protected float stuckDuration = 15f; //Tiempo que pasa clavada antes de desaparecer
+    [SerializeField] protected float arrowLength = 1f; //Distancia desde el pivote (atrás) hasta la punta
+    [SerializeField] protected float penetrationDepth = 0.4f;// Cuánto se hunde la flecha al clavarse
     
     public abstract ArrowType type { get; }
     public abstract DamageType damageType { get; }
@@ -86,7 +86,15 @@ public abstract class Arrow : MonoBehaviour
         IDamageable target = other.GetComponentInParent<IDamageable>();
         bool isConductive = other.GetComponent<ConductiveSurface>() != null;
         
-        if (target != null || other.CompareTag("Liquid") || other.CompareTag("Wall") || !other.isTrigger || isConductive)
+        // 1. Elementos que la flecha activa pero atraviesa (no se detiene)
+        if (other.CompareTag("Liquid") || other.CompareTag("Surface") || isConductive)
+        {
+            OnHit(other);
+            return false;
+        }
+
+        // 2. Elementos en los que la flecha sí debe clavarse
+        if (other.CompareTag("Wall") || other.CompareTag("Explosive") || target != null)
         {
             // Ajustamos la posición para que la punta quede en el punto de impacto, considerando la penetración
             transform.position = hitPoint - transform.forward * (arrowLength - penetrationDepth);

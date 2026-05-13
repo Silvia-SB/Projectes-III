@@ -9,6 +9,8 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private float maxChargeTime = 4f;
     [SerializeField] private ArrowType currentArrowType = ArrowType.Base;
+    [SerializeField] private Camera playerCamera; 
+    [SerializeField] private LayerMask aimLayerMask = ~0; 
 
     private Arrow currentArrowInstance;
     private float nextFireTime;
@@ -20,7 +22,11 @@ public class PlayerShooter : MonoBehaviour
     public event Action OnChargeEnd;
     public event Action<float, float> OnChargeUpdate;
 
-    private void Start() => PrepareArrow();
+    private void Start()
+    {
+        if (playerCamera == null) playerCamera = Camera.main;
+        PrepareArrow();
+    }
 
     private void Update()
     {
@@ -100,6 +106,25 @@ public class PlayerShooter : MonoBehaviour
         currentArrowInstance.isFullyCharged = chargePercent >= 1f;
 
         currentArrowInstance.transform.SetParent(null);
+
+        if (playerCamera != null)
+        {
+            Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            Vector3 targetPoint;
+
+            if (Physics.Raycast(ray, out RaycastHit hit, 1000f, aimLayerMask))
+            {
+                targetPoint = hit.point;
+            }
+            else
+            {
+                targetPoint = ray.GetPoint(100f); 
+            }
+
+            Vector3 shootDirection = (targetPoint - firePoint.position).normalized;
+            currentArrowInstance.transform.rotation = Quaternion.LookRotation(shootDirection);
+        }
+        
         Rigidbody rb = currentArrowInstance.GetComponent<Rigidbody>();
         if (rb != null) rb.isKinematic = false;
 

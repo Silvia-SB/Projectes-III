@@ -29,6 +29,18 @@ public class AttackState : IEnemyState
 
     public void Update()
     {
+        Vector3 lookDirection = enemyController.GetTarget().position - enemyController.transform.position;
+        lookDirection.y = 0f; 
+
+        if (lookDirection != Vector3.zero) 
+        {
+            enemyController.transform.rotation = Quaternion.Slerp(
+                enemyController.transform.rotation, 
+                Quaternion.LookRotation(lookDirection), 
+                Time.deltaTime * 5f 
+            );
+        }
+        
         if (EnemyType.Cuervo.Equals(enemyController.Config.type))
         {
             enemyController.PerformAttack();

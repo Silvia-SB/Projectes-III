@@ -93,7 +93,11 @@ public class EnemyController : MonoBehaviour, ISlowable
     public bool CanAttackTarget()
     {
         float distanceToTarget = Vector3.Distance(transform.position, target.position);
-        return distanceToTarget <= config.attackRange;
+        if(distanceToTarget > config.attackRange) return false;
+        
+        Vector3 directionToTarget = (target.position - transform.position).normalized;
+        float angleToTarget = Vector3.Angle(transform.forward, directionToTarget);
+        return angleToTarget <= 45f;
     }
     
     public void PerformAttack()

@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2582877304656549086, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4a6d228063cb61b42a4ae3e6368b5677, type: 2}
     - target: {fileID: 5765449040998843835, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
       propertyPath: hitboxGroups.Array.data[0].colliders.Array.size
       value: 1

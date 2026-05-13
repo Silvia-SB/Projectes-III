@@ -54,9 +54,18 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable
             meshRenderer.material.color = Color.red;
         }
         
-        foreach (Collider c in colliders)
+        for (int i = targets.Count - 1; i >= 0; i--) 
         {
-            c.isTrigger = true;
+            IDamageable target = targets[i];
+            
+            if (target is not MonoBehaviour obj || !obj.gameObject.activeInHierarchy) 
+            {
+                targets.RemoveAt(i);
+            } 
+            else 
+            {
+                target.TakeDamage(damage, damageType);
+            }
         }
     }
 
@@ -83,26 +92,28 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter(Collider other) 
     {
-        if (!isActive) return;
-        
         IDamageable target = other.GetComponentInParent<IDamageable>();
         
         if (target != null && !targets.Contains(target)) 
         {
             targets.Add(target);
-            target.TakeDamage(damage, damageType);
+            if (isActive) 
+            {
+                target.TakeDamage(damage, damageType);
+            }
         }
     }
 
     private void OnTriggerExit(Collider other) 
     {
-        if (!isActive) return;
-        
         IDamageable target = other.GetComponentInParent<IDamageable>();
         
         if (target != null && targets.Remove(target)) 
         {
-            target.TakeRecurrentDamage(damage, interval, ticksOnExit, damageType);
+            if (isActive) 
+            {
+                target.TakeRecurrentDamage(damage, interval, ticksOnExit, damageType);
+            }
         }
     }
 }

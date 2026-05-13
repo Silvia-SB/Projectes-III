@@ -14,6 +14,7 @@ public class EnemyZone : MonoBehaviour
         public int spawnCount;
         [HideInInspector] public float currentTimer; 
         [HideInInspector] public int totalSpawnedEnemies;
+
     }
 
     [SerializeField] private List<ZoneData> zoneData = new();
@@ -21,7 +22,7 @@ public class EnemyZone : MonoBehaviour
     private bool hasSpawned = false;
     private float spawnTimer;
     private Transform playerTransform;
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -71,7 +72,7 @@ public class EnemyZone : MonoBehaviour
     
                 if (enemy != null)
                 {
-                    Vector3 randomOffset = UnityEngine.Random.insideUnitSphere * 1.5f;
+                    Vector3 randomOffset = UnityEngine.Random.insideUnitSphere * 1f;
                     randomOffset.y = data.spawnPoint.position.y; 
 
                     enemy.transform.position = data.spawnPoint.position + randomOffset;

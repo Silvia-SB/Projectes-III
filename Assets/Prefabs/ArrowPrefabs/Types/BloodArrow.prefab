@@ -106,15 +106,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BloodArrow
   Pool: {fileID: 0}
-  speed: 25
+  speed: 20
   stuckDuration: 15
   arrowLength: 1
   penetrationDepth: 0.6
-  baseDamage: 15
-  maxDamage: 45
+  baseDamage: 10
+  innerDamage: 10
+  outerDamage: 5
   innerAoeRadius: 2
-  outerAoeRadius: 3
-  dotTicks: 15
+  outerAoeRadius: 4
+  dotTicks: 3
   dotInterval: 3
 --- !u!54 &7591157102281329915
 Rigidbody:

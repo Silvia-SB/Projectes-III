@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a5aafe5bd72c230b4e5ba43aabf4cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 100
+  maxHealth: 10
   currentHealth: 0
   OnDeath:
     m_PersistentCalls:
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b855487188cde9faedebc2a5291386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoulDropper
-  soulsToDrop: 10
+  soulsToDrop: 5
 --- !u!65 &3257827334893688918
 BoxCollider:
   m_ObjectHideFlags: 0

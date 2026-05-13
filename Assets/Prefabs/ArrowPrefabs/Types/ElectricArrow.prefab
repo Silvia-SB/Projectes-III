@@ -133,14 +133,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElectricArrow
   Pool: {fileID: 0}
-  speed: 25
+  speed: 20
   stuckDuration: 15
   arrowLength: 1
   penetrationDepth: 0.6
-  quickDamage: 10
-  aoeRadius: 4
-  chargedDamage: 25
-  knightMultiplier: 1.5
+  quickDamage: 30
+  aoeRadius: 3
+  chargedDamage: 50
+  knightMultiplier: 2.5
 --- !u!65 &8151015049065058229
 BoxCollider:
   m_ObjectHideFlags: 0

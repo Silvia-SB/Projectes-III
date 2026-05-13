@@ -8,7 +8,8 @@ public class BloodArrow : Arrow
     
     [Header("Hit damage")]
     [SerializeField] private float baseDamage = 5f;
-    [SerializeField] private float maxDamage = 30f;
+    [SerializeField] private float innerDamage= 10f;
+    [SerializeField] private float outerDamage = 30f;
     [SerializeField] private float innerAoeRadius = 2.5f;
     [SerializeField] private float outerAoeRadius = 5f;
 
@@ -51,9 +52,9 @@ public class BloodArrow : Arrow
             
             foreach (var kvp in minTargetDistances)
             {
-                float damageToApply = (kvp.Value <= innerAoeRadius) ? maxDamage : baseDamage;
+                float damageToApply = (kvp.Value <= innerAoeRadius) ? innerDamage:outerDamage;
                 kvp.Key.TakeDamage(damageToApply, damageType);
-                kvp.Key.TakeRecurrentDamage(baseDamage, dotInterval, dotTicks, damageType);
+                kvp.Key.TakeRecurrentDamage(damageToApply, dotInterval, dotTicks, damageType);
             }
         }
         else if (other != null && !other.CompareTag("Liquid")) 

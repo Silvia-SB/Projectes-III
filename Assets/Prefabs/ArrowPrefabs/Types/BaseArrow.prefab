@@ -133,12 +133,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaseArrow
   Pool: {fileID: 0}
-  speed: 35
+  speed: 20
   stuckDuration: 15
   arrowLength: 1
   penetrationDepth: 0.6
-  baseDamage: 5
-  maxDamage: 15
+  baseDamage: 10
+  maxDamage: 20
 --- !u!65 &5836165778724844095
 BoxCollider:
   m_ObjectHideFlags: 0

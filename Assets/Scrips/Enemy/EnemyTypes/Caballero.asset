@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad68a175890e9e4ea73f19cccc7647d, type: 3}
   m_Name: Caballero
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
+  type: 0
   speed: 1.2
   acceleration: 4
   angularSpeed: 120
   stoppingDistance: 2.5
   attackRange: 2.5
   radius: 0.8
+  maxChaseDistance: 45
   damage: 20
   damageInterval: 1
   targetOffsetRadius: 1
@@ -25,3 +27,6 @@ MonoBehaviour:
   destinationRefreshMax: 0.9
   isRanged: 0
   preferredDistance: 0
+  electricContagionDamage: 15
+  stunnedSpeed: 0.5
+  timeStunned: 5

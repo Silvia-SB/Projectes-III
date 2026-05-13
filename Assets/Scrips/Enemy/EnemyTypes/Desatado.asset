@@ -14,13 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
   type: 1
   speed: 4.5
-  stunnedSpeed: 0.5
-  timeStunned: 7
   acceleration: 15
-  angularSpeed: 420
+  angularSpeed: 200
   stoppingDistance: 2.5
   attackRange: 2.5
   radius: 0.45
+  maxChaseDistance: 45
   damage: 12
   damageInterval: 1
   targetOffsetRadius: 3
@@ -28,3 +27,6 @@ MonoBehaviour:
   destinationRefreshMax: 0.9
   isRanged: 0
   preferredDistance: 0
+  electricContagionDamage: 15
+  stunnedSpeed: 0.5
+  timeStunned: 7

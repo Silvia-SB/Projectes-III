@@ -8,7 +8,7 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] private Transform mPitchController;
 
     [Header("Configurable Variables")]
-    [SerializeField] private float rotationSpeed = 10.0f;
+    [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private bool invertPitch;
     [SerializeField] private float maxPitch = 85f;
     [SerializeField] private float minPitch = -85f;
@@ -18,21 +18,11 @@ public class PlayerLook : MonoBehaviour
     private float mYaw;  
     private float mPitch; 
     private Vector2 mLookDirection;
-
-    public void OnEnable()
-    {
-        SettingsMenuManager.OnSensibilityChanged += SetRotationSpeed;
-    }
-
-    public void OnDisable()
-    {
-        SettingsMenuManager.OnSensibilityChanged -= SetRotationSpeed;
-
-    }
+    
 
     void Start()
     {
-        rotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", rotationSpeed);
+        rotationSpeed = PlayerPrefs.GetFloat(SensitivityKey, rotationSpeed);
 
         mYaw = transform.eulerAngles.y;
 

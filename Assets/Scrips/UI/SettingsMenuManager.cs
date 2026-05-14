@@ -19,7 +19,6 @@ public class SettingsMenuManager : MonoBehaviour
     
     [Header("Sensibility Settings")]
     [SerializeField] private Slider sensitivitySlider;
-    public static event Action <float> OnSensibilityChanged;
     
     private Scene currentScene;
     
@@ -28,6 +27,8 @@ public class SettingsMenuManager : MonoBehaviour
     [SerializeField] private Image mainMenuImage;
     [SerializeField] private Image pauseMenuImage;
     
+    private const string SensitivityKey = "MouseSensitivity";
+
 
     public void OnEnable()
     {
@@ -36,10 +37,8 @@ public class SettingsMenuManager : MonoBehaviour
     
     private void Start()
     {
-        if (PlayerPrefs.HasKey("MouseSensitivity"))
-        {
-            sensitivitySlider.value = PlayerPrefs.GetFloat("MouseSensitivity");
-        }
+        float savedSensitivity = PlayerPrefs.GetFloat(SensitivityKey, sensitivitySlider.value);
+        sensitivitySlider.value = savedSensitivity;
     }
 
     public void ChangeGraphicsQuality()
@@ -64,10 +63,8 @@ public class SettingsMenuManager : MonoBehaviour
     {
         float value = sensitivitySlider.value;
 
-        PlayerPrefs.SetFloat("MouseSensitivity", value);
+        PlayerPrefs.SetFloat(SensitivityKey, value);
         PlayerPrefs.Save();
-
-        OnSensibilityChanged?.Invoke(value);
     }
     
     public void CloseSettingsMenu()

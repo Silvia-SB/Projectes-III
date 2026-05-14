@@ -11,6 +11,7 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private ArrowType currentArrowType = ArrowType.Base;
     [SerializeField] private Camera playerCamera; 
     [SerializeField] private LayerMask aimLayerMask = ~0; 
+    [SerializeField] private float minAimDistance = 2f;
 
     private Arrow currentArrowInstance;
     private float nextFireTime;
@@ -110,15 +111,18 @@ public class PlayerShooter : MonoBehaviour
         if (playerCamera != null)
         {
             Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            Vector3 targetPoint;
+            Vector3 targetPoint = ray.GetPoint(100f);
 
-            if (Physics.Raycast(ray, out RaycastHit hit, 1000f, aimLayerMask))
+            RaycastHit[] hits = Physics.RaycastAll(ray, 1000f, aimLayerMask);
+            System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+
+            foreach (RaycastHit hit in hits)
             {
-                targetPoint = hit.point;
-            }
-            else
-            {
-                targetPoint = ray.GetPoint(100f); 
+                if (hit.distance >= minAimDistance)
+                {
+                    targetPoint = hit.point;
+                    break;
+                }
             }
 
             Vector3 shootDirection = (targetPoint - firePoint.position).normalized;

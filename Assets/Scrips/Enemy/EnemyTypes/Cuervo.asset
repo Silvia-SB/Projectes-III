@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Cuervo
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
   type: 4
-  speed: 4
+  speed: 6
   acceleration: 8
   angularSpeed: 240
   stoppingDistance: 1
   attackRange: 1
   radius: 0.5
-  maxChaseDistance: 45
+  maxChaseDistance: 100
   damage: 10
   damageInterval: 3
   targetOffsetRadius: 2.5

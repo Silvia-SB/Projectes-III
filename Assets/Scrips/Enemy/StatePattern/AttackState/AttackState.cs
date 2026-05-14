@@ -14,7 +14,7 @@ public class AttackState : IEnemyState
     }
     public void Enter()
     {
-        /*var agent = enemyController.GetNavMeshAgent();
+        var agent = enemyController.GetNavMeshAgent();
 
         if (agent.isActiveAndEnabled && agent.isOnNavMesh)
         {
@@ -22,9 +22,8 @@ public class AttackState : IEnemyState
             agent.velocity = Vector3.zero;
             agent.ResetPath();
         }
-*/
+
         recurrentTimer = enemyController.GetDamageInterval();
-        //enemyController.PerformAttack();
     }
 
     public void Update()

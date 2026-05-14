@@ -33,6 +33,14 @@ public class SettingsMenuManager : MonoBehaviour
     {
         currentScene = SceneManager.GetActiveScene();
     }
+    
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("MouseSensitivity"))
+        {
+            sensitivitySlider.value = PlayerPrefs.GetFloat("MouseSensitivity");
+        }
+    }
 
     public void ChangeGraphicsQuality()
     {
@@ -54,7 +62,12 @@ public class SettingsMenuManager : MonoBehaviour
 
     public void ChangeSensibility()
     {
-        OnSensibilityChanged?.Invoke(sensitivitySlider.value);
+        float value = sensitivitySlider.value;
+
+        PlayerPrefs.SetFloat("MouseSensitivity", value);
+        PlayerPrefs.Save();
+
+        OnSensibilityChanged?.Invoke(value);
     }
     
     public void CloseSettingsMenu()

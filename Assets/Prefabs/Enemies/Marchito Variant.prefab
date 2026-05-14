@@ -132,6 +132,10 @@ PrefabInstance:
       propertyPath: m_BaseOffset
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6166795719175101195, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
+      propertyPath: avoidancePriority
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 6677880542308118883, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -297,7 +301,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2863499797565249973}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

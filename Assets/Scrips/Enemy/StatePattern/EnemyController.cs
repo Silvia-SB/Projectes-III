@@ -104,6 +104,7 @@ public class EnemyController : MonoBehaviour, ISlowable
     {
         if (EnemyType.Cuervo.Equals(config.type))
         {
+            Debug.Log("Cuervo");
             stateMachine.TransitionTo(stateMachine.DeathState);
             enemyAttack.MeleeAttack(target, attackDamageType, config.damage);
             

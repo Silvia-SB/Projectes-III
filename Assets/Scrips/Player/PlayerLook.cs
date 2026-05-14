@@ -13,6 +13,8 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] private float maxPitch = 85f;
     [SerializeField] private float minPitch = -85f;
 
+    private const string SensitivityKey = "MouseSensitivity";
+
     private float mYaw;  
     private float mPitch; 
     private Vector2 mLookDirection;
@@ -30,9 +32,14 @@ public class PlayerLook : MonoBehaviour
 
     void Start()
     {
-        mYaw = transform.eulerAngles.y; 
-        if (mPitchController != null) mPitch = mPitchController.localEulerAngles.x; 
-        Cursor.lockState = CursorLockMode.Locked; 
+        rotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", rotationSpeed);
+
+        mYaw = transform.eulerAngles.y;
+
+        if (mPitchController != null)
+            mPitch = mPitchController.localEulerAngles.x;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()

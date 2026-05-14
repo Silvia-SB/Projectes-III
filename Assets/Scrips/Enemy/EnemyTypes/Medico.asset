@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: Medico
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
   type: 3
-  speed: 2.2
-  acceleration: 7
-  angularSpeed: 220
-  stoppingDistance: 6
-  attackRange: 12
-  radius: 0.45
+  speed: 2
+  acceleration: 8
+  angularSpeed: 360
+  stoppingDistance: 0.5
+  attackRange: 8
+  radius: 0.5
   maxChaseDistance: 45
   damage: 6
   damageInterval: 5
-  targetOffsetRadius: 2
-  destinationRefreshMin: 0.35
+  targetOffsetRadius: 0
+  destinationRefreshMin: 0.5
   destinationRefreshMax: 0.9
   isRanged: 1
-  preferredDistance: 8
+  preferredDistance: 6
   electricContagionDamage: 15
   stunnedSpeed: 0.5
   timeStunned: 3

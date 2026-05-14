@@ -86,6 +86,7 @@ public class EnemyController : MonoBehaviour, ISlowable
         navMeshAgent.angularSpeed = config.angularSpeed;
         navMeshAgent.stoppingDistance = config.stoppingDistance;
         navMeshAgent.radius = config.radius;
+        navMeshAgent.updateRotation = !config.isRanged;
 
         enemyMovement.Configure(config);
     }
@@ -94,7 +95,7 @@ public class EnemyController : MonoBehaviour, ISlowable
     {
         float distanceToTarget = Vector3.Distance(transform.position, target.position);
         if(distanceToTarget > config.attackRange) return false;
-        
+        if(config.isRanged) return true;
         Vector3 directionToTarget = (target.position - transform.position).normalized;
         float angleToTarget = Vector3.Angle(transform.forward, directionToTarget);
         return angleToTarget <= 45f;

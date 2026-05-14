@@ -64,5 +64,13 @@ public class AttackState : IEnemyState
     public void Exit()
     {
         recurrentTimer = 0f;
+
+        var agent = enemyController.GetNavMeshAgent();
+
+        if (agent != null && agent.isActiveAndEnabled && agent.isOnNavMesh)
+        {
+            agent.isStopped = false;
+            agent.velocity = Vector3.zero;
+        }
     }
 }

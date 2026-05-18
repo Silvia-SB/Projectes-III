@@ -62,6 +62,12 @@ public class ExplosiveObject : Health
             {
                 target.TakeDamage(instantDamage, damageType);
                 target.TakeRecurrentDamage(dotAmount, dotInterval, dotTicks, damageType);
+
+                HeadBobController headBob = col.GetComponentInParent<HeadBobController>();
+                if (headBob != null)
+                {
+                    headBob.TriggerExplosionShake();
+                }
             }
         }
     }

@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 7469301177835586816}
   - component: {fileID: 2489017004968937989}
   - component: {fileID: 2424066731286731188}
+  - component: {fileID: 7286321258382669294}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -233,7 +234,7 @@ MonoBehaviour:
   jumpSpeed: 3
   stunnedSpeed: 2
   stunnedDuration: 3
-  playerShooter: {fileID: 0}
+  playerShooter: {fileID: 8412333504912581657}
   chargeSpeedMultiplier: 0.5
 --- !u!114 &7954406729464564383
 MonoBehaviour:
@@ -482,11 +483,12 @@ MonoBehaviour:
   fireRate: 1
   maxChargeTime: 1
   currentArrowType: 0
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 6371337682864297730}
   aimLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
   minAimDistance: 2
+  crosshair: {fileID: 0}
 --- !u!114 &7469301177835586816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,6 +539,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dcc4d3b804c2d02eb33519eca900feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatusEffectManager
+--- !u!114 &7286321258382669294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2636149956801692309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5f8d8840a2f11858bbd0471a3266d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeadBobController
+  playerMovement: {fileID: 1462122047374136856}
+  cameraTransform: {fileID: 6567033776697428958}
+  walkBobSpeed: 14
+  walkBobAmount: 0.01
+  sprintBobSpeed: 18
+  sprintBobAmount: 0.02
+  aimBobSpeedMultiplier: 0.5
+  aimBobAmountMultiplier: 0.2
+  explosionShakeDuration: 1
+  explosionShakeIntensity: 0.001
+  explosionRotationMultiplier: 100
+  walkTiltAmount: 0.5
+  sprintTiltAmount: 1.1
 --- !u!1 &6995459615907193826
 GameObject:
   m_ObjectHideFlags: 0

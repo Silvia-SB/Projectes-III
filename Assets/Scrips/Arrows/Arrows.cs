@@ -7,6 +7,7 @@ public abstract class Arrow : MonoBehaviour
     [SerializeField] protected float stuckDuration = 15f; //Tiempo que pasa clavada antes de desaparecer
     [SerializeField] protected float arrowLength = 1f; //Distancia desde el pivote (atrás) hasta la punta
     [SerializeField] protected float penetrationDepth = 0.4f;// Cuánto se hunde la flecha al clavarse
+    [SerializeField] protected TrailRenderer trailRenderer;
     
     public abstract ArrowType type { get; }
     public abstract DamageType damageType { get; }
@@ -29,7 +30,13 @@ public abstract class Arrow : MonoBehaviour
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         rb.AddForce(transform.forward * speed, ForceMode.Impulse);
         lastPosition = transform.position;
-            Invoke(nameof(ReturnToPool), 10f);
+
+        if (trailRenderer != null)
+        {
+            trailRenderer.Clear();
+            trailRenderer.emitting = true;
+        }
+        Invoke(nameof(ReturnToPool), 10f);
     }
 
     protected virtual void FixedUpdate()
@@ -114,6 +121,11 @@ public abstract class Arrow : MonoBehaviour
         if (rb.collisionDetectionMode != CollisionDetectionMode.Discrete) rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
         rb.isKinematic = true;
         if (col != null) col.enabled = false;
+        
+        if (trailRenderer != null)
+        {
+            trailRenderer.emitting = false;
+        }
         transform.SetParent(other.transform, true);
 
         Invoke(nameof(ReturnToPool), stuckDuration); 
@@ -138,6 +150,12 @@ public abstract class Arrow : MonoBehaviour
         CancelInvoke();
         gameObject.SetActive(false);
         if (rb != null && rb.collisionDetectionMode != CollisionDetectionMode.Discrete) rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
+
+        if (trailRenderer != null)
+        {
+            trailRenderer.emitting = false;
+            trailRenderer.Clear();
+        }
         if (Pool != null) transform.SetParent(Pool.transform);
         if (Pool != null) Pool.ReturnToPool(this);
     }

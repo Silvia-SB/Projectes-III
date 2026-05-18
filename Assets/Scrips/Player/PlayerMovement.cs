@@ -21,10 +21,15 @@ public class PlayerMovement : MonoBehaviour, ISlowable
     private Vector2 mDirection;
     private float mVerticalSpeed;
     private bool isSprinting;
-    private bool IsGrounded;
     private bool isSlowed;
     private float slowTimer;
     private bool isChargingArrow;
+
+    public CharacterController Controller => controller;
+    public bool IsGrounded { get; private set; }
+    public bool IsSprinting => isSprinting;
+    public bool IsSlowed => isSlowed;
+    public bool IsChargingArrow => isChargingArrow;
 
     private void Awake()
     {

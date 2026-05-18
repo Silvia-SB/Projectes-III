@@ -12,12 +12,14 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private Camera playerCamera; 
     [SerializeField] private LayerMask aimLayerMask = ~0; 
     [SerializeField] private float minAimDistance = 2f;
+    [SerializeField] private GameObject crosshair;
 
     private Arrow currentArrowInstance;
     private float nextFireTime;
     private bool isWaitingForReload;
     private bool isCharging;
     private float chargeStartTime;
+    private bool isFireButtonHeld;
 
     public event Action OnChargeStart;
     public event Action OnChargeEnd;
@@ -35,6 +37,11 @@ public class PlayerShooter : MonoBehaviour
         {
             isWaitingForReload = false;
             PrepareArrow();
+
+            if (isFireButtonHeld && !isCharging)
+            {
+                StartCharging();
+            }
         }
 
         if (isCharging)
@@ -46,37 +53,57 @@ public class PlayerShooter : MonoBehaviour
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-        if (context.started && !isWaitingForReload && Time.time >= nextFireTime && currentArrowInstance != null)
+        if (context.started)
         {
-            if (!CanAffordArrow(currentArrowType))
+            isFireButtonHeld = true;
+            if (!isWaitingForReload && Time.time >= nextFireTime && currentArrowInstance != null && !isCharging)
             {
-                ChangeArrowType(ArrowType.Base);
-                return;
+                StartCharging();
             }
-            chargeStartTime = Time.time;
-            isCharging = true; 
-            OnChargeStart?.Invoke();
         }
-        else if (context.canceled && isCharging && currentArrowInstance != null)
+        else if (context.canceled)
         {
-            isCharging = false; 
-            OnChargeEnd?.Invoke();
-            float chargePercent = Mathf.Clamp01((Time.time - chargeStartTime) / maxChargeTime);
-            Shoot(chargePercent);
+            isFireButtonHeld = false;
+            if (isCharging && currentArrowInstance != null)
+            {
+                isCharging = false; 
+                OnChargeEnd?.Invoke();
+                float chargePercent = Mathf.Clamp01((Time.time - chargeStartTime) / maxChargeTime);
+                Shoot(chargePercent);
+            }
+            
+            if (crosshair != null) crosshair.SetActive(false);
         }
+    }
+
+    private void StartCharging()
+    {
+        if (!CanAffordArrow(currentArrowType))
+        {
+            ChangeArrowType(ArrowType.Base);
+            return;
+        }
+        chargeStartTime = Time.time;
+        isCharging = true; 
+        OnChargeStart?.Invoke();
+        if (crosshair != null) crosshair.SetActive(true);
     }
 
     public void OnSelectBase(InputAction.CallbackContext context)
     {
-        if (context.performed && currentArrowType != ArrowType.Base) ChangeArrowType(ArrowType.Base);
+        if (context.performed && currentArrowType != ArrowType.Base) 
+        {
+            ChangeArrowType(ArrowType.Base);
+        }
     }
 
     public void OnSelectBlood(InputAction.CallbackContext context)
     {
         if (context.performed && currentArrowType != ArrowType.Blood) 
         {
-            if (CanAffordArrow(ArrowType.Blood))
+            if (CanAffordArrow(ArrowType.Blood)){
                 ChangeArrowType(ArrowType.Blood);
+            }
         }
     }
 
@@ -84,8 +111,9 @@ public class PlayerShooter : MonoBehaviour
     {
         if (context.performed && currentArrowType != ArrowType.Piercing) 
         {
-            if (CanAffordArrow(ArrowType.Piercing))
+            if (CanAffordArrow(ArrowType.Piercing)){
                 ChangeArrowType(ArrowType.Piercing);
+            }
         }
     }
 
@@ -93,8 +121,9 @@ public class PlayerShooter : MonoBehaviour
     {
         if (context.performed && currentArrowType != ArrowType.Electric) 
         {
-            if (CanAffordArrow(ArrowType.Electric))
+            if (CanAffordArrow(ArrowType.Electric)){
                 ChangeArrowType(ArrowType.Electric);
+            }
         }
     }
 
@@ -176,7 +205,15 @@ public class PlayerShooter : MonoBehaviour
             currentArrowInstance = null;
         }
 
+        if (isCharging)
+        {
+            isCharging = false;
+            OnChargeEnd?.Invoke();
+            if (crosshair != null && !isFireButtonHeld) crosshair.SetActive(false);
+        }
+
         currentArrowType = newType;
-        if (!isWaitingForReload) PrepareArrow();
+        nextFireTime = Time.time + fireRate;
+        isWaitingForReload = true;
     }
 }

@@ -54,6 +54,19 @@ public class EnemyController : MonoBehaviour, ISlowable
             health.OnDeath.RemoveListener(OnEnemyDeath);
         }
     }
+    
+    private void ApplyConfig()
+    {
+        if (config.isRanged) navMeshAgent.isStopped = true;
+        navMeshAgent.speed = config.speed;
+        navMeshAgent.acceleration = config.acceleration;
+        navMeshAgent.angularSpeed = config.angularSpeed;
+        navMeshAgent.stoppingDistance = config.stoppingDistance;
+        navMeshAgent.radius = config.radius;
+        navMeshAgent.updateRotation = !config.isRanged;
+
+        enemyMovement.Configure(config);
+    }
 
     private void OnEnemyDeath()
     {
@@ -77,18 +90,6 @@ public class EnemyController : MonoBehaviour, ISlowable
 
         if (stateMachine == null || stateMachine.CurrentState == null) return;
         stateMachine.Update();  
-    }
-    
-    private void ApplyConfig()
-    {
-        navMeshAgent.speed = config.speed;
-        navMeshAgent.acceleration = config.acceleration;
-        navMeshAgent.angularSpeed = config.angularSpeed;
-        navMeshAgent.stoppingDistance = config.stoppingDistance;
-        navMeshAgent.radius = config.radius;
-        navMeshAgent.updateRotation = !config.isRanged;
-
-        enemyMovement.Configure(config);
     }
     
     public bool CanAttackTarget()

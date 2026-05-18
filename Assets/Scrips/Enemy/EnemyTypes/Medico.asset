@@ -21,12 +21,21 @@ MonoBehaviour:
   radius: 0.5
   maxChaseDistance: 100
   damage: 6
-  damageInterval: 25
+  damageInterval: 20
   targetOffsetRadius: 0
   destinationRefreshMin: 0.5
   destinationRefreshMax: 0.9
   isRanged: 1
-  preferredDistance: 6
+  rangedMinDistance: 1.5
+  rangedMaxDistance: 10
+  rangedTeleportMinDistance: 2
+  rangedTeleportMaxDistance: 8
+  rangedTeleportCooldown: 1.5
+  rangedTeleportNavMesh: 3
+  rangedTeleportAttempts: 20
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 768
   electricContagionDamage: 15
   stunnedSpeed: 0.5
   timeStunned: 3

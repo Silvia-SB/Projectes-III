@@ -28,9 +28,20 @@ public class EnemyConfig : ScriptableObject
     public float destinationRefreshMin = 0.35f;
     public float destinationRefreshMax = 0.9f;
 
-    [Header("Behaviour")]
+    [Header("Doctor")] 
     public bool isRanged;
-    public float preferredDistance = 0f;
+    
+    [Header("Teleport Range")]
+    public float rangedMinDistance = 4f;
+    public float rangedMaxDistance = 14f;
+    
+    [Header("Teleport Area")]
+    public float rangedTeleportMinDistance = 7f;
+    public float rangedTeleportMaxDistance = 11f;
+    public float rangedTeleportCooldown = 1.5f;
+    public float rangedTeleportNavMesh = 3f; //NavMesh radius
+    public int rangedTeleportAttempts = 20;
+    public LayerMask obstacleMask;
 
     [Header("Electric Status")]
     public float electricContagionDamage = 15f; 

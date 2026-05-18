@@ -18,14 +18,6 @@ public class ChaseState : IEnemyState
 
     public void Update()
     {
-        if (EnemyType.Cuervo.Equals(enemyController.Config.type))
-        {
-            enemyController.GetNavMeshAgent().SetDestination(enemyController.GetTarget().position);
-            if (enemyController.CanAttackTarget())
-            {
-                stateMachine.TransitionTo(stateMachine.AttackState);
-            }
-        }
         if (enemyController.CanAttackTarget())
         {
             stateMachine.TransitionTo(stateMachine.AttackState);

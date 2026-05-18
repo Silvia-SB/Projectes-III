@@ -10,6 +10,7 @@ public class EnemyConfig : ScriptableObject
 
     [Header("Movement")]
     public float speed = 2f;
+    public float chaseSpeedMultiplier = 1.5f;
 
     public float acceleration = 8f;
     public float angularSpeed = 240f;
@@ -35,7 +36,7 @@ public class EnemyConfig : ScriptableObject
     public float rangedMinDistance = 4f;
     public float rangedMaxDistance = 14f;
     
-    [Header("Teleport Area")]
+    [Header("Teleport Area")]// chaman teleportation area configuration
     public float rangedTeleportMinDistance = 7f;
     public float rangedTeleportMaxDistance = 11f;
     public float rangedTeleportCooldown = 1.5f;

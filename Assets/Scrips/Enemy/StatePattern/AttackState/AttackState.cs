@@ -66,10 +66,11 @@ public class AttackState : IEnemyState
         recurrentTimer = 0f;
 
         var agent = enemyController.GetNavMeshAgent();
-
+        
         if (agent != null && agent.isActiveAndEnabled && agent.isOnNavMesh)
         {
-            agent.isStopped = false;
+            if (!EnemyType.Medico.Equals(enemyController.Config.type)) agent.isStopped = false;
+            
             agent.velocity = Vector3.zero;
         }
     }

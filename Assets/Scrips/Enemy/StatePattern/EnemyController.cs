@@ -132,4 +132,9 @@ public class EnemyController : MonoBehaviour, ISlowable
         slowTimer = config.timeStunned;
         isSlowed = true;
     }
+    public void increaseVelocity()
+    {
+        navMeshAgent.speed = config.speed * config.chaseSpeedMultiplier;
+
+    }
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2724582592067040163
+--- !u!114 &-8282752089501381143
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: viga_madera
+  m_Name: puerta_v1
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -42,11 +42,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 787c622bf050b8f4e98e64a685d5508b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6f1babf091159784886adf219471026b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: f517fa2b468beb34b9368a8aa57dfcaa, type: 3}
+        m_Texture: {fileID: 2800000, guid: aeda02d69b6b9a34bbf938cd26cb606e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -66,15 +66,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 787c622bf050b8f4e98e64a685d5508b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6f1babf091159784886adf219471026b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 931f9ada48d805f42ba8b39f86d111bb, type: 3}
+        m_Texture: {fileID: 2800000, guid: f666d7472ed12c14a913aca9dc8b3994, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 5a628287294197646a68e3a33e49b8b0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7361026827459e047b848d3d09c60519, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

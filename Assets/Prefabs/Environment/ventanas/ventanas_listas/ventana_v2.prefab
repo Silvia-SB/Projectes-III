@@ -1,0 +1,1860 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4730960679560682892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8440265328220045418}
+  m_Layer: 0
+  m_Name: ventana_v2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8440265328220045418
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4730960679560682892}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3852333235533661513}
+  - {fileID: 3681752188706595439}
+  - {fileID: 4313249953805583339}
+  - {fileID: 5765369064584266764}
+  - {fileID: 942858881983201629}
+  - {fileID: 5104837028763297007}
+  - {fileID: 6483925371666251049}
+  - {fileID: 7527118909689551390}
+  - {fileID: 4701209564290103916}
+  - {fileID: 6187379632398785366}
+  - {fileID: 4084383442112080157}
+  - {fileID: 2685950625057320302}
+  - {fileID: 5321551905164610627}
+  - {fileID: 1866998451751643034}
+  - {fileID: 6975062246648779649}
+  - {fileID: 7572627907929167581}
+  - {fileID: 2988346542419046090}
+  - {fileID: 7111189458665352880}
+  - {fileID: 9001418419610872338}
+  - {fileID: 6034337337662187672}
+  - {fileID: 2526592046924533945}
+  - {fileID: 8513855756240699168}
+  - {fileID: 5535035693329026815}
+  - {fileID: 943226359313308922}
+  - {fileID: 5242393450833981735}
+  - {fileID: 1884649227602980265}
+  - {fileID: 3057361026865979363}
+  - {fileID: 4386298708936002911}
+  - {fileID: 3743304039673944525}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &212568098027179935
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.156
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &4386298708936002911 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 212568098027179935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &430040001113375019
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.165
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &4313249953805583339 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 430040001113375019}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &469174777728003037
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8486
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &4084383442112080157 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 469174777728003037}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &951461267774677167
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.205
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &3681752188706595439 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 951461267774677167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &999396491180366605
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.118
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &3743304039673944525 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 999396491180366605}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1459622883581451555
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.193
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &3057361026865979363 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 1459622883581451555}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1681196951493176330
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.604
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &2988346542419046090 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 1681196951493176330}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1975421332801236910
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.808
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &2685950625057320302 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 1975421332801236910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2106612551119573625
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.451
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &2526592046924533945 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 2106612551119573625}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2597429764950224745
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.239
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &1884649227602980265 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 2597429764950224745}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2865586595690669402
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.726
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &1866998451751643034 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 2865586595690669402}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3691201035179738013
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.0844
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0049
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &942858881983201629 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 3691201035179738013}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3691669117958921786
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.326
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &943226359313308922 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 3691669117958921786}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4811819935893252306
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.529
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &9001418419610872338 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 4811819935893252306}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5191304924846833120
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &8513855756240699168 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 5191304924846833120}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6222215621706569950
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9668
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &7527118909689551390 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 6222215621706569950}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6285637587567432733
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.644
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &7572627907929167581 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 6285637587567432733}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6673340424907598960
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.563
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &7111189458665352880 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 6673340424907598960}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6836487087133430081
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.686
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &6975062246648779649 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 6836487087133430081}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7482718845393715177
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &6483925371666251049 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 7482718845393715177}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7778154294871775638
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.889
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &6187379632398785366 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 7778154294871775638}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7895433805687958104
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.489
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &6034337337662187672 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 7895433805687958104}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7939501439851513548
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1231
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0049
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &5765369064584266764 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 7939501439851513548}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8107264859480567584
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 5040925210198600297, guid: 2db67231cedbdfb45925802c2eb44648, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040925210198600297, guid: 2db67231cedbdfb45925802c2eb44648, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040925210198600297, guid: 2db67231cedbdfb45925802c2eb44648, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040925210198600297, guid: 2db67231cedbdfb45925802c2eb44648, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040925210198600297, guid: 2db67231cedbdfb45925802c2eb44648, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040925210198600297, guid: 2db67231cedbdfb45925802c2eb44648, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040925210198600297, guid: 2db67231cedbdfb45925802c2eb44648, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040925210198600297, guid: 2db67231cedbdfb45925802c2eb44648, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040925210198600297, guid: 2db67231cedbdfb45925802c2eb44648, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040925210198600297, guid: 2db67231cedbdfb45925802c2eb44648, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 5674296291539202259, guid: 2db67231cedbdfb45925802c2eb44648, type: 3}
+      propertyPath: m_Name
+      value: ventana_madera_v2_LOW (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2db67231cedbdfb45925802c2eb44648, type: 3}
+--- !u!4 &3852333235533661513 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5040925210198600297, guid: 2db67231cedbdfb45925802c2eb44648, type: 3}
+  m_PrefabInstance: {fileID: 8107264859480567584}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8285522993709517887
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.369
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &5535035693329026815 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 8285522993709517887}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8569448430354838503
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.282
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &5242393450833981735 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 8569448430354838503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8643957600858984067
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.768
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &5321551905164610627 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 8643957600858984067}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8715719665402078767
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.0473
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0049
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &5104837028763297007 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 8715719665402078767}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &9156521525668559020
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8440265328220045418}
+    m_Modifications:
+    - target: {fileID: 3848222854570006650, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_Name
+      value: liston_madera_ventanas_LOW (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9303
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+--- !u!4 &4701209564290103916 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4480082038906356416, guid: 773c3d9f7f3c40c4d9cd9c8af0222419, type: 3}
+  m_PrefabInstance: {fileID: 9156521525668559020}
+  m_PrefabAsset: {fileID: 0}

@@ -91,6 +91,7 @@ public abstract class Arrow : MonoBehaviour
         if (other.CompareTag("Player") || other == col) return false;
 
         IDamageable target = other.GetComponentInParent<IDamageable>();
+        IArrowInteractable interactable = other.GetComponentInParent<IArrowInteractable>();
         bool isConductive = other.GetComponent<ConductiveSurface>() != null;
         
         // 1. Elementos que la flecha activa pero atraviesa (no se detiene)
@@ -101,12 +102,13 @@ public abstract class Arrow : MonoBehaviour
         }
 
         // 2. Elementos en los que la flecha sí debe clavarse
-        if (other.CompareTag("Wall") || other.CompareTag("Explosive") || target != null)
+        if (other.CompareTag("Wall") || other.CompareTag("Explosive") || target != null || interactable != null)
         {
             // Ajustamos la posición para que la punta quede en el punto de impacto, considerando la penetración
             transform.position = hitPoint - transform.forward * (arrowLength - penetrationDepth);
 
             OnHit(other);
+            if (interactable != null) interactable.OnArrowHit(this);
             StickToTarget(other);
             return true;
         }

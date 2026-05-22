@@ -148,13 +148,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6783574212443565757, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4756694626591974488}
-    - targetCorrespondingSourceObject: {fileID: 6783574212443565757, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1174612367492111800}
     - targetCorrespondingSourceObject: {fileID: 6783574212443565757, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6728726896958874383}
+    - targetCorrespondingSourceObject: {fileID: 6783574212443565757, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6119940224122485114}
   m_SourcePrefab: {fileID: 100100000, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
 --- !u!136 &528537371984147246 stripped
 CapsuleCollider:
@@ -207,26 +207,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6783574212443565757, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
   m_PrefabInstance: {fileID: 692625405019601850}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4756694626591974488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6320991111219795207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9a5aafe5bd72c230b4e5ba43aabf4cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 30
-  currentHealth: 0
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  mainRenderer: {fileID: 0}
-  damageColor: {r: 1, g: 0, b: 0, a: 1}
-  soulsToDrop: 15
 --- !u!114 &1174612367492111800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +247,49 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &6119940224122485114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6320991111219795207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb5107f1a559a4ba84a165503e88c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WildEnemyHealth
+  maxHealth: 30
+  currentHealth: 0
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6502554431629200498}
+        m_TargetAssemblyTypeName: EnemyController, Assembly-CSharp
+        m_MethodName: increaseVelocity
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  mainRenderer: {fileID: 0}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  soulsToDrop: 15
+--- !u!114 &6502554431629200498 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6026104302223505352, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}
+  m_PrefabInstance: {fileID: 692625405019601850}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6320991111219795207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fa253e18ea80d4c84812db55510279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieController
 --- !u!136 &6691503803536800420 stripped
 CapsuleCollider:
   m_CorrespondingSourceObject: {fileID: 6142993881067077918, guid: 122fbe440b6b34344953be0aabc997ad, type: 3}

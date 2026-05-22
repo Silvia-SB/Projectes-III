@@ -8,6 +8,11 @@ public class ChargeBarUI : MonoBehaviour
 
     [Header("UI References")]
     [SerializeField] private Slider chargeSlider;
+    [SerializeField] private Image fillImage;
+
+    [Header("Colors")]
+    [SerializeField] private Color chargingColor = Color.red;
+    [SerializeField] private Color readyColor = Color.green;
 
     private void Awake()
     {
@@ -24,6 +29,7 @@ public class ChargeBarUI : MonoBehaviour
             playerShooter.OnChargeStart += Show;
             playerShooter.OnChargeUpdate += UpdateCharge;
             playerShooter.OnChargeEnd += Hide;
+            playerShooter.OnMinChargeReached += HandleMinChargeReached;
         }
     }
 
@@ -34,6 +40,7 @@ public class ChargeBarUI : MonoBehaviour
             playerShooter.OnChargeStart -= Show;
             playerShooter.OnChargeUpdate -= UpdateCharge;
             playerShooter.OnChargeEnd -= Hide;
+            playerShooter.OnMinChargeReached -= HandleMinChargeReached;
         }
     }
 
@@ -51,6 +58,12 @@ public class ChargeBarUI : MonoBehaviour
     public void Show()
     {
         if (chargeSlider != null) chargeSlider.gameObject.SetActive(true);
+        if (fillImage != null) fillImage.color = chargingColor;
+    }
+
+    private void HandleMinChargeReached()
+    {
+        if (fillImage != null) fillImage.color = readyColor;
     }
 
     public void Hide()

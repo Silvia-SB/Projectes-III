@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d04dd39701aac41942bae5704d20ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  maxSpeed: 4
+  maxSpeed: 8
   sprintMultiplier: 1.2
   jumpSpeed: 3
   stunnedSpeed: 2
@@ -481,14 +481,16 @@ MonoBehaviour:
   arrowPool: {fileID: 0}
   firePoint: {fileID: 3219722898466904694}
   fireRate: 1
-  maxChargeTime: 1
+  minChargeTime: 0.2
+  fullChargeTime: 2
+  minShootVelocity: 20
+  maxShootVelocity: 40
   currentArrowType: 0
   playerCamera: {fileID: 6371337682864297730}
   aimLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
   minAimDistance: 2
-  crosshair: {fileID: 0}
 --- !u!114 &7469301177835586816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,8 +520,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a9948354780c44289d69cac6b38a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHealth: 100
-  currentHealth: 0
+  maxHealth: 1.236135e+9
+  currentHealth: 1.2361348e+9
   OnDeath:
     m_PersistentCalls:
       m_Calls: []

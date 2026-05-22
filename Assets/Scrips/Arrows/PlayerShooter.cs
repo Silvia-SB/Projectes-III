@@ -7,12 +7,14 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private ArrowPool arrowPool;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float fireRate = 0.5f;
-    [SerializeField] private float maxChargeTime = 4f;
+    [SerializeField] private float minChargeTime = 1f;
+    [SerializeField] private float fullChargeTime = 4f;
+    [SerializeField] private float minShootVelocity = 25f;
+    [SerializeField] private float maxShootVelocity = 60f;
     [SerializeField] private ArrowType currentArrowType = ArrowType.Base;
     [SerializeField] private Camera playerCamera; 
     [SerializeField] private LayerMask aimLayerMask = ~0; 
     [SerializeField] private float minAimDistance = 2f;
-    [SerializeField] private GameObject crosshair;
 
     private Arrow currentArrowInstance;
     private float nextFireTime;
@@ -20,10 +22,14 @@ public class PlayerShooter : MonoBehaviour
     private bool isCharging;
     private float chargeStartTime;
     private bool isFireButtonHeld;
+    private bool hasReachedMinCharge;
 
     public event Action OnChargeStart;
     public event Action OnChargeEnd;
     public event Action<float, float> OnChargeUpdate;
+    public event Action OnMinChargeReached;
+
+    public float MinChargePercentage => minChargeTime / fullChargeTime;
 
     private void Start()
     {
@@ -47,7 +53,13 @@ public class PlayerShooter : MonoBehaviour
         if (isCharging)
         {
             float currentCharge = Time.time - chargeStartTime;
-            OnChargeUpdate?.Invoke(currentCharge, maxChargeTime);
+            if (!hasReachedMinCharge && currentCharge >= minChargeTime)
+            {
+                hasReachedMinCharge = true;
+                OnMinChargeReached?.Invoke();
+            }
+            
+            OnChargeUpdate?.Invoke(currentCharge, fullChargeTime);
         }
     }
 
@@ -68,11 +80,15 @@ public class PlayerShooter : MonoBehaviour
             {
                 isCharging = false; 
                 OnChargeEnd?.Invoke();
-                float chargePercent = Mathf.Clamp01((Time.time - chargeStartTime) / maxChargeTime);
-                Shoot(chargePercent);
+                
+                float chargeDuration = Time.time - chargeStartTime;
+                if (chargeDuration >= minChargeTime)
+                {
+                    float chargePercent = Mathf.Clamp01((chargeDuration - minChargeTime) / (fullChargeTime - minChargeTime));
+                    Shoot(chargePercent);
+                }
             }
             
-            if (crosshair != null) crosshair.SetActive(false);
         }
     }
 
@@ -85,8 +101,8 @@ public class PlayerShooter : MonoBehaviour
         }
         chargeStartTime = Time.time;
         isCharging = true; 
+        hasReachedMinCharge = false;
         OnChargeStart?.Invoke();
-        if (crosshair != null) crosshair.SetActive(true);
     }
 
     public void OnSelectBase(InputAction.CallbackContext context)
@@ -158,10 +174,8 @@ public class PlayerShooter : MonoBehaviour
             currentArrowInstance.transform.rotation = Quaternion.LookRotation(shootDirection);
         }
         
-        Rigidbody rb = currentArrowInstance.GetComponent<Rigidbody>();
-        if (rb != null) rb.isKinematic = false;
-
-        currentArrowInstance.Launch();
+        float shootVelocity = Mathf.Lerp(minShootVelocity, maxShootVelocity, chargePercent);
+        currentArrowInstance.Launch(shootVelocity);
         currentArrowInstance = null;
 
         isWaitingForReload = true;
@@ -209,7 +223,6 @@ public class PlayerShooter : MonoBehaviour
         {
             isCharging = false;
             OnChargeEnd?.Invoke();
-            if (crosshair != null && !isFireButtonHeld) crosshair.SetActive(false);
         }
 
         currentArrowType = newType;

@@ -3,7 +3,6 @@ using UnityEngine;
 public abstract class Arrow : MonoBehaviour
 {
     [HideInInspector] public ArrowPool Pool; 
-    [SerializeField] protected float speed = 25f;
     [SerializeField] protected float stuckDuration = 15f; //Tiempo que pasa clavada antes de desaparecer
     [SerializeField] protected float arrowLength = 1f; //Distancia desde el pivote (atrás) hasta la punta
     [SerializeField] protected float penetrationDepth = 0.4f;// Cuánto se hunde la flecha al clavarse
@@ -23,12 +22,13 @@ public abstract class Arrow : MonoBehaviour
         col = GetComponent<Collider>();
     }
 
-    public void Launch()
+    public void Launch(float launchSpeed)
     {
         if (col != null) col.enabled = true;
+        if (rb != null) rb.isKinematic = false;
         rb.linearVelocity = Vector3.zero; 
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
-        rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+        rb.AddForce(transform.forward * launchSpeed, ForceMode.Impulse);
         lastPosition = transform.position;
 
         if (trailRenderer != null)

@@ -14,7 +14,7 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private ArrowType currentArrowType = ArrowType.Base;
     [SerializeField] private Camera playerCamera; 
     [SerializeField] private LayerMask aimLayerMask = ~0; 
-    [SerializeField] private float minAimDistance = 2f;
+    [SerializeField] private float aimMarkerThreshold = 1.0f;
 
     private Arrow currentArrowInstance;
     private float nextFireTime;
@@ -23,11 +23,15 @@ public class PlayerShooter : MonoBehaviour
     private float chargeStartTime;
     private bool isFireButtonHeld;
     private bool hasReachedMinCharge;
+    private RaycastHit[] aimHits = new RaycastHit[20];     private readonly Vector3 viewportCenter = new Vector3(0.5f, 0.5f, 0f); // Evita crear un new Vector3 cada frame
+    private bool isAimMarkerActive; 
 
     public event Action OnChargeStart;
     public event Action OnChargeEnd;
     public event Action<float, float> OnChargeUpdate;
     public event Action OnMinChargeReached;
+    public event Action<Vector2> OnAimPointUpdated;
+    public event Action OnAimPointLost;
 
     public float MinChargePercentage => minChargeTime / fullChargeTime;
 
@@ -60,6 +64,23 @@ public class PlayerShooter : MonoBehaviour
             }
             
             OnChargeUpdate?.Invoke(currentCharge, fullChargeTime);
+
+            if (playerCamera != null)
+            {
+                var (impactPoint, wasIntercepted) = CalculateActualImpactPoint();
+                
+                if (wasIntercepted)
+                {
+                    Vector2 screenPos = playerCamera.WorldToScreenPoint(impactPoint);
+                    OnAimPointUpdated?.Invoke(screenPos);
+                    isAimMarkerActive = true;
+                }
+                else if (isAimMarkerActive)
+                {
+                    OnAimPointLost?.Invoke();
+                    isAimMarkerActive = false;
+                }
+            }
         }
     }
 
@@ -79,6 +100,7 @@ public class PlayerShooter : MonoBehaviour
             if (isCharging && currentArrowInstance != null)
             {
                 isCharging = false; 
+                isAimMarkerActive = false;
                 OnChargeEnd?.Invoke();
                 
                 float chargeDuration = Time.time - chargeStartTime;
@@ -102,6 +124,7 @@ public class PlayerShooter : MonoBehaviour
         chargeStartTime = Time.time;
         isCharging = true; 
         hasReachedMinCharge = false;
+        isAimMarkerActive = false;
         OnChargeStart?.Invoke();
     }
 
@@ -153,27 +176,10 @@ public class PlayerShooter : MonoBehaviour
 
         currentArrowInstance.transform.SetParent(null);
 
-        if (playerCamera != null)
-        {
-            Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            Vector3 targetPoint = ray.GetPoint(100f);
+        Vector3 targetPoint = CalculateActualImpactPoint().point;
+        Vector3 shootDirection = (targetPoint - firePoint.position).normalized;
+        currentArrowInstance.transform.rotation = Quaternion.LookRotation(shootDirection);
 
-            RaycastHit[] hits = Physics.RaycastAll(ray, 1000f, aimLayerMask);
-            System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
-
-            foreach (RaycastHit hit in hits)
-            {
-                if (hit.distance >= minAimDistance)
-                {
-                    targetPoint = hit.point;
-                    break;
-                }
-            }
-
-            Vector3 shootDirection = (targetPoint - firePoint.position).normalized;
-            currentArrowInstance.transform.rotation = Quaternion.LookRotation(shootDirection);
-        }
-        
         float shootVelocity = Mathf.Lerp(minShootVelocity, maxShootVelocity, chargePercent);
         currentArrowInstance.Launch(shootVelocity);
         currentArrowInstance = null;
@@ -184,6 +190,40 @@ public class PlayerShooter : MonoBehaviour
         {
             currentArrowType = ArrowType.Base;
         }
+    }
+
+    private (Vector3 point, bool wasIntercepted) CalculateActualImpactPoint()
+    {
+        if (playerCamera == null) return (firePoint.position + firePoint.forward * 100f, false);
+
+        Ray camRay = playerCamera.ViewportPointToRay(viewportCenter);
+        Vector3 targetPoint = camRay.GetPoint(100f);
+
+        int hitCount = Physics.RaycastNonAlloc(camRay, aimHits, 100f, aimLayerMask);
+        float closestDistance = float.MaxValue;
+
+        for (int i = 0; i < hitCount; i++)
+        {
+            if (aimHits[i].distance < closestDistance)
+            {
+                closestDistance = aimHits[i].distance;
+                targetPoint = aimHits[i].point;
+            }
+        }
+
+        Vector3 shootDirection = (targetPoint - firePoint.position).normalized;
+        
+        float lengthOffset = currentArrowInstance != null ? currentArrowInstance.ArrowLength : 1f;
+        Vector3 rayStart = firePoint.position + shootDirection * lengthOffset;
+
+        float distToTarget = Vector3.Distance(rayStart, targetPoint);
+        if (distToTarget > 0 && Physics.Raycast(rayStart, shootDirection, out RaycastHit arrowHit, distToTarget, aimLayerMask))
+        {
+            bool isSignificantDeviation = (targetPoint - arrowHit.point).sqrMagnitude > (aimMarkerThreshold * aimMarkerThreshold);
+            return (arrowHit.point, isSignificantDeviation);
+        }
+
+        return (targetPoint, false);
     }
 
     private bool CanAffordArrow(ArrowType type)

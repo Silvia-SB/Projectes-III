@@ -10,11 +10,13 @@ public abstract class Arrow : MonoBehaviour
     
     public abstract ArrowType type { get; }
     public abstract DamageType damageType { get; }
+    public float ArrowLength => arrowLength;
     public bool isFullyCharged { get; set; }
 
     protected Rigidbody rb;
     protected Collider col;
     protected Vector3 lastPosition;
+    private RaycastHit[] moveHits = new RaycastHit[10];
 
     protected virtual void Awake()
     {
@@ -57,17 +59,28 @@ public abstract class Arrow : MonoBehaviour
 
             if (distance > 0.001f)
             {
-                // Usamos RaycastAll para ignorar el propio collider de la flecha
-                RaycastHit[] hits = Physics.RaycastAll(lastTipPosition, direction.normalized, distance, ~0, QueryTriggerInteraction.Collide);
+                int hitCount = Physics.RaycastNonAlloc(lastTipPosition, direction.normalized, moveHits, distance, ~0, QueryTriggerInteraction.Collide);
                 
-                // Ordenamos los impactos por distancia para procesarlos de más cercano a más lejano
-                System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
-
-                foreach (RaycastHit hit in hits)
+                if (hitCount > 0)
                 {
-                    if (ProcessCollision(hit.collider, hit.point))
+                    for (int i = 1; i < hitCount; i++)
                     {
-                        return;
+                        RaycastHit key = moveHits[i];
+                        int j = i - 1;
+                        while (j >= 0 && moveHits[j].distance > key.distance)
+                        {
+                            moveHits[j + 1] = moveHits[j];
+                            j--;
+                        }
+                        moveHits[j + 1] = key;
+                    }
+
+                    for (int i = 0; i < hitCount; i++)
+                    {
+                        if (ProcessCollision(moveHits[i].collider, moveHits[i].point))
+                        {
+                            return;
+                        }
                     }
                 }
             }
@@ -85,7 +98,6 @@ public abstract class Arrow : MonoBehaviour
         ProcessCollision(other, hitPoint);
     }
 
-    // Retorna true si la flecha debe detenerse (clavarse), false si la ignora o la atraviesa
     protected virtual bool ProcessCollision(Collider other, Vector3 hitPoint)
     {
         if (other.CompareTag("Player") || other == col) return false;
@@ -94,17 +106,14 @@ public abstract class Arrow : MonoBehaviour
         IArrowInteractable interactable = other.GetComponentInParent<IArrowInteractable>();
         bool isConductive = other.GetComponent<ConductiveSurface>() != null;
         
-        // 1. Elementos que la flecha activa pero atraviesa (no se detiene)
         if (other.CompareTag("Liquid") || other.CompareTag("Surface") || isConductive)
         {
             OnHit(other);
             return false;
         }
 
-        // 2. Elementos en los que la flecha sí debe clavarse
         if (other.CompareTag("Wall") || other.CompareTag("Explosive") || target != null || interactable != null)
         {
-            // Ajustamos la posición para que la punta quede en el punto de impacto, considerando la penetración
             transform.position = hitPoint - transform.forward * (arrowLength - penetrationDepth);
 
             OnHit(other);

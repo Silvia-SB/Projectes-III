@@ -812,6 +812,7 @@ GameObject:
   - component: {fileID: 2718929664885946251}
   - component: {fileID: 7212372440452542445}
   - component: {fileID: 157602539152470917}
+  - component: {fileID: 7340856356417286132}
   m_Layer: 5
   m_Name: PlayerHUD
   m_TagString: Untagged
@@ -940,6 +941,21 @@ MonoBehaviour:
   fillImage: {fileID: 4950322700762232657}
   chargingColor: {r: 1, g: 0, b: 0, a: 1}
   readyColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!114 &7340856356417286132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8581635651495701779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787bb502b9700ca20a16ffb80e5efd3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AimMarkerUI
+  playerShooter: {fileID: 0}
+  crosshairRect: {fileID: 0}
+  canvasGroup: {fileID: 0}
 --- !u!1 &8800612967649395894
 GameObject:
   m_ObjectHideFlags: 0

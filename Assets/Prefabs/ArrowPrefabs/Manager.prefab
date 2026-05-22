@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5788956529557874113}
   - component: {fileID: 3795783055897515309}
   - component: {fileID: 2344641617906425251}
+  - component: {fileID: 7324680403885435283}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -94,3 +95,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a11e4cea844b6b4aeb547554ba7752c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+--- !u!114 &7324680403885435283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888012573576880270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1db2dd3ec36754a049f3ce9aeb9164ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ElevatorPuzzleManager
+  elevators: []
+  objectToDeactivate: {fileID: 0}

@@ -1,8 +1,8 @@
+using System;
 using UnityEngine;
 
-public class ArrowHitElevator : MonoBehaviour
+public class ArrowHitElevator : MonoBehaviour, IArrowInteractable
 {
-    [Header("Ajustes de Movimiento")]
     [SerializeField] private float distanceToMove = 5f; 
     [SerializeField] private float moveDuration = 1f;  
 
@@ -10,6 +10,8 @@ public class ArrowHitElevator : MonoBehaviour
     private Vector3 startPosition;
     private Vector3 targetPosition;
     private float currentMoveTime;
+    private bool hasBeenActivated = false;
+    public event Action OnElevatorActivated;
 
     private void Update()
     {
@@ -30,32 +32,20 @@ public class ArrowHitElevator : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnArrowHit(Arrow arrow)
     {
-        CheckForArrow(collision.gameObject);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        CheckForArrow(other.gameObject);
-    }
-
-    private void CheckForArrow(GameObject obj)
-    {
-        if (isMoving) return;
-
-        Arrow arrow = obj.GetComponentInParent<Arrow>();
-        if (arrow != null)
-        {
-            StartMovement();
-        }
+        if (isMoving || hasBeenActivated) return;
+        StartMovement();
     }
 
     private void StartMovement()
     {
         isMoving = true;
+        hasBeenActivated = true;
         currentMoveTime = 0f;
         startPosition = transform.position;
         targetPosition = startPosition + (Vector3.up * distanceToMove);
+        
+        OnElevatorActivated?.Invoke();
     }
 }

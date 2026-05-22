@@ -19,6 +19,8 @@ public class SettingsMenuManager : MonoBehaviour
     
     [Header("Sensibility Settings")]
     [SerializeField] private Slider sensitivitySlider;
+    public static event Action<float> OnSensitivityChanged;
+
     
     private Scene currentScene;
     
@@ -65,6 +67,9 @@ public class SettingsMenuManager : MonoBehaviour
 
         PlayerPrefs.SetFloat(SensitivityKey, value);
         PlayerPrefs.Save();
+        if (currentScene.name == "SampleScene") OnSensitivityChanged?.Invoke(value);
+
+
     }
     
     public void CloseSettingsMenu()

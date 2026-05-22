@@ -19,6 +19,15 @@ public class PlayerLook : MonoBehaviour
     private float mPitch; 
     private Vector2 mLookDirection;
     
+    void OnEnable()
+    {
+        SettingsMenuManager.OnSensitivityChanged += SetSensitivity;
+    }
+
+    void OnDisable()
+    {
+        SettingsMenuManager.OnSensitivityChanged -= SetSensitivity;
+    }
 
     void Start()
     {
@@ -53,4 +62,8 @@ public class PlayerLook : MonoBehaviour
             mLookDirection = c.ReadValue<Vector2>();
     }
     private void SetRotationSpeed(float speed) => rotationSpeed = speed;
+    public void SetSensitivity(float speed)
+    {
+        rotationSpeed = speed;
+    }
 }

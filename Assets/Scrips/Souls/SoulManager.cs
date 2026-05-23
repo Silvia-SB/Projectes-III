@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using UnityEngine.InputSystem;
+
 
 public class SoulManager : MonoBehaviour
 {
@@ -62,4 +64,9 @@ public class SoulManager : MonoBehaviour
     {
         return TryConsumeSouls(GetArrowCost(type));
     }
+    public void OnCheatSouls(InputAction.CallbackContext c)
+    {
+        if (c.performed) AddSouls(100);
+    }
+
 }

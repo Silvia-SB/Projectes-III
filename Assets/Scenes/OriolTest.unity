@@ -36714,7 +36714,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.21
+  m_VoxelSize: 0.060000002
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 5cee722597ff3ab4d834e57dac590c14, type: 2}
   m_BuildHeightMesh: 0
@@ -87116,6 +87116,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2763bec1282df8dd4a314b9593f73a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArrowPool
+--- !u!114 &1091788036 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3795783055897515309, guid: 4b03997cd09032cabb99745064940637, type: 3}
+  m_PrefabInstance: {fileID: 1091788034}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d50104a39f6fa3da31760e97ee0240, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoulManager
 --- !u!1 &1096105362
 GameObject:
   m_ObjectHideFlags: 0
@@ -130813,6 +130824,10 @@ PrefabInstance:
       value: 18.34
       objectReference: {fileID: 0}
     - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
       propertyPath: m_ActionEvents.Array.data[17].m_ActionId
       value: ea919264-a23c-4b71-851e-b2563ee9bbe3
       objectReference: {fileID: 0}
@@ -130825,6 +130840,10 @@ PrefabInstance:
       value: f8fd76c2-d46c-4031-8b54-6bf372558835
       objectReference: {fileID: 0}
     - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_ActionId
+      value: 0623e95d-598b-4651-ac96-76aba489d480
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
       propertyPath: m_ActionEvents.Array.data[17].m_ActionName
       value: 'Player/PiercingArrow[/Keyboard/3]'
       objectReference: {fileID: 0}
@@ -130833,11 +130852,19 @@ PrefabInstance:
       value: 'Player/Heal[/Keyboard/e]'
       objectReference: {fileID: 0}
     - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_ActionName
+      value: 'Player/CheatSoul[/Keyboard/l]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
       propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
       propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
@@ -130853,6 +130880,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
       propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1636990030}
@@ -130865,6 +130896,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1636990030}
     - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1091788036}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
       propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnSelectPiercing
       objectReference: {fileID: 0}
@@ -130875,6 +130914,10 @@ PrefabInstance:
     - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
       propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnSelectElectric
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnCheatSouls
       objectReference: {fileID: 0}
     - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
       propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -130889,6 +130932,10 @@ PrefabInstance:
       value: PlayerShooter, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SoulManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
       propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -130898,6 +130945,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
       propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954406729464564383, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8412333504912581657, guid: a899e09f3357372698b5a50260f96cc7, type: 3}
@@ -154910,13 +154961,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyZone
   zoneData:
   - spawnPoint: {fileID: 1443707831}
-    enemyType: 3
+    enemyType: 2
     quantity: 2
     spawnInterval: 1
     spawnCount: 1
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 3
+  distanceToSpawn: 2
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 768
 --- !u!1 &1980893872
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 5535469873157259434}
   - component: {fileID: 6821001490411138938}
   - component: {fileID: 2579205980521252335}
-  m_Layer: 0
+  - component: {fileID: 1102900467360990102}
+  m_Layer: 9
   m_Name: viga_madera_v1 (96)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,6 +91,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1102900467360990102
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181372055105396470}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931795, z: 2.932469}
+  m_Center: {x: 0, y: -0.00000023841858, z: 1.4673355}
 --- !u!1 &279976123589506929
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,9 +123,10 @@ GameObject:
   - component: {fileID: 624166781746212299}
   - component: {fileID: 4541501944096350830}
   - component: {fileID: 1793084374972569252}
-  m_Layer: 0
+  - component: {fileID: 6271818197513367391}
+  m_Layer: 8
   m_Name: viga_madera_v1 (65)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,6 +203,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6271818197513367391
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279976123589506929}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24332756, y: 0.07931793, z: 2.932469}
+  m_Center: {x: 0.0000002682209, y: 0, z: 1.4673349}
 --- !u!1 &565576233569687819
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,9 +235,10 @@ GameObject:
   - component: {fileID: 905931863554737073}
   - component: {fileID: 4268673229791185940}
   - component: {fileID: 2078878410045438174}
-  m_Layer: 0
+  - component: {fileID: 2948014303520197567}
+  m_Layer: 8
   m_Name: viga_madera_v1 (75)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -270,6 +315,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2948014303520197567
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565576233569687819}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &603856980547962306
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,9 +347,10 @@ GameObject:
   - component: {fileID: 228139960858042232}
   - component: {fileID: 3784536068054634717}
   - component: {fileID: 1396582941812597783}
-  m_Layer: 0
+  - component: {fileID: 8872696869894917448}
+  m_Layer: 8
   m_Name: viga_madera_v1 (60)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -360,6 +427,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8872696869894917448
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603856980547962306}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24332756, y: 0.07931793, z: 2.932469}
+  m_Center: {x: -0.00000011920929, y: 0, z: 1.4673351}
 --- !u!1 &730001606219067848
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,9 +459,10 @@ GameObject:
   - component: {fileID: 102083312089475954}
   - component: {fileID: 3946692237745300695}
   - component: {fileID: 1234409506504003613}
-  m_Layer: 0
+  - component: {fileID: 5154910689791162109}
+  m_Layer: 9
   m_Name: viga_madera_v1 (70)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -450,6 +539,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5154910689791162109
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730001606219067848}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &1033693966415589400
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,9 +571,10 @@ GameObject:
   - component: {fileID: 365842166332402338}
   - component: {fileID: 3655902646567773447}
   - component: {fileID: 1538145710179209677}
-  m_Layer: 0
+  - component: {fileID: 8870643368712619607}
+  m_Layer: 9
   m_Name: viga_madera_v1 (57)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -540,6 +651,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8870643368712619607
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033693966415589400}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &1154764684259954815
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,9 +683,10 @@ GameObject:
   - component: {fileID: 1967330798877756101}
   - component: {fileID: 3234296352024577376}
   - component: {fileID: 794445720753320362}
-  m_Layer: 0
+  - component: {fileID: 2713436947819465833}
+  m_Layer: 8
   m_Name: viga_madera_v1 (90)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -630,6 +763,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2713436947819465833
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154764684259954815}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &1299796379239410607
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,9 +795,10 @@ GameObject:
   - component: {fileID: 1820049390230253845}
   - component: {fileID: 3381577501617176240}
   - component: {fileID: 651106165845445242}
-  m_Layer: 0
+  - component: {fileID: 201733784778873435}
+  m_Layer: 9
   m_Name: viga_madera_v1 (93)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -720,6 +875,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &201733784778873435
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299796379239410607}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &1501464977770465650
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,9 +907,10 @@ GameObject:
   - component: {fileID: 2278142865270019016}
   - component: {fileID: 2896462485979503725}
   - component: {fileID: 1141304069111769255}
-  m_Layer: 0
+  - component: {fileID: 8248558898580637868}
+  m_Layer: 8
   m_Name: viga_madera_v1 (73)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -810,6 +987,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8248558898580637868
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501464977770465650}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &1579621334210414103
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,9 +1019,10 @@ GameObject:
   - component: {fileID: 2206800751505562797}
   - component: {fileID: 2958858367331914504}
   - component: {fileID: 1074967555314165698}
-  m_Layer: 0
+  - component: {fileID: 6810108808779915552}
+  m_Layer: 8
   m_Name: viga_madera_v1 (78)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -900,6 +1099,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6810108808779915552
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579621334210414103}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &1604464354624129944
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,9 +1131,10 @@ GameObject:
   - component: {fileID: 2094142460356038946}
   - component: {fileID: 3071517539455114887}
   - component: {fileID: 956117325777103437}
-  m_Layer: 0
+  - component: {fileID: 4658749638031801889}
+  m_Layer: 8
   m_Name: viga_madera_v1 (54)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -990,6 +1211,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4658749638031801889
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604464354624129944}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24332826, y: 0.079317965, z: 2.932469}
+  m_Center: {x: 0.000000111421286, y: 0, z: 1.4673352}
 --- !u!1 &1815742304990366242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,9 +1243,10 @@ GameObject:
   - component: {fileID: 7987535070358666202}
   - component: {fileID: 3210650323867587164}
   - component: {fileID: 5837958112368511785}
-  m_Layer: 0
+  - component: {fileID: 21977418490977849}
+  m_Layer: 9
   m_Name: viga_madera_v1 (97)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1080,6 +1323,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &21977418490977849
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815742304990366242}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931795, z: 2.932469}
+  m_Center: {x: 0, y: -0.00000047683716, z: 1.467335}
 --- !u!1 &2214864697439138644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,9 +1355,10 @@ GameObject:
   - component: {fileID: 1582759192448068078}
   - component: {fileID: 2474952900142884427}
   - component: {fileID: 413270983823463041}
-  m_Layer: 0
+  - component: {fileID: 8948108699281930837}
+  m_Layer: 9
   m_Name: viga_madera_v1 (91)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1170,6 +1435,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8948108699281930837
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2214864697439138644}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24332768, y: 0.07931793, z: 2.9324684}
+  m_Center: {x: -0.0000008027157, y: 0, z: 1.4673346}
 --- !u!1 &2283014704030704220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,9 +1467,10 @@ GameObject:
   - component: {fileID: 1505668386654140646}
   - component: {fileID: 2543107718017791811}
   - component: {fileID: 337235296742654857}
-  m_Layer: 0
+  - component: {fileID: 3497516939787585547}
+  m_Layer: 8
   m_Name: viga_madera_v1 (86)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1260,6 +1547,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3497516939787585547
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2283014704030704220}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &2405437245447716506
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,9 +1579,10 @@ GameObject:
   - component: {fileID: 3038246133019698208}
   - component: {fileID: 2127351967999650693}
   - component: {fileID: 4206687636637097807}
-  m_Layer: 0
+  - component: {fileID: 2502387699137205280}
+  m_Layer: 8
   m_Name: viga_madera_v1 (87)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1350,6 +1659,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2502387699137205280
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2405437245447716506}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &2714878517906185491
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,9 +1691,10 @@ GameObject:
   - component: {fileID: 3379668998979536809}
   - component: {fileID: 1822027764209567756}
   - component: {fileID: 4516498895698443462}
-  m_Layer: 0
+  - component: {fileID: 8685194350948613502}
+  m_Layer: 8
   m_Name: viga_madera_v1 (79)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1440,6 +1771,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8685194350948613502
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2714878517906185491}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &3306844386738148806
 GameObject:
   m_ObjectHideFlags: 0
@@ -1451,9 +1803,10 @@ GameObject:
   - component: {fileID: 2787611482021810044}
   - component: {fileID: 1225065182065770713}
   - component: {fileID: 3955489796107416595}
-  m_Layer: 0
+  - component: {fileID: 3867234773841910202}
+  m_Layer: 9
   m_Name: viga_madera_v1 (59)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1530,6 +1883,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3867234773841910202
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3306844386738148806}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &3468558007691931185
 GameObject:
   m_ObjectHideFlags: 0
@@ -1541,9 +1915,10 @@ GameObject:
   - component: {fileID: 4280983216986272907}
   - component: {fileID: 920634385973066542}
   - component: {fileID: 3108107515179552740}
-  m_Layer: 0
+  - component: {fileID: 326174475064972099}
+  m_Layer: 8
   m_Name: viga_madera_v1 (52)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1620,6 +1995,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &326174475064972099
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3468558007691931185}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24332756, y: 0.07931793, z: 2.932469}
+  m_Center: {x: -0.00000023841858, y: 0, z: 1.4673351}
 --- !u!1 &3595759001069751398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,9 +2027,10 @@ GameObject:
   - component: {fileID: 4228144950310426332}
   - component: {fileID: 937515062637255033}
   - component: {fileID: 3091245822608846259}
-  m_Layer: 0
+  - component: {fileID: 8991139881955188933}
+  m_Layer: 8
   m_Name: viga_madera_v1 (62)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1710,6 +2107,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8991139881955188933
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3595759001069751398}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24332756, y: 0.07931793, z: 2.932469}
+  m_Center: {x: 0, y: 0, z: 1.467335}
 --- !u!1 &3828313324388892170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1721,9 +2139,10 @@ GameObject:
   - component: {fileID: 4497748043527382192}
   - component: {fileID: 703948673258056469}
   - component: {fileID: 3323686071618215903}
-  m_Layer: 0
+  - component: {fileID: 9048610944343695564}
+  m_Layer: 8
   m_Name: viga_madera_v1 (66)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1800,6 +2219,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9048610944343695564
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3828313324388892170}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24332756, y: 0.07931793, z: 2.932469}
+  m_Center: {x: 0.00000023841858, y: 0, z: 1.467335}
 --- !u!1 &3865415176590213121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1811,9 +2251,10 @@ GameObject:
   - component: {fileID: 4534955719360780987}
   - component: {fileID: 666741266900260126}
   - component: {fileID: 3360893615382454740}
-  m_Layer: 0
+  - component: {fileID: 6896897483428438073}
+  m_Layer: 9
   m_Name: viga_madera_v1 (67)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1890,6 +2331,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6896897483428438073
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3865415176590213121}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24332757, y: 0.07931801, z: 2.9324696}
+  m_Center: {x: 0, y: -0.00000011920929, z: 1.4673353}
 --- !u!1 &3866444575722108416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1901,9 +2363,10 @@ GameObject:
   - component: {fileID: 4821134580442958764}
   - component: {fileID: 8506811261518392818}
   - component: {fileID: 8399333900376564347}
-  m_Layer: 0
+  - component: {fileID: 242715670876998099}
+  m_Layer: 9
   m_Name: viga_madera_v1 (98)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1980,6 +2443,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &242715670876998099
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3866444575722108416}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931795, z: 2.932469}
+  m_Center: {x: 0, y: -0.00000023841858, z: 1.4673355}
 --- !u!1 &4042366329224105422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1991,9 +2475,10 @@ GameObject:
   - component: {fileID: 3698174850542032756}
   - component: {fileID: 359538084164425937}
   - component: {fileID: 2529231552874327067}
-  m_Layer: 0
+  - component: {fileID: 1155093535717234817}
+  m_Layer: 9
   m_Name: viga_madera_v1 (68)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2070,6 +2555,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1155093535717234817
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4042366329224105422}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24332757, y: 0.07931801, z: 2.9324696}
+  m_Center: {x: 0, y: -0.00000023841858, z: 1.4673353}
 --- !u!1 &4392008466876236716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2162,9 +2668,10 @@ GameObject:
   - component: {fileID: 5365597259929884867}
   - component: {fileID: 9068479241923925862}
   - component: {fileID: 6502426671318164396}
-  m_Layer: 0
+  - component: {fileID: 7941434271411146298}
+  m_Layer: 8
   m_Name: viga_madera_v1 (77)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2241,6 +2748,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7941434271411146298
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4701123502694875769}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &5173789290068910840
 GameObject:
   m_ObjectHideFlags: 0
@@ -2252,9 +2780,10 @@ GameObject:
   - component: {fileID: 5514426150823622722}
   - component: {fileID: 8874614418914703335}
   - component: {fileID: 6686721207815406381}
-  m_Layer: 0
+  - component: {fileID: 1728737193216694199}
+  m_Layer: 9
   m_Name: viga_madera_v1 (92)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2331,6 +2860,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1728737193216694199
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5173789290068910840}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24332768, y: 0.07931793, z: 2.9324684}
+  m_Center: {x: 0.00000086621435, y: 0, z: 1.467336}
 --- !u!1 &5245578951204911681
 GameObject:
   m_ObjectHideFlags: 0
@@ -2342,9 +2892,10 @@ GameObject:
   - component: {fileID: 4866098642721038587}
   - component: {fileID: 8369941532432330590}
   - component: {fileID: 6038471902479653780}
-  m_Layer: 0
+  - component: {fileID: 6809209044098939034}
+  m_Layer: 8
   m_Name: viga_madera_v1 (82)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2421,6 +2972,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6809209044098939034
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5245578951204911681}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &5379201698839188098
 GameObject:
   m_ObjectHideFlags: 0
@@ -2432,9 +3004,10 @@ GameObject:
   - component: {fileID: 4750475023881111608}
   - component: {fileID: 8521593657554601885}
   - component: {fileID: 5883459240304276311}
-  m_Layer: 0
+  - component: {fileID: 7344510350863424104}
+  m_Layer: 9
   m_Name: viga_madera_v1 (71)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2511,6 +3084,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7344510350863424104
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5379201698839188098}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &5603340984324150168
 GameObject:
   m_ObjectHideFlags: 0
@@ -2522,9 +3116,10 @@ GameObject:
   - component: {fileID: 688396445450748699}
   - component: {fileID: 3362747375649418549}
   - component: {fileID: 1079718720554489771}
-  m_Layer: 0
+  - component: {fileID: 1159515681952396467}
+  m_Layer: 9
   m_Name: viga_madera_v1 (100)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2601,6 +3196,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1159515681952396467
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5603340984324150168}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &5697152320721060010
 GameObject:
   m_ObjectHideFlags: 0
@@ -2612,9 +3228,10 @@ GameObject:
   - component: {fileID: 4925681754295982608}
   - component: {fileID: 8355394330963236277}
   - component: {fileID: 6057523647930737023}
-  m_Layer: 0
+  - component: {fileID: 6123783341667955973}
+  m_Layer: 8
   m_Name: viga_madera_v1 (88)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2691,6 +3308,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6123783341667955973
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5697152320721060010}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &5920359425036555442
 GameObject:
   m_ObjectHideFlags: 0
@@ -2702,9 +3340,10 @@ GameObject:
   - component: {fileID: 5091671729397827335}
   - component: {fileID: 2280507076807737176}
   - component: {fileID: 19690341046307698}
-  m_Layer: 0
+  - component: {fileID: 9191841628685361329}
+  m_Layer: 9
   m_Name: viga_madera_v1 (101)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2781,6 +3420,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9191841628685361329
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5920359425036555442}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &5963904351254526092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2792,9 +3452,10 @@ GameObject:
   - component: {fileID: 6453618427253678646}
   - component: {fileID: 7935342891693632915}
   - component: {fileID: 5315645146887428441}
-  m_Layer: 0
+  - component: {fileID: 1062984077214766942}
+  m_Layer: 8
   m_Name: viga_madera_v1 (74)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2871,6 +3532,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1062984077214766942
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5963904351254526092}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &6236773602159409633
 GameObject:
   m_ObjectHideFlags: 0
@@ -2882,9 +3564,10 @@ GameObject:
   - component: {fileID: 6757273148582716251}
   - component: {fileID: 7667787065047772414}
   - component: {fileID: 5588268931234207796}
-  m_Layer: 0
+  - component: {fileID: 3782873586775779649}
+  m_Layer: 8
   m_Name: viga_madera_v1 (84)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2961,6 +3644,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3782873586775779649
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236773602159409633}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &6370818149939721867
 GameObject:
   m_ObjectHideFlags: 0
@@ -2972,9 +3676,10 @@ GameObject:
   - component: {fileID: 5990458167462784049}
   - component: {fileID: 7245652312817656724}
   - component: {fileID: 4857498517044402014}
-  m_Layer: 0
+  - component: {fileID: 1595609543989749502}
+  m_Layer: 9
   m_Name: viga_madera_v1 (56)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3051,6 +3756,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1595609543989749502
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6370818149939721867}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &6970304837439655637
 GameObject:
   m_ObjectHideFlags: 0
@@ -3062,9 +3788,10 @@ GameObject:
   - component: {fileID: 7777910059131425903}
   - component: {fileID: 6656166764830284746}
   - component: {fileID: 8915864069184466688}
-  m_Layer: 0
+  - component: {fileID: 8420036273173111438}
+  m_Layer: 9
   m_Name: viga_madera_v1 (72)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3141,6 +3868,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8420036273173111438
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6970304837439655637}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &7193313509127722666
 GameObject:
   m_ObjectHideFlags: 0
@@ -3152,9 +3900,10 @@ GameObject:
   - component: {fileID: 7536800548547447824}
   - component: {fileID: 6861167784729822133}
   - component: {fileID: 8706360737468790655}
-  m_Layer: 0
+  - component: {fileID: 7772211216394667502}
+  m_Layer: 8
   m_Name: viga_madera_v1 (85)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3231,6 +3980,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7772211216394667502
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193313509127722666}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &7313723187168039606
 GameObject:
   m_ObjectHideFlags: 0
@@ -3242,9 +4012,10 @@ GameObject:
   - component: {fileID: 7941043312406824972}
   - component: {fileID: 6456925211153336233}
   - component: {fileID: 9115122974349849443}
-  m_Layer: 0
+  - component: {fileID: 5290905476336828374}
+  m_Layer: 8
   m_Name: viga_madera_v1 (80)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3321,6 +4092,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5290905476336828374
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7313723187168039606}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &7436312674171239109
 GameObject:
   m_ObjectHideFlags: 0
@@ -3332,9 +4124,10 @@ GameObject:
   - component: {fileID: 7816215229393952895}
   - component: {fileID: 6617790903115935706}
   - component: {fileID: 8949754764553984784}
-  m_Layer: 0
+  - component: {fileID: 2961334724580090093}
+  m_Layer: 8
   m_Name: viga_madera_v1 (81)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3411,6 +4204,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2961334724580090093
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7436312674171239109}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &7854857267854343053
 GameObject:
   m_ObjectHideFlags: 0
@@ -3422,9 +4236,10 @@ GameObject:
   - component: {fileID: 7370668271792169271}
   - component: {fileID: 5901408934369242770}
   - component: {fileID: 8503626645665864280}
-  m_Layer: 0
+  - component: {fileID: 6771000181065990824}
+  m_Layer: 9
   m_Name: viga_madera_v1 (69)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3501,6 +4316,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6771000181065990824
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7854857267854343053}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24332757, y: 0.07931801, z: 2.9324696}
+  m_Center: {x: 0, y: -0.00000023841858, z: 1.4673353}
 --- !u!1 &7893976833752816639
 GameObject:
   m_ObjectHideFlags: 0
@@ -3512,9 +4348,10 @@ GameObject:
   - component: {fileID: 7405847119628566853}
   - component: {fileID: 5866221239130951392}
   - component: {fileID: 8542755007719569962}
-  m_Layer: 0
+  - component: {fileID: 2305987280269732590}
+  m_Layer: 9
   m_Name: viga_madera_v1 (95)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3591,6 +4428,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2305987280269732590
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7893976833752816639}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24332768, y: 0.07931793, z: 2.9324684}
+  m_Center: {x: -0.0000019948086, y: 0, z: 1.467335}
 --- !u!1 &7925245643996220235
 GameObject:
   m_ObjectHideFlags: 0
@@ -3602,9 +4460,10 @@ GameObject:
   - component: {fileID: 7401648674346570225}
   - component: {fileID: 5843468713371901524}
   - component: {fileID: 8573970354768505502}
-  m_Layer: 0
+  - component: {fileID: 3648777300542644302}
+  m_Layer: 8
   m_Name: viga_madera_v1 (55)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3681,6 +4540,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3648777300542644302
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7925245643996220235}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24332826, y: 0.079317965, z: 2.932469}
+  m_Center: {x: 0.000000111421286, y: 0, z: 1.4673352}
 --- !u!1 &7997080799116253015
 GameObject:
   m_ObjectHideFlags: 0
@@ -3692,9 +4572,10 @@ GameObject:
   - component: {fileID: 7327504140183768557}
   - component: {fileID: 5917551394676834888}
   - component: {fileID: 8501576660666316418}
-  m_Layer: 0
+  - component: {fileID: 1390600226232722029}
+  m_Layer: 8
   m_Name: viga_madera_v1 (63)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3771,6 +4652,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1390600226232722029
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7997080799116253015}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24332756, y: 0.07931793, z: 2.932469}
+  m_Center: {x: 0.00000017881393, y: 0, z: 1.467335}
 --- !u!1 &8032297315202187305
 GameObject:
   m_ObjectHideFlags: 0
@@ -3782,9 +4684,10 @@ GameObject:
   - component: {fileID: 7220294352394984083}
   - component: {fileID: 6024823305893844278}
   - component: {fileID: 8392615865314238972}
-  m_Layer: 0
+  - component: {fileID: 8001086834802904788}
+  m_Layer: 8
   m_Name: viga_madera_v1 (89)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3861,6 +4764,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8001086834802904788
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8032297315202187305}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &8120591074429126473
 GameObject:
   m_ObjectHideFlags: 0
@@ -3872,9 +4796,10 @@ GameObject:
   - component: {fileID: 8933437564501499379}
   - component: {fileID: 5500629862600217174}
   - component: {fileID: 7760510292615882396}
-  m_Layer: 0
+  - component: {fileID: 5709982173741673413}
+  m_Layer: 8
   m_Name: viga_madera_v1 (53)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3951,6 +4876,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5709982173741673413
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8120591074429126473}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24332826, y: 0.079317965, z: 2.932469}
+  m_Center: {x: 0.000000111421286, y: 0, z: 1.4673351}
 --- !u!1 &8336540396979242428
 GameObject:
   m_ObjectHideFlags: 0
@@ -3962,9 +4908,10 @@ GameObject:
   - component: {fileID: 8717429557530205958}
   - component: {fileID: 5716576919417983139}
   - component: {fileID: 7543999014665708649}
-  m_Layer: 0
+  - component: {fileID: 7864111599923695060}
+  m_Layer: 8
   m_Name: viga_madera_v1 (83)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4041,6 +4988,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7864111599923695060
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8336540396979242428}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &8512194033770161043
 GameObject:
   m_ObjectHideFlags: 0
@@ -4052,9 +5020,10 @@ GameObject:
   - component: {fileID: 9037233459883522345}
   - component: {fileID: 5387827316895168140}
   - component: {fileID: 7863741452818203206}
-  m_Layer: 0
+  - component: {fileID: 7748152580104905231}
+  m_Layer: 9
   m_Name: viga_madera_v1 (94)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4131,6 +5100,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7748152580104905231
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8512194033770161043}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24332768, y: 0.07931793, z: 2.9324684}
+  m_Center: {x: 0.00000015095861, y: 0, z: 1.4673373}
 --- !u!1 &8606154277874260861
 GameObject:
   m_ObjectHideFlags: 0
@@ -4142,9 +5132,10 @@ GameObject:
   - component: {fileID: 5309537283021692827}
   - component: {fileID: 1355342839985186998}
   - component: {fileID: 9048648680522519974}
-  m_Layer: 0
+  - component: {fileID: 7973228264253200471}
+  m_Layer: 9
   m_Name: viga_madera_v1 (99)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4221,6 +5212,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7973228264253200471
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8606154277874260861}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931795, z: 2.932469}
+  m_Center: {x: 0, y: -0.00000047683716, z: 1.467335}
 --- !u!1 &8695532834008178184
 GameObject:
   m_ObjectHideFlags: 0
@@ -4232,9 +5244,10 @@ GameObject:
   - component: {fileID: 8351764594745525426}
   - component: {fileID: 4920382925132974871}
   - component: {fileID: 7182187500430049245}
-  m_Layer: 0
+  - component: {fileID: 4881689255695137709}
+  m_Layer: 9
   m_Name: viga_madera_v1 (58)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4311,6 +5324,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4881689255695137709
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8695532834008178184}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &8850694624604658863
 GameObject:
   m_ObjectHideFlags: 0
@@ -4322,9 +5356,10 @@ GameObject:
   - component: {fileID: 8185340094085154325}
   - component: {fileID: 5059777585189898672}
   - component: {fileID: 7048986285899955578}
-  m_Layer: 0
+  - component: {fileID: 6387851196058724361}
+  m_Layer: 8
   m_Name: viga_madera_v1 (64)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4401,6 +5436,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6387851196058724361
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8850694624604658863}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24332756, y: 0.07931793, z: 2.932469}
+  m_Center: {x: 0.00000023841858, y: 0, z: 1.467335}
 --- !u!1 &8911992880242974336
 GameObject:
   m_ObjectHideFlags: 0
@@ -4412,9 +5468,10 @@ GameObject:
   - component: {fileID: 8135210539048567866}
   - component: {fileID: 5136858364391590815}
   - component: {fileID: 6966292637793845077}
-  m_Layer: 0
+  - component: {fileID: 8789541003873301426}
+  m_Layer: 8
   m_Name: viga_madera_v1 (76)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4491,6 +5548,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8789541003873301426
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8911992880242974336}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2433275, y: 0.07931793, z: 2.9324682}
+  m_Center: {x: 0, y: 0, z: 1.4673346}
 --- !u!1 &9177770416125249181
 GameObject:
   m_ObjectHideFlags: 0
@@ -4502,9 +5580,10 @@ GameObject:
   - component: {fileID: 8364923101419166759}
   - component: {fileID: 4880202875189547906}
   - component: {fileID: 7231938644612982600}
-  m_Layer: 0
+  - component: {fileID: 7980734120408041495}
+  m_Layer: 8
   m_Name: viga_madera_v1 (61)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4581,3 +5660,24 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7980734120408041495
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9177770416125249181}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24332826, y: 0.079317965, z: 2.932469}
+  m_Center: {x: 0.00000023063058, y: 0, z: 1.4673351}

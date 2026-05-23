@@ -3,10 +3,11 @@ using UnityEngine;
 public abstract class Arrow : MonoBehaviour
 {
     [HideInInspector] public ArrowPool Pool; 
-    [SerializeField] protected float stuckDuration = 15f; //Tiempo que pasa clavada antes de desaparecer
-    [SerializeField] protected float arrowLength = 1f; //Distancia desde el pivote (atrás) hasta la punta
-    [SerializeField] protected float penetrationDepth = 0.4f;// Cuánto se hunde la flecha al clavarse
+    [SerializeField] protected float stuckDuration = 15f; 
+    [SerializeField] protected float arrowLength = 1f; 
+    [SerializeField] protected float penetrationDepth = 0.4f;
     [SerializeField] protected TrailRenderer trailRenderer;
+    [SerializeField] protected float distanceToChangeLayer = 0.5f; 
     
     public abstract ArrowType type { get; }
     public abstract DamageType damageType { get; }
@@ -16,6 +17,8 @@ public abstract class Arrow : MonoBehaviour
     protected Rigidbody rb;
     protected Collider col;
     protected Vector3 lastPosition;
+    protected Vector3 launchPosition;
+    protected bool hasChangedLayer;
     private RaycastHit[] moveHits = new RaycastHit[10];
 
     protected virtual void Awake()
@@ -32,6 +35,8 @@ public abstract class Arrow : MonoBehaviour
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         rb.AddForce(transform.forward * launchSpeed, ForceMode.Impulse);
         lastPosition = transform.position;
+        launchPosition = transform.position;
+        hasChangedLayer = false;
 
         if (trailRenderer != null)
         {
@@ -45,6 +50,12 @@ public abstract class Arrow : MonoBehaviour
     {
         if (rb != null && !rb.isKinematic)
         {
+            if (!hasChangedLayer && Vector3.Distance(launchPosition, transform.position) >= distanceToChangeLayer)
+            {
+                gameObject.layer = LayerMask.NameToLayer("Default");
+                hasChangedLayer = true;
+            }
+
             if (rb.linearVelocity.sqrMagnitude > 0.1f)
             {
                 transform.rotation = Quaternion.LookRotation(rb.linearVelocity);

@@ -12,6 +12,9 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] private bool invertPitch;
     [SerializeField] private float maxPitch = 85f;
     [SerializeField] private float minPitch = -85f;
+    
+    [SerializeField] [Range(0f, 1f)] private float slowDownThreshold = 0.7f;
+    [SerializeField] [Range(0.01f, 1f)] private float minSpeedMultiplier = 0.1f;
 
     private const string SensitivityKey = "MouseSensitivity";
 
@@ -43,8 +46,25 @@ public class PlayerLook : MonoBehaviour
 
     void Update()
     {
+        float currentYInput = mLookDirection.y;
+        
+        float pitchPercent = 0f;
+        if (mPitch < 0 && minPitch != 0) pitchPercent = mPitch / minPitch;
+        else if (mPitch > 0 && maxPitch != 0) pitchPercent = mPitch / maxPitch;
+
+        if (pitchPercent > slowDownThreshold)
+        {
+            float t = (pitchPercent - slowDownThreshold) / (1f - slowDownThreshold);
+            float speedMultiplier = Mathf.Lerp(1f, minSpeedMultiplier, t);
+
+            if ((mPitch < 0 && currentYInput > 0) || (mPitch > 0 && currentYInput < 0))
+            {
+                currentYInput *= speedMultiplier;
+            }
+        }
+
         mYaw += mLookDirection.x * rotationSpeed * Time.deltaTime;
-        mPitch -= mLookDirection.y * rotationSpeed * Time.deltaTime;
+        mPitch -= currentYInput * rotationSpeed * Time.deltaTime;
 
         mPitch = Mathf.Clamp(mPitch, minPitch, maxPitch);
         

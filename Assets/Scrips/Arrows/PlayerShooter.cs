@@ -202,7 +202,6 @@ public class PlayerShooter : MonoBehaviour
 
         int hitCount = Physics.RaycastNonAlloc(rayOrigin, shootDirection, aimHits, rayDistance, aimLayerMask, QueryTriggerInteraction.Ignore);
         float closestValidDist = float.MaxValue;
-        bool pointBlankActivated = false;
 
         for (int i = 0; i < hitCount; i++)
         {
@@ -213,13 +212,7 @@ public class PlayerShooter : MonoBehaviour
                 closestValidDist = aimHits[i].distance;
                 // Hardcodeamos la posición de la flecha restando su longitud exacta
                 startPos = aimHits[i].point - shootDirection * currentArrowInstance.ArrowLength;
-                pointBlankActivated = true;
             }
-        }
-
-        if (pointBlankActivated)
-        {
-            Debug.Log("¡Disparo a quemarropa (Point-Blank) activado! Ajustando posición inicial de la flecha.");
         }
 
         // 3. Lanzamiento Hardcodeado en la dirección exacta calculada

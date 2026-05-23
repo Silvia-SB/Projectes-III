@@ -54,7 +54,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0af315772648df042b0f1d4d33f96c8f, type: 2}
     - target: {fileID: 919132149155446097, guid: a77186033737e1c46939e21d6afc902a, type: 3}
       propertyPath: m_Name
-      value: pared_yeso_tejado_LOW
+      value: pared_concret_tejado
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a77186033737e1c46939e21d6afc902a, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a77186033737e1c46939e21d6afc902a, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

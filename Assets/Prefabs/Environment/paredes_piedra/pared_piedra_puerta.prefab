@@ -54,7 +54,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a8bbe6f06c633e5488706be02f24e85e, type: 2}
     - target: {fileID: 919132149155446097, guid: 570daf65a2cde5e45881f52384954af5, type: 3}
       propertyPath: m_Name
-      value: pared_piedra_puerta_LOW_1000
+      value: pared_piedra_puerta
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 570daf65a2cde5e45881f52384954af5, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 570daf65a2cde5e45881f52384954af5, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

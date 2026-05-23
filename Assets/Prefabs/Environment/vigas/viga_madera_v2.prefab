@@ -54,7 +54,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4eea04dcb14c9f24c9535d0ecf2a6e44, type: 2}
     - target: {fileID: 919132149155446097, guid: 73ac0104706f3574a8acc5784309f825, type: 3}
       propertyPath: m_Name
-      value: viga_madera_v2_LOW
+      value: viga_madera_v2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 73ac0104706f3574a8acc5784309f825, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 73ac0104706f3574a8acc5784309f825, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

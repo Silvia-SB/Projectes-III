@@ -10,6 +10,15 @@ public class PauseMenu : MonoBehaviour
     
     public void PauseGame()
     {
+        if (settingsMenu.gameObject.activeSelf)
+        {
+            settingsMenu.gameObject.SetActive(false);
+        }
+        if (pauseMenu.gameObject.activeSelf)
+        {
+            ResumeGame();
+            return;
+        }
         Time.timeScale = 0f;
 
         Cursor.lockState = CursorLockMode.None;
@@ -36,4 +45,5 @@ public class PauseMenu : MonoBehaviour
     {
         Application.Quit();
     }
+    
 }

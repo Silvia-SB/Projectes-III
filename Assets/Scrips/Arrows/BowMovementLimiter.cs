@@ -8,9 +8,6 @@ public class BowMovementLimiter : MonoBehaviour
     [Tooltip("Límite inferior del arco.")]
     [SerializeField] private float maxPitchDown = 35f;
 
-    [SerializeField] private float swayAmount = 1.5f;
-    [SerializeField] private float maxSway = 5f;
-
     [SerializeField] private float smoothSpeed = 15f;
 
     private Quaternion initialLocalRotation;

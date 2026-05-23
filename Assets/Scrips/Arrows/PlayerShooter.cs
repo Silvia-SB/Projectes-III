@@ -17,6 +17,13 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private float aimMarkerThreshold = 1.0f;
     [SerializeField] private float bowMisalignmentThreshold = 2.0f;
     [SerializeField] private float obstacleDetectionDistance = 3.0f;
+    
+    [Tooltip("Distancia mínima para que la flecha intente ir al centro de la cámara. Evita disparos torcidos (bizcos) al estar pegado a una pared.")]
+    [SerializeField] private float minConvergenceDistance = 2.0f;
+
+    [Header("Block System")]
+    [Tooltip("Radio de colisión para comprobar si el arco/flecha está atravesando una pared.")]
+    [SerializeField] private float weaponBlockRadius = 0.05f;
 
     private Arrow currentArrowInstance;
     private float nextFireTime;
@@ -25,9 +32,11 @@ public class PlayerShooter : MonoBehaviour
     private float chargeStartTime;
     private bool isFireButtonHeld;
     private bool hasReachedMinCharge;
-    private RaycastHit[] aimHits = new RaycastHit[20];     private readonly Vector3 viewportCenter = new Vector3(0.5f, 0.5f, 0f); 
+    private RaycastHit[] aimHits = new RaycastHit[20];     
+    private readonly Vector3 viewportCenter = new Vector3(0.5f, 0.5f, 0f); 
     private bool isAimMarkerActive; 
     private Transform camTransform;
+    private Collider[] blockCheckColliders = new Collider[5];
 
     public event Action OnChargeStart;
     public event Action OnChargeEnd;
@@ -109,8 +118,11 @@ public class PlayerShooter : MonoBehaviour
                 float chargeDuration = Time.time - chargeStartTime;
                 if (chargeDuration >= minChargeTime)
                 {
-                    float chargePercent = Mathf.Clamp01((chargeDuration - minChargeTime) / (fullChargeTime - minChargeTime));
-                    Shoot(chargePercent);
+                    if (!IsShotBlocked())
+                    {
+                        float chargePercent = Mathf.Clamp01((chargeDuration - minChargeTime) / (fullChargeTime - minChargeTime));
+                        Shoot(chargePercent);
+                    }
                 }
             }
             
@@ -181,6 +193,7 @@ public class PlayerShooter : MonoBehaviour
 
         Vector3 targetPoint = CalculateActualImpactPoint().point;
         Vector3 shootDirection = (targetPoint - firePoint.position).normalized;
+
         currentArrowInstance.transform.rotation = Quaternion.LookRotation(shootDirection);
 
         float shootVelocity = Mathf.Lerp(minShootVelocity, maxShootVelocity, chargePercent);
@@ -204,18 +217,30 @@ public class PlayerShooter : MonoBehaviour
 
         int hitCount = Physics.RaycastNonAlloc(camRay, aimHits, 100f, aimLayerMask);
         float closestDistance = float.MaxValue;
-        bool camHit = hitCount > 0;
+        bool camHit = false;
 
         for (int i = 0; i < hitCount; i++)
         {
+            if (aimHits[i].collider.CompareTag("Player") || aimHits[i].collider.isTrigger) continue; // IGNORAR AL JUGADOR
             if (aimHits[i].distance < closestDistance)
             {
                 closestDistance = aimHits[i].distance;
                 targetPoint = aimHits[i].point;
+                camHit = true;
             }
         }
 
-        Vector3 idealShootDirection = (targetPoint - firePoint.position).normalized;
+        Vector3 idealShootDirection;
+
+        // Si estamos muy cerca de una pared, disparamos paralelo a la cámara para evitar el ángulo extremo
+        if (camHit && closestDistance < minConvergenceDistance)
+        {
+            idealShootDirection = playerCamera.transform.forward;
+        }
+        else
+        {
+            idealShootDirection = (targetPoint - firePoint.position).normalized;
+        }
         Vector3 finalShootDirection = idealShootDirection;
         
         //comparamos si el arco está desalineado de la cámara (debido a BowMovementLimiter o inercia)
@@ -227,17 +252,35 @@ public class PlayerShooter : MonoBehaviour
         }
 
         float lengthOffset = currentArrowInstance != null ? currentArrowInstance.ArrowLength : 1f;
+
         Vector3 rayStart = firePoint.position + finalShootDirection * lengthOffset;
         Vector3 actualHitPoint = rayStart + finalShootDirection * 100f;
+        bool arrowHit = false;
 
         //lanzamos el rayo para comprobar dónde colisionará realmente la flecha
-        bool arrowHit = Physics.Raycast(rayStart, finalShootDirection, out RaycastHit arrowHitInfo, 100f, aimLayerMask);
-        if (arrowHit)
+        int arrowHitsCount = Physics.RaycastNonAlloc(rayStart, finalShootDirection, aimHits, 100f, aimLayerMask);
+        float closestArrowDist = float.MaxValue;
+        for (int i = 0; i < arrowHitsCount; i++)
         {
-            actualHitPoint = arrowHitInfo.point;
+            if (aimHits[i].collider.CompareTag("Player") || aimHits[i].collider.isTrigger) continue;
+            if (aimHits[i].distance < closestArrowDist)
+            {
+                closestArrowDist = aimHits[i].distance;
+                actualHitPoint = aimHits[i].point;
+                arrowHit = true;
+            }
         }
 
-        bool isSignificantDeviation = (targetPoint - actualHitPoint).sqrMagnitude > (aimMarkerThreshold * aimMarkerThreshold);
+        bool isSignificantDeviation = false;
+        if ((targetPoint - actualHitPoint).sqrMagnitude > (aimMarkerThreshold * aimMarkerThreshold))
+        {
+            isSignificantDeviation = true;
+        }
+        else if (camHit && closestDistance < minConvergenceDistance)
+        {
+            // Si estamos muy cerca a la pared y disparamos paralelo, forzamos la mira roja porque SÍ va a ir desviado
+            isSignificantDeviation = true;
+        }
 
         // Si no hemos impactado contra nada en absoluto (cielo/vacío), ocultamos la alerta para limpiar la UI
         if (!camHit && !arrowHit)
@@ -266,6 +309,23 @@ public class PlayerShooter : MonoBehaviour
         }
 
         return (actualHitPoint, isSignificantDeviation);
+    }
+
+    private bool IsShotBlocked()
+    {
+        if (currentArrowInstance == null) return false;
+
+        Vector3 startPos = firePoint.position;
+        Vector3 endPos = firePoint.position + firePoint.forward * currentArrowInstance.ArrowLength;
+
+        int count = Physics.OverlapCapsuleNonAlloc(startPos, endPos, weaponBlockRadius, blockCheckColliders, aimLayerMask, QueryTriggerInteraction.Ignore);
+        
+        for (int i = 0; i < count; i++)
+        {
+            if (blockCheckColliders[i].CompareTag("Player") || blockCheckColliders[i].CompareTag("Enemy")) continue;
+            return true;
+        }
+        return false;
     }
 
     private bool CanAffordArrow(ArrowType type)

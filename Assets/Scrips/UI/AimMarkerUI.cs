@@ -9,9 +9,13 @@ public class AimMarkerUI : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] private float smoothSpeed = 20f;
+    [SerializeField] private float fadeSpeed = 15f;
 
     private Vector2 targetPosition;
     private bool isMarkerVisible;
+    private Image crosshairImage;
+    private float currentAlpha = 0f;
+    private float targetAlpha = 0f;
 
     private void Awake()
     {
@@ -22,7 +26,20 @@ public class AimMarkerUI : MonoBehaviour
 
         if (crosshairRect != null)
         {
+            crosshairImage = crosshairRect.GetComponentInChildren<Image>(true);
+            SetAlpha(0f);
             crosshairRect.gameObject.SetActive(false);
+        }
+    }
+
+    private void SetAlpha(float alpha)
+    {
+        currentAlpha = alpha;
+        if (crosshairImage != null)
+        {
+            Color c = crosshairImage.color;
+            c.a = alpha;
+            crosshairImage.color = c;
         }
     }
 
@@ -32,17 +49,9 @@ public class AimMarkerUI : MonoBehaviour
         crosshairObj.transform.SetParent(transform, false);
         crosshairRect = crosshairObj.AddComponent<RectTransform>();
 
-        GameObject hLine = new GameObject("HLine");
-        hLine.transform.SetParent(crosshairObj.transform, false);
-        Image hImg = hLine.AddComponent<Image>();
-        hImg.color = Color.red;
-        hLine.GetComponent<RectTransform>().sizeDelta = new Vector2(20f, 4f);
-
-        GameObject vLine = new GameObject("VLine");
-        vLine.transform.SetParent(crosshairObj.transform, false);
-        Image vImg = vLine.AddComponent<Image>();
-        vImg.color = Color.red;
-        vLine.GetComponent<RectTransform>().sizeDelta = new Vector2(4f, 20f);
+        Image img = crosshairObj.AddComponent<Image>();
+        img.color = Color.red;
+        crosshairRect.sizeDelta = new Vector2(10f, 10f);
     }
 
     private void OnEnable()
@@ -71,6 +80,7 @@ public class AimMarkerUI : MonoBehaviour
         {
             crosshairRect.gameObject.SetActive(true);
             isMarkerVisible = true;
+            targetAlpha = 1f;
         }
     }
 
@@ -80,6 +90,7 @@ public class AimMarkerUI : MonoBehaviour
         {
             crosshairRect.gameObject.SetActive(false);
             isMarkerVisible = false;
+            targetAlpha = 0f;
         }
     }
 
@@ -90,7 +101,10 @@ public class AimMarkerUI : MonoBehaviour
             if (!isMarkerVisible)
             {
                 ShowCrosshair();
-                crosshairRect.position = screenPos; // La primera vez aparece directamente en el sitio
+                if (currentAlpha < 0.05f)
+                {
+                    crosshairRect.position = screenPos; // La primera vez aparece directamente en el sitio
+                }
             }
             
             targetPosition = screenPos;
@@ -99,9 +113,19 @@ public class AimMarkerUI : MonoBehaviour
 
     private void Update()
     {
-        if (isMarkerVisible && crosshairRect != null)
+        if (crosshairRect != null)
         {
-            if (((Vector2)crosshairRect.position - targetPosition).sqrMagnitude > 0.1f)
+            if (currentAlpha != targetAlpha)
+            {
+                SetAlpha(Mathf.Lerp(currentAlpha, targetAlpha, Time.deltaTime * fadeSpeed));
+                if (!isMarkerVisible && currentAlpha < 0.01f)
+                {
+                    SetAlpha(0f);
+                    crosshairRect.gameObject.SetActive(false);
+                }
+            }
+
+            if (isMarkerVisible && ((Vector2)crosshairRect.position - targetPosition).sqrMagnitude > 0.1f)
             {
                 crosshairRect.position = Vector2.Lerp(crosshairRect.position, targetPosition, Time.deltaTime * smoothSpeed);
             }

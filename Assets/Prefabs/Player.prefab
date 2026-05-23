@@ -505,6 +505,9 @@ MonoBehaviour:
   aimMarkerThreshold: 0.3
   bowMisalignmentThreshold: 10
   obstacleDetectionDistance: 3
+  minConvergenceDistance: 0.2
+  weaponBlockRadius: 0.1
+  enemyPointBlankDistance: 0.2
 --- !u!114 &7469301177835586816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,8 +634,6 @@ MonoBehaviour:
   playerCamera: {fileID: 6567033776697428958}
   maxPitchUp: -70
   maxPitchDown: 70
-  swayAmount: 11.92
-  maxSway: 13.62
   smoothSpeed: 10
 --- !u!1 &6995459615907193826
 GameObject:

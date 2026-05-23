@@ -18,12 +18,11 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private float bowMisalignmentThreshold = 2.0f;
     [SerializeField] private float obstacleDetectionDistance = 3.0f;
     
-    [Tooltip("Distancia mínima para que la flecha intente ir al centro de la cámara. Evita disparos torcidos (bizcos) al estar pegado a una pared.")]
     [SerializeField] private float minConvergenceDistance = 2.0f;
 
     [Header("Block System")]
-    [Tooltip("Radio de colisión para comprobar si el arco/flecha está atravesando una pared.")]
     [SerializeField] private float weaponBlockRadius = 0.05f;
+    [SerializeField] private float enemyPointBlankDistance = 1.0f;
 
     private Arrow currentArrowInstance;
     private float nextFireTime;
@@ -79,11 +78,11 @@ public class PlayerShooter : MonoBehaviour
 
             if (playerCamera != null)
             {
-                var (impactPoint, wasIntercepted) = CalculateActualImpactPoint();
+                var aimData = CalculateAimData();
                 
-                if (wasIntercepted)
+                if (aimData.wasIntercepted)
                 {
-                    Vector2 screenPos = playerCamera.WorldToScreenPoint(impactPoint);
+                    Vector2 screenPos = playerCamera.WorldToScreenPoint(aimData.point);
                     OnAimPointUpdated?.Invoke(screenPos);
                     isAimMarkerActive = true;
                 }
@@ -191,9 +190,40 @@ public class PlayerShooter : MonoBehaviour
 
         currentArrowInstance.transform.SetParent(null);
 
-        Vector3 targetPoint = CalculateActualImpactPoint().point;
-        Vector3 shootDirection = (targetPoint - firePoint.position).normalized;
+        //obtenemos los datos calculados
+        var aimData = CalculateAimData();
+        Vector3 shootDirection = aimData.direction;
 
+        //Retrasamos el origen hacia atrás para detectar la superficie real 
+        Vector3 startPos = firePoint.position;
+        float backOffset = 2.0f;
+        Vector3 rayOrigin = firePoint.position - shootDirection * backOffset;
+        float rayDistance = backOffset + currentArrowInstance.ArrowLength;
+
+        int hitCount = Physics.RaycastNonAlloc(rayOrigin, shootDirection, aimHits, rayDistance, aimLayerMask, QueryTriggerInteraction.Ignore);
+        float closestValidDist = float.MaxValue;
+        bool pointBlankActivated = false;
+
+        for (int i = 0; i < hitCount; i++)
+        {
+            if (aimHits[i].collider.CompareTag("Player")) continue;
+            
+            if (aimHits[i].distance < closestValidDist)
+            {
+                closestValidDist = aimHits[i].distance;
+                // Hardcodeamos la posición de la flecha restando su longitud exacta
+                startPos = aimHits[i].point - shootDirection * currentArrowInstance.ArrowLength;
+                pointBlankActivated = true;
+            }
+        }
+
+        if (pointBlankActivated)
+        {
+            Debug.Log("¡Disparo a quemarropa (Point-Blank) activado! Ajustando posición inicial de la flecha.");
+        }
+
+        // 3. Lanzamiento Hardcodeado en la dirección exacta calculada
+        currentArrowInstance.transform.position = startPos;
         currentArrowInstance.transform.rotation = Quaternion.LookRotation(shootDirection);
 
         float shootVelocity = Mathf.Lerp(minShootVelocity, maxShootVelocity, chargePercent);
@@ -208,20 +238,21 @@ public class PlayerShooter : MonoBehaviour
         }
     }
 
-    private (Vector3 point, bool wasIntercepted) CalculateActualImpactPoint()
+    private (Vector3 point, Vector3 direction, bool wasIntercepted) CalculateAimData()
     {
-        if (playerCamera == null) return (firePoint.position + firePoint.forward * 100f, false);
+        if (playerCamera == null) return (firePoint.position + firePoint.forward * 100f, firePoint.forward, false);
 
+        // 1. Cálculo del objetivo de la cámara
         Ray camRay = playerCamera.ViewportPointToRay(viewportCenter);
         Vector3 targetPoint = camRay.GetPoint(100f);
 
-        int hitCount = Physics.RaycastNonAlloc(camRay, aimHits, 100f, aimLayerMask);
+        int hitCount = Physics.RaycastNonAlloc(camRay, aimHits, 100f, aimLayerMask, QueryTriggerInteraction.Ignore);
         float closestDistance = float.MaxValue;
         bool camHit = false;
 
         for (int i = 0; i < hitCount; i++)
         {
-            if (aimHits[i].collider.CompareTag("Player") || aimHits[i].collider.isTrigger) continue; // IGNORAR AL JUGADOR
+            if (aimHits[i].collider.CompareTag("Player")) continue;
             if (aimHits[i].distance < closestDistance)
             {
                 closestDistance = aimHits[i].distance;
@@ -230,39 +261,37 @@ public class PlayerShooter : MonoBehaviour
             }
         }
 
-        Vector3 idealShootDirection;
-
-        // Si estamos muy cerca de una pared, disparamos paralelo a la cámara para evitar el ángulo extremo
-        if (camHit && closestDistance < minConvergenceDistance)
+        // 2. Cálculo de la dirección de disparo perfecta
+        Vector3 shootDirection;
+        
+        if (IsPointBlankWithEnemy() || (camHit && closestDistance < minConvergenceDistance))
         {
-            idealShootDirection = playerCamera.transform.forward;
+            // HARDCODE: Si disparamos a quemarropa, forzamos que vaya en línea recta paralela a la cámara
+            shootDirection = playerCamera.transform.forward;
         }
         else
         {
-            idealShootDirection = (targetPoint - firePoint.position).normalized;
+            shootDirection = (targetPoint - firePoint.position).normalized;
         }
-        Vector3 finalShootDirection = idealShootDirection;
         
-        //comparamos si el arco está desalineado de la cámara (debido a BowMovementLimiter o inercia)
         float angleDifference = Vector3.Angle(playerCamera.transform.forward, firePoint.forward);
         if (angleDifference > bowMisalignmentThreshold)
         {
-            //forzamos que la flecha salga recta desde la posición física del arco
-            finalShootDirection = firePoint.forward;
+            shootDirection = firePoint.forward;
         }
 
+        // 3. Cálculo de la trayectoria real de la flecha
         float lengthOffset = currentArrowInstance != null ? currentArrowInstance.ArrowLength : 1f;
-
-        Vector3 rayStart = firePoint.position + finalShootDirection * lengthOffset;
-        Vector3 actualHitPoint = rayStart + finalShootDirection * 100f;
+        Vector3 rayStart = firePoint.position + shootDirection * lengthOffset;
+        Vector3 actualHitPoint = rayStart + shootDirection * 100f;
         bool arrowHit = false;
 
-        //lanzamos el rayo para comprobar dónde colisionará realmente la flecha
-        int arrowHitsCount = Physics.RaycastNonAlloc(rayStart, finalShootDirection, aimHits, 100f, aimLayerMask);
+        int arrowHitsCount = Physics.RaycastNonAlloc(rayStart, shootDirection, aimHits, 100f, aimLayerMask, QueryTriggerInteraction.Ignore);
         float closestArrowDist = float.MaxValue;
+        
         for (int i = 0; i < arrowHitsCount; i++)
         {
-            if (aimHits[i].collider.CompareTag("Player") || aimHits[i].collider.isTrigger) continue;
+            if (aimHits[i].collider.CompareTag("Player")) continue;
             if (aimHits[i].distance < closestArrowDist)
             {
                 closestArrowDist = aimHits[i].distance;
@@ -271,44 +300,48 @@ public class PlayerShooter : MonoBehaviour
             }
         }
 
+        // 4. Lógica de UI (Evaluación de desvío significativo de la mira)
         bool isSignificantDeviation = false;
-        if ((targetPoint - actualHitPoint).sqrMagnitude > (aimMarkerThreshold * aimMarkerThreshold))
+        
+        if (IsShotBlocked() || IsPointBlankWithEnemy() || (camHit && closestDistance < minConvergenceDistance))
         {
-            isSignificantDeviation = true;
-        }
-        else if (camHit && closestDistance < minConvergenceDistance)
-        {
-            // Si estamos muy cerca a la pared y disparamos paralelo, forzamos la mira roja porque SÍ va a ir desviado
-            isSignificantDeviation = true;
-        }
-
-        // Si no hemos impactado contra nada en absoluto (cielo/vacío), ocultamos la alerta para limpiar la UI
-        if (!camHit && !arrowHit)
-        {
+            // Si estamos a quemarropa o el tiro está bloqueado, forzamos a que NO se muestre la mira secundaria
             isSignificantDeviation = false;
         }
-        else if (angleDifference > bowMisalignmentThreshold)
+        else
         {
-            float camPitch = playerCamera.transform.eulerAngles.x;
-            if (camPitch > 180f) camPitch -= 360f;
-
-            if (camPitch > 0f)
+            if ((targetPoint - actualHitPoint).sqrMagnitude > (aimMarkerThreshold * aimMarkerThreshold))
             {
                 isSignificantDeviation = true;
             }
-            else
-            {
-                float distToTarget = Vector3.Distance(firePoint.position, targetPoint);
-                float distToActual = Vector3.Distance(firePoint.position, actualHitPoint);
 
-                if (distToActual >= distToTarget - obstacleDetectionDistance)
+            if (!camHit && !arrowHit)
+            {
+                isSignificantDeviation = false;
+            }
+            else if (angleDifference > bowMisalignmentThreshold)
+            {
+                float camPitch = playerCamera.transform.eulerAngles.x;
+                if (camPitch > 180f) camPitch -= 360f;
+
+                if (camPitch > 0f)
                 {
-                    isSignificantDeviation = false;
+                    isSignificantDeviation = true;
+                }
+                else
+                {
+                    float distToTarget = Vector3.Distance(firePoint.position, targetPoint);
+                    float distToActual = Vector3.Distance(firePoint.position, actualHitPoint);
+
+                    if (distToActual >= distToTarget - obstacleDetectionDistance)
+                    {
+                        isSignificantDeviation = false;
+                    }
                 }
             }
         }
 
-        return (actualHitPoint, isSignificantDeviation);
+        return (actualHitPoint, shootDirection, isSignificantDeviation);
     }
 
     private bool IsShotBlocked()
@@ -324,6 +357,22 @@ public class PlayerShooter : MonoBehaviour
         {
             if (blockCheckColliders[i].CompareTag("Player") || blockCheckColliders[i].CompareTag("Enemy")) continue;
             return true;
+        }
+        return false;
+    }
+
+    private bool IsPointBlankWithEnemy()
+    {
+        if (currentArrowInstance == null) return false;
+
+        Vector3 startPos = firePoint.position;
+        Vector3 endPos = firePoint.position + firePoint.forward * (currentArrowInstance.ArrowLength + enemyPointBlankDistance);
+
+        int count = Physics.OverlapCapsuleNonAlloc(startPos, endPos, weaponBlockRadius, blockCheckColliders, aimLayerMask, QueryTriggerInteraction.Collide);
+        
+        for (int i = 0; i < count; i++)
+        {
+            if (blockCheckColliders[i].CompareTag("Enemy")) return true;
         }
         return false;
     }

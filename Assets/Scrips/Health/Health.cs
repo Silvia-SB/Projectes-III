@@ -76,7 +76,7 @@ public abstract class Health : MonoBehaviour, IDamageable
 
     protected virtual void Die()
     {
-        if(gameObject.CompareTag("Wall")) Destroy(gameObject);
+        if(gameObject.CompareTag("Wall")) gameObject.SetActive(false);
         OnDeath?.Invoke();
         statusManager?.ClearAllStatuses();
 

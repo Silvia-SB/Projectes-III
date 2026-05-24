@@ -9,7 +9,7 @@ public class GenerateStarCubemap : MonoBehaviour
     public void Generate()
     {
 #if UNITY_EDITOR
-        int size = 2048;
+        int size = 512;
         int starsPerFace = 130;
 
         Cubemap cubemap = new Cubemap(size, TextureFormat.RGBA32, false);

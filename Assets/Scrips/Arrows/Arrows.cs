@@ -8,6 +8,9 @@ public abstract class Arrow : MonoBehaviour
     [SerializeField] protected float penetrationDepth = 0.4f;
     [SerializeField] protected TrailRenderer trailRenderer;
     [SerializeField] protected float distanceToChangeLayer = 0.5f; 
+
+    [Header("Visual Effects")]
+    [SerializeField] protected ParticleSystem[] impactParticles;
     private float sqrDistanceToChangeLayer;
     
     public abstract ArrowType type { get; }
@@ -28,6 +31,17 @@ public abstract class Arrow : MonoBehaviour
         col = GetComponent<Collider>();
         if (col != null) col.isTrigger = true; // Evita que Unity expulse la flecha con físicas
         sqrDistanceToChangeLayer = distanceToChangeLayer * distanceToChangeLayer;
+    }
+
+    protected virtual void OnEnable()
+    {
+        if (impactParticles != null)
+        {
+            foreach (ParticleSystem ps in impactParticles)
+            {
+                if (ps != null) ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            }
+        }
     }
 
     public void Launch(float launchSpeed)
@@ -131,6 +145,7 @@ public abstract class Arrow : MonoBehaviour
         
         if (other.CompareTag("Liquid") || other.CompareTag("Surface") || isConductive)
         {
+            PlayImpactParticles();
             OnHit(other);
             return false;
         }
@@ -139,6 +154,7 @@ public abstract class Arrow : MonoBehaviour
         {
             transform.position = hitPoint - transform.forward * (arrowLength - penetrationDepth);
 
+            PlayImpactParticles();
             OnHit(other);
             if (interactable != null) interactable.OnArrowHit(this);
             StickToTarget(other);
@@ -167,6 +183,17 @@ public abstract class Arrow : MonoBehaviour
 
     protected abstract void OnHit(Collider other);
 
+    protected void PlayImpactParticles()
+    {
+        if (impactParticles != null)
+        {
+            foreach (ParticleSystem ps in impactParticles)
+            {
+                if (ps != null) ps.Play();
+            }
+        }
+    }
+
     protected float GetDamageMultiplier(Collider other)
     {
         HitboxManager manager = other.GetComponentInParent<HitboxManager>();
@@ -177,7 +204,7 @@ public abstract class Arrow : MonoBehaviour
         return 1f;
     }
 
-    public void ReturnToPool()
+    public virtual void ReturnToPool()
     {
         if (!gameObject.activeInHierarchy) return;
         
@@ -194,6 +221,15 @@ public abstract class Arrow : MonoBehaviour
             trailRenderer.emitting = false;
             trailRenderer.Clear();
         }
+
+        if (impactParticles != null)
+        {
+            foreach (ParticleSystem ps in impactParticles)
+            {
+                if (ps != null) ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            }
+        }
+        
         if (Pool != null) transform.SetParent(Pool.transform);
         if (Pool != null) Pool.ReturnToPool(this);
     }

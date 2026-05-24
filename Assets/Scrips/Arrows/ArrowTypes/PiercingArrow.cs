@@ -10,8 +10,9 @@ public class PiercingArrow : Arrow
 
     private HashSet<IDamageable> hitTargets = new HashSet<IDamageable>();
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         hitTargets.Clear();
     }
 
@@ -24,6 +25,7 @@ public class PiercingArrow : Arrow
         
         if (other.CompareTag("Liquid") || other.CompareTag("Surface") || isConductive)
         {
+            PlayImpactParticles();
             OnHit(other);
             return false; // Continúa el vuelo a través del líquido/superficie
         }
@@ -31,6 +33,7 @@ public class PiercingArrow : Arrow
         if (other.CompareTag("Wall") || other.CompareTag("Explosive"))
         {
             transform.position = hitPoint - transform.forward * (arrowLength - penetrationDepth);
+            PlayImpactParticles();
             StickToTarget(other);
             return true;
         }
@@ -42,6 +45,7 @@ public class PiercingArrow : Arrow
                 hitTargets.Add(target);
                 float multiplier = GetDamageMultiplier(other);
                 target.TakeDamage(damage * multiplier, damageType);
+                PlayImpactParticles();
             }
 
             if (!isFullyCharged)

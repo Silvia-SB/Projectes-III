@@ -19,11 +19,14 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private float obstacleDetectionDistance = 3.0f;
     
     [SerializeField] private float minConvergenceDistance = 2.0f;
-
+    
     [Header("Block System")]
     [SerializeField] private float weaponBlockRadius = 0.05f;
     [SerializeField] private float enemyPointBlankDistance = 1.0f;
 
+    [Header("Animator")]
+    [SerializeField] private Animator animator;
+    
     private Arrow currentArrowInstance;
     private float nextFireTime;
     private bool isWaitingForReload;
@@ -102,6 +105,7 @@ public class PlayerShooter : MonoBehaviour
             isFireButtonHeld = true;
             if (!isWaitingForReload && Time.time >= nextFireTime && currentArrowInstance != null && !isCharging)
             {
+                animator.SetBool("isCharging",true);
                 StartCharging();
             }
         }
@@ -119,8 +123,13 @@ public class PlayerShooter : MonoBehaviour
                 {
                     if (!IsShotBlocked())
                     {
+                        animator.SetBool("isCharging",false);
                         float chargePercent = Mathf.Clamp01((chargeDuration - minChargeTime) / (fullChargeTime - minChargeTime));
                         Shoot(chargePercent);
+                    }
+                    else
+                    {
+                        
                     }
                 }
             }
@@ -229,6 +238,7 @@ public class PlayerShooter : MonoBehaviour
         {
             currentArrowType = ArrowType.Base;
         }
+        animator.SetTrigger("Shoot");
     }
 
     private (Vector3 point, Vector3 direction, bool wasIntercepted) CalculateAimData()

@@ -62,10 +62,11 @@ public class PlayerShooter : MonoBehaviour
             isWaitingForReload = false;
             PrepareArrow();
 
-            if (isFireButtonHeld && !isCharging)
+            if (isFireButtonHeld && !isCharging && currentArrowInstance != null)
             {
                 StartCharging();
             }
+ 
         }
 
         if (isCharging)
@@ -96,6 +97,7 @@ public class PlayerShooter : MonoBehaviour
                 }
             }
         }
+
     }
 
     public void OnShoot(InputAction.CallbackContext context)
@@ -105,32 +107,36 @@ public class PlayerShooter : MonoBehaviour
             isFireButtonHeld = true;
             if (!isWaitingForReload && Time.time >= nextFireTime && currentArrowInstance != null && !isCharging)
             {
-                animator.SetBool("isCharging",true);
                 StartCharging();
             }
         }
         else if (context.canceled)
         {
             isFireButtonHeld = false;
-            if (isCharging && currentArrowInstance != null)
+            if (isCharging)
             {
                 isCharging = false; 
                 isAimMarkerActive = false;
                 OnChargeEnd?.Invoke();
+                animator.SetBool("isCharging", false);
                 
                 float chargeDuration = Time.time - chargeStartTime;
                 if (chargeDuration >= minChargeTime)
                 {
-                    if (!IsShotBlocked())
+                    if (currentArrowInstance != null && !IsShotBlocked())
                     {
-                        animator.SetBool("isCharging",false);
                         float chargePercent = Mathf.Clamp01((chargeDuration - minChargeTime) / (fullChargeTime - minChargeTime));
                         Shoot(chargePercent);
+                
                     }
                     else
                     {
-                        
+                        animator.SetTrigger("cancelCharge");
                     }
+                }
+                else
+                {
+                    animator.SetTrigger("cancelCharge");
                 }
             }
             
@@ -144,10 +150,14 @@ public class PlayerShooter : MonoBehaviour
             ChangeArrowType(ArrowType.Base);
             return;
         }
+
+        if (currentArrowInstance == null) return;
+
         chargeStartTime = Time.time;
         isCharging = true; 
         hasReachedMinCharge = false;
         isAimMarkerActive = false;
+        animator.SetBool("isCharging", true);
         OnChargeStart?.Invoke();
     }
 
@@ -155,6 +165,7 @@ public class PlayerShooter : MonoBehaviour
     {
         if (context.performed && currentArrowType != ArrowType.Base) 
         {
+            if (isCharging || isWaitingForReload) return;
             ChangeArrowType(ArrowType.Base);
         }
     }
@@ -163,6 +174,7 @@ public class PlayerShooter : MonoBehaviour
     {
         if (context.performed && currentArrowType != ArrowType.Blood) 
         {
+            if (isCharging || isWaitingForReload) return;
             if (CanAffordArrow(ArrowType.Blood)){
                 ChangeArrowType(ArrowType.Blood);
             }
@@ -173,6 +185,7 @@ public class PlayerShooter : MonoBehaviour
     {
         if (context.performed && currentArrowType != ArrowType.Piercing) 
         {
+            if (isCharging || isWaitingForReload) return;
             if (CanAffordArrow(ArrowType.Piercing)){
                 ChangeArrowType(ArrowType.Piercing);
             }
@@ -183,6 +196,7 @@ public class PlayerShooter : MonoBehaviour
     {
         if (context.performed && currentArrowType != ArrowType.Electric) 
         {
+            if (isCharging || isWaitingForReload) return;
             if (CanAffordArrow(ArrowType.Electric)){
                 ChangeArrowType(ArrowType.Electric);
             }
@@ -191,7 +205,11 @@ public class PlayerShooter : MonoBehaviour
 
     private void Shoot(float chargePercent)
     {
-        if (SoulManager.Instance != null && !SoulManager.Instance.TryConsumeSouls(currentArrowType)) return;
+        if (SoulManager.Instance != null && !SoulManager.Instance.TryConsumeSouls(currentArrowType))
+        {
+            animator.SetTrigger("cancelCharge");
+            return;
+        }
 
         nextFireTime = Time.time + fireRate;
 
@@ -419,7 +437,11 @@ public class PlayerShooter : MonoBehaviour
         {
             isCharging = false;
             OnChargeEnd?.Invoke();
+            animator.SetBool("isCharging", false);
+            animator.SetTrigger("cancelCharge");
         }
+
+        animator.SetTrigger("changeArrow");
 
         currentArrowType = newType;
         nextFireTime = Time.time + fireRate;

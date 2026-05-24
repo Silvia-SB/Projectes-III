@@ -2,35 +2,35 @@ using UnityEngine;
 
 public class ArrowFactory : MonoBehaviour
 {
-    [SerializeField] private GameObject basePrefab;
-    [SerializeField] private GameObject bloodPrefab;
-    [SerializeField] private GameObject piercingPrefab;
-    [SerializeField] private GameObject electricPrefab;
+    [SerializeField] private Arrow basePrefab;
+    [SerializeField] private Arrow bloodPrefab;
+    [SerializeField] private Arrow piercingPrefab;
+    [SerializeField] private Arrow electricPrefab;
 
 
     public Arrow CreateArrow(ArrowType type, Transform parent)
     {
-        GameObject obj;
+        Arrow arrow;
 
         switch (type)
         {
             case ArrowType.Base:
-                obj = Instantiate(basePrefab, parent);
+                arrow = Instantiate(basePrefab, parent);
                 break;
             case ArrowType.Blood:
-                obj = Instantiate(bloodPrefab, parent);
+                arrow = Instantiate(bloodPrefab, parent);
                 break;
             case ArrowType.Piercing:
-                obj = Instantiate(piercingPrefab, parent);
+                arrow = Instantiate(piercingPrefab, parent);
                 break;
             case ArrowType.Electric:
-                obj = Instantiate(electricPrefab, parent);
+                arrow = Instantiate(electricPrefab, parent);
                 break;
             default:
-                obj = Instantiate(basePrefab, parent);
+                arrow = Instantiate(basePrefab, parent);
                 break;
         }
 
-        return obj.GetComponent<Arrow>();
+        return arrow;
     }
 } 

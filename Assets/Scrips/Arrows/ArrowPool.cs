@@ -6,55 +6,43 @@ public class ArrowPool : MonoBehaviour
     [SerializeField] private ArrowFactory factory;
     [SerializeField] private int amountPerType = 5;
     
-    private Dictionary<ArrowType, List<Arrow>> pools = new Dictionary<ArrowType, List<Arrow>>();
+    private Dictionary<ArrowType, Queue<Arrow>> pools = new Dictionary<ArrowType, Queue<Arrow>>();
 
     private void Start()
     {
-        InitialInstance(ArrowType.Base);
-        InitialInstance(ArrowType.Blood);
-        InitialInstance(ArrowType.Piercing);
-        InitialInstance(ArrowType.Electric);
+        InitializeInstance(ArrowType.Base);
+        InitializeInstance(ArrowType.Blood);
+        InitializeInstance(ArrowType.Piercing);
+        InitializeInstance(ArrowType.Electric);
     }
 
-    private void InitialInstance(ArrowType type)
+    private void InitializeInstance(ArrowType type)
     {
-        if (!pools.ContainsKey(type)) pools.Add(type, new List<Arrow>());
+        if (!pools.ContainsKey(type)) pools.Add(type, new Queue<Arrow>());
         
         for (int i = 0; i < amountPerType; i++)
         {
             Arrow arrow = factory.CreateArrow(type, transform);
             arrow.Pool = this;
             arrow.gameObject.SetActive(false);
-            pools[type].Add(arrow);
+            pools[type].Enqueue(arrow);
         }
     }
 
     public Arrow GetArrow(ArrowType type)
     {
-        if (pools.ContainsKey(type))
+        if (!pools.TryGetValue(type, out var pool)) return null;
+        
+        Arrow arrow = pool.Dequeue();
+        
+        if (arrow.gameObject.activeInHierarchy)
         {
-            for (int i = 0; i < pools[type].Count; i++)
-            {
-                Arrow arrow = pools[type][i];
-                if (!arrow.gameObject.activeInHierarchy)
-                {
-                    pools[type].RemoveAt(i);
-                    pools[type].Add(arrow);
-                    arrow.gameObject.SetActive(true);
-                    return arrow;
-                }
-            }
-            
-            Arrow oldestArrow = pools[type][0];
-            oldestArrow.ReturnToPool();
-            
-            pools[type].RemoveAt(0);
-            pools[type].Add(oldestArrow);
-            oldestArrow.gameObject.SetActive(true);
-            return oldestArrow;
+            arrow.ReturnToPool();
         }
         
-        return null;
+        arrow.gameObject.SetActive(true);
+        pool.Enqueue(arrow);
+        return arrow;
     }
 
     public void ReturnToPool(Arrow arrow)

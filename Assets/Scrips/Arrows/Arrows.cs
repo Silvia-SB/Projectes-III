@@ -8,6 +8,7 @@ public abstract class Arrow : MonoBehaviour
     [SerializeField] protected float penetrationDepth = 0.4f;
     [SerializeField] protected TrailRenderer trailRenderer;
     [SerializeField] protected float distanceToChangeLayer = 0.5f; 
+    private float sqrDistanceToChangeLayer;
     
     public abstract ArrowType type { get; }
     public abstract DamageType damageType { get; }
@@ -26,15 +27,20 @@ public abstract class Arrow : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
         if (col != null) col.isTrigger = true; // Evita que Unity expulse la flecha con físicas
+        sqrDistanceToChangeLayer = distanceToChangeLayer * distanceToChangeLayer;
     }
 
     public void Launch(float launchSpeed)
     {
         if (col != null) col.enabled = true;
-        if (rb != null) rb.isKinematic = false;
-        rb.linearVelocity = Vector3.zero; 
-        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
-        rb.AddForce(transform.forward * launchSpeed, ForceMode.Impulse);
+        if (rb != null) 
+        {
+            rb.isKinematic = false;
+            rb.interpolation = RigidbodyInterpolation.Interpolate;
+            rb.linearVelocity = Vector3.zero; 
+            rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+            rb.AddForce(transform.forward * launchSpeed, ForceMode.Impulse);
+        }
         lastPosition = transform.position;
         launchPosition = transform.position;
         hasChangedLayer = false;
@@ -51,7 +57,7 @@ public abstract class Arrow : MonoBehaviour
     {
         if (rb != null && !rb.isKinematic)
         {
-            if (!hasChangedLayer && Vector3.Distance(launchPosition, transform.position) >= distanceToChangeLayer)
+            if (!hasChangedLayer && (transform.position - launchPosition).sqrMagnitude >= sqrDistanceToChangeLayer)
             {
                 gameObject.layer = LayerMask.NameToLayer("Default");
                 hasChangedLayer = true;
@@ -177,7 +183,11 @@ public abstract class Arrow : MonoBehaviour
         
         CancelInvoke();
         gameObject.SetActive(false);
-        if (rb != null && rb.collisionDetectionMode != CollisionDetectionMode.Discrete) rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
+        if (rb != null) 
+        {
+            if (rb.collisionDetectionMode != CollisionDetectionMode.Discrete) rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
+            rb.interpolation = RigidbodyInterpolation.None;
+        }
 
         if (trailRenderer != null)
         {

@@ -2,31 +2,51 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[DefaultExecutionOrder(100)]
 public class PlayerShooter : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private ArrowPool arrowPool;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private Camera playerCamera; 
+
+    [Header("Shooting Settings")]
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private float minChargeTime = 1f;
     [SerializeField] private float fullChargeTime = 4f;
     [SerializeField] private float minShootVelocity = 25f;
     [SerializeField] private float maxShootVelocity = 60f;
     [SerializeField] private ArrowType currentArrowType = ArrowType.Base;
-    [SerializeField] private Camera playerCamera; 
+
+    [Header("Aiming Settings")]
     [SerializeField] private LayerMask aimLayerMask = ~0; 
     [SerializeField] private float aimMarkerThreshold = 1.0f;
     [SerializeField] private float bowMisalignmentThreshold = 2.0f;
     [SerializeField] private float obstacleDetectionDistance = 3.0f;
-    
     [SerializeField] private float minConvergenceDistance = 2.0f;
+
+    [Header("Bow Alignment (Procedural IK)")]
+    [SerializeField] private Transform stringNockPoint;
+    [SerializeField] private Transform bowRestPoint;
+    [SerializeField] private Transform bowTopPassPoint;
+    [SerializeField] private float bowAlignmentDuration = 0.5f;
     
     [Header("Block System")]
     [SerializeField] private float weaponBlockRadius = 0.05f;
     [SerializeField] private float enemyPointBlankDistance = 1.0f;
 
-    [Header("Animator")]
-    [SerializeField] private Animator animator;
-    
+    [Header("Weapon Retraction")]
+    [Tooltip("El objeto padre de los brazos y el arco. Se moverá para evitar atravesar paredes.")]
+    [SerializeField] private Transform weaponRoot;
+    [SerializeField] private Vector3 retractedPositionOffset = new Vector3(0f, -0.2f, -0.1f);
+    [SerializeField] private Vector3 retractedRotationOffset = new Vector3(25f, -15f, 0f);
+    [SerializeField] private float retractionSpeed = 12f;
+
+    [Header("Animators")]
+    [SerializeField] private Animator armsAnimator;
+    [SerializeField] private Animator bowAnimator;
+
+    // --- State Variables ---
     private Arrow currentArrowInstance;
     private float nextFireTime;
     private bool isWaitingForReload;
@@ -34,9 +54,22 @@ public class PlayerShooter : MonoBehaviour
     private float chargeStartTime;
     private bool isFireButtonHeld;
     private bool hasReachedMinCharge;
+    private bool isAimMarkerActive; 
+    private float bowAlignmentWeight = 1f;
+    private bool isAligningBow;
+    private float alignmentStartTime;
+    private Vector3 initialWeaponPos;
+    private Quaternion initialWeaponRot;
+    private float currentRetractionWeight;
+
+    private static readonly int isChargingHash = Animator.StringToHash("isCharging");
+    private static readonly int cancelChargeHash = Animator.StringToHash("cancelCharge");
+    private static readonly int shootHash = Animator.StringToHash("Shoot");
+    private static readonly int changeArrowHash = Animator.StringToHash("changeArrow");
+
+    // --- Caches & Helpers ---
     private RaycastHit[] aimHits = new RaycastHit[20];     
     private readonly Vector3 viewportCenter = new Vector3(0.5f, 0.5f, 0f); 
-    private bool isAimMarkerActive; 
     private Transform camTransform;
     private Collider[] blockCheckColliders = new Collider[5];
 
@@ -52,6 +85,11 @@ public class PlayerShooter : MonoBehaviour
     private void Start()
     {
         if (playerCamera == null) playerCamera = Camera.main;
+        if (weaponRoot != null)
+        {
+            initialWeaponPos = weaponRoot.localPosition;
+            initialWeaponRot = weaponRoot.localRotation;
+        }
         PrepareArrow();
     }
 
@@ -59,14 +97,30 @@ public class PlayerShooter : MonoBehaviour
     {
         if (isWaitingForReload && Time.time >= nextFireTime)
         {
+            if (!CanAffordArrow(currentArrowType))
+            {
+                ChangeArrowType(ArrowType.Base);
+                return;
+            }
+
             isWaitingForReload = false;
             PrepareArrow();
+        }
 
-            if (isFireButtonHeld && !isCharging && currentArrowInstance != null)
+        if (isAligningBow)
+        {
+            float elapsed = Time.time - alignmentStartTime;
+            bowAlignmentWeight = bowAlignmentDuration > 0f ? Mathf.Clamp01(elapsed / bowAlignmentDuration) : 1f;
+            if (bowAlignmentWeight >= 1f)
             {
-                StartCharging();
+                isAligningBow = false;
+
+                // Si el jugador mantuvo el botón pulsado durante la recarga, iniciamos la carga justo ahora
+                if (isFireButtonHeld && !isCharging && currentArrowInstance != null)
+                {
+                    StartCharging();
+                }
             }
- 
         }
 
         if (isCharging)
@@ -100,12 +154,55 @@ public class PlayerShooter : MonoBehaviour
 
     }
 
+    private void LateUpdate()
+    {
+        // Alineación procedural: El FirePoint sigue a la cuerda pero apunta obligatoriamente al arco
+        if (stringNockPoint != null && bowRestPoint != null && firePoint != null)
+        {
+            firePoint.position = stringNockPoint.position;
+
+            Vector3 targetPoint = bowRestPoint.position;
+
+            if (bowTopPassPoint != null && bowAlignmentWeight < 1f)
+            {
+                targetPoint = Vector3.Lerp(bowTopPassPoint.position, bowRestPoint.position, bowAlignmentWeight);
+            }
+
+            Vector3 forwardDirection = targetPoint - stringNockPoint.position;
+            if (forwardDirection.sqrMagnitude > 0.001f)
+            {
+                firePoint.rotation = Quaternion.LookRotation(forwardDirection);
+            }
+            else
+            {
+                firePoint.rotation = stringNockPoint.rotation;
+            }
+        }
+
+        // Retracción procedural del arma al acercarse a una pared
+        if (weaponRoot != null)
+        {
+            // 1. Movemos temporalmente el arma a su posición original para que el detector no tiemble
+            weaponRoot.localPosition = initialWeaponPos;
+            weaponRoot.localRotation = initialWeaponRot;
+
+            // 2. Usamos tu detector original indicándole que ignore el peso de retracción visual
+            bool shouldRetract = IsShotBlocked(true);
+
+            float targetWeight = shouldRetract ? 1f : 0f;
+            currentRetractionWeight = Mathf.Lerp(currentRetractionWeight, targetWeight, Time.deltaTime * retractionSpeed);
+
+            weaponRoot.localPosition = Vector3.Lerp(initialWeaponPos, initialWeaponPos + retractedPositionOffset, currentRetractionWeight);
+            weaponRoot.localRotation = Quaternion.Slerp(initialWeaponRot, initialWeaponRot * Quaternion.Euler(retractedRotationOffset), currentRetractionWeight);
+        }
+    }
+
     public void OnShoot(InputAction.CallbackContext context)
     {
         if (context.started)
         {
             isFireButtonHeld = true;
-            if (!isWaitingForReload && Time.time >= nextFireTime && currentArrowInstance != null && !isCharging)
+            if (!isWaitingForReload && !isAligningBow && Time.time >= nextFireTime && currentArrowInstance != null && !isCharging)
             {
                 StartCharging();
             }
@@ -118,7 +215,7 @@ public class PlayerShooter : MonoBehaviour
                 isCharging = false; 
                 isAimMarkerActive = false;
                 OnChargeEnd?.Invoke();
-                animator.SetBool("isCharging", false);
+                SetAnimatorBool(isChargingHash, false);
                 
                 float chargeDuration = Time.time - chargeStartTime;
                 if (chargeDuration >= minChargeTime)
@@ -131,12 +228,12 @@ public class PlayerShooter : MonoBehaviour
                     }
                     else
                     {
-                        animator.SetTrigger("cancelCharge");
+                        SetAnimatorTrigger(cancelChargeHash);
                     }
                 }
                 else
                 {
-                    animator.SetTrigger("cancelCharge");
+                    SetAnimatorTrigger(cancelChargeHash);
                 }
             }
             
@@ -157,7 +254,7 @@ public class PlayerShooter : MonoBehaviour
         isCharging = true; 
         hasReachedMinCharge = false;
         isAimMarkerActive = false;
-        animator.SetBool("isCharging", true);
+        SetAnimatorBool(isChargingHash, true);
         OnChargeStart?.Invoke();
     }
 
@@ -165,7 +262,7 @@ public class PlayerShooter : MonoBehaviour
     {
         if (context.performed && currentArrowType != ArrowType.Base) 
         {
-            if (isCharging || isWaitingForReload) return;
+            if (isCharging || isWaitingForReload || isAligningBow) return;
             ChangeArrowType(ArrowType.Base);
         }
     }
@@ -174,7 +271,7 @@ public class PlayerShooter : MonoBehaviour
     {
         if (context.performed && currentArrowType != ArrowType.Blood) 
         {
-            if (isCharging || isWaitingForReload) return;
+            if (isCharging || isWaitingForReload || isAligningBow) return;
             if (CanAffordArrow(ArrowType.Blood)){
                 ChangeArrowType(ArrowType.Blood);
             }
@@ -185,7 +282,7 @@ public class PlayerShooter : MonoBehaviour
     {
         if (context.performed && currentArrowType != ArrowType.Piercing) 
         {
-            if (isCharging || isWaitingForReload) return;
+            if (isCharging || isWaitingForReload || isAligningBow) return;
             if (CanAffordArrow(ArrowType.Piercing)){
                 ChangeArrowType(ArrowType.Piercing);
             }
@@ -196,7 +293,7 @@ public class PlayerShooter : MonoBehaviour
     {
         if (context.performed && currentArrowType != ArrowType.Electric) 
         {
-            if (isCharging || isWaitingForReload) return;
+            if (isCharging || isWaitingForReload || isAligningBow) return;
             if (CanAffordArrow(ArrowType.Electric)){
                 ChangeArrowType(ArrowType.Electric);
             }
@@ -207,7 +304,7 @@ public class PlayerShooter : MonoBehaviour
     {
         if (SoulManager.Instance != null && !SoulManager.Instance.TryConsumeSouls(currentArrowType))
         {
-            animator.SetTrigger("cancelCharge");
+            SetAnimatorTrigger(cancelChargeHash);
             return;
         }
 
@@ -252,11 +349,7 @@ public class PlayerShooter : MonoBehaviour
 
         isWaitingForReload = true;
 
-        if (!CanAffordArrow(currentArrowType))
-        {
-            currentArrowType = ArrowType.Base;
-        }
-        animator.SetTrigger("Shoot");
+        SetAnimatorTrigger(shootHash);
     }
 
     private (Vector3 point, Vector3 direction, bool wasIntercepted) CalculateAimData()
@@ -365,9 +458,15 @@ public class PlayerShooter : MonoBehaviour
         return (actualHitPoint, shootDirection, isSignificantDeviation);
     }
 
-    private bool IsShotBlocked()
+    private bool IsShotBlocked(bool ignoreRetraction = false)
     {
         if (currentArrowInstance == null) return false;
+
+        // Si el arma está muy retraída visualmente por la pared, bloqueamos el disparo directamente
+        if (!ignoreRetraction && currentRetractionWeight > 0.3f)
+        {
+            return true;
+        }
 
         Vector3 startPos = firePoint.position;
         Vector3 endPos = firePoint.position + firePoint.forward * currentArrowInstance.ArrowLength;
@@ -418,10 +517,18 @@ public class PlayerShooter : MonoBehaviour
             currentArrowInstance.gameObject.layer = LayerMask.NameToLayer("Weapon");
 
             Rigidbody rb = currentArrowInstance.GetComponent<Rigidbody>();
-            if (rb != null) rb.isKinematic = true;
+            if (rb != null)
+            {
+                rb.isKinematic = true;
+                rb.interpolation = RigidbodyInterpolation.None;
+            }
 
             Collider col = currentArrowInstance.GetComponent<Collider>();
             if (col != null) col.enabled = false; 
+            
+            isAligningBow = true;
+            alignmentStartTime = Time.time;
+            bowAlignmentWeight = 0f;
         }
     }
 
@@ -437,14 +544,34 @@ public class PlayerShooter : MonoBehaviour
         {
             isCharging = false;
             OnChargeEnd?.Invoke();
-            animator.SetBool("isCharging", false);
-            animator.SetTrigger("cancelCharge");
+            SetAnimatorBool(isChargingHash, false);
         }
 
-        animator.SetTrigger("changeArrow");
+        // Limpiamos los triggers anteriores para evitar que bloqueen el Animator
+        ResetAnimatorTrigger(cancelChargeHash);
+        ResetAnimatorTrigger(shootHash);
+        SetAnimatorTrigger(changeArrowHash);
 
         currentArrowType = newType;
         nextFireTime = Time.time + fireRate;
         isWaitingForReload = true;
+    }
+
+    private void SetAnimatorBool(int paramHash, bool value)
+    {
+        if (armsAnimator != null) armsAnimator.SetBool(paramHash, value);
+        if (bowAnimator != null) bowAnimator.SetBool(paramHash, value);
+    }
+
+    private void SetAnimatorTrigger(int paramHash)
+    {
+        if (armsAnimator != null) armsAnimator.SetTrigger(paramHash);
+        if (bowAnimator != null) bowAnimator.SetTrigger(paramHash);
+    }
+
+    private void ResetAnimatorTrigger(int paramHash)
+    {
+        if (armsAnimator != null) armsAnimator.ResetTrigger(paramHash);
+        if (bowAnimator != null) bowAnimator.ResetTrigger(paramHash);
     }
 }

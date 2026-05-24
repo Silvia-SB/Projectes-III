@@ -65,7 +65,7 @@ public abstract class Arrow : MonoBehaviour
 
             if (rb.linearVelocity.sqrMagnitude > 0.1f)
             {
-                transform.rotation = Quaternion.LookRotation(rb.linearVelocity);
+                transform.rotation = Quaternion.LookRotation(rb.linearVelocity, transform.up);
             }
 
             Vector3 tipOffset = transform.forward * arrowLength;

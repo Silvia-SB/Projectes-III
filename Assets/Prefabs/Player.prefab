@@ -541,6 +541,8 @@ MonoBehaviour:
   firePoint: {fileID: 5658251648582840375}
   playerCamera: {fileID: 6371337682864297730}
   fireRate: 1
+  arrowSpawnDelayShoot: 1.1
+  arrowSpawnDelayChange: 0.8
   minChargeTime: 0.2
   fullChargeTime: 2
   minShootVelocity: 20
@@ -549,19 +551,19 @@ MonoBehaviour:
   aimLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  aimMarkerThreshold: 0.3
+  aimMarkerThreshold: 1
   bowMisalignmentThreshold: 10
   obstacleDetectionDistance: 3
   minConvergenceDistance: 0.2
   stringNockPoint: {fileID: 5658251648582840375}
   bowRestPoint: {fileID: 6645498993268215776}
-  bowTopPassPoint: {fileID: 3884242880806636481}
+  reloadStartPoint: {fileID: 3273014844513113641}
   bowAlignmentDuration: 0.4
   weaponBlockRadius: 0.1
   enemyPointBlankDistance: 0.2
   weaponRoot: {fileID: 4987095347784746393}
   retractedPositionOffset: {x: 0, y: -0.2, z: -0.1}
-  retractedRotationOffset: {x: 25, y: -15, z: 0}
+  retractedRotationOffset: {x: 15, y: -10, z: 0}
   retractionSpeed: 12
   armsAnimator: {fileID: 8712034672744137375}
   bowAnimator: {fileID: 6382706426873480825}
@@ -896,7 +898,7 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!1 &8177486639078000715
+--- !u!1 &8037460454699995488
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -904,29 +906,29 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3884242880806636481}
+  - component: {fileID: 3273014844513113641}
   m_Layer: 7
-  m_Name: ReloadRef
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3884242880806636481
+--- !u!4 &3273014844513113641
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8177486639078000715}
+  m_GameObject: {fileID: 8037460454699995488}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5000012, y: -0.4999986, z: 0.5000002, w: 0.5000002}
-  m_LocalPosition: {x: -3.56, y: -4.32, z: 1.79}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0.422, y: -0.824, z: 0.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7273315862708695570}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
 --- !u!1001 &2125108599214551348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1285,7 +1287,7 @@ PrefabInstance:
       addedObject: {fileID: 6645498993268215776}
     - targetCorrespondingSourceObject: {fileID: 6462750055815864021, guid: 235bb74d34a654840a28743266648d94, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3884242880806636481}
+      addedObject: {fileID: 3273014844513113641}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 235bb74d34a654840a28743266648d94, type: 3}
       insertIndex: -1

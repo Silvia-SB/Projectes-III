@@ -144,6 +144,7 @@ MonoBehaviour:
   impactParticles:
   - {fileID: 4960348319101616565}
   - {fileID: 2622838752269775135}
+  chargedImpactParticles: []
   damage: 60
 --- !u!65 &454863362016595772
 BoxCollider:
@@ -299,11 +300,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3064822127413142817, guid: 36478c9cbd355c0518d773962ccaae8f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3064822127413142817, guid: 36478c9cbd355c0518d773962ccaae8f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.31
+      value: 0.187
       objectReference: {fileID: 0}
     - target: {fileID: 3064822127413142817, guid: 36478c9cbd355c0518d773962ccaae8f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -374,7 +375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7744613121027330110, guid: 0672f484b22f506bda780fdb5383d88f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.31
+      value: 0.187
       objectReference: {fileID: 0}
     - target: {fileID: 7744613121027330110, guid: 0672f484b22f506bda780fdb5383d88f, type: 3}
       propertyPath: m_LocalRotation.w

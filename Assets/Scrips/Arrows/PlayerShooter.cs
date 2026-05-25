@@ -12,10 +12,6 @@ public class PlayerShooter : MonoBehaviour
 
     [Header("Shooting Settings")]
     [SerializeField] private float fireRate = 0.5f;
-    [Tooltip("Milisegundo de la animación de disparo donde la mano saca la flecha.")]
-    [SerializeField] private float arrowSpawnDelayShoot = 0.25f;
-    [Tooltip("Milisegundo de la animación de cambio donde la mano saca la flecha.")]
-    [SerializeField] private float arrowSpawnDelayChange = 0.4f;
     [SerializeField] private float minChargeTime = 1f;
     [SerializeField] private float fullChargeTime = 4f;
     [SerializeField] private float minShootVelocity = 25f;
@@ -32,9 +28,10 @@ public class PlayerShooter : MonoBehaviour
     [Header("Bow Alignment (Procedural IK)")]
     [SerializeField] private Transform stringNockPoint;
     [SerializeField] private Transform bowRestPoint;
-    [Tooltip("Punto (vacío, no animado) de inicio. Define hacia dónde mira la flecha (rotación) al inicio de la recarga.")]
+    [Tooltip("Punto (vacío, no animado) de inicio. La punta de la flecha mirará hacia la POSICIÓN de este punto al iniciar la recarga.")]
     [SerializeField] private Transform reloadStartPoint;
-    [SerializeField] private float bowAlignmentDuration = 0.5f;
+    [Tooltip("Tiempo que tarda la flecha en colocarse recta en el arco desde que aparece en la mano.")]
+    [SerializeField] private float bowAlignmentDuration = 0.2f;
     
     [Header("Block System")]
     [SerializeField] private float weaponBlockRadius = 0.05f;
@@ -54,7 +51,7 @@ public class PlayerShooter : MonoBehaviour
     // --- State Variables ---
     private Arrow currentArrowInstance;
     private float nextFireTime;
-    private float nextSpawnTime;
+    private float emergencySpawnTime;
     private bool isWaitingForReload;
     private bool isCharging;
     private float chargeStartTime;
@@ -67,6 +64,7 @@ public class PlayerShooter : MonoBehaviour
     private float bowAlignmentWeight = 1f;
     private bool isAligningBow;
     private float alignmentStartTime;
+    private Vector3 initialLocalAlignDir;
 
     private static readonly int isChargingHash = Animator.StringToHash("isCharging");
     private static readonly int cancelChargeHash = Animator.StringToHash("cancelCharge");
@@ -100,16 +98,9 @@ public class PlayerShooter : MonoBehaviour
 
     private void Update()
     {
-        if (isWaitingForReload && Time.time >= nextSpawnTime)
+        if (isWaitingForReload && Time.time >= emergencySpawnTime)
         {
-            if (!CanAffordArrow(currentArrowType))
-            {
-                ChangeArrowType(ArrowType.Base);
-                return;
-            }
-
-            isWaitingForReload = false;
-            PrepareArrow();
+            AnimationEvent_SpawnArrow();
         }
 
         if (isAligningBow)
@@ -159,6 +150,25 @@ public class PlayerShooter : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Llama a esta función mediante un Animation Event en el frame exacto de la animación.
+    /// </summary>
+    public void AnimationEvent_SpawnArrow()
+    {
+        Debug.Log("🎯 [PlayerShooter] AnimationEvent_SpawnArrow() lanzado desde el Animator!");
+
+        if (!isWaitingForReload) return;
+
+        if (!CanAffordArrow(currentArrowType))
+        {
+            ChangeArrowType(ArrowType.Base);
+            return;
+        }
+
+        isWaitingForReload = false;
+        PrepareArrow();
+    }
+
     private void LateUpdate()
     {
         if (weaponRoot != null)
@@ -191,17 +201,21 @@ public class PlayerShooter : MonoBehaviour
 
             Vector3 forwardDirection = bowRestPoint.position - stringNockPoint.position;
             Vector3 targetForward = forwardDirection.sqrMagnitude > 0.001f ? forwardDirection.normalized : stringNockPoint.forward;
+            Quaternion targetRotation = Quaternion.LookRotation(targetForward, bowRestPoint.up);
 
             if (bowAlignmentWeight < 1f)
             {
-                Vector3 startForward = reloadStartPoint != null ? reloadStartPoint.forward : stringNockPoint.forward;
                 float smoothWeight = Mathf.SmoothStep(0f, 1f, bowAlignmentWeight);
-                Vector3 currentForward = Vector3.Slerp(startForward, targetForward, smoothWeight);
-                firePoint.rotation = Quaternion.LookRotation(currentForward, bowRestPoint.up);
+                
+                Vector3 startForward = bowRestPoint.TransformDirection(initialLocalAlignDir);
+                
+                // Creamos una rotación inicial que apunte a startForward, pero usando el camino más corto desde la rotación final para evitar cualquier giro (Roll) sobre el propio eje de la flecha.
+                Quaternion startRotation = Quaternion.FromToRotation(targetForward, startForward) * targetRotation;
+                firePoint.rotation = Quaternion.Slerp(startRotation, targetRotation, smoothWeight);
             }
             else
             {
-                firePoint.rotation = Quaternion.LookRotation(targetForward, bowRestPoint.up);
+                firePoint.rotation = targetRotation;
             }
         }
     }
@@ -353,7 +367,7 @@ public class PlayerShooter : MonoBehaviour
         currentArrowInstance = null;
 
         isWaitingForReload = true;
-        nextSpawnTime = Time.time + arrowSpawnDelayShoot;
+        emergencySpawnTime = Time.time + 2.0f;
 
         SetAnimatorTrigger(shootHash);
     }
@@ -532,6 +546,17 @@ public class PlayerShooter : MonoBehaviour
             isAligningBow = true;
             alignmentStartTime = Time.time;
             bowAlignmentWeight = 0f;
+
+            // Calculamos la dirección inicial mirando hacia la posición en la que el usuario ha colocado el punto
+            if (reloadStartPoint != null && bowRestPoint != null && stringNockPoint != null)
+            {
+                Vector3 startDir = reloadStartPoint.position - stringNockPoint.position;
+                initialLocalAlignDir = startDir.sqrMagnitude > 0.001f ? bowRestPoint.InverseTransformDirection(startDir.normalized) : bowRestPoint.InverseTransformDirection(reloadStartPoint.forward);
+            }
+            else if (stringNockPoint != null && bowRestPoint != null)
+            {
+                initialLocalAlignDir = bowRestPoint.InverseTransformDirection(stringNockPoint.forward);
+            }
         }
     }
 
@@ -556,8 +581,8 @@ public class PlayerShooter : MonoBehaviour
 
         currentArrowType = newType;
         nextFireTime = Time.time + fireRate;
-        nextSpawnTime = Time.time + arrowSpawnDelayChange;
         isWaitingForReload = true;
+        emergencySpawnTime = Time.time + 2.0f;
     }
 
     private void SetAnimatorBool(int paramHash, bool value)

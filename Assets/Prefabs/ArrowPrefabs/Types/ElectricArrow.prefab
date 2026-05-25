@@ -144,6 +144,7 @@ MonoBehaviour:
   impactParticles:
   - {fileID: 2969712405361449218}
   - {fileID: 6444305710887992420}
+  chargedImpactParticles: []
   quickDamage: 30
   aoeRadius: 3
   chargedDamage: 50
@@ -310,7 +311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7744613121027330110, guid: 2a7c52a9f21c49c1fba862853e7d7970, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.293
+      value: 0.161
       objectReference: {fileID: 0}
     - target: {fileID: 7744613121027330110, guid: 2a7c52a9f21c49c1fba862853e7d7970, type: 3}
       propertyPath: m_LocalRotation.w
@@ -373,7 +374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3064822127413142817, guid: 8c135fb6cd45afc79b981e0517e9a8e1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.293
+      value: 0.161
       objectReference: {fileID: 0}
     - target: {fileID: 3064822127413142817, guid: 8c135fb6cd45afc79b981e0517e9a8e1, type: 3}
       propertyPath: m_LocalRotation.w

@@ -144,6 +144,7 @@ MonoBehaviour:
   impactParticles:
   - {fileID: 126930350911989694}
   - {fileID: 4708268047911347580}
+  chargedImpactParticles: []
   baseDamage: 10
   maxDamage: 20
 --- !u!65 &5836165778724844095
@@ -316,7 +317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7744613121027330110, guid: 646562dc1474aacb8b9d3df1c182ff26, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.16561997
+      value: 0.09929997
       objectReference: {fileID: 0}
     - target: {fileID: 7744613121027330110, guid: 646562dc1474aacb8b9d3df1c182ff26, type: 3}
       propertyPath: m_LocalRotation.w
@@ -375,11 +376,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3064822127413142817, guid: f9ef3ab73555f4777aee3f61816bdba0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3064822127413142817, guid: f9ef3ab73555f4777aee3f61816bdba0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.16561997
+      value: 0.0993
       objectReference: {fileID: 0}
     - target: {fileID: 3064822127413142817, guid: f9ef3ab73555f4777aee3f61816bdba0, type: 3}
       propertyPath: m_LocalRotation.w

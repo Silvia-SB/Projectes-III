@@ -11,6 +11,7 @@ public abstract class Arrow : MonoBehaviour
 
     [Header("Visual Effects")]
     [SerializeField] protected ParticleSystem[] impactParticles;
+    [SerializeField] protected ParticleSystem[] chargedImpactParticles;
     private float sqrDistanceToChangeLayer;
     
     public abstract ArrowType type { get; }
@@ -38,6 +39,14 @@ public abstract class Arrow : MonoBehaviour
         if (impactParticles != null)
         {
             foreach (ParticleSystem ps in impactParticles)
+            {
+                if (ps != null) ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            }
+        }
+
+        if (chargedImpactParticles != null)
+        {
+            foreach (ParticleSystem ps in chargedImpactParticles)
             {
                 if (ps != null) ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             }
@@ -185,9 +194,13 @@ public abstract class Arrow : MonoBehaviour
 
     protected void PlayImpactParticles()
     {
-        if (impactParticles != null)
+        ParticleSystem[] activeParticles = (isFullyCharged && chargedImpactParticles != null && chargedImpactParticles.Length > 0) 
+            ? chargedImpactParticles 
+            : impactParticles;
+
+        if (activeParticles != null)
         {
-            foreach (ParticleSystem ps in impactParticles)
+            foreach (ParticleSystem ps in activeParticles)
             {
                 if (ps != null) ps.Play();
             }
@@ -225,6 +238,14 @@ public abstract class Arrow : MonoBehaviour
         if (impactParticles != null)
         {
             foreach (ParticleSystem ps in impactParticles)
+            {
+                if (ps != null) ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            }
+        }
+
+        if (chargedImpactParticles != null)
+        {
+            foreach (ParticleSystem ps in chargedImpactParticles)
             {
                 if (ps != null) ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             }

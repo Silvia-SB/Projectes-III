@@ -1,27 +1,30 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class AttackState : IEnemyState
 {
     private EnemyController enemyController;
     private EnemyStateMachine stateMachine;
     private float recurrentTimer;
-
+    private Animator animator;
+    private int lastAttackIndex = -1;
     public AttackState(EnemyController enemyController,  EnemyStateMachine stateMachine)
     {
         this.enemyController = enemyController;
         this.stateMachine = stateMachine;
+        animator = enemyController.GetAnimator();
     }
     public void Enter()
     {
         var agent = enemyController.GetNavMeshAgent();
 
-        if (agent.isActiveAndEnabled && agent.isOnNavMesh)
-        {
-            agent.isStopped = true;
-            agent.velocity = Vector3.zero;
-            agent.ResetPath();
-        }
+        
+        agent.isStopped = true;
+        agent.velocity = Vector3.zero;
+        agent.ResetPath();
+        agent.updateRotation = false;
+    
 
         recurrentTimer = enemyController.GetDamageInterval();
     }
@@ -44,15 +47,16 @@ public class AttackState : IEnemyState
         {
             enemyController.PerformAttack();
         }
-        if(!enemyController.CanAttackTarget())
+        if(!enemyController.IsInAttackRange())
         {
             stateMachine.TransitionTo(stateMachine.ChaseState);
             return;
         }
-        if (enemyController.CanAttackTarget() && recurrentTimer >= enemyController.GetDamageInterval())
+        if (recurrentTimer >= enemyController.GetDamageInterval() && enemyController.IsFacingTarget())
         {
             enemyController.PerformAttack();
-        
+            TriggerRandomAttack();
+            
             recurrentTimer -= enemyController.GetDamageInterval(); 
         }
         else
@@ -70,8 +74,32 @@ public class AttackState : IEnemyState
         if (agent != null && agent.isActiveAndEnabled && agent.isOnNavMesh)
         {
             if (!EnemyType.Medico.Equals(enemyController.Config.type)) agent.isStopped = false;
-            
+
+            agent.updateRotation = true;
             agent.velocity = Vector3.zero;
+        }
+    }
+    private void TriggerRandomAttack()
+    {
+        if (animator == null) return;
+
+        int nextAttack;
+
+        do
+        {
+            nextAttack = Random.Range(0, 2); 
+        } 
+        while (nextAttack == lastAttackIndex);
+
+        lastAttackIndex = nextAttack;
+
+        if (nextAttack == 0)
+        {
+            animator.SetTrigger("AttackRight");
+        }
+        else
+        {
+            animator.SetTrigger("AttackLeft");
         }
     }
 }

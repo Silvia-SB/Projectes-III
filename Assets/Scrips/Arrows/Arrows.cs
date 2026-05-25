@@ -212,7 +212,7 @@ public abstract class Arrow : MonoBehaviour
         HitboxManager manager = other.GetComponentInParent<HitboxManager>();
         if (manager != null)
         {
-            return manager.GetMultiplier(other);
+            return manager.GetMultiplierAndApplyAnimation(other);
         }
         return 1f;
     }

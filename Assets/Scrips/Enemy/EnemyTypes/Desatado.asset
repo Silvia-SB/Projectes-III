@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
   type: 1
   speed: 3.2
+  chaseSpeedMultiplier: 1.5
   acceleration: 12
   angularSpeed: 200
-  stoppingDistance: 1.5
+  stoppingDistance: 2.5
   attackRange: 2.5
   radius: 0.45
   maxChaseDistance: 100
@@ -26,7 +27,16 @@ MonoBehaviour:
   destinationRefreshMin: 0.35
   destinationRefreshMax: 0.9
   isRanged: 0
-  preferredDistance: 0
+  rangedMinDistance: 4
+  rangedMaxDistance: 14
+  rangedTeleportMinDistance: 7
+  rangedTeleportMaxDistance: 11
+  rangedTeleportCooldown: 1.5
+  rangedTeleportNavMesh: 3
+  rangedTeleportAttempts: 20
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
   electricContagionDamage: 15
   stunnedSpeed: 0.5
   timeStunned: 3

@@ -10,14 +10,16 @@ public class EnemyController : MonoBehaviour, ISlowable
     [SerializeField] private EnemyMovement enemyMovement;
     [SerializeField] private NavMeshAgent navMeshAgent;
     [SerializeField] private EnemyAttack enemyAttack;
+    [SerializeField] private WildEnemyHealth wildEnemyHealth;
     
+    private HitboxManager hitboxManager;
     private Health health;
-    
+    private Animator animator;
     private DamageType attackDamageType = DamageType.Base;
     private EnemyStateMachine stateMachine;
     private float slowTimer;
     private bool isSlowed;
-
+    private BodyPart currentHitBodyPart;
     public EnemyConfig Config => config;
     public void Awake()
     {
@@ -41,8 +43,11 @@ public class EnemyController : MonoBehaviour, ISlowable
                            (enemyMovement == null ? "EnemyMovement" : ""));
              return;
         }
-        
+        if(config.type.Equals(EnemyType.Desatado)) wildEnemyHealth.OnDamaged += IncreaseVelocity;
+        hitboxManager = GetComponentInChildren<HitboxManager>();
+        hitboxManager.OnDamaged += ApplyHitAnimation;
         ApplyConfig();
+        animator = GetComponent<Animator>();
         stateMachine = new EnemyStateMachine(this);
         stateMachine.Initialize(stateMachine.ChaseState);
     }
@@ -53,6 +58,9 @@ public class EnemyController : MonoBehaviour, ISlowable
         {
             health.OnDeath.RemoveListener(OnEnemyDeath);
         }
+        if(config.type.Equals(EnemyType.Desatado)) wildEnemyHealth.OnDamaged -= IncreaseVelocity;
+
+        hitboxManager.OnDamaged -= ApplyHitAnimation;
     }
     
     private void ApplyConfig()
@@ -92,10 +100,14 @@ public class EnemyController : MonoBehaviour, ISlowable
         stateMachine.Update();  
     }
     
-    public bool CanAttackTarget()
+    public bool IsInAttackRange()
     {
         float distanceToTarget = Vector3.Distance(transform.position, target.position);
-        if(distanceToTarget > config.attackRange) return false;
+        return distanceToTarget <= config.attackRange;
+    }
+
+    public bool IsFacingTarget()
+    {
         if(config.isRanged) return true;
         Vector3 directionToTarget = (target.position - transform.position).normalized;
         float angleToTarget = Vector3.Angle(transform.forward, directionToTarget);
@@ -119,22 +131,32 @@ public class EnemyController : MonoBehaviour, ISlowable
             enemyAttack.MeleeAttack(target, attackDamageType, config.damage);
         }
     }
-    
-    public EnemyMovement GetEnemyMovement() => enemyMovement;
-    public Transform GetTarget() => target;
-    public float GetDamage() => config.damage;
-    public float GetDamageInterval() => config.damageInterval;
-    public NavMeshAgent  GetNavMeshAgent() => navMeshAgent;
-
     public void ApplySlow()
     {
         navMeshAgent.speed = config.stunnedSpeed;
         slowTimer = config.timeStunned;
         isSlowed = true;
     }
-    public void increaseVelocity()
+    private void IncreaseVelocity()
     {
         navMeshAgent.speed = config.speed * config.chaseSpeedMultiplier;
 
     }
+
+    private void ApplyHitAnimation(BodyPart bodyPart)
+    {
+        currentHitBodyPart = bodyPart;
+        stateMachine.TransitionTo(stateMachine.HitState);
+        
+    }
+    
+    public EnemyMovement GetEnemyMovement() => enemyMovement;
+    public Transform GetTarget() => target;
+    public float GetDamage() => config.damage;
+    public float GetDamageInterval() => config.damageInterval;
+    public NavMeshAgent  GetNavMeshAgent() => navMeshAgent;
+    public Animator GetAnimator() => animator;
+    public BodyPart GetCurrentHitBodyPart() => currentHitBodyPart;
+
+  
 }

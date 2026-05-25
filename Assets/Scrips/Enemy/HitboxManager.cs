@@ -1,39 +1,70 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 
+public enum BodyPart
+{
+    Head,
+    Body,
+    LeftArms,
+    RightArms,
+    Legs
+}
 public class HitboxManager : MonoBehaviour
 {
     [System.Serializable]
     public struct HitboxGroup
     {
-        public string groupName; 
+        public BodyPart bodyPart; 
         public float damageMultiplier;
         public List<Collider> colliders;
     }
 
     public List<HitboxGroup> hitboxGroups;
 
-    private Dictionary<Collider, float> colliderMultipliers;
+    private Dictionary<Collider, HitboxGroup> colliderData;
+    public event Action <BodyPart> OnDamaged;
 
     private void Awake()
     {
-        colliderMultipliers = new Dictionary<Collider, float>();
-        
+        colliderData = new Dictionary<Collider, HitboxGroup>();        
         foreach (var group in hitboxGroups)
         {
             foreach (var col in group.colliders)
             {
                 if (col != null)
                 {
-                    colliderMultipliers[col] = group.damageMultiplier;
+                    colliderData[col] = group;
                 }
             }
         }
     }
 
-    public float GetMultiplier(Collider col)
+    public float GetMultiplierAndApplyAnimation(Collider col)
     {
-        if (colliderMultipliers != null && colliderMultipliers.TryGetValue(col, out float multiplier)) return multiplier;
+        if (colliderData != null && colliderData.TryGetValue(col, out HitboxGroup groupData))
+        {
+            switch (groupData.bodyPart)
+            {
+                case BodyPart.Head:
+                    OnDamaged?.Invoke(groupData.bodyPart);
+                    break;
+                case BodyPart.Body:
+                    OnDamaged?.Invoke(groupData.bodyPart);
+                    break;
+                case BodyPart.LeftArms:
+                    OnDamaged?.Invoke(groupData.bodyPart);
+                    break;
+                case BodyPart.RightArms:
+                    OnDamaged?.Invoke(groupData.bodyPart);
+                    break;
+                default:
+                    break;
+            }
+            return groupData.damageMultiplier;
+        }
         return 1f; 
     }
+
+    
 }

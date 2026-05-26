@@ -2022,6 +2022,7 @@ GameObject:
   - component: {fileID: 3134693157833520908}
   - component: {fileID: 4352518392610214769}
   - component: {fileID: -6278102556965559209}
+  - component: {fileID: 6929340689296994080}
   m_Layer: 11
   m_Name: Desatado
   m_TagString: Enemy
@@ -2123,12 +2124,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90fa253e18ea80d4c84812db55510279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombieController
-  config: {fileID: 11400000, guid: d33e81a19dec9504e88a8dc3cf3e7283, type: 2}
+  config: {fileID: 11400000, guid: 15c88c246a1144241b70017e899204ac, type: 2}
   target: {fileID: 0}
   enemyMovement: {fileID: 7542448289591935984}
   navMeshAgent: {fileID: 4124122457124392425}
   enemyAttack: {fileID: 998942607376102746}
-  wildEnemyHealth: {fileID: 0}
+  wildEnemyHealth: {fileID: 6929340689296994080}
 --- !u!114 &7542448289591935984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2173,7 +2174,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934897180633351276}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9a5aafe5bd72c230b4e5ba43aabf4cf, type: 3}
   m_Name: 
@@ -2299,6 +2300,26 @@ MonoBehaviour:
   contagiousDamageTypes: 01000000
   knightMultiplier: 1.5
   knightAoERadius: 4
+--- !u!114 &6929340689296994080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934897180633351276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb5107f1a559a4ba84a165503e88c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WildEnemyHealth
+  maxHealth: 100
+  currentHealth: 0
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  mainRenderer: {fileID: 0}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  soulsToDrop: 15
 --- !u!1 &1976940937217707329
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,10 +25,22 @@ public abstract class Arrow : MonoBehaviour
     protected Vector3 launchPosition;
     protected bool hasChangedLayer;
     private RaycastHit[] moveHits = new RaycastHit[10];
+    
+    protected float originalMass = 1f;
+    protected bool originalUseGravity = false;
+    protected float originalDrag = 0f;
+    protected float originalAngularDrag = 0.05f;
 
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            originalMass = rb.mass;
+            originalUseGravity = rb.useGravity;
+            originalDrag = rb.linearDamping;
+            originalAngularDrag = rb.angularDamping;
+        }
         col = GetComponent<Collider>();
         if (col != null) col.isTrigger = true; // Evita que Unity expulse la flecha con físicas
         sqrDistanceToChangeLayer = distanceToChangeLayer * distanceToChangeLayer;
@@ -36,6 +48,8 @@ public abstract class Arrow : MonoBehaviour
 
     protected virtual void OnEnable()
     {
+        EnsureRigidbody();
+
         if (impactParticles != null)
         {
             foreach (ParticleSystem ps in impactParticles)
@@ -53,9 +67,22 @@ public abstract class Arrow : MonoBehaviour
         }
     }
 
+    public void EnsureRigidbody()
+    {
+        if (rb == null)
+        {
+            rb = gameObject.AddComponent<Rigidbody>();
+            rb.mass = originalMass;
+            rb.useGravity = originalUseGravity;
+            rb.linearDamping = originalDrag;
+            rb.angularDamping = originalAngularDrag;
+        }
+    }
+
     public void Launch(float launchSpeed)
     {
         if (col != null) col.enabled = true;
+        EnsureRigidbody();
         if (rb != null) 
         {
             rb.isKinematic = false;
@@ -176,9 +203,15 @@ public abstract class Arrow : MonoBehaviour
     protected void StickToTarget(Collider other)
     {
         CancelInvoke(nameof(ReturnToPool));
-        rb.linearVelocity = Vector3.zero;
-        if (rb.collisionDetectionMode != CollisionDetectionMode.Discrete) rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
-        rb.isKinematic = true;
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector3.zero;
+            if (rb.collisionDetectionMode != CollisionDetectionMode.Discrete) rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
+            rb.isKinematic = true;
+            
+            Destroy(rb);
+            rb = null;
+        }
         if (col != null) col.enabled = false;
         
         if (trailRenderer != null)

@@ -50,6 +50,7 @@ public class EnemyConfig : ScriptableObject
     public float timeStunned = 7f;
 
     [Header("Ragdoll & Pooling")]
+    public float deathAnimationDuration = 2f;
     public float timeBeforePool = 8f;
     public float distanceToPool = 25f;
 }

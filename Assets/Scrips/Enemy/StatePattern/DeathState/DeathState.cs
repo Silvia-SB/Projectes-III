@@ -4,8 +4,7 @@ public class DeathState : IEnemyState
 {
     private EnemyController enemyController;
     private float deathTimer = 0f;
-    private bool isRagdollActive = false;
-    private float timeBeforeRagdoll = 0.5f; // Debe activarse a MITAD de la animación, mientras caen
+    private bool isAnimatorDisabled = false;
 
     public DeathState(EnemyController enemyController)
     {
@@ -15,29 +14,31 @@ public class DeathState : IEnemyState
     public void Enter()
     {
         deathTimer = 0f;
-        isRagdollActive = false;
-        enemyController.PrepareDeath(); // Reproduce la animación y lo tira al suelo
+        isAnimatorDisabled = false;
+        enemyController.PrepareDeath(); 
     }
 
     public void Update()
     {
         deathTimer += Time.deltaTime;
 
-        // Activamos el ragdoll cuando termina la animación de muerte
-        if (!isRagdollActive && deathTimer >= timeBeforeRagdoll)
+        if (!isAnimatorDisabled && deathTimer >= enemyController.Config.deathAnimationDuration)
         {
-            enemyController.EnableRagdoll();
-            isRagdollActive = true;
+            Animator anim = enemyController.GetAnimator();
+            if (anim != null) anim.enabled = false;
+            isAnimatorDisabled = true;
         }
-        
-        float distanceToPlayer = 0f;
+
+        float sqrDistanceToPlayer = 0f;
         if (enemyController.GetTarget() != null)
         {
-            distanceToPlayer = Vector3.Distance(enemyController.transform.position, enemyController.GetTarget().position);
+            sqrDistanceToPlayer = (enemyController.transform.position - enemyController.GetTarget().position).sqrMagnitude;
         }
 
-
-        if (deathTimer >= enemyController.Config.timeBeforePool || (deathTimer >= 2f && distanceToPlayer >= enemyController.Config.distanceToPool))
+        // Elevamos al cuadrado la distancia límite configurada para poder compararla
+        float sqrDistanceToPool = enemyController.Config.distanceToPool * enemyController.Config.distanceToPool;
+        
+        if (deathTimer >= enemyController.Config.timeBeforePool || (deathTimer >= 2f && sqrDistanceToPlayer >= sqrDistanceToPool))
         {
             ReturnToPool();
         }

@@ -4,14 +4,11 @@ using UnityEngine;
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class GenerateStarMesh : MonoBehaviour
 {
-    [Header("Stars")]
-    public int starCount = 120;
+    public int starCount = 160;
     public float radius = 450f;
-    public float minHeight = 80f;
-    public Vector2 sizeRange = new Vector2(0.8f, 2.2f);
-
-    [Header("Color")]
-    public Color starColor = new Color(0.78f, 0.86f, 1f, 1f);
+    public Vector2 sizeRange = new Vector2(1.2f, 3.2f);
+    public int starSegments = 8;
+    public Color starColor = new Color(0.85f, 0.92f, 1f, 1f);
 
     [ContextMenu("Generate Stars Mesh")]
     public void Generate()
@@ -20,54 +17,59 @@ public class GenerateStarMesh : MonoBehaviour
         List<int> triangles = new List<int>();
         List<Color> colors = new List<Color>();
 
-        Camera cam = Camera.main;
-        Vector3 cameraForward = cam != null ? cam.transform.forward : Vector3.forward;
-        Vector3 cameraRight = cam != null ? cam.transform.right : Vector3.right;
-        Vector3 cameraUp = cam != null ? cam.transform.up : Vector3.up;
-
         for (int i = 0; i < starCount; i++)
         {
-            Vector3 direction = Random.onUnitSphere;
+            Vector3 direction;
 
-            if (direction.y < 0.2f)
-                direction.y = Random.Range(0.2f, 1f);
+            do
+            {
+                direction = Random.onUnitSphere;
+            }
+            while (direction.y < 0.15f);
 
-            direction.Normalize();
+            Vector3 center = direction.normalized * radius;
 
-            Vector3 center = direction * radius;
+            Vector3 right = Vector3.Cross(Vector3.up, direction).normalized;
+            if (right.sqrMagnitude < 0.001f)
+                right = Vector3.right;
 
-            if (center.y < minHeight)
-                center.y = minHeight + Random.Range(0f, 120f);
+            Vector3 up = Vector3.Cross(direction, right).normalized;
 
             float size = Random.Range(sizeRange.x, sizeRange.y);
+            float brightness = Random.Range(1.5f, 4f);
 
-            int index = vertices.Count;
+            Color c = starColor * brightness;
+            c.a = 1f;
 
-            vertices.Add(center - cameraRight * size - cameraUp * size);
-            vertices.Add(center + cameraRight * size - cameraUp * size);
-            vertices.Add(center + cameraRight * size + cameraUp * size);
-            vertices.Add(center - cameraRight * size + cameraUp * size);
+            int centerIndex = vertices.Count;
 
-            triangles.Add(index);
-            triangles.Add(index + 1);
-            triangles.Add(index + 2);
+            vertices.Add(center);
+            colors.Add(c);
 
-            triangles.Add(index);
-            triangles.Add(index + 2);
-            triangles.Add(index + 3);
+            for (int s = 0; s < starSegments; s++)
+            {
+                float angle = (Mathf.PI * 2f / starSegments) * s;
+                Vector3 p = center 
+                            + right * Mathf.Cos(angle) * size
+                            + up * Mathf.Sin(angle) * size;
 
-            float brightness = Random.Range(0.6f, 1.3f);
-            Color finalColor = starColor * brightness;
-            finalColor.a = 1f;
+                vertices.Add(p);
+                colors.Add(c);
+            }
 
-            colors.Add(finalColor);
-            colors.Add(finalColor);
-            colors.Add(finalColor);
-            colors.Add(finalColor);
+            for (int s = 0; s < starSegments; s++)
+            {
+                int current = centerIndex + 1 + s;
+                int next = centerIndex + 1 + ((s + 1) % starSegments);
+
+                triangles.Add(centerIndex);
+                triangles.Add(next);
+                triangles.Add(current);
+            }
         }
 
         Mesh mesh = new Mesh();
-        mesh.name = "Generated_StarMesh";
+        mesh.name = "Generated_Round_StarSky";
         mesh.SetVertices(vertices);
         mesh.SetTriangles(triangles, 0);
         mesh.SetColors(colors);

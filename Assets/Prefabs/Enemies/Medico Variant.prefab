@@ -913,6 +913,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShootCrow
   spawnPointLeft: {fileID: 7295278221724245094}
   spawnPointRight: {fileID: 3182449658351710354}
+  maxActiveCrows: 5
+  recoverTime: 3
 --- !u!54 &-382196458864327136
 Rigidbody:
   m_ObjectHideFlags: 0

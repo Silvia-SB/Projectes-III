@@ -155325,7 +155325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyZone
   zoneData:
   - spawnPoint: {fileID: 1443707831}
-    enemyType: 0
+    enemyType: 1
     quantity: 1
     spawnInterval: 1
     spawnCount: 1
@@ -171963,6 +171963,10 @@ PrefabInstance:
     - target: {fileID: 1934897180633351276, guid: b446fc2388cbb984e9103595fd32b396, type: 3}
       propertyPath: m_Name
       value: Desatado
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934897180633351276, guid: b446fc2388cbb984e9103595fd32b396, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6103388723439728784, guid: b446fc2388cbb984e9103595fd32b396, type: 3}
       propertyPath: m_LocalPosition.x

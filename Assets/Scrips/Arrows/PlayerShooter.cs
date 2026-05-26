@@ -28,9 +28,7 @@ public class PlayerShooter : MonoBehaviour
     [Header("Bow Alignment (Procedural IK)")]
     [SerializeField] private Transform stringNockPoint;
     [SerializeField] private Transform bowRestPoint;
-    [Tooltip("Punto (vacío, no animado) de inicio. La punta de la flecha mirará hacia la POSICIÓN de este punto al iniciar la recarga.")]
     [SerializeField] private Transform reloadStartPoint;
-    [Tooltip("Tiempo que tarda la flecha en colocarse recta en el arco desde que aparece en la mano.")]
     [SerializeField] private float bowAlignmentDuration = 0.2f;
     
     [Header("Block System")]
@@ -38,7 +36,6 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private float enemyPointBlankDistance = 1.0f;
 
     [Header("Weapon Retraction")]
-    [Tooltip("El objeto padre de los brazos y el arco. Se moverá para evitar atravesar paredes.")]
     [SerializeField] private Transform weaponRoot;
     [SerializeField] private Vector3 retractedPositionOffset = new Vector3(0f, -0.2f, -0.1f);
     [SerializeField] private Vector3 retractedRotationOffset = new Vector3(25f, -15f, 0f);
@@ -150,12 +147,8 @@ public class PlayerShooter : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// Llama a esta función mediante un Animation Event en el frame exacto de la animación.
-    /// </summary>
     public void AnimationEvent_SpawnArrow()
     {
-        Debug.Log("🎯 [PlayerShooter] AnimationEvent_SpawnArrow() lanzado desde el Animator!");
 
         if (!isWaitingForReload) return;
 
@@ -209,7 +202,6 @@ public class PlayerShooter : MonoBehaviour
                 
                 Vector3 startForward = bowRestPoint.TransformDirection(initialLocalAlignDir);
                 
-                // Creamos una rotación inicial que apunte a startForward, pero usando el camino más corto desde la rotación final para evitar cualquier giro (Roll) sobre el propio eje de la flecha.
                 Quaternion startRotation = Quaternion.FromToRotation(targetForward, startForward) * targetRotation;
                 firePoint.rotation = Quaternion.Slerp(startRotation, targetRotation, smoothWeight);
             }
@@ -547,7 +539,6 @@ public class PlayerShooter : MonoBehaviour
             alignmentStartTime = Time.time;
             bowAlignmentWeight = 0f;
 
-            // Calculamos la dirección inicial mirando hacia la posición en la que el usuario ha colocado el punto
             if (reloadStartPoint != null && bowRestPoint != null && stringNockPoint != null)
             {
                 Vector3 startDir = reloadStartPoint.position - stringNockPoint.position;

@@ -28,6 +28,8 @@ public class EnemyController : MonoBehaviour, ISlowable
 
     public void OnEnable()
     {
+        ResetEnemy();
+
         if (health == null) health = GetComponent<Health>();
         if (health != null)
         {
@@ -145,11 +147,120 @@ public class EnemyController : MonoBehaviour, ISlowable
 
     private void ApplyHitAnimation(BodyPart bodyPart)
     {
+        // BLOQUEO: Si el enemigo ya está muerto, ignoramos los impactos extra para no interrumpir el temporizador del Ragdoll.
+        if (stateMachine != null && stateMachine.CurrentState == stateMachine.DeathState) return;
+
         currentHitBodyPart = bodyPart;
         stateMachine.TransitionTo(stateMachine.HitState);
         
     }
     
+    public void PrepareDeath()
+    {
+        // Apagamos el movimiento y el NavMesh inmediatamente
+        if (navMeshAgent != null) navMeshAgent.enabled = false;
+        if (enemyMovement != null) enemyMovement.enabled = false;
+        if (enemyAttack != null) enemyAttack.enabled = false;
+
+        Rigidbody mainRb = GetComponent<Rigidbody>();
+        if (mainRb != null)
+        {
+            mainRb.isKinematic = false;
+            mainRb.useGravity = true;
+            mainRb.constraints = RigidbodyConstraints.None; // Permitimos que la cápsula caiga libremente
+
+            Vector3 forceDirection = -transform.forward * 2f; 
+            Vector3 torqueDirection = Vector3.zero;
+
+            // Torque físico basado en la parte del cuerpo golpeada
+            switch (currentHitBodyPart)
+            {
+                case BodyPart.Head: torqueDirection = transform.right; break; // Cae hacia atrás
+                case BodyPart.Legs: torqueDirection = -transform.right; break; // Cae hacia adelante
+                case BodyPart.LeftArms: torqueDirection = transform.forward; break; // Cae hacia la derecha
+                case BodyPart.RightArms: torqueDirection = -transform.forward; break; // Cae hacia la izquierda
+                case BodyPart.Body: torqueDirection = transform.right * 0.5f; break; // Ligeramente atrás
+            }
+
+            // Usamos VelocityChange para ignorar la masa del enemigo y que siempre reciba el mismo impulso
+            mainRb.AddForce(forceDirection, ForceMode.VelocityChange);
+            mainRb.AddTorque(torqueDirection * 3f, ForceMode.VelocityChange);
+        }
+
+        if (animator != null) animator.SetTrigger("Death"); 
+    }
+
+    public void EnableRagdoll()
+    {
+        Rigidbody mainRb = GetComponent<Rigidbody>();
+        
+        // Capturamos la velocidad de caída actual del cuerpo principal para dársela a los huesos
+        Vector3 currentVelocity = mainRb != null ? mainRb.linearVelocity : Vector3.zero;
+        
+        Rigidbody[] rbs = GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody rb in rbs)
+        {
+            if (rb != mainRb)
+            {
+                rb.isKinematic = false;
+                rb.useGravity = true;
+                rb.linearVelocity = currentVelocity; // Mantiene la inercia del empujón original
+                
+                Collider boneCol = rb.GetComponent<Collider>();
+                if (boneCol != null) boneCol.enabled = true; // Prevención: asegura que los huesos colisionen
+            }
+        }
+
+        if (animator != null) animator.enabled = false;
+        if (navMeshAgent != null) navMeshAgent.enabled = false;
+        if (enemyMovement != null) enemyMovement.enabled = false;
+        if (enemyAttack != null) enemyAttack.enabled = false;
+        
+        Collider mainCollider = GetComponent<Collider>();
+        if (mainCollider != null) mainCollider.enabled = false;
+
+        if (mainRb != null)
+        {
+            mainRb.isKinematic = true;
+            mainRb.useGravity = false;
+        }
+    }
+
+    private void ResetEnemy()
+    {
+        // Enderezamos al enemigo por si había muerto cayéndose inclinado por las físicas
+        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+
+        Rigidbody mainRb = GetComponent<Rigidbody>();
+
+        // 2. INVERTIMOS las físicas de los huesos (apagamos el ragdoll) ANTES de encender el Animator
+        Rigidbody[] rbs = GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody rb in rbs)
+        {
+            if (rb != mainRb)
+            {
+                rb.isKinematic = true;
+                rb.useGravity = false;
+            }
+        }
+
+        if (animator != null) animator.enabled = true;
+        if (navMeshAgent != null) navMeshAgent.enabled = true;
+        if (enemyMovement != null) enemyMovement.enabled = true;
+        if (enemyAttack != null) enemyAttack.enabled = true;
+        
+        Collider mainCollider = GetComponent<Collider>();
+        if (mainCollider != null) mainCollider.enabled = true;
+
+        if (mainRb != null)
+        {
+            mainRb.isKinematic = true;
+            mainRb.useGravity = false;
+            mainRb.constraints = RigidbodyConstraints.FreezeRotation; // Volvemos a congelar la rotación para que no tropiece al caminar
+        }
+        
+    }
+
     public EnemyMovement GetEnemyMovement() => enemyMovement;
     public Transform GetTarget() => target;
     public float GetDamage() => config.damage;

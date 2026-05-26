@@ -48,4 +48,8 @@ public class EnemyConfig : ScriptableObject
     public float electricContagionDamage = 15f; 
     public float stunnedSpeed = 0.5f;
     public float timeStunned = 7f;
+
+    [Header("Ragdoll & Pooling")]
+    public float timeBeforePool = 8f;
+    public float distanceToPool = 25f;
 }

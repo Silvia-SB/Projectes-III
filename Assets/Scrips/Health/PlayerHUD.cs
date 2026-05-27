@@ -13,6 +13,11 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI soulsText;
     [SerializeField] private float soulsLerpSpeed = 10f;
 
+    [Header("Arrow Unlock UI")]
+    [SerializeField] private Image bloodArrowImage;
+    [SerializeField] private Image piercingArrowImage;
+    [SerializeField] private Image electricArrowImage;
+
     [Header("Damage Visuals")]
     [SerializeField] private Image lowHealthVignette;
     [SerializeField] private float lowHealthThreshold = 0.5f; 
@@ -162,6 +167,29 @@ public class PlayerHUD : MonoBehaviour
             }
 
             soulsText.text = $"Souls: {Mathf.RoundToInt(currentDisplayedSouls)}";
+        }
+        
+        UpdateArrowFillUI();
+    }
+
+    private void UpdateArrowFillUI()
+    {
+        if (SoulManager.Instance == null) return;
+
+        if (bloodArrowImage != null)
+        {
+            float cost = SoulManager.Instance.GetArrowCost(ArrowType.Blood);
+            bloodArrowImage.fillAmount = cost > 0 ? Mathf.Clamp01(currentDisplayedSouls / cost) : 1f;
+        }
+        if (piercingArrowImage != null)
+        {
+            float cost = SoulManager.Instance.GetArrowCost(ArrowType.Piercing);
+            piercingArrowImage.fillAmount = cost > 0 ? Mathf.Clamp01(currentDisplayedSouls / cost) : 1f;
+        }
+        if (electricArrowImage != null)
+        {
+            float cost = SoulManager.Instance.GetArrowCost(ArrowType.Electric);
+            electricArrowImage.fillAmount = cost > 0 ? Mathf.Clamp01(currentDisplayedSouls / cost) : 1f;
         }
     }
 

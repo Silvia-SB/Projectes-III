@@ -12,6 +12,10 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable
     [SerializeField] private ParticleSystem[] corruptedParticles;
     [SerializeField] private Light corruptedLight;
 
+    [Header("Deactivation")]
+    [SerializeField] private Collider deactivationCollider;
+    [SerializeField] private string deactivatorTag = "Player";
+
     private Collider[] colliders; 
     private bool isActive;
     private float nextPulseTime;
@@ -25,6 +29,13 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable
         foreach (Collider c in colliders)
         {
             c.isTrigger = true;
+        }
+        
+        if (deactivationCollider != null)
+        {
+            deactivationCollider.isTrigger = true;
+            TriggerListener listener = deactivationCollider.gameObject.AddComponent<TriggerListener>();
+            listener.OnTriggerEntered += HandleDeactivation;
         }
         
         DeactivateEffects();
@@ -68,6 +79,21 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable
                 target.TakeDamage(damage, damageType);
             }
         }
+    }
+
+    private void HandleDeactivation(Collider other)
+    {
+        if (string.IsNullOrEmpty(deactivatorTag) || other.CompareTag(deactivatorTag))
+        {
+            Deactivate();
+        }
+    }
+
+    public void Deactivate()
+    {
+        if (!isActive) return;
+        isActive = false;
+        DeactivateEffects();
     }
 
     private void Update() 

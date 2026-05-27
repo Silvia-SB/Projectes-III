@@ -13,9 +13,18 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI soulsText;
     [SerializeField] private float soulsLerpSpeed = 10f;
 
+    [Header("Damage Visuals")]
+    [SerializeField] private Image lowHealthVignette;
+    [SerializeField] private float lowHealthThreshold = 0.5f; 
+    [SerializeField] private float blinkThreshold = 0.15f; 
+    [SerializeField] private float blinkSpeed = 10f;
+    [SerializeField] private Image hitFlashImage;
+    [SerializeField] private float hitFlashFadeSpeed = 3f;
+
     private float targetHealthValue;
     private float currentDisplayedSouls;
     private int targetSoulsValue;
+    private float extraVignetteAlpha;
 
     private void OnEnable()
     {
@@ -23,11 +32,24 @@ public class PlayerHUD : MonoBehaviour
         {
             playerHealth.OnHealthChanged += OnHealthChanged;
             
-            if (playerHealth.MaxHealth > 0 && healthBar != null)
+            if (playerHealth.MaxHealth > 0)
             {
                 targetHealthValue = playerHealth.CurrentHealth / playerHealth.MaxHealth;
-                healthBar.value = targetHealthValue;
+                if (healthBar != null) healthBar.value = targetHealthValue;
             }
+        }
+        
+        if (hitFlashImage != null)
+        {
+            Color c = hitFlashImage.color;
+            c.a = 0f;
+            hitFlashImage.color = c;
+        }
+        if (lowHealthVignette != null)
+        {
+            Color c = lowHealthVignette.color;
+            c.a = 0f;
+            lowHealthVignette.color = c;
         }
     }
 
@@ -61,10 +83,28 @@ public class PlayerHUD : MonoBehaviour
 
     private void OnHealthChanged(float currentHealth, float maxHealth)
     {
-        if (healthBar != null && maxHealth > 0)
+        if (maxHealth > 0)
         {
-            targetHealthValue = currentHealth / maxHealth;
+            float newTarget = currentHealth / maxHealth;
+            
+            if (newTarget < targetHealthValue)
+            {
+                TriggerHitFlash();
+            }
+            
+            targetHealthValue = newTarget;
         }
+    }
+
+    private void TriggerHitFlash()
+    {
+        if (hitFlashImage != null)
+        {
+            Color c = hitFlashImage.color;
+            c.a = 1f;
+            hitFlashImage.color = c;
+        }
+        extraVignetteAlpha = 0.6f; 
     }
 
     private void Update()
@@ -77,6 +117,39 @@ public class PlayerHUD : MonoBehaviour
             {
                 healthBar.value = targetHealthValue;
             }
+        }
+        
+        if (hitFlashImage != null && hitFlashImage.color.a > 0)
+        {
+            Color c = hitFlashImage.color;
+            c.a = Mathf.MoveTowards(c.a, 0f, Time.deltaTime * hitFlashFadeSpeed);
+            hitFlashImage.color = c;
+        }
+
+        if (extraVignetteAlpha > 0f)
+        {
+            extraVignetteAlpha = Mathf.MoveTowards(extraVignetteAlpha, 0f, Time.deltaTime * hitFlashFadeSpeed);
+        }
+
+        if (lowHealthVignette != null)
+        {
+            float alpha = 0f;
+            if (targetHealthValue <= lowHealthThreshold)
+            {
+                alpha = (lowHealthThreshold - targetHealthValue) / lowHealthThreshold; // De 0 a 1
+                
+                if (targetHealthValue <= blinkThreshold)
+                {
+                    float blink = Mathf.Abs(Mathf.Sin(Time.time * blinkSpeed));
+                    alpha *= Mathf.Lerp(0.4f, 1f, blink);
+                }
+            }
+            
+            alpha = Mathf.Clamp01(alpha + extraVignetteAlpha);
+
+            Color vc = lowHealthVignette.color;
+            vc.a = Mathf.Lerp(vc.a, alpha, Time.deltaTime * 5f);
+            lowHealthVignette.color = vc;
         }
 
         if (soulsText != null && currentDisplayedSouls != targetSoulsValue)

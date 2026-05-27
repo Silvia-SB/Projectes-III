@@ -6,31 +6,27 @@ public class ConductiveSurface : MonoBehaviour
     [Header("Electrification Settings")]
     [SerializeField] private float electrificationDuration = 5f;
     [SerializeField] private float electricDamage = 25f;
-    [SerializeField] private Color electrifiedColor = Color.blue;
-    [SerializeField] private Color normalColor = Color.gray;
+
+    [Header("Effects")]
+    [SerializeField] private ParticleSystem[] electricParticles;
+    [SerializeField] private Light electricLight;
 
     private bool isElectrified = false;
     private float electrificationTimer;
     private readonly HashSet<GameObject> affectedThisIteration = new HashSet<GameObject>();
     private readonly HashSet<GameObject> objectsOnSurface = new HashSet<GameObject>();
 
-    private Renderer surfaceRenderer;
     private Collider[] surfaceColliders;
 
     private void Awake()
     {
         surfaceColliders = GetComponents<Collider>();
-        surfaceRenderer = GetComponent<Renderer>();
-        if (surfaceRenderer == null) surfaceRenderer = GetComponentInChildren<Renderer>();
-
-        if (surfaceRenderer != null)
-        {
-            surfaceRenderer.material.color = normalColor;
-        }
         foreach (Collider c in surfaceColliders)
         {
             c.isTrigger = true;
         }
+        
+        DeactivateEffects();
     }
 
     public void Electrify()
@@ -41,10 +37,7 @@ public class ConductiveSurface : MonoBehaviour
         isElectrified = true;
         affectedThisIteration.Clear();
 
-        if (surfaceRenderer != null)
-        {
-            surfaceRenderer.material.color = electrifiedColor;
-        }
+        ActivateEffects();
 
         ApplyToObjectsInBounds();
     }
@@ -62,10 +55,7 @@ public class ConductiveSurface : MonoBehaviour
                 isElectrified = false;
                 affectedThisIteration.Clear();
 
-                if (surfaceRenderer != null)
-                {
-                    surfaceRenderer.material.color = normalColor;
-                }
+                DeactivateEffects();
             }
         }
         else
@@ -150,6 +140,32 @@ public class ConductiveSurface : MonoBehaviour
             EnemyController enemy = targetObj.GetComponentInParent<EnemyController>();
             float markerDuration = enemy != null && enemy.Config != null ? enemy.Config.timeStunned : 3f;
             damageable.TakeRecurrentDamage(0f, markerDuration, 1, DamageType.Electric);
+        }
+    }
+
+    private void ActivateEffects()
+    {
+        if (electricLight != null) electricLight.enabled = true;
+
+        if (electricParticles != null)
+        {
+            foreach (var ps in electricParticles)
+            {
+                if (ps != null) ps.Play();
+            }
+        }
+    }
+
+    private void DeactivateEffects()
+    {
+        if (electricLight != null) electricLight.enabled = false;
+
+        if (electricParticles != null)
+        {
+            foreach (var ps in electricParticles)
+            {
+                if (ps != null) ps.Stop();
+            }
         }
     }
 }

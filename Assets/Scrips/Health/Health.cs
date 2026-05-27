@@ -12,26 +12,11 @@ public abstract class Health : MonoBehaviour, IDamageable
 
     public UnityEvent OnDeath;
 
-    [Header("Visuals")]
-    [SerializeField] private Renderer mainRenderer;
-    [SerializeField] private Color damageColor = Color.red;
-
     protected StatusEffectManager statusManager;
-    private MaterialPropertyBlock propBlock;
 
     protected virtual void Awake() 
     {
         statusManager = GetComponent<StatusEffectManager>();
-        
-        if (mainRenderer == null)
-        {
-            mainRenderer = GetComponentInChildren<Renderer>();
-        }
-
-        if (mainRenderer != null)
-        {
-            propBlock = new MaterialPropertyBlock();
-        }
     }
 
     protected virtual void OnEnable()
@@ -43,8 +28,6 @@ public abstract class Health : MonoBehaviour, IDamageable
     {
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-
-        if (amount > 0) ApplyDamageVisuals();
 
         if (currentHealth <= 0)
         {
@@ -61,17 +44,6 @@ public abstract class Health : MonoBehaviour, IDamageable
     public virtual void TakeRecurrentDamage(float amount, float interval, int ticks, DamageType damageType)
     {
         statusManager?.ApplyStatus(amount, interval, ticks, damageType);
-        if (amount > 0) ApplyDamageVisuals();
-    }
-
-    private void ApplyDamageVisuals()
-    {
-        if (mainRenderer != null && propBlock != null)
-        {
-            mainRenderer.GetPropertyBlock(propBlock);
-            propBlock.SetColor("_BaseColor", damageColor);
-            mainRenderer.SetPropertyBlock(propBlock);
-        }
     }
 
     protected virtual void Die()

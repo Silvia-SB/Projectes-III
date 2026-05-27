@@ -13,12 +13,50 @@ public class ExplosiveObject : Health
     [SerializeField] private int dotTicks = 5;
     [SerializeField] private DamageType damageType = DamageType.Blood;
 
+    [Header("Effects")]
+    [SerializeField] private ParticleSystem[] idleParticles;
+    [SerializeField] private ParticleSystem[] explosionParticles;
+    [SerializeField] private Light explosionLight;
+
     private bool hasExploded;
+    private bool isIgnited;
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        hasExploded = false;
+        isIgnited = false;
+        
+        foreach (var col in GetComponentsInChildren<Collider>(true)) col.enabled = true;
+        foreach (var rend in GetComponentsInChildren<Renderer>(true))
+        {
+            if (rend is not ParticleSystemRenderer) rend.enabled = true;
+        }
+
+        if (explosionLight != null) explosionLight.enabled = false;
+        if (explosionParticles != null)
+        {
+            foreach (var ps in explosionParticles)
+            {
+                if (ps != null) ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            }
+        }
+
+        if (idleParticles != null)
+        {
+            foreach (var ps in idleParticles)
+            {
+                if (ps != null) ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            }
+        }
+    }
 
     public override void TakeDamage(float amount, DamageType incomingDamageType)
     {
         if (incomingDamageType != damageType) return;
         
+        Ignite();
+
         base.TakeDamage(amount, incomingDamageType);
 
         if (statusManager?.HasStatus(damageType) == false)
@@ -32,7 +70,23 @@ public class ExplosiveObject : Health
     {
         if (incomingDamageType != damageType) return;
         
+        Ignite();
+
         base.TakeRecurrentDamage(amount, interval, InfiniteTicks, incomingDamageType);
+    }
+
+    private void Ignite()
+    {
+        if (isIgnited) return;
+        isIgnited = true;
+
+        if (idleParticles != null)
+        {
+            foreach (var ps in idleParticles)
+            {
+                if (ps != null) ps.Play();
+            }
+        }
     }
 
     protected override void Die()
@@ -44,11 +98,25 @@ public class ExplosiveObject : Health
         }
         
         base.Die();
+
+        // En lugar de desactivar de golpe, ocultamos el barril y esperamos a que terminen los efectos
+        foreach (var col in GetComponentsInChildren<Collider>()) col.enabled = false;
+        foreach (var rend in GetComponentsInChildren<Renderer>())
+        {
+            if (rend is not ParticleSystemRenderer) rend.enabled = false;
+        }
+        Invoke(nameof(DeactivateObject), 5f);
+    }
+
+    private void DeactivateObject()
+    {
         gameObject.SetActive(false);
     }
 
     private void Explode()
     {
+        ActivateEffects();
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
         var damagedTargets = new HashSet<IDamageable>();
 
@@ -70,6 +138,39 @@ public class ExplosiveObject : Health
                 }
             }
         }
+    }
+
+    private void ActivateEffects()
+    {
+        if (idleParticles != null)
+        {
+            foreach (var ps in idleParticles)
+            {
+                if (ps != null) ps.Stop();
+            }
+        }
+
+        if (explosionLight != null)
+        {
+            explosionLight.enabled = true;
+            Invoke(nameof(TurnOffLight), 1.5f); 
+        }
+
+        if (explosionParticles != null)
+        {
+            foreach (var ps in explosionParticles)
+            {
+                if (ps != null)
+                {
+                    ps.Play();
+                }
+            }
+        }
+    }
+
+    private void TurnOffLight()
+    {
+        if (explosionLight != null) explosionLight.enabled = false;
     }
 
     private void OnDrawGizmosSelected()

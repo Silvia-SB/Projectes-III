@@ -2,37 +2,38 @@ using UnityEngine;
 
 public class BloodCircleIndicator : MonoBehaviour, IDamageable
 {
-    [SerializeField] private GameObject glowObject;
-    [SerializeField] private Renderer circleRenderer; 
-    [SerializeField] private Color offColor = Color.white;
-    [SerializeField] private Color bloodColor = Color.red;
+    [Header("Effects")]
+    [SerializeField] private ParticleSystem[] bloodParticles;
+    [SerializeField] private Light bloodLight;
+
+    [Header("Settings")]
+    [SerializeField] private float activeDuration = 5f;
 
     private float timer;
-    private bool isGlowing = false;
+    private bool isActive = false;
 
     private void Awake()
     {
-        if (glowObject != null) glowObject.SetActive(false);
-        
-        if (circleRenderer == null) circleRenderer = GetComponent<Renderer>();
-        
-        if (circleRenderer != null)
-        {
-            circleRenderer.material.color = offColor;
-            circleRenderer.material.DisableKeyword("_EMISSION");
-        }
+        DeactivateEffects();
     }
 
     private void Update()
     {
-
+        if (isActive)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0f)
+            {
+                DeactivateEffects();
+            }
+        }
     }
 
     public void TakeDamage(float amount, DamageType type)
     {
         if (type == DamageType.Blood)
         {
-            ActivateGlow();
+            ActivateEffects();
         }
     }
 
@@ -40,22 +41,42 @@ public class BloodCircleIndicator : MonoBehaviour, IDamageable
     {
         if (type == DamageType.Blood)
         {
-            ActivateGlow();
+            ActivateEffects();
         }
     }
 
-    private void ActivateGlow()
+    private void ActivateEffects()
     {
-        if (isGlowing) return;
+        timer = activeDuration; // Reinicia el temporizador si vuelve a ser golpeado
 
-        isGlowing = true;
-        if (glowObject != null) glowObject.SetActive(true);
-
-        if (circleRenderer != null)
+        if (!isActive)
         {
-            circleRenderer.material.color = bloodColor;
-            circleRenderer.material.EnableKeyword("_EMISSION");
-            circleRenderer.material.SetColor("_EmissionColor", bloodColor); 
+            isActive = true;
+
+            if (bloodLight != null) bloodLight.enabled = true;
+
+            if (bloodParticles != null)
+            {
+                foreach (var ps in bloodParticles)
+                {
+                    if (ps != null) ps.Play();
+                }
+            }
+        }
+    }
+
+    private void DeactivateEffects()
+    {
+        isActive = false;
+        
+        if (bloodLight != null) bloodLight.enabled = false;
+
+        if (bloodParticles != null)
+        {
+            foreach (var ps in bloodParticles)
+            {
+                if (ps != null) ps.Stop();
+            }
         }
     }
 }

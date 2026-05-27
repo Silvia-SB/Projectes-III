@@ -8,8 +8,11 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable
     [SerializeField] private int ticksOnExit = 5;
     [SerializeField] private DamageType damageType = DamageType.Blood;
     
+    [Header("Effects")]
+    [SerializeField] private ParticleSystem[] corruptedParticles;
+    [SerializeField] private Light corruptedLight;
+
     private Collider[] colliders; 
-    private Renderer meshRenderer;
     private bool isActive;
     private float nextPulseTime;
     
@@ -18,12 +21,13 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable
     private void Awake() 
     {
         colliders = GetComponents<Collider>();
-        meshRenderer = GetComponent<Renderer>();
         
         foreach (Collider c in colliders)
         {
             c.isTrigger = true;
         }
+        
+        DeactivateEffects();
     }
 
     public void TakeDamage(float amount, DamageType incomingDamageType)
@@ -49,11 +53,8 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable
         isActive = true;
         nextPulseTime = Time.time + interval;
 
-        if (meshRenderer != null) 
-        {
-            meshRenderer.material.color = Color.red;
-        }
-        
+        ActivateEffects();
+
         for (int i = targets.Count - 1; i >= 0; i--) 
         {
             IDamageable target = targets[i];
@@ -113,6 +114,32 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable
             if (isActive) 
             {
                 target.TakeRecurrentDamage(damage, interval, ticksOnExit, damageType);
+            }
+        }
+    }
+
+    private void ActivateEffects()
+    {
+        if (corruptedLight != null) corruptedLight.enabled = true;
+
+        if (corruptedParticles != null)
+        {
+            foreach (var ps in corruptedParticles)
+            {
+                if (ps != null) ps.Play();
+            }
+        }
+    }
+
+    private void DeactivateEffects()
+    {
+        if (corruptedLight != null) corruptedLight.enabled = false;
+
+        if (corruptedParticles != null)
+        {
+            foreach (var ps in corruptedParticles)
+            {
+                if (ps != null) ps.Stop();
             }
         }
     }

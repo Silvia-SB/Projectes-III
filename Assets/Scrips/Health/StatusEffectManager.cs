@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class DoTInstance
 {
@@ -11,6 +12,10 @@ public class DoTInstance
 
 public class StatusEffectManager : MonoBehaviour
 {
+    public event Action<DamageType> OnStatusApplied;
+    public event Action<DamageType> OnStatusRemoved;
+    public event Action OnAllStatusesCleared;
+
     private readonly Dictionary<DamageType, DoTInstance> activeStatuses = new Dictionary<DamageType, DoTInstance>();
     private readonly List<DamageType> activeKeys = new List<DamageType>();
     
@@ -27,6 +32,7 @@ public class StatusEffectManager : MonoBehaviour
 
     public void ApplyStatus(float amount, float interval, int ticks, DamageType damageType)
     {
+        bool isNew = false;
         if (activeStatuses.TryGetValue(damageType, out DoTInstance dot))
         {
             dot.Amount = amount;
@@ -36,6 +42,7 @@ public class StatusEffectManager : MonoBehaviour
         }
         else
         {
+            isNew = true;
             activeKeys.Add(damageType);
             activeStatuses[damageType] = new DoTInstance 
             { 
@@ -45,18 +52,28 @@ public class StatusEffectManager : MonoBehaviour
                 Timer = 0f 
             };
         }
+
+        if (isNew)
+        {
+            OnStatusApplied?.Invoke(damageType);
+        }
     }
 
     public void RemoveStatus(DamageType damageType)
     {
-        activeStatuses.Remove(damageType);
-        activeKeys.Remove(damageType);
+        if (activeStatuses.ContainsKey(damageType))
+        {
+            activeStatuses.Remove(damageType);
+            activeKeys.Remove(damageType);
+            OnStatusRemoved?.Invoke(damageType);
+        }
     }
 
     public void ClearAllStatuses()
     {
         activeStatuses.Clear();
         activeKeys.Clear();
+        OnAllStatusesCleared?.Invoke();
     }
 
     private void Update()
@@ -82,6 +99,7 @@ public class StatusEffectManager : MonoBehaviour
                 {
                     activeStatuses.Remove(key);
                     activeKeys.RemoveAt(i);
+                    OnStatusRemoved?.Invoke(key);
                 }
             }
         }

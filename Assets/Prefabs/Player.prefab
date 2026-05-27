@@ -66,7 +66,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 10
-  field of view: 65
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -563,6 +563,13 @@ MonoBehaviour:
   retractedPositionOffset: {x: 0, y: -0.2, z: -0.1}
   retractedRotationOffset: {x: 15, y: -10, z: 0}
   retractionSpeed: 12
+  swayPosMultiplier: 0.0005
+  maxSwayPos: 0.05
+  swayRotMultiplier: 0.04
+  maxSwayRot: 4
+  swaySmooth: 12
+  maxPitchUp: -60
+  maxPitchDown: 60
   armsAnimator: {fileID: 8712034672744137375}
   bowAnimator: {fileID: 6382706426873480825}
 --- !u!114 &7469301177835586816
@@ -582,8 +589,6 @@ MonoBehaviour:
   invertPitch: 0
   maxPitch: 80
   minPitch: -80
-  slowDownThreshold: 0.7
-  minSpeedMultiplier: 0.1
 --- !u!114 &2489017004968937989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,7 +829,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 100
-  field of view: 65
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: -1

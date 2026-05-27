@@ -41,11 +41,21 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private Vector3 retractedRotationOffset = new Vector3(25f, -15f, 0f);
     [SerializeField] private float retractionSpeed = 12f;
 
+    [Header("Weapon Sway (Procedural)")]
+    [SerializeField] private float swayPosMultiplier = 0.0005f;
+    [SerializeField] private float maxSwayPos = 0.05f;
+    [SerializeField] private float swayRotMultiplier = 0.04f;
+    [SerializeField] private float maxSwayRot = 4.0f;
+    [SerializeField] private float swaySmooth = 12f;
+
+    [Header("Bow Movement Limits")]
+    [SerializeField] private float maxPitchUp = -35f;
+    [SerializeField] private float maxPitchDown = 35f;
+
     [Header("Animators")]
     [SerializeField] private Animator armsAnimator;
     [SerializeField] private Animator bowAnimator;
 
-    // --- State Variables ---
     private Arrow currentArrowInstance;
     private float nextFireTime;
     private float emergencySpawnTime;
@@ -62,13 +72,18 @@ public class PlayerShooter : MonoBehaviour
     private bool isAligningBow;
     private float alignmentStartTime;
     private Vector3 initialLocalAlignDir;
+    private Vector3 currentSwayPos;
+    private Quaternion currentSwayRot = Quaternion.identity;
+    private float lastCamYaw;
+    private float lastCamPitch;
+    private float smoothedPitchVelocity;
+    private float smoothedYawVelocity;
 
     private static readonly int isChargingHash = Animator.StringToHash("isCharging");
     private static readonly int cancelChargeHash = Animator.StringToHash("cancelCharge");
     private static readonly int shootHash = Animator.StringToHash("Shoot");
     private static readonly int changeArrowHash = Animator.StringToHash("changeArrow");
 
-    // --- Caches & Helpers ---
     private RaycastHit[] aimHits = new RaycastHit[20];     
     private readonly Vector3 viewportCenter = new Vector3(0.5f, 0.5f, 0f); 
     private Collider[] blockCheckColliders = new Collider[5];
@@ -90,6 +105,11 @@ public class PlayerShooter : MonoBehaviour
             initialWeaponPos = weaponRoot.localPosition;
             initialWeaponRot = weaponRoot.localRotation;
         }
+        if (playerCamera != null) 
+        {
+            lastCamYaw = playerCamera.transform.eulerAngles.y;
+            lastCamPitch = playerCamera.transform.eulerAngles.x;
+        }
         PrepareArrow();
     }
 
@@ -110,7 +130,6 @@ public class PlayerShooter : MonoBehaviour
             }
         }
 
-        // Auto-charge si mantenemos el botón y estamos completamente listos
         if (isFireButtonHeld && !isCharging && currentArrowInstance != null && !isWaitingForReload && !isAligningBow && Time.time >= nextFireTime)
         {
             StartCharging();
@@ -164,10 +183,15 @@ public class PlayerShooter : MonoBehaviour
 
     private void LateUpdate()
     {
+        UpdateWeaponSway();
+
+        Vector3 targetBasePos = initialWeaponPos + currentSwayPos;
+        Quaternion targetBaseRot = initialWeaponRot * currentSwayRot;
+
         if (weaponRoot != null)
         {
-            weaponRoot.localPosition = initialWeaponPos;
-            weaponRoot.localRotation = initialWeaponRot;
+            weaponRoot.localPosition = targetBasePos;
+            weaponRoot.localRotation = targetBaseRot;
         }
 
         AlignFirePoint();
@@ -179,11 +203,54 @@ public class PlayerShooter : MonoBehaviour
             float targetWeight = shouldRetract ? 1f : 0f;
             currentRetractionWeight = Mathf.Lerp(currentRetractionWeight, targetWeight, Time.deltaTime * retractionSpeed);
 
-            weaponRoot.localPosition = Vector3.Lerp(initialWeaponPos, initialWeaponPos + retractedPositionOffset, currentRetractionWeight);
-            weaponRoot.localRotation = Quaternion.Slerp(initialWeaponRot, initialWeaponRot * Quaternion.Euler(retractedRotationOffset), currentRetractionWeight);
+            weaponRoot.localPosition = Vector3.Lerp(targetBasePos, initialWeaponPos + retractedPositionOffset, currentRetractionWeight);
+            weaponRoot.localRotation = Quaternion.Slerp(targetBaseRot, initialWeaponRot * Quaternion.Euler(retractedRotationOffset), currentRetractionWeight);
         }
 
         AlignFirePoint();
+    }
+
+    private void UpdateWeaponSway()
+    {
+        float dt = Time.deltaTime;
+        if (dt <= 0f) return;
+
+        float targetSwayPosX = 0f;
+        float targetSwayPosY = 0f;
+        float targetSwayRotX = 0f;
+        float targetSwayRotY = 0f;
+        float targetSwayRotZ = 0f;
+
+        if (playerCamera != null)
+        {
+            Vector3 camEuler = playerCamera.transform.eulerAngles;
+            float currentPitch = camEuler.x;
+            float currentYaw = camEuler.y;
+            float rawPitchVelocity = Mathf.DeltaAngle(lastCamPitch, currentPitch) / dt;
+            float rawYawVelocity = Mathf.DeltaAngle(lastCamYaw, currentYaw) / dt;
+            smoothedPitchVelocity = Mathf.Lerp(smoothedPitchVelocity, rawPitchVelocity, dt * 15f);
+            smoothedYawVelocity = Mathf.Lerp(smoothedYawVelocity, rawYawVelocity, dt * 15f);
+            targetSwayPosX = Mathf.Clamp(-smoothedYawVelocity * swayPosMultiplier, -maxSwayPos, maxSwayPos);
+            targetSwayPosY = Mathf.Clamp(smoothedPitchVelocity * swayPosMultiplier, -maxSwayPos, maxSwayPos);
+            float normalizedPitch = currentPitch;
+            if (normalizedPitch > 180f) normalizedPitch -= 360f;
+            
+            float excessPitch = 0f;
+            if (normalizedPitch < maxPitchUp) excessPitch = normalizedPitch - maxPitchUp;
+            else if (normalizedPitch > maxPitchDown) excessPitch = normalizedPitch - maxPitchDown;
+
+            targetSwayRotX = Mathf.Clamp(smoothedPitchVelocity * swayRotMultiplier, -maxSwayRot, maxSwayRot) - excessPitch;
+            targetSwayRotY = Mathf.Clamp(-smoothedYawVelocity * swayRotMultiplier, -maxSwayRot, maxSwayRot);
+            targetSwayRotZ = Mathf.Clamp(smoothedYawVelocity * swayRotMultiplier * 0.5f, -maxSwayRot, maxSwayRot); // Leve "Roll"
+
+            lastCamPitch = currentPitch;
+            lastCamYaw = currentYaw;
+        }
+        
+        currentSwayPos.x = Mathf.Lerp(currentSwayPos.x, targetSwayPosX, dt * swaySmooth);
+        currentSwayPos.y = Mathf.Lerp(currentSwayPos.y, targetSwayPosY, dt * swaySmooth);
+        
+        currentSwayRot = Quaternion.Slerp(currentSwayRot, Quaternion.Euler(targetSwayRotX, targetSwayRotY, targetSwayRotZ), dt * swaySmooth);
     }
 
     private void AlignFirePoint()
@@ -368,7 +435,6 @@ public class PlayerShooter : MonoBehaviour
     {
         if (playerCamera == null) return (firePoint.position + firePoint.forward * 100f, firePoint.forward, false);
 
-        // 1. Cálculo del objetivo de la cámara
         Ray camRay = playerCamera.ViewportPointToRay(viewportCenter);
         Vector3 targetPoint = camRay.GetPoint(100f);
 
@@ -387,7 +453,6 @@ public class PlayerShooter : MonoBehaviour
             }
         }
 
-        // 2. Cálculo de la dirección de disparo perfecta
         Vector3 shootDirection;
         
         if (IsPointBlankWithEnemy() || (camHit && closestDistance < minConvergenceDistance))
@@ -405,7 +470,6 @@ public class PlayerShooter : MonoBehaviour
             shootDirection = firePoint.forward;
         }
 
-        // 3. Cálculo de la trayectoria real de la flecha
         float lengthOffset = currentArrowInstance != null ? currentArrowInstance.ArrowLength : 1f;
         Vector3 rayStart = firePoint.position + shootDirection * lengthOffset;
         Vector3 actualHitPoint = rayStart + shootDirection * 100f;
@@ -425,7 +489,6 @@ public class PlayerShooter : MonoBehaviour
             }
         }
 
-        // 4. Lógica de UI (Evaluación de desvío significativo de la mira)
         bool isSignificantDeviation = false;
         
         if (IsShotBlocked() || IsPointBlankWithEnemy() || (camHit && closestDistance < minConvergenceDistance) || !hasReachedMinCharge)

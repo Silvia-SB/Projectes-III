@@ -6,7 +6,12 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Image optionsImage;
     [SerializeField] private Image mainMenuImage;
     [SerializeField] private string playSceneName;
-    
+
+    public void OnEnable()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
     public void PlayGame()
     {
         SceneManager.LoadScene(playSceneName);

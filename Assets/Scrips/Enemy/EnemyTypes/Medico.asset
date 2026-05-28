@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
   type: 3
   speed: 2
+  chaseSpeedMultiplier: 1.5
   acceleration: 8
   angularSpeed: 360
   stoppingDistance: 0.5
@@ -35,7 +36,10 @@ MonoBehaviour:
   rangedTeleportAttempts: 20
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 512
   electricContagionDamage: 15
   stunnedSpeed: 0.5
   timeStunned: 3
+  deathAnimationDuration: 2
+  timeBeforePool: 8
+  distanceToPool: 25

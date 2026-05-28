@@ -94,8 +94,10 @@ public class PlayerShooter : MonoBehaviour
     public event Action OnMinChargeReached;
     public event Action<Vector2> OnAimPointUpdated;
     public event Action OnAimPointLost;
+    public event Action<ArrowType> OnArrowTypeChanged;
 
     public float MinChargePercentage => minChargeTime / fullChargeTime;
+    public ArrowType CurrentArrowType => currentArrowType;
 
     private void Start()
     {
@@ -111,6 +113,7 @@ public class PlayerShooter : MonoBehaviour
             lastCamPitch = playerCamera.transform.eulerAngles.x;
         }
         PrepareArrow();
+        OnArrowTypeChanged?.Invoke(currentArrowType);
     }
 
     private void Update()
@@ -637,6 +640,8 @@ public class PlayerShooter : MonoBehaviour
         nextFireTime = Time.time + fireRate;
         isWaitingForReload = true;
         emergencySpawnTime = Time.time + 2.0f;
+        
+        OnArrowTypeChanged?.Invoke(currentArrowType);
     }
 
     private void SetAnimatorBool(int paramHash, bool value)

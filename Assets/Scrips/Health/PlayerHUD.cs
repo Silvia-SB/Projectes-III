@@ -9,6 +9,13 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private float healthLerpSpeed = 5f;
 
+    [Header("Arrow Selection Glows")]
+    [SerializeField] private PlayerShooter playerShooter;
+    [SerializeField] private GameObject baseArrowGlow;
+    [SerializeField] private GameObject bloodArrowGlow;
+    [SerializeField] private GameObject piercingArrowGlow;
+    [SerializeField] private GameObject electricArrowGlow;
+
     [Header("Souls UI")]
     [SerializeField] private TextMeshProUGUI soulsText;
     [SerializeField] private float soulsLerpSpeed = 10f;
@@ -30,6 +37,7 @@ public class PlayerHUD : MonoBehaviour
     private float currentDisplayedSouls;
     private int targetSoulsValue;
     private float extraVignetteAlpha;
+    private ArrowType currentArrowType = ArrowType.Base;
 
     private void OnEnable()
     {
@@ -55,6 +63,12 @@ public class PlayerHUD : MonoBehaviour
             Color c = lowHealthVignette.color;
             c.a = 0f;
             lowHealthVignette.color = c;
+        }
+
+        if (playerShooter != null)
+        {
+            playerShooter.OnArrowTypeChanged += HandleArrowTypeChanged;
+            HandleArrowTypeChanged(playerShooter.CurrentArrowType);
         }
     }
 
@@ -84,6 +98,11 @@ public class PlayerHUD : MonoBehaviour
         {
             SoulManager.Instance.OnSoulsChanged -= UpdateSoulsUI;
         }
+
+        if (playerShooter != null)
+        {
+            playerShooter.OnArrowTypeChanged -= HandleArrowTypeChanged;
+        }
     }
 
     private void OnHealthChanged(float currentHealth, float maxHealth)
@@ -110,6 +129,20 @@ public class PlayerHUD : MonoBehaviour
             hitFlashImage.color = c;
         }
         extraVignetteAlpha = 0.6f; 
+    }
+
+    private void HandleArrowTypeChanged(ArrowType newType)
+    {
+        currentArrowType = newType;
+        UpdateArrowGlows();
+    }
+
+    private void UpdateArrowGlows()
+    {
+        if (baseArrowGlow != null) baseArrowGlow.SetActive(currentArrowType == ArrowType.Base);
+        if (bloodArrowGlow != null) bloodArrowGlow.SetActive(currentArrowType == ArrowType.Blood);
+        if (piercingArrowGlow != null) piercingArrowGlow.SetActive(currentArrowType == ArrowType.Piercing);
+        if (electricArrowGlow != null) electricArrowGlow.SetActive(currentArrowType == ArrowType.Electric);
     }
 
     private void Update()

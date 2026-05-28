@@ -54,6 +54,7 @@ public class AttackState : IEnemyState
         }
         if (recurrentTimer >= enemyController.GetDamageInterval() && enemyController.IsFacingTarget())
         {
+            //enemyController.PerformAttack();
             switch (enemyController.Config.type)    
             {
                 case EnemyType.Caballero:

@@ -172,7 +172,6 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  soulsToDrop: 15
 --- !u!114 &4486413669432322199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,7 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShootCrow
   spawnPoint: {fileID: 2579669829951872907}
   maxActiveCrows: 5
-  recoverTime: 3
+  recoverTime: 5
 --- !u!1 &904982606931509347
 GameObject:
   m_ObjectHideFlags: 0

@@ -459,6 +459,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4290847620208088490}
   - component: {fileID: 8995961015182301223}
+  - component: {fileID: 9087489849359584223}
   m_Layer: 8
   m_Name: Gasa
   m_TagString: Wall
@@ -504,6 +505,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.31261793, y: 0.41048837, z: 0.3233608}
   m_Center: {x: 0.009351835, y: 1.1159903, z: 0.002595611}
+--- !u!114 &9087489849359584223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8835059098310114816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70fc903f24220da73846f13feb01e561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BloodCircleIndicator
+  bloodParticles:
+  - {fileID: 2526040643848686062, guid: 640f7d904c3c2788985607d23080fcfb, type: 3}
+  - {fileID: 7054858715927083874, guid: d13e0f319e86a64fcaaa5ae1e24c0e77, type: 3}
+  bloodLight: {fileID: 3818039598677179862}
+  activeDuration: 5
 --- !u!1001 &2671185693329417518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -560,11 +578,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6947899856104570192, guid: d10d7812bc294dc41b764150a310b172, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d10d7812bc294dc41b764150a310b172, type: 3}
+--- !u!108 &3818039598677179862 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 1291851348828379384, guid: d10d7812bc294dc41b764150a310b172, type: 3}
+  m_PrefabInstance: {fileID: 2671185693329417518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7992382405264293936 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5475058076306187550, guid: d10d7812bc294dc41b764150a310b172, type: 3}

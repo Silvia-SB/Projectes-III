@@ -2179,12 +2179,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a5aafe5bd72c230b4e5ba43aabf4cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 30
+  maxHealth: 40
   currentHealth: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  soulsToDrop: 15
 --- !u!114 &4345732072522158229
 MonoBehaviour:
   m_ObjectHideFlags: 0

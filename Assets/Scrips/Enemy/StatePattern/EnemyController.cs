@@ -119,7 +119,7 @@ public class EnemyController : MonoBehaviour, ISlowable
 
     public bool IsFacingTarget()
     {
-        if(config.isRanged) return true;
+        //if(config.isRanged) return true;
         Vector3 directionToTarget = (target.position - transform.position).normalized;
         float angleToTarget = Vector3.Angle(transform.forward, directionToTarget);
         return angleToTarget <= 45f;

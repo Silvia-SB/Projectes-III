@@ -15,6 +15,12 @@ public class DeathState : IEnemyState
     {
         deathTimer = 0f;
         isAnimatorDisabled = false;
+        if (enemyController.Config.type == EnemyType.Cuervo ||
+            enemyController.Config.type == EnemyType.Medico)
+        {
+            ReturnToPool();
+            return;
+        }
         enemyController.PrepareDeath(); 
     }
 

@@ -6,11 +6,14 @@ public class EnemyMovement : MonoBehaviour
     private EnemyConfig config;
     private float nextRefreshTime;
     private float nextTeleportTime;
+    private Transform debugTarget;
 
 
     public void Configure(EnemyConfig config)
     {
         this.config = config;
+        nextRefreshTime = 0f;
+        nextTeleportTime = 0f;
     }
 
     public void MoveTo(EnemyController enemyController)
@@ -22,7 +25,9 @@ public class EnemyMovement : MonoBehaviour
         Transform enemyTransform = enemyController.transform;
 
         if (agent == null || target == null) return;
-        if (!agent.isActiveAndEnabled || !agent.isOnNavMesh) return;
+        if (!agent.isActiveAndEnabled) return;
+
+        if (!config.isRanged && !agent.isOnNavMesh) return;
 
         if (EnemyType.Cuervo.Equals(enemyController.Config.type))
         {
@@ -80,6 +85,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void MoveRanged(Transform enemyTransform, NavMeshAgent agent, Transform target)
     {
+        debugTarget = target;
+
         StopAgent(agent);
         LookAtTarget(enemyTransform, target.position);
 
@@ -90,15 +97,32 @@ public class EnemyMovement : MonoBehaviour
 
         if (!tooClose && !tooFar) return;
 
-        TryTeleportAroundTarget(enemyTransform, agent, target);
+        TryTeleportInsidePlayerSphere(enemyTransform, agent, target);
     }
 
-    private bool TryTeleportAroundTarget(Transform enemyTransform, NavMeshAgent agent, Transform target)
+    public bool TryTeleportAroundTarget(EnemyController enemyController)
+    {
+        if (config == null) return false;
+
+        NavMeshAgent agent = enemyController.GetNavMeshAgent();
+        Transform target = enemyController.GetTarget();
+        Transform enemyTransform = enemyController.transform;
+
+        if (agent == null || target == null) return false;
+        if (!agent.isActiveAndEnabled) return false;
+
+        return TryTeleportInsidePlayerSphere(enemyTransform, agent, target);
+    }
+
+    private bool TryTeleportInsidePlayerSphere(Transform enemyTransform, NavMeshAgent agent, Transform target)
     {
         if (Time.time < nextTeleportTime) return false;
 
-        if (!TryFindTeleportPoint(target.position, agent.radius, out Vector3 teleportPoint))
+        if (!TryFindPointInsidePlayerSphere(target.position, out Vector3 teleportPoint))
+        {
+            Debug.LogWarning("Medico no encuentra punto dentro de la esfera del player sobre el NavMesh.", this);
             return false;
+        }
 
         StopAgent(agent);
 
@@ -117,27 +141,31 @@ public class EnemyMovement : MonoBehaviour
         return true;
     }
 
-    private bool TryFindTeleportPoint(Vector3 targetPosition, float agentRadius, out Vector3 result)
+    private bool TryFindPointInsidePlayerSphere(Vector3 targetPosition, out Vector3 result)
     {
-        for (int i = 0; i < config.rangedTeleportAttempts; i++)
-        {
-            Vector2 randomCircle = Random.insideUnitCircle.normalized;
+        float minDistance = Mathf.Max(0.1f, config.rangedMinDistance);
+        float maxDistance = Mathf.Max(minDistance, config.rangedMaxDistance);
+        float navMeshSampleRadius = Mathf.Max(1f, config.rangedTeleportNavMesh);
+        int attempts = Mathf.Max(config.rangedTeleportAttempts, 64);
 
-            float randomDistance = Random.Range(
-                config.rangedTeleportMinDistance,
-                config.rangedTeleportMaxDistance
-            );
+        for (int i = 0; i < attempts; i++)
+        {
+            Vector2 direction = Random.insideUnitCircle;
+            if (direction.sqrMagnitude < 0.001f) direction = Vector2.right;
+            direction.Normalize();
+
+            float randomDistance = Random.Range(minDistance, maxDistance);
 
             Vector3 candidate = targetPosition + new Vector3(
-                randomCircle.x * randomDistance,
+                direction.x * randomDistance,
                 0f,
-                randomCircle.y * randomDistance
+                direction.y * randomDistance
             );
 
             if (!NavMesh.SamplePosition(
                     candidate,
                     out NavMeshHit hit,
-                    config.rangedTeleportNavMesh,
+                    navMeshSampleRadius,
                     NavMesh.AllAreas))
             {
                 continue;
@@ -145,13 +173,10 @@ public class EnemyMovement : MonoBehaviour
 
             float distanceToTarget = FlatDistance(hit.position, targetPosition);
 
-            if (distanceToTarget < config.rangedTeleportMinDistance)
+            if (distanceToTarget < minDistance)
                 continue;
 
-            if (distanceToTarget > config.rangedTeleportMaxDistance)
-                continue;
-
-            if (!HasEnoughSpace(hit.position, agentRadius))
+            if (distanceToTarget > maxDistance)
                 continue;
 
             result = hit.position;
@@ -162,19 +187,6 @@ public class EnemyMovement : MonoBehaviour
         return false;
     }
 
-    private bool HasEnoughSpace(Vector3 position, float agentRadius)
-    {
-        float checkRadius = agentRadius * 0.9f;
-
-        Vector3 checkPosition = position + Vector3.up * 0.5f;
-
-        return !Physics.CheckSphere(
-            checkPosition,
-            checkRadius,
-            config.obstacleMask,
-            QueryTriggerInteraction.Ignore
-        );
-    }
     private void LookAtTarget(Transform enemyTransform, Vector3 targetPosition)
     {
         Vector3 direction = targetPosition - enemyTransform.position;
@@ -197,6 +209,26 @@ public class EnemyMovement : MonoBehaviour
         agent.isStopped = true;
         agent.velocity = Vector3.zero;
         agent.ResetPath();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (config == null || !config.isRanged) return;
+
+        Transform sphereTarget = debugTarget;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            sphereTarget = player.transform;
+        }
+
+        if (sphereTarget == null) return;
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(sphereTarget.position, config.rangedMaxDistance);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(sphereTarget.position, config.rangedMinDistance);
     }
     
 }

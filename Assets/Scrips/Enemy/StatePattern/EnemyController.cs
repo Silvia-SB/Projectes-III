@@ -27,7 +27,7 @@ public class EnemyController : MonoBehaviour, ISlowable
     public EnemyConfig Config => config;
     public void Awake()
     {
-        if (target == null) target = GameObject.FindGameObjectWithTag("Player").transform;
+        ResolveTarget();
         
         statusContagion = GetComponent<StatusContagion>();
         enemyContagion = GetComponent<EnemyContagion>();
@@ -37,6 +37,7 @@ public class EnemyController : MonoBehaviour, ISlowable
 
     public void OnEnable()
     {
+        ResolveTarget();
         ResetEnemy();
 
         if (health == null) health = GetComponent<Health>();
@@ -87,6 +88,15 @@ public class EnemyController : MonoBehaviour, ISlowable
         enemyMovement.Configure(config);
     }
 
+    private void ResolveTarget()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            target = player.transform;
+        }
+    }
+
     private void OnEnemyDeath()
     {
         if (stateMachine != null && stateMachine.CurrentState != stateMachine.DeathState)
@@ -113,14 +123,24 @@ public class EnemyController : MonoBehaviour, ISlowable
     
     public bool IsInAttackRange()
     {
-        float distanceToTarget = Vector3.Distance(transform.position, target.position);
+        Vector3 enemyPosition = transform.position;
+        Vector3 targetPosition = target.position;
+        enemyPosition.y = 0f;
+        targetPosition.y = 0f;
+
+        float distanceToTarget = Vector3.Distance(enemyPosition, targetPosition);
         return distanceToTarget <= config.attackRange;
     }
 
     public bool IsFacingTarget()
     {
         //if(config.isRanged) return true;
-        Vector3 directionToTarget = (target.position - transform.position).normalized;
+        Vector3 directionToTarget = target.position - transform.position;
+        directionToTarget.y = 0f;
+
+        if (directionToTarget.sqrMagnitude < 0.001f) return true;
+
+        directionToTarget.Normalize();
         float angleToTarget = Vector3.Angle(transform.forward, directionToTarget);
         return angleToTarget <= 45f;
     }

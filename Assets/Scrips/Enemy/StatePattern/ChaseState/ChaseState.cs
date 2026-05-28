@@ -16,7 +16,11 @@ public class ChaseState : IEnemyState
 
     public void Enter()
     {
-        enemyController.GetNavMeshAgent().isStopped = false;
+        if (!enemyController.Config.isRanged)
+        {
+            enemyController.GetNavMeshAgent().isStopped = false;
+        }
+
         switch (enemyController.Config.type)    
         {
             case EnemyType.Caballero:
@@ -36,18 +40,25 @@ public class ChaseState : IEnemyState
 
     public void Update()
     {
+        enemyController.GetEnemyMovement().MoveTo(enemyController);
+
         if (enemyController.IsInAttackRange())
         {
             stateMachine.TransitionTo(stateMachine.AttackState);
             return;
         }
+
+        if (enemyController.Config.isRanged)
+        {
+            return;
+        }
+
         float distanceToPlayer = Vector3.Distance(enemyController.GetTarget().position, enemyController.transform.position);
 
         if (distanceToPlayer >= enemyController.Config.maxChaseDistance)
         {
             stateMachine.TransitionTo(stateMachine.DeathState);
         }
-        enemyController.GetEnemyMovement().MoveTo(enemyController);
     }
 
     public void Exit()

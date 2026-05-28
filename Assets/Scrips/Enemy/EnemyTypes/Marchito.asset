@@ -17,8 +17,8 @@ MonoBehaviour:
   chaseSpeedMultiplier: 1.5
   acceleration: 5
   angularSpeed: 200
-  stoppingDistance: 2.5
-  attackRange: 2.5
+  stoppingDistance: 1.5
+  attackRange: 1.5
   radius: 0.45
   maxChaseDistance: 100
   damage: 8
@@ -40,3 +40,6 @@ MonoBehaviour:
   electricContagionDamage: 15
   stunnedSpeed: 0.01
   timeStunned: 3
+  deathAnimationDuration: 2
+  timeBeforePool: 8
+  distanceToPool: 25

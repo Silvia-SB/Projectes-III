@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7910116666399204096}
   - component: {fileID: 7898828630763253245}
   - component: {fileID: 4513159060301086263}
+  - component: {fileID: 6552963135080488625}
   m_Layer: 8
   m_Name: Oil
   m_TagString: Liquid
@@ -153,3 +154,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6552963135080488625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8552338603781887839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7d379a3360e6da1a96cbbb29c54680e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CorruptedLiquid
+  damage: 5
+  interval: 0.4
+  ticksOnExit: 5
+  damageType: 1
+  corruptedParticles: []
+  corruptedLight: {fileID: 0}
+  deactivationCollider: {fileID: 0}
+  deactivatorTag: Player

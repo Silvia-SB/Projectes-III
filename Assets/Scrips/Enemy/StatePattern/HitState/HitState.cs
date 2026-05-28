@@ -4,16 +4,33 @@ public class HitState : IEnemyState
 {
     private EnemyController enemyController;
     private EnemyStateMachine stateMachine;
+    private Animator animator;
+
 
     public HitState(EnemyController enemyController, EnemyStateMachine stateMachine)
     {
         this.enemyController = enemyController;
         this.stateMachine = stateMachine;
+        animator = enemyController.GetAnimator();
+
     }
 
     public void Enter()
     {
-         enemyController.GetAnimator().SetTrigger(enemyController.GetCurrentHitBodyPart().ToString());
+        switch (enemyController.Config.type)    
+        {
+            case EnemyType.Caballero:
+                animator.SetTrigger("Hit");
+                break;
+            case EnemyType.Medico:
+                break;
+            case EnemyType.Cuervo:
+                animator.SetTrigger("Fly");
+                break;
+            default:
+                animator.SetTrigger(enemyController.GetCurrentHitBodyPart().ToString());
+                break;
+        }
          stateMachine.TransitionTo(stateMachine.ChaseState);
     }
 

@@ -58,7 +58,7 @@ public class EnemyController : MonoBehaviour, ISlowable
         hitboxManager = GetComponentInChildren<HitboxManager>();
         hitboxManager.OnDamaged += ApplyHitAnimation;
         ApplyConfig();
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponent<Animator>();
         stateMachine = new EnemyStateMachine(this);
         stateMachine.Initialize(stateMachine.ChaseState);
     }
@@ -222,6 +222,11 @@ public class EnemyController : MonoBehaviour, ISlowable
                 }
             }
         }
+    }
+    
+    public void HitPlayer()
+    {
+        PerformAttack(); 
     }
 
     public EnemyMovement GetEnemyMovement() => enemyMovement;

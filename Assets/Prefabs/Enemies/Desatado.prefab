@@ -2174,7 +2174,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934897180633351276}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9a5aafe5bd72c230b4e5ba43aabf4cf, type: 3}
   m_Name: 
@@ -2184,8 +2184,6 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  mainRenderer: {fileID: 0}
-  damageColor: {r: 1, g: 0, b: 0, a: 1}
   soulsToDrop: 15
 --- !u!114 &4345732072522158229
 MonoBehaviour:
@@ -2317,8 +2315,6 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  mainRenderer: {fileID: 0}
-  damageColor: {r: 1, g: 0, b: 0, a: 1}
   soulsToDrop: 15
 --- !u!1 &1976940937217707329
 GameObject:

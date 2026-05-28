@@ -54,8 +54,22 @@ public class AttackState : IEnemyState
         }
         if (recurrentTimer >= enemyController.GetDamageInterval() && enemyController.IsFacingTarget())
         {
-            enemyController.PerformAttack();
-            TriggerRandomAttack();
+            //enemyController.PerformAttack();
+            switch (enemyController.Config.type)    
+            {
+                case EnemyType.Caballero:
+                    animator.SetTrigger("Attack");
+                    break;
+                case EnemyType.Medico:
+                    animator.SetTrigger("Attack");
+                    break;
+                case EnemyType.Cuervo:
+                    break;
+                default:
+                    TriggerRandomAttack();
+                    break;
+            }
+            
             
             recurrentTimer -= enemyController.GetDamageInterval(); 
         }

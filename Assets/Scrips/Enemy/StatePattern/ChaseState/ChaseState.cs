@@ -17,7 +17,21 @@ public class ChaseState : IEnemyState
     public void Enter()
     {
         enemyController.GetNavMeshAgent().isStopped = false;
-        TriggerRandomWalk(); 
+        switch (enemyController.Config.type)    
+        {
+            case EnemyType.Caballero:
+                animator.SetTrigger("Walk");
+                break;
+            case EnemyType.Medico:
+                animator.SetTrigger("Walk");
+                break;
+            case EnemyType.Cuervo:
+                animator.SetTrigger("Fly");
+                break;
+            default:
+                TriggerRandomWalk();
+                break;
+        }
     }
 
     public void Update()

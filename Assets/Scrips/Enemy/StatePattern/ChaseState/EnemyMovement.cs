@@ -92,20 +92,6 @@ public class EnemyMovement : MonoBehaviour
 
         TryTeleportAroundTarget(enemyTransform, agent, target);
     }
-    
-     public bool TryTeleportAroundTarget(EnemyController enemyController)
-    {
-        if (config == null) return false;
-
-        NavMeshAgent agent = enemyController.GetNavMeshAgent();
-        Transform target = enemyController.GetTarget();
-        Transform enemyTransform = enemyController.transform;
-
-        if (agent == null || target == null) return false;
-        if (!agent.isActiveAndEnabled || !agent.isOnNavMesh) return false;
-
-        return TryTeleportAroundTarget(enemyTransform, agent, target);
-    }
 
     private bool TryTeleportAroundTarget(Transform enemyTransform, NavMeshAgent agent, Transform target)
     {

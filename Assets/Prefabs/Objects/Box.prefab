@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4241673172962311018
 Transform:
@@ -102,6 +102,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7903005001077901035, guid: d4855d1574a54bf41ab64ce15cd1657f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -795236320176137981, guid: d4855d1574a54bf41ab64ce15cd1657f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -110,10 +114,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: CaixaUvs
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d4855d1574a54bf41ab64ce15cd1657f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5696494855991954268, guid: d4855d1574a54bf41ab64ce15cd1657f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 208b0aaa828e0894bb8e423ae8bbcc59, type: 2}
+    - target: {fileID: 7742780737561719692, guid: d4855d1574a54bf41ab64ce15cd1657f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8259246285126342465, guid: d4855d1574a54bf41ab64ce15cd1657f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

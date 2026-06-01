@@ -14,7 +14,6 @@ public class DissolvingController : MonoBehaviour
 
     private List<Material> materials = new List<Material>();
     
-    // OPTIMIZACIÓN: Precalculamos el ID de la propiedad del shader para no usar strings en el Update
     private static readonly int DissolveAmountID = Shader.PropertyToID("_DissolveAmount");
 
     private void Awake()
@@ -55,7 +54,6 @@ public class DissolvingController : MonoBehaviour
 
     private void DissolveCo()
     {
-        // Si por alguna razón no hay materiales, devolvemos el enemigo a la pool directamente para que no se quede atascado
         if (materials.Count == 0) 
         {
             isDissolving = false;
@@ -66,7 +64,6 @@ public class DissolvingController : MonoBehaviour
         counter += dissolveSpeed * Time.deltaTime;
         foreach (Material mat in materials)
         {
-            // Utilizamos el ID cacheado en lugar del string
             if (mat != null) mat.SetFloat(DissolveAmountID, counter);
         }
         
@@ -84,7 +81,7 @@ public class DissolvingController : MonoBehaviour
 
     public void ResetDissolve()
     {
-        InitializeMaterials(); // Garantizamos que tenga los materiales si fue llamado antes del Awake
+        InitializeMaterials(); 
         
         isDissolving = false;
         counter = 0f;

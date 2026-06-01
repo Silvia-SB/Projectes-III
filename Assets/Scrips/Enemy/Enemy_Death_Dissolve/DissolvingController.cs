@@ -19,9 +19,20 @@ public class DissolvingController : MonoBehaviour
 
     private void Awake()
     {
+        InitializeMaterials();
+    }
+
+    private void OnEnable()
+    {
+        ResetDissolve();
+    }
+
+    private void InitializeMaterials()
+    {
+        if (materials.Count > 0) return; 
+
         if (targetRenderers == null || targetRenderers.Length == 0)
         {
-            // Añadimos 'true' para que encuentre las mallas incluso si el enemigo nace desactivado por la Pool
             targetRenderers = GetComponentsInChildren<Renderer>(true);
         }
 
@@ -73,6 +84,8 @@ public class DissolvingController : MonoBehaviour
 
     public void ResetDissolve()
     {
+        InitializeMaterials(); // Garantizamos que tenga los materiales si fue llamado antes del Awake
+        
         isDissolving = false;
         counter = 0f;
         foreach (Material mat in materials)

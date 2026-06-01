@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 4851462288565713094}
   - component: {fileID: 7211052979998302598}
   - component: {fileID: -7315307328690460100}
+  - component: {fileID: 4606119972440261975}
   m_Layer: 11
   m_Name: 'Chaman '
   m_TagString: Enemy
@@ -300,6 +301,22 @@ MonoBehaviour:
   spawnPoint: {fileID: 2579669829951872907}
   maxActiveCrows: 5
   recoverTime: 5
+--- !u!114 &4606119972440261975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510362098878087543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0014eafcd6b13fc48bd2f7c5e722ccaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DissolvingController
+  targetRenderers:
+  - {fileID: 5787574664605306743}
+  - {fileID: 7486807959035159251}
+  dissolveSpeed: 0.5
 --- !u!1 &904982606931509347
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,7 +860,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c9d4b7a15e3170f43b9c7411b2860bea, type: 2}
+  - {fileID: -876546973899608171, guid: 279cf4dee58aa7a4cb4ee0be8e05fa8b, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1021,7 +1038,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8209623c938b7d2479e22943f5b89158, type: 2}
+  - {fileID: -876546973899608171, guid: 279cf4dee58aa7a4cb4ee0be8e05fa8b, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

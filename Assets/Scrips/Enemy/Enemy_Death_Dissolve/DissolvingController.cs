@@ -1,54 +1,83 @@
-using System.Collections;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class DissolvingController : MonoBehaviour
 {
-    [SerializeField] private Renderer targetRenderer;
+    [SerializeField] private Renderer[] targetRenderers;
 
-    [SerializeField] private float dissolveRate = 0.0125f;
-    private float timeToStartDissolve = 5f;
+    [SerializeField] private float dissolveSpeed = 0.5f;
     private bool isDissolving = false;
-    float counter = 0f;
+    private float counter = 0f;
+    
+    public Action OnDissolveComplete;
 
+    private List<Material> materials = new List<Material>();
+    
+    // OPTIMIZACIÓN: Precalculamos el ID de la propiedad del shader para no usar strings en el Update
+    private static readonly int DissolveAmountID = Shader.PropertyToID("_DissolveAmount");
 
-    private Material[] materials;
-
-    private void Start()
+    private void Awake()
     {
-        if (targetRenderer != null)
+        if (targetRenderers == null || targetRenderers.Length == 0)
         {
-            materials = targetRenderer.materials;
+            // Añadimos 'true' para que encuentre las mallas incluso si el enemigo nace desactivado por la Pool
+            targetRenderers = GetComponentsInChildren<Renderer>(true);
         }
-        timeToStartDissolve = Time.time + timeToStartDissolve;
+
+        foreach (Renderer rend in targetRenderers)
+        {
+            if (rend != null && !(rend is ParticleSystemRenderer))
+            {
+                materials.AddRange(rend.materials);
+            }
+        }
     }
 
     private void Update()
     {
-        
-        if (Time.time>= timeToStartDissolve&& !isDissolving)
-        { 
-            isDissolving = true;
-        }
-
-        if (isDissolving&&counter<1f)
+        if (isDissolving && counter < 1f)
         {
             DissolveCo();
-            
         }
     }
 
     private void DissolveCo()
     {
-        if (materials == null || materials.Length == 0)
+        // Si por alguna razón no hay materiales, devolvemos el enemigo a la pool directamente para que no se quede atascado
+        if (materials.Count == 0) 
         {
-            Debug.LogWarning("No materials found on the target renderer.");
+            isDissolving = false;
+            OnDissolveComplete?.Invoke();
+            return;
         }
-            counter += dissolveRate;
-            for (int i = 0; i < materials.Length; i++)
-            {
-                materials[i].SetFloat("_DissolveAmount", counter);
-            }
         
+        counter += dissolveSpeed * Time.deltaTime;
+        foreach (Material mat in materials)
+        {
+            // Utilizamos el ID cacheado en lugar del string
+            if (mat != null) mat.SetFloat(DissolveAmountID, counter);
+        }
+        
+        if (counter >= 1f)
+        {
+            isDissolving = false;
+            OnDissolveComplete?.Invoke();
+        }
+    }
+
+    public void StartDissolve()
+    {
+        isDissolving = true;
+    }
+
+    public void ResetDissolve()
+    {
+        isDissolving = false;
+        counter = 0f;
+        foreach (Material mat in materials)
+        {
+            if (mat != null) mat.SetFloat(DissolveAmountID, counter);
+        }
     }   
 }

@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 9018526810316137816}
   - component: {fileID: 960900699334499891}
   - component: {fileID: 8944792330387410964}
+  - component: {fileID: 8684215439733813738}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
@@ -496,6 +497,21 @@ MonoBehaviour:
   contagiousDamageTypes: 01000000
   knightMultiplier: 1.5
   knightAoERadius: 4
+--- !u!114 &8684215439733813738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336821644728294434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0014eafcd6b13fc48bd2f7c5e722ccaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DissolvingController
+  targetRenderers:
+  - {fileID: 8921252960938019615}
+  dissolveSpeed: 0.5
 --- !u!1 &2887271817733120471
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,7 +1263,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0e3af07c8dec0b94c98cecad971e5793, type: 2}
+  - {fileID: -876546973899608171, guid: 279cf4dee58aa7a4cb4ee0be8e05fa8b, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

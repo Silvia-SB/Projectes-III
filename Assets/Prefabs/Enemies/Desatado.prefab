@@ -2023,6 +2023,7 @@ GameObject:
   - component: {fileID: 4352518392610214769}
   - component: {fileID: -6278102556965559209}
   - component: {fileID: 6929340689296994080}
+  - component: {fileID: 3789623432712797930}
   m_Layer: 11
   m_Name: Desatado
   m_TagString: Enemy
@@ -2315,6 +2316,21 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   soulsToDrop: 15
+--- !u!114 &3789623432712797930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934897180633351276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0014eafcd6b13fc48bd2f7c5e722ccaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DissolvingController
+  targetRenderers:
+  - {fileID: 2255164129420548139}
+  dissolveSpeed: 0.5
 --- !u!1 &1976940937217707329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2766,7 +2782,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4a6d228063cb61b42a4ae3e6368b5677, type: 2}
+  - {fileID: -876546973899608171, guid: 279cf4dee58aa7a4cb4ee0be8e05fa8b, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -57,7 +57,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 910c40a1dc5f1fa45a6295a1cdba1faf, type: 2}
+  - {fileID: -876546973899608171, guid: 279cf4dee58aa7a4cb4ee0be8e05fa8b, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 2060977863765511703}
   - component: {fileID: 7413036436319197654}
   - component: {fileID: 1498501154422526772}
+  - component: {fileID: 4922130926224193141}
   m_Layer: 11
   m_Name: Crow
   m_TagString: Enemy
@@ -393,6 +394,21 @@ MonoBehaviour:
   contagiousDamageTypes: 01000000
   knightMultiplier: 1.5
   knightAoERadius: 4
+--- !u!114 &4922130926224193141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7829625633957191571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0014eafcd6b13fc48bd2f7c5e722ccaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DissolvingController
+  targetRenderers:
+  - {fileID: 2998388831351153429}
+  dissolveSpeed: 0.5
 --- !u!1 &8694612002695990285
 GameObject:
   m_ObjectHideFlags: 0

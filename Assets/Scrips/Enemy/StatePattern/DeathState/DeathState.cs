@@ -5,6 +5,7 @@ public class DeathState : IEnemyState
     private EnemyController enemyController;
     private float deathTimer = 0f;
     private bool isAnimatorDisabled = false;
+    private bool isDissolvingStarted = false;
 
     public DeathState(EnemyController enemyController)
     {
@@ -15,13 +16,32 @@ public class DeathState : IEnemyState
     {
         deathTimer = 0f;
         isAnimatorDisabled = false;
+        isDissolvingStarted = false;
+        
+        enemyController.PrepareDeath(); 
+
         if (enemyController.Config.type == EnemyType.Cuervo ||
             enemyController.Config.type == EnemyType.Medico)
         {
-            ReturnToPool();
-            return;
+            StartDissolve();
         }
-        enemyController.PrepareDeath(); 
+    }
+
+    private void StartDissolve()
+    {
+        if (isDissolvingStarted) return;
+        isDissolvingStarted = true;
+
+        DissolvingController dissolving = enemyController.GetDissolvingController();
+        if (dissolving != null)
+        {
+            dissolving.OnDissolveComplete += ReturnToPool;
+            dissolving.StartDissolve();
+        }
+        else
+        {
+            ReturnToPool();
+        }
     }
 
     public void Update()
@@ -33,30 +53,45 @@ public class DeathState : IEnemyState
             Animator anim = enemyController.GetAnimator();
             if (anim != null) anim.enabled = false;
             isAnimatorDisabled = true;
+            
+            StartDissolve();
         }
 
-        float sqrDistanceToPlayer = 0f;
-        if (enemyController.GetTarget() != null)
+        // Fallback por si el enemigo no tiene el DissolvingController asignado
+        if (enemyController.GetDissolvingController() == null)
         {
-            sqrDistanceToPlayer = (enemyController.transform.position - enemyController.GetTarget().position).sqrMagnitude;
-        }
+            float sqrDistanceToPlayer = 0f;
+            if (enemyController.GetTarget() != null)
+            {
+                sqrDistanceToPlayer = (enemyController.transform.position - enemyController.GetTarget().position).sqrMagnitude;
+            }
 
-        // Elevamos al cuadrado la distancia límite configurada para poder compararla
-        float sqrDistanceToPool = enemyController.Config.distanceToPool * enemyController.Config.distanceToPool;
-        
-        if (deathTimer >= enemyController.Config.timeBeforePool || (deathTimer >= 2f && sqrDistanceToPlayer >= sqrDistanceToPool))
-        {
-            ReturnToPool();
+            float sqrDistanceToPool = enemyController.Config.distanceToPool * enemyController.Config.distanceToPool;
+            
+            if (deathTimer >= enemyController.Config.timeBeforePool || (deathTimer >= 2f && sqrDistanceToPlayer >= sqrDistanceToPool))
+            {
+                ReturnToPool();
+            }
         }
     }
 
     public void Exit()
     {
-        
+        DissolvingController dissolving = enemyController.GetDissolvingController();
+        if (dissolving != null)
+        {
+            dissolving.OnDissolveComplete -= ReturnToPool;
+        }
     }
 
     private void ReturnToPool()
     {
+        DissolvingController dissolving = enemyController.GetDissolvingController();
+        if (dissolving != null)
+        {
+            dissolving.OnDissolveComplete -= ReturnToPool;
+        }
+
         Arrow[] attachedArrows = enemyController.GetComponentsInChildren<Arrow>();
         foreach (Arrow arrow in attachedArrows)
         {

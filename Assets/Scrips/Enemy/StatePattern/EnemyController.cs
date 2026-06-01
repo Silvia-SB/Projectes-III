@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(DissolvingController))]
 public class EnemyController : MonoBehaviour, ISlowable
 {
     [Header("References")]
@@ -20,6 +21,7 @@ public class EnemyController : MonoBehaviour, ISlowable
     private EnemyContagion enemyContagion;
     private StatusEffectManager statusEffectManager;
     private Collider mainCollider;
+    private DissolvingController dissolvingController;
     private EnemyStateMachine stateMachine;
     private float slowTimer;
     private bool isSlowed;
@@ -33,6 +35,11 @@ public class EnemyController : MonoBehaviour, ISlowable
         enemyContagion = GetComponent<EnemyContagion>();
         statusEffectManager = GetComponent<StatusEffectManager>();
         mainCollider = GetComponent<Collider>();
+        dissolvingController = GetComponentInChildren<DissolvingController>();
+        if (dissolvingController == null)
+        {
+            dissolvingController = gameObject.AddComponent<DissolvingController>();
+        }
     }
 
     public void OnEnable()
@@ -218,6 +225,7 @@ public class EnemyController : MonoBehaviour, ISlowable
     private void ResetEnemy()
     {
         transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+        if (dissolvingController != null) dissolvingController.ResetDissolve();
 
         if (animator != null) animator.enabled = true;
         if (navMeshAgent != null) navMeshAgent.enabled = true;
@@ -259,6 +267,6 @@ public class EnemyController : MonoBehaviour, ISlowable
     public NavMeshAgent  GetNavMeshAgent() => navMeshAgent;
     public Animator GetAnimator() => animator;
     public BodyPart GetCurrentHitBodyPart() => currentHitBodyPart;
-
-  
+    public DissolvingController GetDissolvingController() => dissolvingController;
+ 
 }

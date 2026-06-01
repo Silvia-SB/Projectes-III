@@ -125,16 +125,17 @@ public class EnemyController : MonoBehaviour, ISlowable
     {
         Vector3 enemyPosition = transform.position;
         Vector3 targetPosition = target.position;
+        float heightDifference = Mathf.Abs(enemyPosition.y - targetPosition.y);
+        if (heightDifference > config.attackHeightTolerance) return false;
+
         enemyPosition.y = 0f;
         targetPosition.y = 0f;
-
         float distanceToTarget = Vector3.Distance(enemyPosition, targetPosition);
         return distanceToTarget <= config.attackRange;
     }
 
     public bool IsFacingTarget()
     {
-        //if(config.isRanged) return true;
         Vector3 directionToTarget = target.position - transform.position;
         directionToTarget.y = 0f;
 
@@ -246,6 +247,8 @@ public class EnemyController : MonoBehaviour, ISlowable
     
     public void HitPlayer()
     {
+        if (!IsInAttackRange() || !IsFacingTarget()) return;
+
         PerformAttack(); 
     }
 

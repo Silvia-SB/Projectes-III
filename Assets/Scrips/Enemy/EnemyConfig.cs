@@ -16,6 +16,7 @@ public class EnemyConfig : ScriptableObject
     public float angularSpeed = 240f;
     public float stoppingDistance = 1f;
     public float attackRange = 1.4f;
+    public float attackHeightTolerance = 1f;
     public float radius = 0.5f;
     public float maxChaseDistance = 45f;
     

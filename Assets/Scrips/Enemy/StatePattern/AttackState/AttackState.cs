@@ -7,6 +7,7 @@ public class AttackState : IEnemyState
     private EnemyController enemyController;
     private EnemyStateMachine stateMachine;
     private float recurrentTimer;
+    private float nextAttackTime;
     private Animator animator;
     private int lastAttackIndex = -1;
     public AttackState(EnemyController enemyController,  EnemyStateMachine stateMachine)
@@ -52,9 +53,8 @@ public class AttackState : IEnemyState
             stateMachine.TransitionTo(stateMachine.ChaseState);
             return;
         }
-        if (recurrentTimer >= enemyController.GetDamageInterval() && enemyController.IsFacingTarget())
+        if (CanAttack())
         {
-            //enemyController.PerformAttack();
             switch (enemyController.Config.type)    
             {
                 case EnemyType.Caballero:
@@ -70,8 +70,8 @@ public class AttackState : IEnemyState
                     break;
             }
             
-            
-            recurrentTimer -= enemyController.GetDamageInterval(); 
+            nextAttackTime = Time.time + enemyController.GetDamageInterval();
+            recurrentTimer = 0f;
         }
         else
         {
@@ -92,6 +92,18 @@ public class AttackState : IEnemyState
             agent.updateRotation = true;
             agent.velocity = Vector3.zero;
         }
+    }
+
+    private bool CanAttack()
+    {
+        if (!enemyController.IsFacingTarget()) return false;
+
+        if (EnemyType.Medico.Equals(enemyController.Config.type))
+        {
+            return Time.time >= nextAttackTime;
+        }
+
+        return recurrentTimer >= enemyController.GetDamageInterval();
     }
     private void TriggerRandomAttack()
     {

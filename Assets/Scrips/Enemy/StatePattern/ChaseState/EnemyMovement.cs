@@ -118,7 +118,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (Time.time < nextTeleportTime) return false;
 
-        if (!TryFindPointInsidePlayerSphere(target.position, out Vector3 teleportPoint))
+        if (!TryFindPointInsidePlayerSphere(target, out Vector3 teleportPoint))
         {
             Debug.LogWarning("Medico no encuentra punto dentro de la esfera del player sobre el NavMesh.", this);
             return false;
@@ -141,10 +141,11 @@ public class EnemyMovement : MonoBehaviour
         return true;
     }
 
-    private bool TryFindPointInsidePlayerSphere(Vector3 targetPosition, out Vector3 result)
+    private bool TryFindPointInsidePlayerSphere(Transform target, out Vector3 result)
     {
-        float minDistance = Mathf.Max(0.1f, config.rangedMinDistance);
-        float maxDistance = Mathf.Max(minDistance, config.rangedMaxDistance);
+        Vector3 targetPosition = target.position;
+        float minDistance = Mathf.Max(0.1f, config.rangedTeleportMinDistance);
+        float maxDistance = Mathf.Max(minDistance, config.rangedTeleportMaxDistance);
         float navMeshSampleRadius = Mathf.Max(1f, config.rangedTeleportNavMesh);
         int attempts = Mathf.Max(config.rangedTeleportAttempts, 64);
 
@@ -179,12 +180,47 @@ public class EnemyMovement : MonoBehaviour
             if (distanceToTarget > maxDistance)
                 continue;
 
+            if (!IsInsidePlayerViewArea(target, hit.position))
+                continue;
+
+            if (!HasPlayerLineOfSight(target, hit.position))
+                continue;
+
             result = hit.position;
             return true;
         }
 
         result = Vector3.zero;
         return false;
+    }
+
+    private bool IsInsidePlayerViewArea(Transform target, Vector3 candidate)
+    {
+        Vector3 playerForward = target.forward;
+        playerForward.y = 0f;
+
+        if (playerForward.sqrMagnitude < 0.001f) return true;
+        playerForward.Normalize();
+
+        Vector3 directionToCandidate = candidate - target.position;
+        directionToCandidate.y = 0f;
+
+        if (directionToCandidate.sqrMagnitude < 0.001f) return true;
+        directionToCandidate.Normalize();
+
+        float halfAngle = Mathf.Clamp(config.rangedTeleportViewAngle, 1f, 360f) * 0.5f;
+        return Vector3.Angle(playerForward, directionToCandidate) <= halfAngle;
+    }
+
+    private bool HasPlayerLineOfSight(Transform target, Vector3 candidate)
+    {
+        if (!config.rangedTeleportNeedsLineOfSight) return true;
+        if (config.obstacleMask.value == 0) return true;
+
+        Vector3 origin = target.position + Vector3.up * 1.6f;
+        Vector3 destination = candidate + Vector3.up;
+
+        return !Physics.Linecast(origin, destination, config.obstacleMask);
     }
 
     private void LookAtTarget(Transform enemyTransform, Vector3 targetPosition)

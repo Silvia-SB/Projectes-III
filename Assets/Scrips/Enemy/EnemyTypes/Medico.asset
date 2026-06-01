@@ -34,6 +34,8 @@ MonoBehaviour:
   rangedTeleportCooldown: 1.5
   rangedTeleportNavMesh: 6
   rangedTeleportAttempts: 64
+  rangedTeleportViewAngle: 90
+  rangedTeleportNeedsLineOfSight: 1
   obstacleMask:
     serializedVersion: 2
     m_Bits: 512

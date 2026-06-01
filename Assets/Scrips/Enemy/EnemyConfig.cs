@@ -42,6 +42,8 @@ public class EnemyConfig : ScriptableObject
     public float rangedTeleportCooldown = 1.5f;
     public float rangedTeleportNavMesh = 3f; //NavMesh radius
     public int rangedTeleportAttempts = 20;
+    public float rangedTeleportViewAngle = 90f;
+    public bool rangedTeleportNeedsLineOfSight = true;
     public LayerMask obstacleMask;
 
     [Header("Electric Status")]

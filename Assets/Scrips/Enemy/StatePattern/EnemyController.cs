@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour, ISlowable
         enemyContagion = GetComponent<EnemyContagion>();
         statusEffectManager = GetComponent<StatusEffectManager>();
         mainCollider = GetComponent<Collider>();
-        dissolvingController = GetComponentInChildren<DissolvingController>();
+        dissolvingController = GetComponent<DissolvingController>();
         if (dissolvingController == null)
         {
             dissolvingController = gameObject.AddComponent<DissolvingController>();

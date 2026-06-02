@@ -218,8 +218,6 @@ public class EnemyController : MonoBehaviour, ISlowable
                 }
             }
         }
-
-        if (animator != null) animator.SetTrigger("Death"); 
     }
 
     private void ResetEnemy()

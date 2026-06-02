@@ -6,6 +6,7 @@ public class DeathState : IEnemyState
     private float deathTimer = 0f;
     private bool isAnimatorDisabled = false;
     private bool isDissolvingStarted = false;
+    private Animator animator;
 
     public DeathState(EnemyController enemyController)
     {
@@ -19,6 +20,21 @@ public class DeathState : IEnemyState
         isDissolvingStarted = false;
         
         enemyController.PrepareDeath(); 
+        
+        animator = enemyController.GetAnimator();
+        switch (enemyController.Config.type)    
+        {
+            case EnemyType.Caballero:
+                animator.SetTrigger("Death");
+                break;
+            case EnemyType.Medico:
+                break;
+            case EnemyType.Cuervo:
+                break;
+            default:
+                animator.SetTrigger("Death");
+                break;
+        }
 
         if (enemyController.Config.type == EnemyType.Cuervo ||
             enemyController.Config.type == EnemyType.Medico)
@@ -50,8 +66,7 @@ public class DeathState : IEnemyState
 
         if (!isAnimatorDisabled && deathTimer >= enemyController.Config.deathAnimationDuration)
         {
-            Animator anim = enemyController.GetAnimator();
-            if (anim != null) anim.enabled = false;
+            if (animator != null) animator.enabled = false;
             isAnimatorDisabled = true;
             
             StartDissolve();

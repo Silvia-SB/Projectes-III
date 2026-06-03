@@ -110,6 +110,8 @@ public class EnemyController : MonoBehaviour, ISlowable
     {
         if (stateMachine != null && stateMachine.CurrentState != stateMachine.DeathState)
         {
+            AchievementManager.UnlockAchievement("first_blood");
+
             stateMachine.TransitionTo(stateMachine.DeathState);
         }
     }

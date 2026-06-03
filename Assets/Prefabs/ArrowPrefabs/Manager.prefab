@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3795783055897515309}
   - component: {fileID: 2344641617906425251}
   - component: {fileID: 7324680403885435283}
+  - component: {fileID: 1709455646588277994}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -109,3 +110,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ElevatorPuzzleManager
   elevators: []
   objectToDeactivate: {fileID: 0}
+--- !u!114 &1709455646588277994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888012573576880270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6958eba206a0760ba159c2b91e8cbd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AchievementManager
+  achievements:
+  - id: first_blood
+    title: First Blood!
+    description: Kill your first enemy
+    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}

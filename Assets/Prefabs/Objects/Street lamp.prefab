@@ -215,17 +215,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8253112734046549341}
     m_Modifications:
+    - target: {fileID: 1291851348828379384, guid: d10d7812bc294dc41b764150a310b172, type: 3}
+      propertyPath: m_Color.b
+      value: 0.1594082
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291851348828379384, guid: d10d7812bc294dc41b764150a310b172, type: 3}
+      propertyPath: m_Color.g
+      value: 0.46964124
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291851348828379384, guid: d10d7812bc294dc41b764150a310b172, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7798742
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291851348828379384, guid: d10d7812bc294dc41b764150a310b172, type: 3}
+      propertyPath: m_Intensity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291851348828379384, guid: d10d7812bc294dc41b764150a310b172, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 4627
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291851348828379384, guid: d10d7812bc294dc41b764150a310b172, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5475058076306187550, guid: d10d7812bc294dc41b764150a310b172, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.1
+      value: -0.988
       objectReference: {fileID: 0}
     - target: {fileID: 5475058076306187550, guid: d10d7812bc294dc41b764150a310b172, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.83
+      value: 2.832
       objectReference: {fileID: 0}
     - target: {fileID: 5475058076306187550, guid: d10d7812bc294dc41b764150a310b172, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.04
+      value: -0.134
       objectReference: {fileID: 0}
     - target: {fileID: 5475058076306187550, guid: d10d7812bc294dc41b764150a310b172, type: 3}
       propertyPath: m_LocalRotation.w
@@ -259,7 +283,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Point Light
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6947899856104570192, guid: d10d7812bc294dc41b764150a310b172, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

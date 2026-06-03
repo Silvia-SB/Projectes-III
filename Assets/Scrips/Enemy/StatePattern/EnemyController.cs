@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour, ISlowable
     private float slowTimer;
     private bool isSlowed;
     private BodyPart currentHitBodyPart;
+    public float SpawnTime { get; private set; }
     public EnemyConfig Config => config;
     public void Awake()
     {
@@ -44,6 +45,7 @@ public class EnemyController : MonoBehaviour, ISlowable
 
     public void OnEnable()
     {
+        SpawnTime = Time.time;
         ResolveTarget();
         ResetEnemy();
 

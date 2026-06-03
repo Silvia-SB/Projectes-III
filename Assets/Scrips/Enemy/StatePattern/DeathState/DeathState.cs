@@ -18,8 +18,7 @@ public class DeathState : IEnemyState
         deathTimer = 0f;
         isAnimatorDisabled = false;
         isDissolvingStarted = false;
-        
-        GameEvents.OnEnemyKilled?.Invoke(enemyController.Config.type, enemyController.GetCurrentHitBodyPart());
+
 
         enemyController.PrepareDeath(); 
         

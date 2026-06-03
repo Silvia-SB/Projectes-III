@@ -19,6 +19,8 @@ public class DeathState : IEnemyState
         isAnimatorDisabled = false;
         isDissolvingStarted = false;
         
+        GameEvents.OnEnemyKilled?.Invoke(enemyController.Config.type, enemyController.GetCurrentHitBodyPart());
+
         enemyController.PrepareDeath(); 
         
         animator = enemyController.GetAnimator();
@@ -107,19 +109,6 @@ public class DeathState : IEnemyState
             dissolving.OnDissolveComplete -= ReturnToPool;
         }
 
-        Arrow[] attachedArrows = enemyController.GetComponentsInChildren<Arrow>();
-        foreach (Arrow arrow in attachedArrows)
-        {
-            arrow.ReturnToPool();
-        }
-        
-        if (EnemyPool.Instance != null)
-        {
-            EnemyPool.Instance.ReturnEnemyToPool(enemyController.Config.type, enemyController.gameObject);
-        }
-        else
-        {
-            enemyController.gameObject.SetActive(false);
-        }
+        enemyController.Despawn();
     }
 }

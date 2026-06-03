@@ -258,6 +258,29 @@ public class EnemyController : MonoBehaviour, ISlowable
         PerformAttack(); 
     }
 
+    public bool IsDead()
+    {
+        return stateMachine != null && stateMachine.CurrentState == stateMachine.DeathState;
+    }
+
+    public void Despawn()
+    {
+        Arrow[] attachedArrows = GetComponentsInChildren<Arrow>();
+        foreach (Arrow arrow in attachedArrows)
+        {
+            arrow.ReturnToPool();
+        }
+
+        if (EnemyPool.Instance != null)
+        {
+            EnemyPool.Instance.ReturnEnemyToPool(config.type, gameObject);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     public EnemyMovement GetEnemyMovement() => enemyMovement;
     public Transform GetTarget() => target;
     public float GetDamage() => config.damage;

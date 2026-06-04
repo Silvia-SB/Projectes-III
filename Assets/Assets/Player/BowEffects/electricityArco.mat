@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: electricityTest
+  m_Name: electricityArco
   m_Shader: {fileID: 4800000, guid: 05daa0f442e4e0c458a634b39dd745c1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -25,23 +25,23 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _BranchChance: 0.679
+    - _BranchChance: 0.774
     - _BranchCount: 3
     - _BranchSpread: 2.04
-    - _BranchSteps: 7.17
+    - _BranchSteps: 8.66
     - _EmissionStrength: 11.08
     - _GridSize: 8
     - _LineWidth: 0.09
     - _MaxInterval: 5.47
-    - _MaxRays: 4.91
+    - _MaxRays: 7.08
     - _MinInterval: 1.16
     - _NoiseAmount: 0.15
-    - _Speed: 3.83
+    - _Speed: 4.43
     - _Spread: 1.2
-    - _Thickness: 0.02
+    - _Thickness: 0.0082
     m_Colors:
     - _ColorA: {r: 0, g: 1, b: 1, a: 1}
-    - _ColorB: {r: 1, g: 0, b: 1, a: 1}
-    - _EmissionColor: {r: 0.9811321, g: 0.48864228, b: 0, a: 1}
+    - _ColorB: {r: 1, g: 0.8377491, b: 0, a: 1}
+    - _EmissionColor: {r: 0.5990566, g: 1, b: 0.98771894, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

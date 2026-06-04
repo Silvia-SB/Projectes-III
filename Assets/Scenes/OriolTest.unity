@@ -155829,6 +155829,8 @@ MonoBehaviour:
     currentTimer: 0
     totalSpawnedEnemies: 0
   distanceToSpawn: 2
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768

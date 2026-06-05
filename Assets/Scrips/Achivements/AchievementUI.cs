@@ -52,7 +52,6 @@ public class AchievementUI : MonoBehaviour
 
         if (titleText != null) titleText.text = data.title;
         if (descriptionText != null) descriptionText.text = data.description;
-        if (iconImage != null && data.icon != null) iconImage.sprite = data.icon;
 
         achievementPanel.SetActive(true);
         achievementPanel.transform.localScale = Vector3.zero; 

@@ -100,7 +100,6 @@ public class StatusEffectManager : MonoBehaviour
             {
                 dot.Timer -= dot.Interval;
                 
-                Debug.Log($"[StatusEffectManager] Tick de daño/efecto: {key}. Estados actualmente activos: {string.Join(", ", activeKeys)}");
                 damageable?.TakeDamage(dot.Amount, key); 
                 
                 if (!gameObject.activeInHierarchy) return;

@@ -63,7 +63,6 @@ public class StatusContagion : MonoBehaviour
                 continue;
             }
 
-            // Prevenir bucles: solo contagiamos si NO lo tiene activo
             bool canInfect = true;
             if (targetObj.TryGetComponent<StatusEffectManager>(out var targetStatus))
             {
@@ -92,7 +91,7 @@ public class StatusContagion : MonoBehaviour
                 else if (type == DamageType.Blood)
                 {
                     int passTicks = bloodTicksToPass > 0 ? bloodTicksToPass : dot.TicksRemaining;
-                    if (passTicks > 100) passTicks = 5; // Seguro anti-líquido infinito
+                    if (passTicks > 100) passTicks = 5; 
                     
                     target.TakeRecurrentDamage(dot.Amount, dot.Interval, passTicks, DamageType.Blood);
                 }

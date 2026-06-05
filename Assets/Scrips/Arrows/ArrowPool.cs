@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+
 
 public class ArrowPool : MonoBehaviour
 {
@@ -8,15 +10,15 @@ public class ArrowPool : MonoBehaviour
     
     private Dictionary<ArrowType, Queue<Arrow>> pools = new Dictionary<ArrowType, Queue<Arrow>>();
 
-    private void Start()
+    private async void Start()
     {
-        InitializeInstance(ArrowType.Base);
-        InitializeInstance(ArrowType.Blood);
-        InitializeInstance(ArrowType.Piercing);
-        InitializeInstance(ArrowType.Electric);
+        await InitializeInstance(ArrowType.Base);
+        await InitializeInstance(ArrowType.Blood);
+        await InitializeInstance(ArrowType.Piercing);
+        await InitializeInstance(ArrowType.Electric);
     }
 
-    private void InitializeInstance(ArrowType type)
+    private async Task InitializeInstance(ArrowType type)
     {
         if (!pools.ContainsKey(type)) pools.Add(type, new Queue<Arrow>());
         
@@ -26,6 +28,7 @@ public class ArrowPool : MonoBehaviour
             arrow.Pool = this;
             arrow.gameObject.SetActive(false);
             pools[type].Enqueue(arrow);
+            await Task.Yield();
         }
     }
 

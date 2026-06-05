@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
+
 
 public enum EnemyType
 {
@@ -24,12 +26,12 @@ public class EnemyPool : MonoBehaviour
         enemyPool = new Dictionary<EnemyType, Queue<GameObject>>();
     }
 
-    private void Start()
+    private async void Start()
     {
-        InitializePool();
+        await PreloadEnemiesAsync();
     }
 
-    private void InitializePool()
+    private async Task PreloadEnemiesAsync()
     {
         foreach (var blueprint in EnemyFactory.Instance.enemyBlueprints)
         {
@@ -42,6 +44,7 @@ public class EnemyPool : MonoBehaviour
                 enemyInstance.transform.SetParent(this.transform); 
                 enemyInstance.SetActive(false);
                 newQueue.Enqueue(enemyInstance);
+                await Task.Yield();
             }
             
             enemyPool.Add(blueprint.enemyType, newQueue);

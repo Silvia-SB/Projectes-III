@@ -21,6 +21,8 @@ public class SettingsMenuManager : MonoBehaviour
     [SerializeField] private Slider sensitivitySlider;
     public static event Action<float> OnSensitivityChanged;
 
+    [SerializeField] private GameObject titleLogo;
+
     
     private Scene currentScene;
     
@@ -71,14 +73,14 @@ public class SettingsMenuManager : MonoBehaviour
 
 
     }
-    
+
     public void CloseSettingsMenu()
     {
         if (currentScene.name == "MainMenu")
         {
             optionsImage.gameObject.SetActive(false);
             mainMenuImage.gameObject.SetActive(true);
-
+            titleLogo.SetActive(true);
         }
         else
         {

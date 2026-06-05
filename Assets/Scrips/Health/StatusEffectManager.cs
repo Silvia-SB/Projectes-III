@@ -55,7 +55,18 @@ public class StatusEffectManager : MonoBehaviour
 
         if (isNew)
         {
+            Debug.Log($"[StatusEffectManager] Nuevo estado aplicado: {damageType}. Estados activos: {string.Join(", ", activeKeys)}");
             OnStatusApplied?.Invoke(damageType);
+
+            if (HasStatus(DamageType.Blood) && HasStatus(DamageType.Electric))
+            {
+                Debug.Log("[StatusEffectManager] ¡Detectados Sangre y Electricidad al mismo tiempo! Intentando desbloquear logro...");
+                if (GetComponentInParent<EnemyController>() != null) 
+                {
+                    Debug.Log("[StatusEffectManager] ¡Enemigo confirmado! Logro 'sensory_overload' enviado.");
+                    AchievementManager.UnlockAchievement("sensory_overload");
+                }
+            }
         }
     }
 
@@ -89,6 +100,7 @@ public class StatusEffectManager : MonoBehaviour
             {
                 dot.Timer -= dot.Interval;
                 
+                Debug.Log($"[StatusEffectManager] Tick de daño/efecto: {key}. Estados actualmente activos: {string.Join(", ", activeKeys)}");
                 damageable?.TakeDamage(dot.Amount, key); 
                 
                 if (!gameObject.activeInHierarchy) return;

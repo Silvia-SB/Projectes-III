@@ -112,6 +112,40 @@ public class EnemyController : MonoBehaviour, ISlowable
         {
             AchievementManager.UnlockAchievement("first_blood");
 
+            if (Time.timeSinceLevelLoad <= 30f) 
+            {
+                AchievementManager.UnlockAchievement("fast_killer");
+            }
+            
+            if (target != null && Vector3.Distance(transform.position, target.position) >= 30f)
+            {
+                AchievementManager.UnlockAchievement("long_shot");
+            }
+
+            if (health != null && health.LastDamageType == DamageType.Blood)
+            {
+                AchievementManager.UnlockAchievement("blood_kill");
+            }
+            
+            if (health != null && health.LastDamageType == DamageType.Electric)
+            {
+                AchievementManager.UnlockAchievement("electric_kill");
+            }
+
+            if (health != null && health.LastDamageType == DamageType.Piercing)
+            {
+                AchievementManager.UnlockAchievement("piercing_kill");
+            }
+
+            if (health != null)
+            {
+                AchievementManager.RecordKill(health.LastDamageType);
+            }
+            else
+            {
+                AchievementManager.lastKillTime = Time.time; 
+            }
+
             stateMachine.TransitionTo(stateMachine.DeathState);
         }
     }

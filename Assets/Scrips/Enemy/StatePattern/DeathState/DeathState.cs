@@ -73,7 +73,7 @@ public class DeathState : IEnemyState
             StartDissolve();
         }
 
-        // Fallback por si el enemigo no tiene el DissolvingController asignado
+        //fallback if dissolving mat is not active
         if (enemyController.GetDissolvingController() == null)
         {
             float sqrDistanceToPlayer = 0f;

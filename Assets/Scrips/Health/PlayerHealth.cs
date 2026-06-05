@@ -30,6 +30,11 @@ public class PlayerHealth : Health
     {
         base.TakeDamage(amount, damageType);
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
+
+        if (maxHealth > 0 && currentHealth > 0 && (currentHealth / maxHealth) < 0.15f)
+        {
+            AchievementManager.UnlockAchievement("living_on_the_edge");
+        }
     }
 
     public override void Heal(float amount)
@@ -54,6 +59,10 @@ public class PlayerHealth : Health
         {
             Heal(healAmount);
             return true;
+        }
+        else if (SoulManager.Instance != null && SoulManager.Instance.CurrentSouls < soulCostToHeal)
+        {
+            AchievementManager.UnlockAchievement("no_funds");
         }
         return false;
     }

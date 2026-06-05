@@ -48,6 +48,7 @@ public class HitboxManager : MonoBehaviour
             {
                 case BodyPart.Head:
                     OnDamaged?.Invoke(groupData.bodyPart);
+                    AchievementManager.UnlockAchievement("first_headshoot");
                     break;
                 case BodyPart.Body:
                     OnDamaged?.Invoke(groupData.bodyPart);

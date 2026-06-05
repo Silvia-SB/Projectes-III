@@ -10,6 +10,8 @@ public abstract class Health : MonoBehaviour, IDamageable
     public float CurrentHealth => currentHealth;
     public float MaxHealth => maxHealth;
 
+    public DamageType LastDamageType { get; private set; }
+
     public UnityEvent OnDeath;
 
     protected StatusEffectManager statusManager;
@@ -26,6 +28,8 @@ public abstract class Health : MonoBehaviour, IDamageable
 
     public virtual void TakeDamage(float amount, DamageType damageType)
     {
+        LastDamageType = damageType;
+
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 

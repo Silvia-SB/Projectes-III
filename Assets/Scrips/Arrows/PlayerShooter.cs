@@ -396,6 +396,11 @@ public class PlayerShooter : MonoBehaviour
 
         currentArrowInstance.isFullyCharged = chargePercent >= 1f;
 
+        if (chargePercent >= 1f)
+        {
+            AchievementManager.UnlockAchievement("fully_charged");
+        }
+
         currentArrowInstance.transform.SetParent(null);
 
         var aimData = CalculateAimData();

@@ -129,4 +129,9 @@ public class AchievementManager : MonoBehaviour
             }
         }
     }
+
+    public static bool IsAchievementUnlocked(string id)
+    {
+        return unlockedAchievements.Contains(id);
+    }
 }

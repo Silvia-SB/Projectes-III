@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -6,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Image optionsImage;
     [SerializeField] private Image mainMenuImage;
-    [SerializeField] private string playSceneName;
+    [SerializeField] private string loadingSceneName;
 
     [Header("Title Arrow")]
     [SerializeField] private TitleArrowShot titleArrow;
@@ -16,7 +17,6 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Image controlsImage;
 
     private bool loadingScene;
-    private float loadTimer;
 
     public void OnEnable()
     {
@@ -24,25 +24,30 @@ public class MainMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    private void Update()
+    public async void PlayGame()
     {
-        if (!loadingScene) return;
+        if (loadingScene) return;
 
-        loadTimer += Time.deltaTime;
+        loadingScene = true;
 
-        if (loadTimer >= delayAfterArrowExit)
+        if (titleArrow != null)
+            titleArrow.SalirDisparada();
+
+        await Task.Delay(Mathf.RoundToInt(delayAfterArrowExit * 1000f));
+
+        await LoadSceneAsync();
+    }
+
+    private async Task LoadSceneAsync()
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(loadingSceneName);
+
+        while (!operation.isDone)
         {
-            SceneManager.LoadScene(playSceneName);
+            await Task.Yield();
         }
     }
 
-    public void PlayGame()
-    {
-        titleArrow.SalirDisparada();
-
-        loadingScene = true;
-        loadTimer = 0f;
-    }
     public void Options()
     {
         titleLogo.SetActive(false);
@@ -58,7 +63,7 @@ public class MainMenu : MonoBehaviour
         controlsImage.gameObject.SetActive(true);
     }
 
-        public void BackFromControls()
+    public void BackFromControls()
     {
         controlsImage.gameObject.SetActive(false);
         mainMenuImage.gameObject.SetActive(true);
@@ -67,7 +72,9 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        titleArrow.SalirDisparada();
+        if (titleArrow != null)
+            titleArrow.SalirDisparada();
+
         Application.Quit();
     }
 }

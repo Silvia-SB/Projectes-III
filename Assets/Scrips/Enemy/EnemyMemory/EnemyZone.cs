@@ -204,4 +204,7 @@ public class EnemyZone : MonoBehaviour
 
         return true;
     }
+    public void ResetZone(){
+        hasSpawned = false;
+    }
 }

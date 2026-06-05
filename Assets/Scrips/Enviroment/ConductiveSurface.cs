@@ -37,6 +37,8 @@ public class ConductiveSurface : MonoBehaviour
         isElectrified = true;
         affectedThisIteration.Clear();
 
+        AchievementManager.UnlockAchievement("environment_water");
+
         ActivateEffects();
 
         ApplyToObjectsInBounds();

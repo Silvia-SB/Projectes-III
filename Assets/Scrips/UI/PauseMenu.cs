@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private Image settingsMenu;
     [SerializeField] private Image pauseMenu;
+    [SerializeField] private GameObject achievementsMenu;
     
     
     public void PauseGame()
@@ -13,6 +14,10 @@ public class PauseMenu : MonoBehaviour
         if (settingsMenu.gameObject.activeSelf)
         {
             settingsMenu.gameObject.SetActive(false);
+        }
+        if (achievementsMenu != null && achievementsMenu.activeSelf)
+        {
+            achievementsMenu.SetActive(false);
         }
         if (pauseMenu.gameObject.activeSelf)
         {
@@ -39,6 +44,18 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.gameObject.SetActive(false);
         settingsMenu.gameObject.SetActive(true);
+    }
+
+    public void Achievements()
+    {
+        pauseMenu.gameObject.SetActive(false);
+        if (achievementsMenu != null) achievementsMenu.SetActive(true);
+    }
+
+    public void CloseAchievements()
+    {
+        if (achievementsMenu != null) achievementsMenu.SetActive(false);
+        pauseMenu.gameObject.SetActive(true);
     }
 
     public void QuitGame()

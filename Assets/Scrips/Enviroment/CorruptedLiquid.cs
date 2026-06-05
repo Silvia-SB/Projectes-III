@@ -64,6 +64,8 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable
         isActive = true;
         nextPulseTime = Time.time + interval;
 
+        AchievementManager.UnlockAchievement("environment_oil");
+
         ActivateEffects();
 
         for (int i = targets.Count - 1; i >= 0; i--) 

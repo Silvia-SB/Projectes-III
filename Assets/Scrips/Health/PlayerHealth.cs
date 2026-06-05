@@ -14,10 +14,10 @@ public class PlayerHealth : Health
     {
         base.Awake();
         
-        GameManager gm = FindFirstObjectByType<GameManager>();
+        GameRespawnManager gm = FindFirstObjectByType<GameRespawnManager>();
         if (gm != null)
         {
-            OnDeath.AddListener(gm.ReloadCurrentScene);
+            OnDeath.AddListener(gm.RespawnPlayer);
         }
     }
 
@@ -30,6 +30,11 @@ public class PlayerHealth : Health
     {
         base.TakeDamage(amount, damageType);
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
+
+        if (maxHealth > 0 && currentHealth > 0 && (currentHealth / maxHealth) < 0.15f)
+        {
+            AchievementManager.UnlockAchievement("living_on_the_edge");
+        }
     }
 
     public override void Heal(float amount)
@@ -46,6 +51,11 @@ public class PlayerHealth : Health
         }
     }
 
+    public void ResetHealth()
+    {
+        OnHealthChanged?.Invoke(maxHealth, maxHealth);
+    }
+
     private bool TryHealWithSouls()
     {
         if (currentHealth >= maxHealth) return false;
@@ -54,6 +64,10 @@ public class PlayerHealth : Health
         {
             Heal(healAmount);
             return true;
+        }
+        else if (SoulManager.Instance != null && SoulManager.Instance.CurrentSouls < soulCostToHeal)
+        {
+            AchievementManager.UnlockAchievement("no_funds");
         }
         return false;
     }

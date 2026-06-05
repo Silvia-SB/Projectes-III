@@ -115,6 +115,8 @@ public class ExplosiveObject : Health
 
     private void Explode()
     {
+        AchievementManager.UnlockAchievement("environment_barrel");
+
         ActivateEffects();
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
@@ -128,8 +130,8 @@ public class ExplosiveObject : Health
             
             if (target != null && damagedTargets.Add(target))
             {
-                target.TakeDamage(instantDamage, damageType);
                 target.TakeRecurrentDamage(dotAmount, dotInterval, dotTicks, damageType);
+                target.TakeDamage(instantDamage, damageType);
 
                 HeadBobController headBob = col.GetComponentInParent<HeadBobController>();
                 if (headBob != null)

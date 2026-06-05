@@ -68,6 +68,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: EstanteriaNewUvs
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7e482383fe2170c4394f93cbf016d397, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7e482383fe2170c4394f93cbf016d397, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7e482383fe2170c4394f93cbf016d397, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -75,9 +87,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7e482383fe2170c4394f93cbf016d397, type: 3}
       insertIndex: -1
       addedObject: {fileID: -8134022552956115992}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7e482383fe2170c4394f93cbf016d397, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7124875112511207492}
   m_SourcePrefab: {fileID: 100100000, guid: 7e482383fe2170c4394f93cbf016d397, type: 3}
 --- !u!1 &114607816125789461 stripped
 GameObject:
@@ -103,26 +112,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5924681, y: 0.15368001, z: 0.7736429}
-  m_Center: {x: 0, y: 5.406089e-15, z: 0.3804198}
---- !u!65 &7124875112511207492
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 114607816125789461}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.59246826, y: 0.15368015, z: 0.77364296}
-  m_Center: {x: 0.000000040871033, y: 0.000011428366, z: 0.3804198}
+  m_Size: {x: 1.4811705, y: 0.38420025, z: 1.9341072}
+  m_Center: {x: 0.000000102177566, y: -0.000000031864182, z: 0.95104945}

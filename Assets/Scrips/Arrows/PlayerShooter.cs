@@ -621,7 +621,7 @@ public class PlayerShooter : MonoBehaviour
         }
     }
 
-    private void ChangeArrowType(ArrowType newType)
+    public void ChangeArrowType(ArrowType newType)
     {
         if (currentArrowInstance != null)
         {

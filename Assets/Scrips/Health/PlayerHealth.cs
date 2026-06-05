@@ -14,10 +14,10 @@ public class PlayerHealth : Health
     {
         base.Awake();
         
-        GameManager gm = FindFirstObjectByType<GameManager>();
+        GameRespawnManager gm = FindFirstObjectByType<GameRespawnManager>();
         if (gm != null)
         {
-            OnDeath.AddListener(gm.ReloadCurrentScene);
+            OnDeath.AddListener(gm.RespawnPlayer);
         }
     }
 
@@ -49,6 +49,11 @@ public class PlayerHealth : Health
         {
             TryHealWithSouls();
         }
+    }
+
+    public void ResetHealth()
+    {
+        OnHealthChanged?.Invoke(maxHealth, maxHealth);
     }
 
     private bool TryHealWithSouls()

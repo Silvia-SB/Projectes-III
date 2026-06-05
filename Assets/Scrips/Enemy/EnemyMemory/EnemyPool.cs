@@ -17,7 +17,8 @@ public class EnemyPool : MonoBehaviour
 {
     public static EnemyPool Instance { get; private set; }
     private Dictionary<EnemyType, Queue<GameObject>> enemyPool;
-
+    private List<(EnemyType enemyType, GameObject enemy)> activeEnemies = new List<(EnemyType, GameObject)>();
+    
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -53,26 +54,69 @@ public class EnemyPool : MonoBehaviour
 
     public GameObject GetEnemy(EnemyType enemyType)
     {
+        GameObject enemy;
+
         if (enemyPool.ContainsKey(enemyType) && enemyPool[enemyType].Count > 0)
         {
-            return enemyPool[enemyType].Dequeue();
+            enemy = enemyPool[enemyType].Dequeue();
         }
-        
-        GameObject newEnemy = EnemyFactory.Instance.CreateEnemy(enemyType);
-        newEnemy.transform.SetParent(this.transform);
-        
-        return newEnemy;
+        else
+        {
+            enemy = EnemyFactory.Instance.CreateEnemy(enemyType);
+            enemy.transform.SetParent(this.transform);
+        }
+
+        activeEnemies.Add((enemyType, enemy));
+        return enemy;
     }
 
     public void ReturnEnemyToPool(EnemyType enemyType, GameObject enemyToReturn)
     {
+        if (enemyToReturn == null) return;
+
+        for (int i = activeEnemies.Count - 1; i >= 0; i--)
+        {
+            if (activeEnemies[i].enemy == enemyToReturn)
+            {
+                activeEnemies.RemoveAt(i);
+                break;
+            }
+        }
+
         enemyToReturn.SetActive(false);
-        
+
         if (!enemyPool.ContainsKey(enemyType))
         {
             enemyPool.Add(enemyType, new Queue<GameObject>());
         }
-        
+
         enemyPool[enemyType].Enqueue(enemyToReturn);
+    }
+
+    public void ReturnAllEnemiesToPool()
+    {
+        for (int i = activeEnemies.Count - 1; i >= 0; i--)
+        {
+            EnemyType enemyType = activeEnemies[i].enemyType;
+            GameObject enemy = activeEnemies[i].enemy;
+
+            if (enemy == null)
+            {
+                activeEnemies.RemoveAt(i);
+                continue;
+            }
+
+            enemy.SetActive(false);
+            enemy.transform.SetParent(this.transform);
+
+            if (!enemyPool.ContainsKey(enemyType))
+            {
+                enemyPool.Add(enemyType, new Queue<GameObject>());
+            }
+
+            enemyPool[enemyType].Enqueue(enemy);
+
+            activeEnemies.RemoveAt(i);
+        }
     }
 }

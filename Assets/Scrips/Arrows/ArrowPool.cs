@@ -26,7 +26,7 @@ public class ArrowPool : MonoBehaviour
         {
             Arrow arrow = factory.CreateArrow(type, transform);
             arrow.Pool = this;
-            arrow.gameObject.SetActive(false);
+            arrow.ReturnToPool();
             pools[type].Enqueue(arrow);
             await Task.Yield();
         }
@@ -50,6 +50,22 @@ public class ArrowPool : MonoBehaviour
 
     public void ReturnToPool(Arrow arrow)
     {
-        if (arrow != null) arrow.gameObject.SetActive(false);
+        if (arrow == null) return;
+        arrow.gameObject.SetActive(false);
+    }
+
+    public void ReturnAllToPool()
+    {
+        foreach (KeyValuePair<ArrowType, Queue<Arrow>> pair in pools)
+        {
+            Queue<Arrow> pool = pair.Value;
+
+            foreach (Arrow arrow in pool)
+            {
+                if (arrow == null) continue;
+
+                arrow.ReturnToPool();
+            }
+        }
     }
 } 

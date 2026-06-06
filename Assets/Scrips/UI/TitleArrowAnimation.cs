@@ -11,18 +11,32 @@ public class TitleArrowShot : MonoBehaviour
     }
 
     [Header("Movimiento")]
-    [SerializeField] private float distanciaFueraPantalla = 18f;
-    [SerializeField] private float duracionEntrada = 0.45f;
-    [SerializeField] private float duracionSalida = 0.35f;
+    [SerializeField] private float distanciaFueraPantalla = 25f;
+    [SerializeField] private float duracionEntrada = 0.8f;
+    [SerializeField] private float duracionSalida = 0.4f;
+
+    [Header("Rotación")]
+    [SerializeField] private float rotationSpeed = 1800f;
 
     [Header("Impacto")]
-    [SerializeField] private float vibracionImpacto = 0.04f;
-    [SerializeField] private float duracionImpacto = 0.12f;
+    [SerializeField] private float vibracionImpacto = 0.03f;
+    [SerializeField] private float duracionImpacto = 0.1f;
+
+    [Header("Letras")]
+    [SerializeField] private LetterBounce[] eternalLetters;
+    [SerializeField] private LetterBounce[] agonyLetters;
+
+    [Header("Puntos de activación")]
+    [SerializeField] private float eternalTriggerX = -341.6f;
+    [SerializeField] private float agonyTriggerX = -287.6f;
 
     private Vector3 posicionFinal;
     private Vector3 posicionInicial;
     private Vector3 posicionSalida;
     private Quaternion rotacionFinal;
+
+    private bool eternalTriggered;
+    private bool agonyTriggered;
 
     private float timer;
     private ArrowState state;
@@ -38,8 +52,8 @@ public class TitleArrowShot : MonoBehaviour
         transform.position = posicionInicial;
         transform.rotation = rotacionFinal;
 
-        state = ArrowState.Entering;
         timer = 0f;
+        state = ArrowState.Entering;
     }
 
     private void Update()
@@ -48,6 +62,7 @@ public class TitleArrowShot : MonoBehaviour
         {
             case ArrowState.Entering:
                 UpdateEntrada();
+                CheckLettersTrigger();
                 break;
 
             case ArrowState.Impact:
@@ -65,16 +80,44 @@ public class TitleArrowShot : MonoBehaviour
         timer += Time.deltaTime;
 
         float t = Mathf.Clamp01(timer / duracionEntrada);
-        float suavizado = 1f - Mathf.Pow(1f - t, 3f);
+        float smoothT = 1f - Mathf.Pow(1f - t, 3f);
 
-        transform.position = Vector3.Lerp(posicionInicial, posicionFinal, suavizado);
-        transform.rotation = rotacionFinal;
+        transform.position = Vector3.Lerp(posicionInicial, posicionFinal, smoothT);
+        transform.Rotate(Vector3.right, rotationSpeed * Time.deltaTime, Space.Self);
 
         if (t >= 1f)
         {
             transform.position = posicionFinal;
-            state = ArrowState.Impact;
+            transform.rotation = rotacionFinal;
+
             timer = 0f;
+            state = ArrowState.Impact;
+        }
+    }
+
+    private void CheckLettersTrigger()
+    {
+        float arrowX = transform.position.x;
+
+        if (!eternalTriggered && arrowX >= eternalTriggerX)
+        {
+            eternalTriggered = true;
+            PlayLetters(eternalLetters);
+        }
+
+        if (!agonyTriggered && arrowX >= agonyTriggerX)
+        {
+            agonyTriggered = true;
+            PlayLetters(agonyLetters);
+        }
+    }
+
+    private void PlayLetters(LetterBounce[] letters)
+    {
+        foreach (LetterBounce letter in letters)
+        {
+            if (letter != null)
+                letter.PlayBounce();
         }
     }
 
@@ -83,12 +126,14 @@ public class TitleArrowShot : MonoBehaviour
         timer += Time.deltaTime;
 
         float offset = Mathf.Sin(timer * 90f) * vibracionImpacto;
+
         transform.position = posicionFinal + transform.right * offset;
         transform.rotation = rotacionFinal;
 
         if (timer >= duracionImpacto)
         {
             transform.position = posicionFinal;
+            transform.rotation = rotacionFinal;
             state = ArrowState.Idle;
         }
     }
@@ -101,12 +146,12 @@ public class TitleArrowShot : MonoBehaviour
         float acelerado = t * t;
 
         transform.position = Vector3.Lerp(posicionFinal, posicionSalida, acelerado);
-        transform.rotation = rotacionFinal;
+        transform.Rotate(Vector3.right, rotationSpeed * Time.deltaTime, Space.Self);
     }
 
     public void SalirDisparada()
     {
-        state = ArrowState.Exiting;
         timer = 0f;
+        state = ArrowState.Exiting;
     }
 }

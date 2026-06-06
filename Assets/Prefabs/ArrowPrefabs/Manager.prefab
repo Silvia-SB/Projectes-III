@@ -96,6 +96,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a11e4cea844b6b4aeb547554ba7752c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  player: {fileID: 0}
+  componentsToDisableOnDeath: []
+  characterController: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  playerHealth: {fileID: 0}
+  playerShooter: {fileID: 0}
+  enemyPool: {fileID: 0}
+  arrowPool: {fileID: 0}
+  enemyZones: []
+  respawnDelayMilliseconds: 500
 --- !u!114 &7324680403885435283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,84 +136,63 @@ MonoBehaviour:
   - id: first_blood
     title: First Blood
     description: Get your first kill.
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
   - id: first_headshoot
     title: Headhunter
     description: Land your first headshot.
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
   - id: fast_killer
     title: Quick Draw
     description: Eliminate an enemy within the first 30 seconds.
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
-  - id: Stop stop_running_away Away!
-    title: Pacifist
-    description: Survive for 60 seconds without getting a kill.
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
-  - id: blood_kill
-    title: Blood Bath
-    description: Get your first bloody kill.
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
-  - id: electric_kill
-    title: Thunderstruck
-    description: Get your first electry kill.
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
-  - id: piercing_kill
-    title: Armor Piercer
-    description: Get your first piercing kill.
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
-  - id: blood_multikill
-    title: Bloody Massacre
-    description: 'Kill 3 enemies within 3 seconds using blood damage. '
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
-  - id: electric_multikill
-    title: Lightning Storm
-    description: 'Kill 3 enemies within 3 seconds using electric damage. '
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
-  - id: piercing_multikill
-    title: Shish Kebab
-    description: Kill 3 enemies within 3 seconds using piercing damage.
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
-  - id: max_souls
-    title: Soul Rat
-    description: Reach the maximum soul capacity.
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
-  - id: pentakill
-    title: Pentakill
-    description: Eliminate 5 enemies within 5 seconds.
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
-  - id: environment_barrel
-    title: Popcorn Time!
-    description: Turn the battlefield into a blazing inferno.
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
-  - id: environment_light
-    title: Purifying Radiance
-    description: Awaken the ancient circle and blind the unworthy
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
-  - id: environment_water
-    title: Wrath of the Storm
-    description: Channel the thunder into the waters and paralyze your foes.
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
-  - id: environment_oil
-    title: 'Infernal Baptism '
-    description: Ignite the corrupted oil and cleanse the earth with fire.
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
-  - id: living_on_the_edge
-    title: Tis But a Scratch
-    description: 'Who needs a full health bar anyway? '
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
-  - id: no_funds
-    title: Healthcare Ain't Free
-    description: 'Your soul pouch is empty. Try killing something first! '
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
-  - id: long_shot
-    title: From Downtown
-    description: 'Eliminate an enemy from more than 30 meters away. '
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
-  - id: sensory_overload
-    title: Master of Elements
-    description: Apply both blood and electric status effects simultaneously.
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
   - id: fully_charged
     title: Hold... Hoooold...
     description: Squeeze every last ounce of power out of your bow.
-    icon: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
+  - id: Stop stop_running_away Away!
+    title: Pacifist
+    description: Survive for 60 seconds without getting a kill.
+  - id: blood_kill
+    title: Blood Bath
+    description: Get your first bloody kill.
+  - id: electric_kill
+    title: Thunderstruck
+    description: Get your first electry kill.
+  - id: piercing_kill
+    title: Armor Piercer
+    description: Get your first piercing kill.
+  - id: blood_multikill
+    title: Bloody Massacre
+    description: 'Kill 3 enemies within 3 seconds using blood damage. '
+  - id: electric_multikill
+    title: Lightning Storm
+    description: 'Kill 3 enemies within 3 seconds using electric damage. '
+  - id: piercing_multikill
+    title: Shish Kebab
+    description: Kill 3 enemies within 3 seconds using piercing damage.
+  - id: max_souls
+    title: Soul Rat
+    description: Reach the maximum soul capacity.
+  - id: pentakill
+    title: Pentakill
+    description: Eliminate 5 enemies within 5 seconds.
+  - id: environment_barrel
+    title: Popcorn Time!
+    description: Turn the battlefield into a blazing inferno.
+  - id: environment_light
+    title: Purifying Radiance
+    description: Awaken the ancient circle and blind the unworthy
+  - id: environment_water
+    title: Wrath of the Storm
+    description: Channel the thunder into the waters and paralyze your foes.
+  - id: environment_oil
+    title: 'Infernal Baptism '
+    description: Ignite the corrupted oil and cleanse the earth with fire.
+  - id: living_on_the_edge
+    title: Tis But a Scratch
+    description: 'Who needs a full health bar anyway? '
+  - id: no_funds
+    title: Healthcare Ain't Free
+    description: 'Your soul pouch is empty. Try killing something first! '
+  - id: long_shot
+    title: From Downtown
+    description: 'Eliminate an enemy from more than 30 meters away. '
+  - id: sensory_overload
+    title: Master of Elements
+    description: Apply both blood and electric status effects simultaneously.

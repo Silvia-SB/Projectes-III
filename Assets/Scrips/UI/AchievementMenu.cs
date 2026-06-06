@@ -16,13 +16,15 @@ public class AchievementMenu : MonoBehaviour
 
     public void RefreshMenu()
     {
-        if (AchievementManager.Instance == null) return;
+        if (AchievementManager.Instance == null)
+        {
+            Debug.Log("AchievementManager is null"); 
+            return;
+        }
 
-        // 1. Limpiamos la lista vieja (por si abres y cierras el menú varias veces)
         foreach (var slot in spawnedSlots) Destroy(slot);
         spawnedSlots.Clear();
 
-        // 2. Generamos la lista nueva
         foreach (var achievement in AchievementManager.Instance.achievements)
         {
             GameObject newSlot = Instantiate(achievementSlotPrefab, contentParent);

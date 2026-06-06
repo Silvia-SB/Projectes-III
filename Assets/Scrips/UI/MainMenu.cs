@@ -2,6 +2,8 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.Universal;
+
 
 public class MainMenu : MonoBehaviour
 {
@@ -15,6 +17,10 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] private GameObject titleLogo;
     [SerializeField] private Image controlsImage;
+    
+    [Header("URP Full Screen Pass")]
+    [SerializeField] private ScriptableRendererData pcRendererData;
+    [SerializeField] private string fullScreenFeatureName = "FullScreenPassRendererFeature";
 
     private bool loadingScene;
 
@@ -22,6 +28,7 @@ public class MainMenu : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        SetRendererFeatureActive(fullScreenFeatureName, false);
     }
 
     public async void PlayGame()
@@ -76,5 +83,28 @@ public class MainMenu : MonoBehaviour
             titleArrow.SalirDisparada();
 
         Application.Quit();
+    }
+    
+    private void SetRendererFeatureActive(string targetFeatureName, bool active)
+    {
+        if (pcRendererData == null)
+        {
+            Debug.LogWarning("PC Renderer Data no asignado.");
+            return;
+        }
+
+        foreach (ScriptableRendererFeature feature in pcRendererData.rendererFeatures)
+        {
+            if (feature == null) continue;
+
+            if (feature.name == targetFeatureName)
+            {
+                feature.SetActive(active);
+                pcRendererData.SetDirty();
+                return;
+            }
+        }
+
+        Debug.LogWarning("No se encontró el Renderer Feature: " + targetFeatureName);
     }
 }

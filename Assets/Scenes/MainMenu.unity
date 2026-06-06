@@ -1053,6 +1053,8 @@ MonoBehaviour:
   delayAfterArrowExit: 0.35
   titleLogo: {fileID: 33809131}
   controlsImage: {fileID: 3754201787270195106}
+  pcRendererData: {fileID: 11400000, guid: f288ae1f4751b564a96ac7587541f7a2, type: 2}
+  fullScreenFeatureName: FullScreenPassRendererFeature
 --- !u!114 &1907954313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1067,6 +1069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
   settingsMenu: {fileID: 637070767}
   pauseMenu: {fileID: 1390692651}
+  achievementsMenu: {fileID: 0}
 --- !u!1001 &523661120216501650
 PrefabInstance:
   m_ObjectHideFlags: 0

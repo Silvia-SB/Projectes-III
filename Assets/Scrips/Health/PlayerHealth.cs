@@ -13,16 +13,15 @@ public class PlayerHealth : Health
     protected override void Awake()
     {
         base.Awake();
-        
-        GameRespawnManager gm = FindFirstObjectByType<GameRespawnManager>();
-        if (gm != null)
-        {
-            OnDeath.AddListener(gm.RespawnPlayer);
-        }
     }
 
     private void Start()
     {
+        if (GameRespawnManager.Instance != null)
+        {
+            OnDeath.AddListener(GameRespawnManager.Instance.RespawnPlayer);
+        }
+
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
@@ -53,22 +52,22 @@ public class PlayerHealth : Health
 
     public void ResetHealth()
     {
-        OnHealthChanged?.Invoke(maxHealth, maxHealth);
+        currentHealth = maxHealth;
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
     private bool TryHealWithSouls()
     {
         if (currentHealth >= maxHealth) return false;
+        if (SoulManager.Instance == null) return false;
 
-        if (SoulManager.Instance != null && SoulManager.Instance.TryConsumeSouls(soulCostToHeal))
+        if (SoulManager.Instance.TryConsumeSouls(soulCostToHeal))
         {
             Heal(healAmount);
             return true;
         }
-        else if (SoulManager.Instance != null && SoulManager.Instance.CurrentSouls < soulCostToHeal)
-        {
-            AchievementManager.UnlockAchievement("no_funds");
-        }
+        
+        AchievementManager.UnlockAchievement("no_funds");
         return false;
     }
 }

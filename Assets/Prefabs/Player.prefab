@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 7894185966354498957}
   - component: {fileID: 7255826208877121654}
   - component: {fileID: 8985379175822465648}
+  - component: {fileID: 3602367286626233927}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -689,6 +690,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimator
   armsAnimator: {fileID: 8712034672744137375}
   bowAnimator: {fileID: 6382706426873480825}
+--- !u!114 &3602367286626233927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2636149956801692309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f07ddc02ccac391a0aec0fe3b5a4b84c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDeathController
+  playerHealth: {fileID: 2489017004968937989}
+  movement: {fileID: 1462122047374136856}
+  look: {fileID: 7469301177835586816}
+  shooter: {fileID: 8412333504912581657}
+  headBob: {fileID: 7286321258382669294}
+  cameraTransform: {fileID: 6567033776697428958}
+  gravity: 15
+  bounceFactor: 0.4
+  tiltSpeed: 3
+  tiltAngle: 75
+  impactShakeIntensity: 0.25
 --- !u!1 &5058526205195725285
 GameObject:
   m_ObjectHideFlags: 0

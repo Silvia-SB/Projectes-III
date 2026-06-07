@@ -17,6 +17,7 @@ public class PlayerAnimator : MonoBehaviour
     private static readonly int changeArrowHash = Animator.StringToHash("changeArrow");
     
     private static readonly int velocityHash = Animator.StringToHash("Velocity"); 
+    private float smoothedSpeed;
 
     private void Awake()
     {
@@ -49,8 +50,10 @@ public class PlayerAnimator : MonoBehaviour
             Vector3 horizontalVelocity = new Vector3(movement.Controller.velocity.x, 0f, movement.Controller.velocity.z);
             float currentSpeed = horizontalVelocity.magnitude;
 
-            if (armsAnimator != null) armsAnimator.SetFloat(velocityHash, currentSpeed);
-            if (bowAnimator != null) bowAnimator.SetFloat(velocityHash, currentSpeed);
+            smoothedSpeed = Mathf.Lerp(smoothedSpeed, currentSpeed, Time.deltaTime * 10f); 
+
+            if (armsAnimator != null) armsAnimator.SetFloat(velocityHash, smoothedSpeed);
+            if (bowAnimator != null) bowAnimator.SetFloat(velocityHash, smoothedSpeed);
         }
     }
 

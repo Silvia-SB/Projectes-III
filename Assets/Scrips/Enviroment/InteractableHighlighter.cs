@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class InteractableHighlighter : MonoBehaviour
 {
-    [Header("Material de contorno")]
+    [Header("Opción 1: Material de contorno")]
     [SerializeField] private Material highlightMaterial;
+
+    [Header("Opción 2: Objeto halo")]
+    [SerializeField] private GameObject haloObject;
 
     private Renderer[] renderers;
     private Material[][] originalMaterials;
@@ -18,6 +21,9 @@ public class InteractableHighlighter : MonoBehaviour
         {
             originalMaterials[i] = renderers[i].materials;
         }
+
+        if (haloObject != null)
+            haloObject.SetActive(false);
     }
 
     public void SetHighlight(bool active)
@@ -25,6 +31,11 @@ public class InteractableHighlighter : MonoBehaviour
         if (isHighlighted == active) return;
 
         isHighlighted = active;
+
+        if (haloObject != null)
+            haloObject.SetActive(active);
+
+        if (highlightMaterial == null) return;
 
         for (int i = 0; i < renderers.Length; i++)
         {
@@ -36,9 +47,7 @@ public class InteractableHighlighter : MonoBehaviour
                 Material[] newMaterials = new Material[currentMaterials.Length + 1];
 
                 for (int j = 0; j < currentMaterials.Length; j++)
-                {
                     newMaterials[j] = currentMaterials[j];
-                }
 
                 newMaterials[newMaterials.Length - 1] = highlightMaterial;
                 renderers[i].materials = newMaterials;

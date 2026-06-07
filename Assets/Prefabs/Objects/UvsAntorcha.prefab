@@ -44,8 +44,8 @@ Light:
   serializedVersion: 12
   m_Type: 2
   m_Color: {r: 0.509434, g: 0.10412955, b: 0.10412955, a: 1}
-  m_Intensity: 3
-  m_Range: 2
+  m_Intensity: 2
+  m_Range: 1
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}
@@ -142,7 +142,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2511671911587371590
 Transform:
@@ -175,7 +175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8954138b863212b4a93b041157a791ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableHighlighter
-  normalMaterial: {fileID: 2100000, guid: b4829f7934d28c14baf4b9bb6e77396e, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 4f3d2d2c9e5947c46b55c38b5fceb412, type: 2}
 --- !u!1 &3088750433197968708
 GameObject:
@@ -193,7 +192,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1449225111715214572
 Transform:
@@ -283,7 +282,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &8211724785649780037
 Transform:
@@ -372,7 +371,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5203011334849567619
 Transform:
@@ -428,7 +427,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5630745723798176635
 Transform:
@@ -518,7 +517,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5131301138133794907
 Transform:
@@ -608,7 +607,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4290847620208088490
 Transform:
@@ -679,7 +678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1291851348828379384, guid: d10d7812bc294dc41b764150a310b172, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1291851348828379384, guid: d10d7812bc294dc41b764150a310b172, type: 3}
       propertyPath: m_Intensity
@@ -743,7 +742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7978916564476867321, guid: d10d7812bc294dc41b764150a310b172, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6947899856104570192, guid: d10d7812bc294dc41b764150a310b172, type: 3}

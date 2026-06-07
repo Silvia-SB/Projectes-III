@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6842242683159853813}
   - component: {fileID: 1990720395995141000}
   - component: {fileID: 6367992623192292321}
-  - component: {fileID: 1611752345131414588}
   m_Layer: 0
   m_Name: 'Weapon Camera '
   m_TagString: MainCamera
@@ -129,23 +128,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!114 &1611752345131414588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355058787444833933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f48a2218992187b4ea23bc27c71eb0c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableRaycastDetector
-  playerCamera: {fileID: 1990720395995141000}
-  interactDistance: 4
-  interactableLayer:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!1 &1772443608804889178
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +177,9 @@ GameObject:
   - component: {fileID: 2489017004968937989}
   - component: {fileID: 2424066731286731188}
   - component: {fileID: 7286321258382669294}
+  - component: {fileID: 7894185966354498957}
+  - component: {fileID: 7255826208877121654}
+  - component: {fileID: 8985379175822465648}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -558,38 +543,14 @@ MonoBehaviour:
   arrowPool: {fileID: 0}
   firePoint: {fileID: 5658251648582840375}
   playerCamera: {fileID: 6371337682864297730}
+  aimController: {fileID: 7894185966354498957}
+  bowAnimation: {fileID: 7255826208877121654}
   fireRate: 1.8
   minChargeTime: 0.5
   fullChargeTime: 2
   minShootVelocity: 20
   maxShootVelocity: 40
   currentArrowType: 0
-  aimLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  aimMarkerThreshold: 1
-  bowMisalignmentThreshold: 10
-  obstacleDetectionDistance: 3
-  minConvergenceDistance: 0.2
-  stringNockPoint: {fileID: 5658251648582840375}
-  bowRestPoint: {fileID: 6645498993268215776}
-  reloadStartPoint: {fileID: 3273014844513113641}
-  bowAlignmentDuration: 0.4
-  weaponBlockRadius: 0.1
-  enemyPointBlankDistance: 0.2
-  weaponRoot: {fileID: 4987095347784746393}
-  retractedPositionOffset: {x: 0, y: -0.2, z: -0.1}
-  retractedRotationOffset: {x: 15, y: -10, z: 0}
-  retractionSpeed: 12
-  swayPosMultiplier: 0.0005
-  maxSwayPos: 0.05
-  swayRotMultiplier: 0.04
-  maxSwayRot: 4
-  swaySmooth: 12
-  maxPitchUp: -60
-  maxPitchDown: 60
-  armsAnimator: {fileID: 8712034672744137375}
-  bowAnimator: {fileID: 6382706426873480825}
 --- !u!114 &7469301177835586816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,6 +624,71 @@ MonoBehaviour:
   explosionRotationMultiplier: 100
   walkTiltAmount: 0.5
   sprintTiltAmount: 1.1
+--- !u!114 &7894185966354498957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2636149956801692309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80be0ae8128339fa1a95df85f3095f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAimController
+  aimLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  aimMarkerThreshold: 1
+  bowMisalignmentThreshold: 10
+  obstacleDetectionDistance: 3
+  minConvergenceDistance: 0.2
+  weaponBlockRadius: 0.1
+  enemyPointBlankDistance: 0.2
+--- !u!114 &7255826208877121654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2636149956801692309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e414fe2fbc7e7560f87a03499d79df7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProceduralBowAnimation
+  aimController: {fileID: 7894185966354498957}
+  playerCamera: {fileID: 6371337682864297730}
+  weaponRoot: {fileID: 4987095347784746393}
+  firePoint: {fileID: 5658251648582840375}
+  retractedPositionOffset: {x: 0, y: -0.2, z: -0.1}
+  retractedRotationOffset: {x: 15, y: -10, z: 0}
+  retractionSpeed: 12
+  swayPosMultiplier: 0.0005
+  maxSwayPos: 0.05
+  swayRotMultiplier: 0.04
+  maxSwayRot: 4
+  swaySmooth: 12
+  maxPitchUp: -60
+  maxPitchDown: 60
+  stringNockPoint: {fileID: 5658251648582840375}
+  bowRestPoint: {fileID: 6645498993268215776}
+  reloadStartPoint: {fileID: 3273014844513113641}
+  bowAlignmentDuration: 0.4
+--- !u!114 &8985379175822465648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2636149956801692309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec2c3aa4f093a603bc692cd4cd8e57c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimator
+  armsAnimator: {fileID: 8712034672744137375}
+  bowAnimator: {fileID: 6382706426873480825}
 --- !u!1 &5058526205195725285
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,6 +815,7 @@ GameObject:
   - component: {fileID: 6371337682864297730}
   - component: {fileID: 7967730479903371935}
   - component: {fileID: 2058203534710171234}
+  - component: {fileID: 2982704929688488274}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -916,6 +943,24 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &2982704929688488274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7323899031425264184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f48a2218992187b4ea23bc27c71eb0c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableRaycastDetector
+  playerCamera: {fileID: 6371337682864297730}
+  interactDistance: 20
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 2999
+  deactivationDelay: 0.15
 --- !u!1 &8037460454699995488
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,7 +971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3273014844513113641}
   m_Layer: 7
-  m_Name: GameObject
+  m_Name: ReloadStartPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

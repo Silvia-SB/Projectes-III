@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Rendering.Universal;
+
 public class LoadingManager : MonoBehaviour
 {
     [Header("Scene")]
@@ -12,17 +13,30 @@ public class LoadingManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Slider progressBar;
     [SerializeField] private TMP_Text progressText;
+    [SerializeField] private TMP_Text phraseText;
 
     [Header("Settings")]
     [SerializeField] private float visualSpeed = 0.7f;
     [SerializeField] private int minimumLoadingMilliseconds = 800;
-    
+
     [Header("URP Full Screen Pass")]
     [SerializeField] private ScriptableRendererData pcRendererData;
     [SerializeField] private string fullScreenFeatureName = "FullScreenPassRendererFeature";
 
+    private readonly string[] loadingPhrases =
+    {
+        "Blood opens the gate...",
+        "The dead remember...",
+        "The village is watching...",
+        "Your sins are loading...",
+        "Ashes crawl beneath the stone..."
+    };
+
     private async void Start()
     {
+        if (phraseText != null)
+            phraseText.text = loadingPhrases[Random.Range(0, loadingPhrases.Length)];
+
         await Task.Yield();
         await LoadGameSceneAsync();
     }
@@ -33,7 +47,11 @@ public class LoadingManager : MonoBehaviour
         float targetProgress = 0f;
 
         if (progressBar != null)
+        {
+            progressBar.minValue = 0f;
+            progressBar.maxValue = 1f;
             progressBar.value = 0f;
+        }
 
         UpdateText(0f);
 
@@ -41,10 +59,14 @@ public class LoadingManager : MonoBehaviour
         operation.allowSceneActivation = false;
 
         float startTime = Time.realtimeSinceStartup;
+        float minimumLoadingSeconds = minimumLoadingMilliseconds / 1000f;
 
-        while (operation.progress < 0.9f)
+        while (visualProgress < 1f)
         {
-            targetProgress = Mathf.Clamp01(operation.progress / 0.9f);
+            float realProgress = Mathf.Clamp01(operation.progress / 0.9f);
+            float timeProgress = Mathf.Clamp01((Time.realtimeSinceStartup - startTime) / minimumLoadingSeconds);
+
+            targetProgress = Mathf.Min(realProgress, timeProgress);
 
             visualProgress = Mathf.MoveTowards(
                 visualProgress,
@@ -54,38 +76,21 @@ public class LoadingManager : MonoBehaviour
 
             UpdateProgress(visualProgress);
 
-            await Task.Yield();
-        }
-
-        targetProgress = 0.95f;
-
-        while (visualProgress < targetProgress)
-        {
-            visualProgress = Mathf.MoveTowards(
-                visualProgress,
-                targetProgress,
-                visualSpeed * Time.unscaledDeltaTime
-            );
-
-            UpdateProgress(visualProgress);
+            if (visualProgress >= 0.99f && operation.progress >= 0.9f)
+                break;
 
             await Task.Yield();
         }
 
-        while ((Time.realtimeSinceStartup - startTime) * 1000f < minimumLoadingMilliseconds)
-        {
-            await Task.Yield();
-        }
+        UpdateProgress(1f);
 
-        UpdateProgress(0.98f);
+        await Task.Delay(250);
 
-        await Task.Yield();
-        
         SetRendererFeatureActive(fullScreenFeatureName, true);
 
         operation.allowSceneActivation = true;
     }
-    
+
     private void SetRendererFeatureActive(string targetFeatureName, bool active)
     {
         if (pcRendererData == null)

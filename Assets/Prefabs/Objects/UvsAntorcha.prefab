@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableHighlighter
   highlightMaterial: {fileID: 2100000, guid: 4f3d2d2c9e5947c46b55c38b5fceb412, type: 2}
+  haloObject: {fileID: 0}
 --- !u!1 &3088750433197968708
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +664,7 @@ MonoBehaviour:
   - {fileID: 2526040643848686062, guid: 640f7d904c3c2788985607d23080fcfb, type: 3}
   - {fileID: 7054858715927083874, guid: d13e0f319e86a64fcaaa5ae1e24c0e77, type: 3}
   bloodLight: {fileID: 3818039598677179862}
-  activeDuration: 5
+  activeDuration: 30
 --- !u!1001 &2671185693329417518
 PrefabInstance:
   m_ObjectHideFlags: 0

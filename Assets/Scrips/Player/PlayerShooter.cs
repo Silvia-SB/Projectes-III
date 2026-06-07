@@ -57,6 +57,8 @@ public class PlayerShooter : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0f) return;
+
         HandleEmergencyReload();
         CheckAutoCharge();
         UpdateChargingState();
@@ -135,6 +137,19 @@ public class PlayerShooter : MonoBehaviour
 
     public void OnShoot(InputAction.CallbackContext context)
     {
+        if (Time.timeScale == 0f)
+        {
+            if (context.canceled)
+            {
+                isFireButtonHeld = false;
+                isCharging = false;
+                isAimMarkerActive = false;
+                OnChargeEnd?.Invoke();
+                OnChargeCanceled?.Invoke();
+            }
+            return;
+        }
+
         if (context.started)
         {
             isFireButtonHeld = true;
@@ -215,6 +230,8 @@ public class PlayerShooter : MonoBehaviour
 
     private void TryChangeArrowType(ArrowType targetType)
     {
+        if (Time.timeScale == 0f) return;
+
         bool isAligning = bowAnimation != null && bowAnimation.IsAligningBow;
         if (currentArrowType == targetType || isCharging || isWaitingForReload || isAligning) return;
         

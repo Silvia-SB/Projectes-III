@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6842242683159853813}
   - component: {fileID: 1990720395995141000}
   - component: {fileID: 6367992623192292321}
+  - component: {fileID: 1611752345131414588}
   m_Layer: 0
   m_Name: 'Weapon Camera '
   m_TagString: MainCamera
@@ -128,6 +129,23 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1611752345131414588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355058787444833933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f48a2218992187b4ea23bc27c71eb0c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableRaycastDetector
+  playerCamera: {fileID: 1990720395995141000}
+  interactDistance: 4
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &1772443608804889178
 GameObject:
   m_ObjectHideFlags: 0

@@ -136,6 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2511671911587371590}
+  - component: {fileID: 7213772906441976509}
   m_Layer: 8
   m_Name: UvsAntorcha
   m_TagString: Wall
@@ -162,6 +163,20 @@ Transform:
   - {fileID: 1948079288370404764}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7213772906441976509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2995053075234652412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8954138b863212b4a93b041157a791ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableHighlighter
+  normalMaterial: {fileID: 2100000, guid: b4829f7934d28c14baf4b9bb6e77396e, type: 2}
+  highlightMaterial: {fileID: 2100000, guid: 4f3d2d2c9e5947c46b55c38b5fceb412, type: 2}
 --- !u!1 &3088750433197968708
 GameObject:
   m_ObjectHideFlags: 0

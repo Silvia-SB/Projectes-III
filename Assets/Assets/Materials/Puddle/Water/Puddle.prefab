@@ -15,12 +15,13 @@ GameObject:
   - component: {fileID: 3969624223982577421}
   - component: {fileID: 6795428354162683277}
   - component: {fileID: 1903898499566629334}
-  m_Layer: 8
+  - component: {fileID: 5331676811491720107}
+  m_Layer: 9
   m_Name: Puddle
   m_TagString: Surface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6122420319322960569
 Transform:
@@ -113,8 +114,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.61531925, y: 0.85660374, z: 0.0000002384186}
-  m_Center: {x: -0.030784415, y: 0.040256884, z: 4.563284e-18}
+  m_Size: {x: 0.61531925, y: 0.8566038, z: 0.009395693}
+  m_Center: {x: -0.030784408, y: 0.0402569, z: -0.0046977275}
 --- !u!54 &3969624223982577421
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -170,3 +171,16 @@ MonoBehaviour:
   electricDamage: 25
   electricParticles: []
   electricLight: {fileID: 0}
+--- !u!114 &5331676811491720107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8065103801875973707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8954138b863212b4a93b041157a791ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableHighlighter
+  highlightMaterial: {fileID: 2100000, guid: 388aebc782fecbd4ba5d0a60d3aff20a, type: 2}

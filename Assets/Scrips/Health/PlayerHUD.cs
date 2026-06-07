@@ -26,6 +26,10 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] private Image hitFlashImage;
     [SerializeField] private float hitFlashFadeSpeed = 3f;
 
+    [SerializeField] private Image healthFillImage;
+    [SerializeField] private Image delayedDamageFillImage;
+    [SerializeField] private float damageDelaySpeed = 1.5f;
+
     private float targetHealthValue;
     private float currentDisplayedSouls;
     private int targetSoulsValue;
@@ -122,6 +126,31 @@ public class PlayerHUD : MonoBehaviour
             {
                 healthBar.value = targetHealthValue;
             }
+        }
+
+        if (delayedDamageFillImage != null && healthBar != null)
+        {
+            float targetFill = healthBar.value;
+
+            delayedDamageFillImage.fillAmount = Mathf.MoveTowards(
+                delayedDamageFillImage.fillAmount,
+                targetFill,
+                Time.deltaTime * damageDelaySpeed
+            );
+        }
+
+        if (healthFillImage != null)
+        {
+            float pulse = 0f;
+
+            if (targetHealthValue <= blinkThreshold)
+            {
+                pulse = Mathf.Abs(Mathf.Sin(Time.time * blinkSpeed));
+            }
+
+            Color c = healthFillImage.color;
+            c.a = Mathf.Lerp(0.85f, 1f, pulse);
+            healthFillImage.color = c;
         }
         
         if (hitFlashImage != null && hitFlashImage.color.a > 0)

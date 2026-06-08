@@ -68,7 +68,6 @@ public class PlayerDeathController : MonoBehaviour
 
     private void HandleHealthChanged(float currentHealth, float maxHealth)
     {
-        // Nos aseguramos de que solo se reinicie si ha recuperado la vida al completo (Respawn)
         if (isDead && currentHealth >= maxHealth)
         {
             isDead = false;

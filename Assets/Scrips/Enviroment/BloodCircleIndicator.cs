@@ -47,7 +47,7 @@ public class BloodCircleIndicator : MonoBehaviour, IDamageable
 
     private void ActivateEffects()
     {
-        timer = activeDuration; // Reinicia el temporizador si vuelve a ser golpeado
+        timer = activeDuration;  
 
         if (!isActive)
         {

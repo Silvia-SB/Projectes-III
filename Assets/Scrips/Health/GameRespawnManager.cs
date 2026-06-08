@@ -19,7 +19,7 @@ public class GameRespawnManager : MonoBehaviour
     [SerializeField] private EnemyZone[] enemyZones;
 
     [Header("Respawn")]
-    [SerializeField] private int respawnDelayMilliseconds = 3500; // 3.5 segundos de retraso para ver la muerte
+    [SerializeField] private int respawnDelayMilliseconds = 3500;  
 
     private bool respawning;
 

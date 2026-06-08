@@ -99,7 +99,6 @@ public class ExplosiveObject : Health
         
         base.Die();
 
-        // En lugar de desactivar de golpe, ocultamos el barril y esperamos a que terminen los efectos
         foreach (var col in GetComponentsInChildren<Collider>()) col.enabled = false;
         foreach (var rend in GetComponentsInChildren<Renderer>())
         {

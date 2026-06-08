@@ -170,7 +170,7 @@ public class PlayerHUD : MonoBehaviour
             float alpha = 0f;
             if (targetHealthValue <= lowHealthThreshold)
             {
-                alpha = (lowHealthThreshold - targetHealthValue) / lowHealthThreshold; // De 0 a 1
+                alpha = (lowHealthThreshold - targetHealthValue) / lowHealthThreshold;  
                 
                 if (targetHealthValue <= blinkThreshold)
                 {

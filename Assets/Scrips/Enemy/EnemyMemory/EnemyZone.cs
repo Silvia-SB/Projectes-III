@@ -17,6 +17,7 @@ public class EnemyZone : MonoBehaviour
         [HideInInspector] public int totalSpawnedEnemies;
     }
 
+    
     [SerializeField] private List<ZoneData> zoneData = new();
 
     [Header("Spawn Settings")]
@@ -29,9 +30,12 @@ public class EnemyZone : MonoBehaviour
     [Header("Visibility Settings")]
     [SerializeField] private LayerMask obstacleMask;
 
-    private bool hasSpawned = false;
+    private bool hasSpawned;
     private Transform playerTransform;
     private Camera mainCamera;
+    private int initialQuantity;
+    private float initialSpawnInterval;
+    private int initialSpawnCount;
 
     private void Awake()
     {
@@ -146,8 +150,9 @@ public class EnemyZone : MonoBehaviour
         bool canSpawn =
             isFarEnough && !isVisibleToCamera;
 
-        if (!canSpawn)
+        if (!canSpawn){
             return false;
+        }
 
         bool spawnedAny = false;
 
@@ -204,7 +209,17 @@ public class EnemyZone : MonoBehaviour
 
         return true;
     }
-    public void ResetZone(){
+    public void ResetZone()
+    {
+        Debug.Log("ResetZone llamado en: " + gameObject.name);
+
         hasSpawned = false;
+        playerTransform = null;
+
+        foreach (var data in zoneData)
+        {
+            data.currentTimer = 0f;
+            data.totalSpawnedEnemies = 0;
+        }
     }
 }

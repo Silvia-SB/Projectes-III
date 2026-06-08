@@ -1,5 +1,7 @@
+using System;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameRespawnManager : MonoBehaviour
 {
@@ -7,7 +9,7 @@ public class GameRespawnManager : MonoBehaviour
 
     [Header("Player")]
     [SerializeField] private GameObject player;
-    [SerializeField] private MonoBehaviour[] componentsToDisableOnDeath;
+    [SerializeField] private GameObject[] deathObjectsParents;
     [SerializeField] private CharacterController characterController;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private PlayerHealth playerHealth;
@@ -16,7 +18,10 @@ public class GameRespawnManager : MonoBehaviour
     [Header("Systems")]
     [SerializeField] private EnemyPool enemyPool;
     [SerializeField] private ArrowPool arrowPool;
+    [SerializeField] private SoulManager soulManager;
     [SerializeField] private EnemyZone[] enemyZones;
+    [SerializeField] private MonoBehaviour[] componentsToDisableOnDeath;
+
 
     [Header("Respawn")]
     [SerializeField] private int respawnDelayMilliseconds = 3500;  
@@ -41,7 +46,7 @@ public class GameRespawnManager : MonoBehaviour
 
     private async Task RespawnRoutineAsync()
     {
-        SetPlayerScripts(false);
+        SetActive(false);
 
 
         await Task.Delay(respawnDelayMilliseconds);
@@ -63,6 +68,8 @@ public class GameRespawnManager : MonoBehaviour
         }
 
         await Task.Yield();
+        if (soulManager != null)
+            soulManager.SetCurrentSouls(0);
 
         TeleportPlayerToSpawn();
 
@@ -71,17 +78,30 @@ public class GameRespawnManager : MonoBehaviour
 
         await Task.Yield();
 
-        SetPlayerScripts(true);
+        SetActive(true);
         playerShooter.ChangeArrowType(ArrowType.Base);
 
     }
     
-    private void SetPlayerScripts(bool enabled)
+    private void SetActive(bool enabled)
     {
         foreach (MonoBehaviour component in componentsToDisableOnDeath)
         {
             if (component != null)
                 component.enabled = enabled;
+        }
+        if (enabled)
+        {
+            foreach (GameObject parent in deathObjectsParents)
+            {
+                if (parent == null) continue;
+
+                foreach (Transform child in parent.transform)
+                {
+                    if (!child.gameObject.activeSelf)
+                        child.gameObject.SetActive(true);
+                }
+            }
         }
     }
 

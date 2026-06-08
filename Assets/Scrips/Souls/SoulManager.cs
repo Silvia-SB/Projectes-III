@@ -33,8 +33,7 @@ public class SoulManager : MonoBehaviour
 
     public void AddSouls(int amount)
     {
-        currentSouls = Mathf.Clamp(currentSouls + amount, 0, maxSouls);
-        OnSoulsChanged?.Invoke(currentSouls, maxSouls);
+        SetCurrentSouls(Mathf.Clamp(currentSouls+amount, 0, maxSouls));
     }
 
     public int GetArrowCost(ArrowType type)
@@ -67,6 +66,12 @@ public class SoulManager : MonoBehaviour
     public void OnCheatSouls(InputAction.CallbackContext c)
     {
         if (c.performed) AddSouls(100);
+    }
+    public void SetCurrentSouls(int newCurrentSouls)
+    {
+        currentSouls = newCurrentSouls;
+        OnSoulsChanged?.Invoke(newCurrentSouls, maxSouls);
+
     }
 
 }

@@ -115,13 +115,11 @@ public class PlayerShooter : MonoBehaviour
 
     public void AnimationEvent_SpawnArrow()
     {
-
         if (!isWaitingForReload) return;
 
         if (!CanAffordArrow(currentArrowType))
         {
             ChangeArrowType(ArrowType.Base);
-            return;
         }
 
         isWaitingForReload = false;

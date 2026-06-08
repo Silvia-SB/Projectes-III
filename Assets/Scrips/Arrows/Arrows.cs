@@ -172,7 +172,6 @@ public abstract class Arrow : MonoBehaviour
         Vector3 tipPosition = transform.position + transform.forward * arrowLength;
         Vector3 hitPoint = other.ClosestPoint(tipPosition);
         
-        // Proyectar el hitPoint sobre la línea de vuelo para evitar teletransportes laterales
         Vector3 deviation = hitPoint - tipPosition;
         float forwardDeviation = Vector3.Dot(deviation, transform.forward);
         hitPoint = tipPosition + transform.forward * forwardDeviation;

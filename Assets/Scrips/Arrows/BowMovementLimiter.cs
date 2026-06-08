@@ -3,11 +3,9 @@ using UnityEngine;
 public class BowMovementLimiter : MonoBehaviour
 {
     [SerializeField] private Transform playerCamera;
-
     [SerializeField] private float maxPitchUp = -35f; 
     [Tooltip("Límite inferior del arco.")]
     [SerializeField] private float maxPitchDown = 35f;
-
     [SerializeField] private float smoothSpeed = 15f;
 
     private Quaternion initialLocalRotation;

@@ -12,6 +12,7 @@ public abstract class Arrow : MonoBehaviour
     [Header("Visual Effects")]
     [SerializeField] protected ParticleSystem[] impactParticles;
     [SerializeField] protected ParticleSystem[] chargedImpactParticles;
+    [SerializeField] protected ParticleSystem[] stuckParticles;
     private float sqrDistanceToChangeLayer;
     
     public abstract ArrowType type { get; }
@@ -61,6 +62,14 @@ public abstract class Arrow : MonoBehaviour
         if (chargedImpactParticles != null)
         {
             foreach (ParticleSystem ps in chargedImpactParticles)
+            {
+                if (ps != null) ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            }
+        }
+
+        if (stuckParticles != null)
+        {
+            foreach (ParticleSystem ps in stuckParticles)
             {
                 if (ps != null) ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             }
@@ -218,6 +227,14 @@ public abstract class Arrow : MonoBehaviour
         {
             trailRenderer.emitting = false;
         }
+
+        if (stuckParticles != null)
+        {
+            foreach (ParticleSystem ps in stuckParticles)
+            {
+                if (ps != null) ps.Play();
+            }
+        }
         transform.SetParent(other.transform, true);
 
         Invoke(nameof(ReturnToPool), stuckDuration); 
@@ -279,6 +296,14 @@ public abstract class Arrow : MonoBehaviour
         if (chargedImpactParticles != null)
         {
             foreach (ParticleSystem ps in chargedImpactParticles)
+            {
+                if (ps != null) ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            }
+        }
+
+        if (stuckParticles != null)
+        {
+            foreach (ParticleSystem ps in stuckParticles)
             {
                 if (ps != null) ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             }

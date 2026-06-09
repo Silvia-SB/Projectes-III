@@ -18,7 +18,7 @@ MonoBehaviour:
   acceleration: 4
   angularSpeed: 120
   stoppingDistance: 2.5
-  attackRange: 2.5
+  attackRange: 2.8
   attackHeightTolerance: 1
   radius: 0.8
   maxChaseDistance: 60
@@ -35,6 +35,8 @@ MonoBehaviour:
   rangedTeleportCooldown: 1.5
   rangedTeleportNavMesh: 3
   rangedTeleportAttempts: 20
+  rangedTeleportViewAngle: 90
+  rangedTeleportNeedsLineOfSight: 1
   obstacleMask:
     serializedVersion: 2
     m_Bits: 0

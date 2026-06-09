@@ -40,6 +40,11 @@ public class HitboxManager : MonoBehaviour
         }
     }
 
+    public bool IsHitbox(Collider col)
+    {
+        return colliderData != null && colliderData.ContainsKey(col);
+    }
+
     public float GetMultiplierAndApplyAnimation(Collider col)
     {
         if (colliderData != null && colliderData.TryGetValue(col, out HitboxGroup groupData))

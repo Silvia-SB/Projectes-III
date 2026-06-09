@@ -20,6 +20,12 @@ public class PiercingArrow : Arrow
     {
         if (other.CompareTag("Player") || other == col) return false; 
 
+        HitboxManager manager = other.GetComponentInParent<HitboxManager>();
+        if (manager != null && !manager.IsHitbox(other))
+        {
+            return false;
+        }
+
         IDamageable target = other.GetComponentInParent<IDamageable>();
         bool isConductive = other.GetComponent<ConductiveSurface>() != null;
         

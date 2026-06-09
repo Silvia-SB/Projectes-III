@@ -96,19 +96,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a11e4cea844b6b4aeb547554ba7752c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  player: {fileID: 0}
-  componentsToDisableOnDeath:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  characterController: {fileID: 0}
-  spawnPoint: {fileID: 0}
-  playerHealth: {fileID: 0}
-  playerShooter: {fileID: 0}
-  enemyPool: {fileID: 0}
-  arrowPool: {fileID: 6158020455428269514}
-  enemyZones: []
-  respawnDelayMilliseconds: 4000
+  objectsPerFrame: 25
+  fadeImage: {fileID: 0}
+  deathText: {fileID: 0}
+  fadeDuration: 1
+  delayBeforeReset: 4
+  deathPhrases:
+  - The village claims its tribute... but the debt is not yet paid.
+  - You cannot escape the altar forever.
+  - Death is no escape. The hunt begins anew.
+  - Your soul is bound to this place. Rise and suffer again.
+  - The sacrifice is only postponed.
+  - Run, little sacrifice. We enjoy the chase.
+  - The sickness of this land will not release you so easily.
 --- !u!114 &7324680403885435283
 MonoBehaviour:
   m_ObjectHideFlags: 0

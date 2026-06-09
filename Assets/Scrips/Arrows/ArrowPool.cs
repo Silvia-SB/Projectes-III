@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 
-public class ArrowPool : MonoBehaviour
+public class ArrowPool : MonoBehaviour, IResettable
 {
     [SerializeField] private ArrowFactory factory;
     [SerializeField] private int amountPerType = 5;
@@ -54,7 +54,12 @@ public class ArrowPool : MonoBehaviour
         arrow.gameObject.SetActive(false);
     }
 
-    public void ReturnAllToPool()
+    public void CaptureInitialState()
+    {
+        //Dont need to capture initial state
+    }
+
+    public void ResetState()
     {
         foreach (KeyValuePair<ArrowType, Queue<Arrow>> pair in pools)
         {

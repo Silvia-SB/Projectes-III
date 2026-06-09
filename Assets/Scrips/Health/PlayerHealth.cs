@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 
-public class PlayerHealth : Health
+public class PlayerHealth : Health, IResettable
 {
     [Header("Healing")]
     [SerializeField] private int soulCostToHeal = 20;
@@ -17,9 +17,9 @@ public class PlayerHealth : Health
 
     private void Start()
     {
-        if (GameRespawnManager.Instance != null)
+        if (RespawnManager.Instance != null)
         {
-            OnDeath.AddListener(GameRespawnManager.Instance.RespawnPlayer);
+            OnDeath.AddListener(RespawnManager.Instance.ResetAllFromEvent);
         }
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
@@ -49,8 +49,13 @@ public class PlayerHealth : Health
             TryHealWithSouls();
         }
     }
+    
+    public void CaptureInitialState()
+    {
+        //Dont need to capture initial state
+    }
 
-    public void ResetHealth()
+    public void ResetState()
     {
         currentHealth = maxHealth;
         OnHealthChanged?.Invoke(currentHealth, maxHealth);

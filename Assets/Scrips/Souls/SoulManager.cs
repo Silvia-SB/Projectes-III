@@ -3,7 +3,7 @@ using System;
 using UnityEngine.InputSystem;
 
 
-public class SoulManager : MonoBehaviour
+public class SoulManager : MonoBehaviour, IResettable
 {
     public static SoulManager Instance { get; private set; }
 
@@ -72,6 +72,14 @@ public class SoulManager : MonoBehaviour
         currentSouls = newCurrentSouls;
         OnSoulsChanged?.Invoke(newCurrentSouls, maxSouls);
 
+    }
+    public void CaptureInitialState()
+    {
+        //Dont need to capture initial state
+    }
+    public void ResetState()
+    {
+        SetCurrentSouls(0);
     }
 
 }

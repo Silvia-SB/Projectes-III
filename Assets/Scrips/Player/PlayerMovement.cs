@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovement : MonoBehaviour, ISlowable
+public class PlayerMovement : MonoBehaviour, ISlowable, IResettable
 {
     [Header("Configurable Variables")]
     [SerializeField] private float maxSpeed;
@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour, ISlowable
     [Header("Shooting Config")]
     [SerializeField] private PlayerShooter playerShooter;
     [SerializeField] private float chargeSpeedMultiplier = 0.5f;
+    
+    
 
     private CharacterController controller;
     private Vector2 mDirection;
@@ -24,6 +26,9 @@ public class PlayerMovement : MonoBehaviour, ISlowable
     private bool isSlowed;
     private float slowTimer;
     private bool isChargingArrow;
+    private Vector3 initialPosition;
+    private Quaternion initialRotation;
+
 
     public CharacterController Controller => controller;
     public bool IsGrounded { get; private set; }
@@ -117,5 +122,38 @@ public class PlayerMovement : MonoBehaviour, ISlowable
 
         isSlowed = true;
         slowTimer = stunnedDuration;
+    }
+
+    public void CaptureInitialState()
+    {
+        initialPosition = transform.position;
+        initialRotation = transform.rotation;
+
+        mDirection = Vector2.zero;
+        mVerticalSpeed = 0f;
+        isSprinting = false;
+        isSlowed = false;
+        slowTimer = 0f;
+        isChargingArrow = false;
+    }
+
+    public void ResetState()
+    {
+        if (controller != null)
+            controller.enabled = false;
+
+        transform.position = initialPosition;
+        transform.rotation = initialRotation;
+
+        if (controller != null)
+            controller.enabled = true;
+
+        mDirection = Vector2.zero;
+        mVerticalSpeed = 0f;
+        isSprinting = false;
+        isSlowed = false;
+        slowTimer = 0f;
+        isChargingArrow = false;
+        IsGrounded = false;
     }
 }

@@ -338,4 +338,10 @@ public class PlayerShooter : MonoBehaviour
         isWaitingForReload = true;
         emergencySpawnTime = Time.time + 2.0f;
     }
+    
+    public void ResetState()
+    {
+        TryChangeArrowType(ArrowType.Base);
+        PrepareArrow();
+    }
 }

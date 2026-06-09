@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyZone : MonoBehaviour
+public class EnemyZone : MonoBehaviour, IResettable
 {
     [Serializable]
     public class ZoneData
@@ -209,10 +209,14 @@ public class EnemyZone : MonoBehaviour
 
         return true;
     }
-    public void ResetZone()
-    {
-        Debug.Log("ResetZone llamado en: " + gameObject.name);
 
+    public void CaptureInitialState()
+    {
+        //Dont need to capture initial state
+    }
+
+    public void ResetState()
+    {
         hasSpawned = false;
         playerTransform = null;
 

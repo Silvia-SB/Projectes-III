@@ -13,7 +13,7 @@ public enum EnemyType
     Cuervo
 }
 
-public class EnemyPool : MonoBehaviour
+public class EnemyPool : MonoBehaviour, IResettable
 {
     public static EnemyPool Instance { get; private set; }
     private Dictionary<EnemyType, Queue<GameObject>> enemyPool;
@@ -92,8 +92,13 @@ public class EnemyPool : MonoBehaviour
 
         enemyPool[enemyType].Enqueue(enemyToReturn);
     }
+    
+    public void CaptureInitialState()
+    {
+        //Dont need to capture initial state
+    }
 
-    public void ReturnAllEnemiesToPool()
+    public void ResetState()
     {
         for (int i = activeEnemies.Count - 1; i >= 0; i--)
         {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerDeathController : MonoBehaviour
+public class PlayerDeathController : MonoBehaviour, IResettable
 {
     [Header("References")]
     [SerializeField] private Health playerHealth;
@@ -138,4 +138,21 @@ public class PlayerDeathController : MonoBehaviour
         cameraTransform.localPosition = currentLerpPosition + Random.insideUnitSphere * currentShake;
         cameraTransform.localRotation = currentLerpRotation;
     }
+
+    public void CaptureInitialState()
+    {
+        //Dont need to capture initial state
+    }
+    public void ResetState()
+    { 
+        playerHealth.enabled = true;
+        movement.enabled = true;
+        look.enabled = true;
+        shooter.enabled = true;
+        headBob.enabled = true;
+        playerHealth.ClearStatuses();
+        shooter.ResetState();
+    }
+
+    
 }

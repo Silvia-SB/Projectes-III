@@ -54,7 +54,12 @@ public abstract class Health : MonoBehaviour, IDamageable
     {
         if(gameObject.CompareTag("Wall")) gameObject.SetActive(false);
         OnDeath?.Invoke();
-        statusManager?.ClearAllStatuses();
-
+        ClearStatuses();
     }
+
+    public void ClearStatuses()
+    {
+        statusManager?.ClearAllStatuses();
+    }
+    
 }

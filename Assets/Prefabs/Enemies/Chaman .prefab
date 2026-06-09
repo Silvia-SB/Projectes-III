@@ -55,13 +55,14 @@ GameObject:
   - component: {fileID: -7315307328690460100}
   - component: {fileID: 4606119972440261975}
   - component: {fileID: 3334038611966704686}
+  - component: {fileID: -30758912361601882}
   m_Layer: 11
   m_Name: 'Chaman '
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8881908648987304921
 Transform:
   m_ObjectHideFlags: 0
@@ -339,6 +340,29 @@ MonoBehaviour:
   - damageType: 3
     particles:
     - {fileID: 5564858664893789213}
+--- !u!136 &-30758912361601882
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510362098878087543}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7890947
+  m_Height: 2.5893803
+  m_Direction: 1
+  m_Center: {x: -0.0051139593, y: 0.8208473, z: 0}
 --- !u!1 &904982606931509347
 GameObject:
   m_ObjectHideFlags: 0

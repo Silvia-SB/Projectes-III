@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Linq;
 
-public class DeactivateOnHits : MonoBehaviour, IDamageable
+public class DeactivateOnHits : MonoBehaviour, IDamageable, IResettable
 {
     [Header("Settings")]
     [SerializeField] private float maxHealth = 100f;
@@ -38,5 +38,16 @@ public class DeactivateOnHits : MonoBehaviour, IDamageable
         {
             gameObject.SetActive(false);
         }
+    }
+
+    public void CaptureInitialState()
+    {
+        //Dont need to capture initial state
+    }
+    public void ResetState()
+    {
+        Debug.Log("ResetState DeactivateOnHits: " + gameObject.name);
+        currentHealth = maxHealth;
+        gameObject.SetActive(true);
     }
 }

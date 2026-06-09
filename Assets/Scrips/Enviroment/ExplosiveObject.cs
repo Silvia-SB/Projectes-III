@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class ExplosiveObject : Health
+public class ExplosiveObject : Health, IResettable
 {
     private const int InfiniteTicks = 9999;
     private const float DefaultDotAmount = 5f;
@@ -178,5 +178,23 @@ public class ExplosiveObject : Health
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
+    }
+
+    public void CaptureInitialState()
+    {
+        //Dont need to capture initial state
+    }
+    public void ResetState()
+    {
+        Invoke(nameof(ResetAfterDelay), 5f);
+
+    }
+    private void ResetAfterDelay()
+    {
+        hasExploded = false;
+        isIgnited = false;
+        foreach (var col in GetComponentsInChildren<Collider>()) col.enabled = true;
+        foreach (var rend in GetComponentsInChildren<Renderer>()) rend.enabled = true;
+        gameObject.SetActive(true);
     }
 }

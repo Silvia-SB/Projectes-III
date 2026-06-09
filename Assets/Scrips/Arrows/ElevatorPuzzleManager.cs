@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ElevatorPuzzleManager : MonoBehaviour
+public class ElevatorPuzzleManager : MonoBehaviour, IResettable
 {
     [Header("Configuración del Puzle")]
     [SerializeField] private ArrowHitElevator[] elevators; 
@@ -38,5 +38,15 @@ public class ElevatorPuzzleManager : MonoBehaviour
         {
             objectToDeactivate.SetActive(false);
         }
+    }
+
+    public void CaptureInitialState()
+    {
+        //Dont need to capture initial state
+    }
+    public void ResetState()
+    {
+        activatedCount = 0;
+        objectToDeactivate.SetActive(true);
     }
 }

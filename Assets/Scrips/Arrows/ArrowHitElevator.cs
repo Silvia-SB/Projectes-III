@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ArrowHitElevator : MonoBehaviour, IArrowInteractable
+public class ArrowHitElevator : MonoBehaviour, IArrowInteractable, IResettable
 {
     [SerializeField] private float distanceToMove = 5f; 
     [SerializeField] private float moveDuration = 1f;  
@@ -12,6 +12,7 @@ public class ArrowHitElevator : MonoBehaviour, IArrowInteractable
     private float currentMoveTime;
     private bool hasBeenActivated = false;
     public event Action OnElevatorActivated;
+    private Vector3 initialPosition;
 
     private void Update()
     {
@@ -47,5 +48,16 @@ public class ArrowHitElevator : MonoBehaviour, IArrowInteractable
         targetPosition = startPosition + (Vector3.up * distanceToMove);
         
         OnElevatorActivated?.Invoke();
+    }
+
+    public void CaptureInitialState()
+    {
+       initialPosition = transform.position;
+    }
+    public void ResetState()
+    {
+        transform.position = initialPosition;
+        isMoving = false;
+        hasBeenActivated = false;
     }
 }

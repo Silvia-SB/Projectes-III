@@ -5158,13 +5158,14 @@ GameObject:
   - component: {fileID: 8944792330387410964}
   - component: {fileID: 8684215439733813738}
   - component: {fileID: 3698751656161215176}
+  - component: {fileID: 1041451621781544518}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7492792765659801796
 Transform:
   m_ObjectHideFlags: 0
@@ -5429,6 +5430,29 @@ MonoBehaviour:
   - damageType: 3
     particles:
     - {fileID: 8287517118399426637}
+--- !u!136 &1041451621781544518
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336821644728294434}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5754213
+  m_Height: 2.5454118
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.7727059, z: -0.0022107959}
 --- !u!1 &2887271817733120471
 GameObject:
   m_ObjectHideFlags: 0

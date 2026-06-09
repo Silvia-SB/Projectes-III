@@ -341,6 +341,7 @@ public class PlayerShooter : MonoBehaviour
     
     public void ResetState()
     {
+        TryChangeArrowType(ArrowType.Base);
         PrepareArrow();
         OnArrowChanged?.Invoke(ArrowType.Base);
     }

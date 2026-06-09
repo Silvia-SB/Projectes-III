@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class CorruptedLiquid : MonoBehaviour, IDamageable
+public class CorruptedLiquid : MonoBehaviour, IDamageable, IResettable
 {
     [SerializeField] private float damage = 5f;
     [SerializeField] private float interval = 0.4f;
@@ -17,7 +17,7 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable
     [SerializeField] private string deactivatorTag = "Player";
 
     private Collider[] colliders; 
-    private bool isActive;
+    [SerializeField] private bool isActive;
     private float nextPulseTime;
     
     private readonly List<IDamageable> targets = new List<IDamageable>();
@@ -170,5 +170,15 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable
                 if (ps != null) ps.Stop();
             }
         }
+    }
+
+    public void CaptureInitialState()
+    {
+        //Dont need to capture initial state
+    }
+    public void ResetState()
+    {
+        Deactivate();
+        nextPulseTime = Time.time + interval;
     }
 }

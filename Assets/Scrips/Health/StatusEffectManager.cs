@@ -10,7 +10,7 @@ public class DoTInstance
     public float Timer;
 }
 
-public class StatusEffectManager : MonoBehaviour
+public class StatusEffectManager : MonoBehaviour, IResettable
 {
     public event Action<DamageType> OnStatusApplied;
     public event Action<DamageType> OnStatusRemoved;
@@ -111,5 +111,14 @@ public class StatusEffectManager : MonoBehaviour
                 }
             }
         }
+    }
+    public void CaptureInitialState()
+    {
+        //Dont need to capture initial state
+    }
+
+    public void ResetState()
+    {
+        ClearAllStatuses();
     }
 }

@@ -24,31 +24,7 @@ public class ExplosiveObject : Health, IResettable
     protected override void OnEnable()
     {
         base.OnEnable();
-        hasExploded = false;
-        isIgnited = false;
-        
-        foreach (var col in GetComponentsInChildren<Collider>(true)) col.enabled = true;
-        foreach (var rend in GetComponentsInChildren<Renderer>(true))
-        {
-            if (rend is not ParticleSystemRenderer) rend.enabled = true;
-        }
-
-        if (explosionLight != null) explosionLight.enabled = false;
-        if (explosionParticles != null)
-        {
-            foreach (var ps in explosionParticles)
-            {
-                if (ps != null) ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-            }
-        }
-
-        if (idleParticles != null)
-        {
-            foreach (var ps in idleParticles)
-            {
-                if (ps != null) ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-            }
-        }
+        RestoreInitialState();
     }
 
     public override void TakeDamage(float amount, DamageType incomingDamageType)
@@ -186,15 +162,45 @@ public class ExplosiveObject : Health, IResettable
     }
     public void ResetState()
     {
-        Invoke(nameof(ResetAfterDelay), 5f);
+        CancelInvoke();
+        currentHealth = maxHealth;
+        ClearStatuses();
 
+        if (!gameObject.activeSelf)
+        {
+            gameObject.SetActive(true);
+            return;
+        }
+
+        RestoreInitialState();
     }
-    private void ResetAfterDelay()
+
+    private void RestoreInitialState()
     {
         hasExploded = false;
         isIgnited = false;
-        foreach (var col in GetComponentsInChildren<Collider>()) col.enabled = true;
-        foreach (var rend in GetComponentsInChildren<Renderer>()) rend.enabled = true;
-        gameObject.SetActive(true);
+
+        foreach (var col in GetComponentsInChildren<Collider>(true)) col.enabled = true;
+        foreach (var rend in GetComponentsInChildren<Renderer>(true))
+        {
+            if (rend is not ParticleSystemRenderer) rend.enabled = true;
+        }
+
+        if (explosionLight != null) explosionLight.enabled = false;
+        if (explosionParticles != null)
+        {
+            foreach (var ps in explosionParticles)
+            {
+                if (ps != null) ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            }
+        }
+
+        if (idleParticles != null)
+        {
+            foreach (var ps in idleParticles)
+            {
+                if (ps != null) ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            }
+        }
     }
 }

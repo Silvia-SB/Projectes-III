@@ -7,6 +7,7 @@ public class ArrowPool : MonoBehaviour, IResettable
 {
     [SerializeField] private ArrowFactory factory;
     [SerializeField] private int amountPerType = 5;
+    [SerializeField] private string[] reactiveTags;
     
     private Dictionary<ArrowType, Queue<Arrow>> pools = new Dictionary<ArrowType, Queue<Arrow>>();
 

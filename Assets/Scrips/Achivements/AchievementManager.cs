@@ -49,8 +49,6 @@ public class AchievementManager : MonoBehaviour
         {
             SoulManager.Instance.OnSoulsChanged += CheckSoulsAchievement;
         }
-
-        UnlockAchievement("level_start");
     }
 
     private void Update()

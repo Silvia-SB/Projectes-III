@@ -17,11 +17,6 @@ public class PlayerHealth : Health, IResettable
 
     private void Start()
     {
-        if (RespawnManager.Instance != null)
-        {
-            OnDeath.AddListener(RespawnManager.Instance.ResetAllFromEvent);
-        }
-
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 

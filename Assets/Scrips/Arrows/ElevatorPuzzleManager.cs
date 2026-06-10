@@ -37,6 +37,7 @@ public class ElevatorPuzzleManager : MonoBehaviour, IResettable
         if (activatedCount >= elevators.Length && objectToDeactivate != null)
         {
             objectToDeactivate.SetActive(false);
+            AchievementManager.UnlockAchievement("the_third_toll");
         }
     }
 

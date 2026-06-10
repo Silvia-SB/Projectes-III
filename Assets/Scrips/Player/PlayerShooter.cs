@@ -119,7 +119,8 @@ public class PlayerShooter : MonoBehaviour
 
         if (!CanAffordArrow(currentArrowType))
         {
-            ChangeArrowType(ArrowType.Base);
+        currentArrowType = ArrowType.Base;
+        OnArrowChanged?.Invoke(currentArrowType);
         }
 
         isWaitingForReload = false;
@@ -237,6 +238,9 @@ public class PlayerShooter : MonoBehaviour
         {
             ChangeArrowType(targetType);
         }
+        else{
+            ChangeArrowType(ArrowType.Base);
+        }
     }
 
     private void Shoot(float chargePercent)
@@ -291,6 +295,14 @@ public class PlayerShooter : MonoBehaviour
         if (currentArrowInstance != null) return;
 
         currentArrowInstance = arrowPool.GetArrow(currentArrowType);
+
+    if (currentArrowInstance == null && currentArrowType != ArrowType.Base)
+    {
+        currentArrowType = ArrowType.Base;
+        OnArrowChanged?.Invoke(currentArrowType);
+        currentArrowInstance = arrowPool.GetArrow(currentArrowType);
+    }
+
         if (currentArrowInstance == null) return;
 
         if (bowAnimation != null)

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2344641617906425251}
   - component: {fileID: 7324680403885435283}
   - component: {fileID: 1709455646588277994}
+  - component: {fileID: 9161157875186360847}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -97,18 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   objectsPerFrame: 25
-  fadeImage: {fileID: 0}
-  deathText: {fileID: 0}
-  fadeDuration: 1
-  delayBeforeReset: 4
-  deathPhrases:
-  - The village claims its tribute... but the debt is not yet paid.
-  - You cannot escape the altar forever.
-  - Death is no escape. The hunt begins anew.
-  - Your soul is bound to this place. Rise and suffer again.
-  - The sacrifice is only postponed.
-  - Run, little sacrifice. We enjoy the chase.
-  - The sickness of this land will not release you so easily.
 --- !u!114 &7324680403885435283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +191,25 @@ MonoBehaviour:
   - id: long_shot
     title: From Downtown
     description: 'Eliminate an enemy from more than 30 meters away. '
+  - id: the_third_toll
+    title: Bells of Salvation
+    description: A path is opened, but what horrors lie beyond the gate?
   - id: sensory_overload
     title: Master of Elements
     description: Apply both blood and electric status effects simultaneously.
+--- !u!114 &9161157875186360847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888012573576880270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d22d46e2ca4def83890b1abd10b61b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TransitionManager
+  backgroundPanel: {fileID: 0}
+  titleText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  fadeDuration: 1

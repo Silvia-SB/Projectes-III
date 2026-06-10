@@ -18,6 +18,19 @@ public class PlayerDeathController : MonoBehaviour, IResettable
     [SerializeField] private float tiltAngle = 75f; 
     [SerializeField] private float impactShakeIntensity = 0.6f; 
 
+    [Header("Death Screen")]
+    [SerializeField] private float delayBeforeReset = 4f;
+    [SerializeField] private string deathTitle = "YOU DIED";
+    [SerializeField] private string[] deathPhrases = new string[]
+    {
+        "The village claims its tribute... but the debt is not yet paid.",
+        "You cannot escape the altar forever.",
+        "Death is no escape. The hunt begins anew.",
+        "Your soul is bound to this place. Rise and suffer again.",
+        "The sacrifice is only postponed.",
+        "Run, little sacrifice. We enjoy the chase.",
+        "The sickness of this land will not release you so easily."
+    };
     private bool isDead = false;
     private Vector3 targetLocalPosition;
     private Quaternion targetLocalRotation;
@@ -105,6 +118,19 @@ public class PlayerDeathController : MonoBehaviour, IResettable
             currentLerpRotation = cameraTransform.localRotation;
             currentShake = 0f;
             velocityY = 0f;
+        }
+
+        if (TransitionManager.Instance != null)
+        {
+            string phrase = (deathPhrases != null && deathPhrases.Length > 0)
+                ? deathPhrases[Random.Range(0, deathPhrases.Length)]
+                : "The village consumed you...";
+
+            TransitionManager.Instance.PlayTransition(deathTitle, phrase, delayBeforeReset, true,
+                onMidPoint: () =>
+                {
+                    _ = RespawnManager.Instance?.ResetAll();
+                });
         }
     }
 

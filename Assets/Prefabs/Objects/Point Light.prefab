@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 5475058076306187550}
   - component: {fileID: 1291851348828379384}
   - component: {fileID: 5165099627841588531}
-  - component: {fileID: 6947899856104570192}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,9 +43,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 12
   m_Type: 2
-  m_Color: {r: 1, g: 0.70980394, b: 0.41960785, a: 1}
-  m_Intensity: 8
-  m_Range: 5
+  m_Color: {r: 0.9811321, g: 0.6376828, b: 0.34864122, a: 1}
+  m_Intensity: 5
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}
@@ -88,7 +87,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1.4
-  m_ColorTemperature: 6708
+  m_ColorTemperature: 6479
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -128,20 +127,3 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!114 &6947899856104570192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7978916564476867321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70fc903f24220da73846f13feb01e561, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BloodCircleIndicator
-  bloodParticles:
-  - {fileID: 2526040643848686062, guid: 640f7d904c3c2788985607d23080fcfb, type: 3}
-  - {fileID: 7054858715927083874, guid: d13e0f319e86a64fcaaa5ae1e24c0e77, type: 3}
-  bloodLight: {fileID: 1291851348828379384}
-  activeDuration: 5

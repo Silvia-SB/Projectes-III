@@ -1,11 +1,12 @@
-Shader "Custom/PuddleHaloMaskedURP"
+Shader "Custom/PuddleEdgeHaloURP"
 {
     Properties
     {
         _MaskTex ("Mask Texture", 2D) = "white" {}
-        _Color ("Halo Color", Color) = (0.3, 0.65, 1, 0.3)
+        _EdgeColor ("Edge Color", Color) = (0.8, 0.65, 0.2, 0.35)
+        _EdgeWidth ("Edge Width", Range(0.001, 0.2)) = 0.04
+        _EdgeSoftness ("Edge Softness", Range(0.001, 0.2)) = 0.04
         _AlphaPower ("Alpha Power", Range(0, 2)) = 0.8
-        _EdgeSoftness ("Edge Softness", Range(0, 1)) = 0.25
     }
 
     SubShader
@@ -21,6 +22,7 @@ Shader "Custom/PuddleHaloMaskedURP"
         {
             Blend SrcAlpha OneMinusSrcAlpha
             ZWrite Off
+            ZTest LEqual
             Cull Off
 
             HLSLPROGRAM
@@ -45,9 +47,10 @@ Shader "Custom/PuddleHaloMaskedURP"
             };
 
             CBUFFER_START(UnityPerMaterial)
-                float4 _Color;
-                float _AlphaPower;
+                float4 _EdgeColor;
+                float _EdgeWidth;
                 float _EdgeSoftness;
+                float _AlphaPower;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -58,15 +61,35 @@ Shader "Custom/PuddleHaloMaskedURP"
                 return OUT;
             }
 
+            half GetMask(float2 uv)
+            {
+                half4 tex = SAMPLE_TEXTURE2D(_MaskTex, sampler_MaskTex, uv);
+                return max(tex.a, dot(tex.rgb, half3(0.299, 0.587, 0.114)));
+            }
+
             half4 frag(Varyings IN) : SV_Target
             {
-                half mask = SAMPLE_TEXTURE2D(_MaskTex, sampler_MaskTex, IN.uv).a;
+                float2 uv = IN.uv;
 
-                mask = smoothstep(_EdgeSoftness, 1.0, mask);
+                half center = GetMask(uv);
 
-                half alpha = mask * _Color.a * _AlphaPower;
+                half right = GetMask(uv + float2(_EdgeWidth, 0));
+                half left  = GetMask(uv - float2(_EdgeWidth, 0));
+                half up    = GetMask(uv + float2(0, _EdgeWidth));
+                half down  = GetMask(uv - float2(0, _EdgeWidth));
 
-                return half4(_Color.rgb, alpha);
+                half edgeDifference =
+                    abs(center - right) +
+                    abs(center - left) +
+                    abs(center - up) +
+                    abs(center - down);
+
+                half insideMask = smoothstep(0.15, 0.45, center);
+                half edge = smoothstep(0.05, _EdgeSoftness, edgeDifference);
+
+                half alpha = edge * insideMask * _EdgeColor.a * _AlphaPower;
+
+                return half4(_EdgeColor.rgb, alpha);
             }
 
             ENDHLSL

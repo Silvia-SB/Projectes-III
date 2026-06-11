@@ -205,6 +205,7 @@ public abstract class Arrow : MonoBehaviour
             transform.position = hitPoint - transform.forward * (arrowLength - penetrationDepth);
 
             PlayImpactParticles();
+            AudioManager.PlaySFX(other, hitPoint, type, isFullyCharged);
             OnHit(other);
             if (interactable != null) interactable.OnArrowHit(this);
             StickToTarget(other);

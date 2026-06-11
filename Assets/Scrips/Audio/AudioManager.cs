@@ -49,7 +49,20 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySFXAtPosition(AudioClip clip, Vector3 position, float volume = 1f)
+    public static void PlaySFX(Collider collider, Vector3 position, ArrowType arrowType, bool isFullyCharged)
+    {
+        if (Instance == null) return;
+
+        AudioProfileReference profileRef = collider.GetComponent<AudioProfileReference>();
+
+        if (profileRef == null) return;
+
+        AudioClip clip = profileRef.GetClipFromProfile(arrowType, isFullyCharged);
+
+        Instance.PlaySFXAtPosition(clip, position, profileRef.Profile.Volume);
+    }
+
+    private void PlaySFXAtPosition(AudioClip clip, Vector3 position, float volume)
     {
         if (clip == null) return;
 

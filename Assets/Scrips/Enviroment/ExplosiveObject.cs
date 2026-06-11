@@ -80,6 +80,13 @@ public class ExplosiveObject : Health, IResettable
         {
             if (rend is not ParticleSystemRenderer) rend.enabled = false;
         }
+
+        Arrow[] attachedArrows = GetComponentsInChildren<Arrow>();
+        foreach (Arrow arrow in attachedArrows)
+        {
+            arrow.ReturnToPool();
+        }
+
         Invoke(nameof(DeactivateObject), 5f);
     }
 

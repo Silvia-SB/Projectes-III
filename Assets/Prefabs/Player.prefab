@@ -202,6 +202,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2593594428364634398}
+  - {fileID: 3960632192989007311}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &3179686326946356990
@@ -713,6 +714,16 @@ MonoBehaviour:
   tiltSpeed: 3
   tiltAngle: 75
   impactShakeIntensity: 0.25
+  delayBeforeReset: 2
+  deathTitle: YOU DIED
+  deathPhrases:
+  - The village claims its tribute... but the debt is not yet paid.
+  - You cannot escape the altar forever.
+  - Death is no escape. The hunt begins anew.
+  - Your soul is bound to this place. Rise and suffer again.
+  - The sacrifice is only postponed.
+  - Run, little sacrifice. We enjoy the chase.
+  - The sickness of this land will not release you so easily.
 --- !u!1 &5058526205195725285
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,6 +851,7 @@ GameObject:
   - component: {fileID: 7967730479903371935}
   - component: {fileID: 2058203534710171234}
   - component: {fileID: 2982704929688488274}
+  - component: {fileID: 300381810213355761}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -895,7 +907,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 50
+  far clip plane: 1000
   field of view: 65
   orthographic: 0
   orthographic size: 5
@@ -985,6 +997,24 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2999
   deactivationDelay: 0.15
+--- !u!114 &300381810213355761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7323899031425264184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f48a2218992187b4ea23bc27c71eb0c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableRaycastDetector
+  playerCamera: {fileID: 6371337682864297730}
+  interactDistance: 20
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 2999
+  deactivationDelay: 0.3
 --- !u!1 &8037460454699995488
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,6 +1046,100 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7273315862708695570}
   m_LocalEulerAnglesHint: {x: 187.856, y: -268.603, z: 27.39201}
+--- !u!1001 &165656496643285963
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1115770617865515308}
+    m_Modifications:
+    - target: {fileID: 293595055460955936, guid: 44618700a93008840ab865d961df26d5, type: 3}
+      propertyPath: m_Name
+      value: Rain
+      objectReference: {fileID: 0}
+    - target: {fileID: 614268998068053849, guid: 44618700a93008840ab865d961df26d5, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 614268998068053849, guid: 44618700a93008840ab865d961df26d5, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime2
+      value: 40285
+      objectReference: {fileID: 0}
+    - target: {fileID: 614268998068053849, guid: 44618700a93008840ab865d961df26d5, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 0.7137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 614268998068053849, guid: 44618700a93008840ab865d961df26d5, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.a
+      value: 0.8117647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799483695903976964, guid: 44618700a93008840ab865d961df26d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799483695903976964, guid: 44618700a93008840ab865d961df26d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799483695903976964, guid: 44618700a93008840ab865d961df26d5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 15.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799483695903976964, guid: 44618700a93008840ab865d961df26d5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799483695903976964, guid: 44618700a93008840ab865d961df26d5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799483695903976964, guid: 44618700a93008840ab865d961df26d5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799483695903976964, guid: 44618700a93008840ab865d961df26d5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799483695903976964, guid: 44618700a93008840ab865d961df26d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799483695903976964, guid: 44618700a93008840ab865d961df26d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799483695903976964, guid: 44618700a93008840ab865d961df26d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262313888798961935, guid: 44618700a93008840ab865d961df26d5, type: 3}
+      propertyPath: lengthInSec
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262313888798961935, guid: 44618700a93008840ab865d961df26d5, type: 3}
+      propertyPath: ShapeModule.type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262313888798961935, guid: 44618700a93008840ab865d961df26d5, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262313888798961935, guid: 44618700a93008840ab865d961df26d5, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 44618700a93008840ab865d961df26d5, type: 3}
+--- !u!4 &3960632192989007311 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3799483695903976964, guid: 44618700a93008840ab865d961df26d5, type: 3}
+  m_PrefabInstance: {fileID: 165656496643285963}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4413614301005049031
 PrefabInstance:
   m_ObjectHideFlags: 0

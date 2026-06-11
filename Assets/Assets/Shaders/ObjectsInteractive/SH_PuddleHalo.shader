@@ -1,4 +1,4 @@
-Shader "Custom/PuddleEdgeHaloURP"
+Shader "Custom/PuddleHalo"
 {
     Properties
     {

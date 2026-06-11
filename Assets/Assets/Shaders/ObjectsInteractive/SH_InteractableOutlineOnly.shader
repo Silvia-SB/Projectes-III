@@ -1,9 +1,10 @@
-Shader "Custom/InteractableOutlineOnlyURP"
+Shader "Custom/InteractableOutlineOnly"
 {
     Properties
     {
         _OutlineColor ("Outline Color", Color) = (1,0.8,0.2,0.35)
         _OutlineWidth ("Outline Width", Range(0.001,0.08)) = 0.02
+        _OutlineIntensity ("Outline Intensity", Range(0.5,3)) = 1
     }
 
     SubShader
@@ -44,10 +45,9 @@ Shader "Custom/InteractableOutlineOnlyURP"
             };
 
             CBUFFER_START(UnityPerMaterial)
-
                 float4 _OutlineColor;
                 float _OutlineWidth;
-
+                float _OutlineIntensity;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -66,7 +66,8 @@ Shader "Custom/InteractableOutlineOnlyURP"
 
             half4 frag(Varyings IN) : SV_Target
             {
-                return _OutlineColor;
+                half3 color = _OutlineColor.rgb * _OutlineIntensity;
+                return half4(color, _OutlineColor.a);
             }
 
             ENDHLSL

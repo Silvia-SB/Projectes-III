@@ -39,10 +39,7 @@ public class ArrowPool : MonoBehaviour, IResettable
         
         Arrow arrow = pool.Dequeue();
         
-        if (arrow.gameObject.activeInHierarchy)
-        {
-            arrow.ReturnToPool();
-        }
+        arrow.ReturnToPool();
         
         arrow.gameObject.SetActive(true);
         pool.Enqueue(arrow);

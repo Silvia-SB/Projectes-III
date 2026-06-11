@@ -274,9 +274,14 @@ public abstract class Arrow : MonoBehaviour
 
     public virtual void ReturnToPool()
     {
-        if (!gameObject.activeInHierarchy) return;
         
         CancelInvoke();
+
+        foreach (var mesh in GetComponentsInChildren<MeshRenderer>(true))
+        {
+            mesh.enabled = true;
+        }
+
         gameObject.SetActive(false);
         if (rb != null) 
         {

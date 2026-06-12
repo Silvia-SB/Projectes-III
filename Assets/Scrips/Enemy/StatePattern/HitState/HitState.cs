@@ -27,8 +27,10 @@ public class HitState : IEnemyState
             case EnemyType.Cuervo:
                 animator.SetTrigger("Fly");
                 break;
-            default:
-                if(enemyController.GetCurrentHitBodyPart().Equals(BodyPart.Head)) break;
+            case EnemyType.Desatado:
+                animator.SetTrigger(enemyController.GetCurrentHitBodyPart().ToString());
+                break;
+            case EnemyType.Marchito:
                 animator.SetTrigger(enemyController.GetCurrentHitBodyPart().ToString());
                 break;
         }

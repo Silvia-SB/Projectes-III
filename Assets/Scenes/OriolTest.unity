@@ -51382,7 +51382,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
-  spawnSound: {fileID: 8300000, guid: da2a7f4437c7731449b407b3fa21631a, type: 3}
+  spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
 --- !u!1 &664538678
@@ -122029,15 +122029,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 927230547217722885, guid: d2c2d26826e1dff699b1698f2f287c6e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 927230547217722885, guid: d2c2d26826e1dff699b1698f2f287c6e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3396240910240185468, guid: d2c2d26826e1dff699b1698f2f287c6e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7212372440452542445, guid: d2c2d26826e1dff699b1698f2f287c6e, type: 3}
       propertyPath: playerHealth
@@ -122049,7 +122049,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8581635651495701779, guid: d2c2d26826e1dff699b1698f2f287c6e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -155383,7 +155383,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
-  spawnSound: {fileID: 8300000, guid: 240981a7fa52275409deee7d96d090d7, type: 3}
+  spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
 --- !u!1 &1980893872

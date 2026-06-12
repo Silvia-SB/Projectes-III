@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioSFXManager : MonoBehaviour
 {
-    public static AudioManager Instance { get; private set; }
+    public static AudioSFXManager Instance { get; private set; }
 
     [Header("SFX Pool")]
     [SerializeField] private int poolSize = 30;
@@ -16,14 +16,6 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
 
         CreatePool();
     }

@@ -47,7 +47,6 @@ public class TransitionManager : MonoBehaviour
     {
         isTransitioning = true;
 
-        // Solo encendemos el texto si nos han pasado un texto válido
         if (titleText != null && !string.IsNullOrEmpty(title))
         {
             titleText.text = title;

@@ -43,7 +43,7 @@ public abstract class Arrow : MonoBehaviour
             originalAngularDrag = rb.angularDamping;
         }
         col = GetComponent<Collider>();
-        if (col != null) col.isTrigger = true; // Evita que Unity expulse la flecha con físicas
+        if (col != null) col.isTrigger = true;
         sqrDistanceToChangeLayer = distanceToChangeLayer * distanceToChangeLayer;
     }
 

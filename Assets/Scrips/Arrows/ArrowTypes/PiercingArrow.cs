@@ -33,7 +33,7 @@ public class PiercingArrow : Arrow
         {
             PlayImpactParticles();
             OnHit(other);
-            return false; // Continúa el vuelo a través del líquido/superficie
+            return false;
         }
 
         if (other.CompareTag("Wall") || other.CompareTag("Explosive"))

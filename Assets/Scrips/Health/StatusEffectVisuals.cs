@@ -34,6 +34,7 @@ public class StatusEffectVisuals : MonoBehaviour
         statusManager.OnStatusApplied += HandleStatusApplied;
         statusManager.OnStatusRemoved += HandleStatusRemoved;
         statusManager.OnAllStatusesCleared += HandleAllStatusesCleared;
+        HandleAllStatusesCleared();
     }
 
     private void OnDisable()
@@ -51,7 +52,10 @@ public class StatusEffectVisuals : MonoBehaviour
     {
         foreach (var visual in statusVisuals)
         {
-            SetParticlesActive(visual.damageType, false);
+            foreach (var ps in visual.particles)
+            {
+                if (ps != null) ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            }
         }
     }
 

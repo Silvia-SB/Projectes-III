@@ -103,7 +103,7 @@ public class AimMarkerUI : MonoBehaviour
                 ShowCrosshair();
                 if (currentAlpha < 0.05f)
                 {
-                    crosshairRect.position = screenPos; // La primera vez aparece directamente en el sitio
+                    crosshairRect.position = screenPos; 
                 }
             }
             

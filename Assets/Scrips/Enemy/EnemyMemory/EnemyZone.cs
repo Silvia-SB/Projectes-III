@@ -26,10 +26,6 @@ public class EnemyZone : MonoBehaviour, IResettable
     [Header("Zone Behavior")]
     [SerializeField] private bool ignoreTriggerExit = true;
 
-    [Header("Zone Limits")]
-    [SerializeField] private int maxActiveEnemies = 40;
-    [SerializeField] private float minDistanceToRemove = 15f;
-
     [Header("Visibility Settings")]
     [SerializeField] private LayerMask obstacleMask;
     
@@ -62,7 +58,6 @@ public class EnemyZone : MonoBehaviour, IResettable
             playerTransform = other.transform;
             hasSpawned = true;
             if(spawnSound != null && audioManager != null) audioManager.PlayClip(spawnSound, volume, pitch);
-            ManageEnemiesLimit();
         }
     }
 
@@ -71,57 +66,6 @@ public class EnemyZone : MonoBehaviour, IResettable
         if (!ignoreTriggerExit && other.CompareTag("Player"))
         {
             hasSpawned = false;
-        }
-    }
-
-    private void ManageEnemiesLimit()
-    {
-        if (playerTransform == null) return;
-
-        int totalToSpawn = 0;
-        foreach (var data in zoneData)
-        {
-            totalToSpawn += Mathf.Max(0, data.quantity - data.totalSpawnedEnemies);
-        }
-
-        List<EnemyController> activeEnemies = new List<EnemyController>();
-        if (EnemyPool.Instance != null)
-        {
-            foreach (Transform child in EnemyPool.Instance.transform)
-            {
-                if (child.gameObject.activeInHierarchy)
-                {
-                    EnemyController enemy = child.GetComponent<EnemyController>();
-                    if (enemy != null && !enemy.IsDead())
-                    {
-                        activeEnemies.Add(enemy);
-                    }
-                }
-            }
-        }
-
-        int totalActive = activeEnemies.Count;
-        int overLimit = (totalActive + totalToSpawn) - maxActiveEnemies;
-
-        if (overLimit > 0)
-        {
-            activeEnemies.Sort((a, b) => a.SpawnTime.CompareTo(b.SpawnTime));
-
-            int removedCount = 0;
-            foreach (var enemy in activeEnemies)
-            {
-                if (removedCount >= overLimit) break;
-
-                float distance = Vector3.Distance(playerTransform.position, enemy.transform.position);
-                if (distance >= minDistanceToRemove)
-                {
-                    if (!IsPointVisibleToCamera(enemy.transform.position))
-                    {
-                        enemy.Despawn();
-                        removedCount++;
-                    }
-                }
-            }
         }
     }
 

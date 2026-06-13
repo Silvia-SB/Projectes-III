@@ -23,6 +23,9 @@ public class EnemyZone : MonoBehaviour, IResettable
     [Header("Spawn Settings")]
     [SerializeField] private float distanceToSpawn = 10f;
 
+    [Header("Zone Behavior")]
+    [SerializeField] private bool ignoreTriggerExit = true;
+
     [Header("Zone Limits")]
     [SerializeField] private int maxActiveEnemies = 40;
     [SerializeField] private float minDistanceToRemove = 15f;
@@ -65,7 +68,7 @@ public class EnemyZone : MonoBehaviour, IResettable
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!ignoreTriggerExit && other.CompareTag("Player"))
         {
             hasSpawned = false;
         }

@@ -434,9 +434,10 @@ MonoBehaviour:
     spawnCount: 1
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 90
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -462,8 +463,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 39.642708, y: 1, z: 38.28955}
-  m_Center: {x: 11.659122, y: 0, z: -10.327972}
+  m_Size: {x: 39.642708, y: 1, z: 63.624817}
+  m_Center: {x: 11.659122, y: 0, z: -6.4815063}
 --- !u!1 &1049013745000803282
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,6 +717,7 @@ Transform:
   - {fileID: 1610111810277680333}
   - {fileID: 8775128010234770135}
   - {fileID: 3808676852573873709}
+  - {fileID: 7329310361289876680}
   m_Father: {fileID: 127220984150720652}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1064537519842538964
@@ -737,8 +739,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 21.302887, y: 0.9137273, z: 34.576294}
-  m_Center: {x: 27.540222, y: -2.3909075, z: -5.5963135}
+  m_Size: {x: 52.7993, y: 9.920493, z: 44.31955}
+  m_Center: {x: 11.792015, y: 2.112475, z: -10.467941}
 --- !u!114 &2136200448748737967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -780,9 +782,10 @@ MonoBehaviour:
     spawnCount: 15
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 120
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -876,7 +879,7 @@ Transform:
   m_GameObject: {fileID: 2522106468272281031}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.07, y: -0.96, z: -18.33}
+  m_LocalPosition: {x: -5.45, y: -0.96, z: -20.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -967,8 +970,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 32.55374, y: 3.8404791, z: 33.526154}
-  m_Center: {x: 20.611984, y: -0.9275316, z: -16.696701}
+  m_Size: {x: 32.55374, y: 13.1168, z: 33.526154}
+  m_Center: {x: 20.611984, y: 3.7106295, z: -16.696701}
 --- !u!114 &1854295560767461598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -996,9 +999,10 @@ MonoBehaviour:
     spawnCount: 1
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 150
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -1038,6 +1042,7 @@ Transform:
   m_Children:
   - {fileID: 3342176412194649113}
   - {fileID: 5292470200840976720}
+  - {fileID: 6050164275450532853}
   m_Father: {fileID: 127220984150720652}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4449480574533366320
@@ -1067,9 +1072,17 @@ MonoBehaviour:
     spawnCount: 1
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 90
+  - spawnPoint: {fileID: 6050164275450532853}
+    enemyType: 0
+    quantity: 1
+    spawnInterval: 4
+    spawnCount: 3
+    currentTimer: 0
+    totalSpawnedEnemies: 0
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -1095,8 +1108,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 46.464905, y: 1.2537352, z: 21.280273}
-  m_Center: {x: -5.8358765, y: 0.12686759, z: 6.757202}
+  m_Size: {x: 76.02191, y: 1.2537352, z: 21.280273}
+  m_Center: {x: -20.61438, y: 0.12686759, z: 6.757202}
 --- !u!1 &3127628821657523045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,6 +1140,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6671366776807300797}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3410527806858253267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6050164275450532853}
+  m_Layer: 0
+  m_Name: Spawn2 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6050164275450532853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3410527806858253267}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -107.2, y: -0.292, z: -10.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6565790490810540476}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3522594071820733932
 GameObject:
@@ -1214,8 +1258,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 31.184998, y: 1, z: 29.666107}
-  m_Center: {x: 18.851791, y: 0, z: -28.978592}
+  m_Size: {x: 35.51284, y: 2.2460349, z: 48.91327}
+  m_Center: {x: 16.687849, y: 0.6230168, z: -19.355011}
 --- !u!114 &6721289555284543120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1250,9 +1294,10 @@ MonoBehaviour:
     spawnCount: 2
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 150
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -1408,7 +1453,7 @@ Transform:
   m_GameObject: {fileID: 3875515944942886043}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.85, y: -0.96, z: -23.8}
+  m_LocalPosition: {x: -15.05, y: -0.59, z: -29.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1469,8 +1514,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 40.282883, y: 1, z: 32.010254}
-  m_Center: {x: -14.353004, y: 0, z: -20.249573}
+  m_Size: {x: 68.19745, y: 7.85427, z: 39.869873}
+  m_Center: {x: -0.39572144, y: 3.427135, z: -3.6341858}
 --- !u!114 &4758966069254458020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1505,9 +1550,10 @@ MonoBehaviour:
     spawnCount: 5
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 150
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -1674,9 +1720,10 @@ MonoBehaviour:
     spawnCount: 3
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 50
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -1800,9 +1847,10 @@ MonoBehaviour:
     spawnCount: 4
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 150
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -1828,8 +1876,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 32.35646, y: 13.60068, z: 33.50641}
-  m_Center: {x: -0.14955902, y: -2.7174544, z: 2.4640198}
+  m_Size: {x: 73.49893, y: 13.60068, z: 33.50641}
+  m_Center: {x: 20.421677, y: -2.7174544, z: 2.4640198}
 --- !u!1 &4639195993943105905
 GameObject:
   m_ObjectHideFlags: 0
@@ -2043,9 +2091,10 @@ MonoBehaviour:
     spawnCount: 1
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 50
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -2255,13 +2304,14 @@ MonoBehaviour:
   - spawnPoint: {fileID: 4536574013552923893}
     enemyType: 1
     quantity: 1
-    spawnInterval: 2
-    spawnCount: 4
+    spawnInterval: 3
+    spawnCount: 3
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 150
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -2330,9 +2380,10 @@ MonoBehaviour:
     spawnCount: 2
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 50
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -2506,8 +2557,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 31.760834, y: 2.24436, z: 34.64438}
-  m_Center: {x: 2.4400482, y: 0.62218, z: 20.619156}
+  m_Size: {x: 70.454445, y: 2.24436, z: 34.64438}
+  m_Center: {x: -16.906757, y: 0.62218, z: 20.619156}
 --- !u!114 &1622416584061465313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2528,9 +2579,10 @@ MonoBehaviour:
     spawnCount: 1
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 100
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -2693,9 +2745,10 @@ MonoBehaviour:
     spawnCount: 8
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 150
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -2721,8 +2774,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 31.373718, y: 2.8303723, z: 40.750183}
-  m_Center: {x: -34.90097, y: 2.4771712, z: 7.101715}
+  m_Size: {x: 31.373718, y: 16.909218, z: 34.045208}
+  m_Center: {x: -34.90097, y: 9.516594, z: 10.454218}
 --- !u!1 &5726147096931685366
 GameObject:
   m_ObjectHideFlags: 0
@@ -3119,9 +3172,10 @@ MonoBehaviour:
     spawnCount: 1
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 50
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -3187,8 +3241,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 31.734802, y: 3.3477714, z: 32.603333}
-  m_Center: {x: 12.564972, y: -1.1738855, z: -1.9183044}
+  m_Size: {x: 63.344963, y: 4.749783, z: 47.220703}
+  m_Center: {x: 7.339862, y: -0.47287813, z: -9.22699}
 --- !u!114 &6404398538294578431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3234,19 +3288,20 @@ MonoBehaviour:
     enemyType: 1
     quantity: 3
     spawnInterval: 5
-    spawnCount: 8
+    spawnCount: 10
     currentTimer: 0
     totalSpawnedEnemies: 0
   - spawnPoint: {fileID: 2516379696792789396}
     enemyType: 2
-    quantity: 5
+    quantity: 3
     spawnInterval: 1
-    spawnCount: 1
+    spawnCount: 3
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 200
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -3346,6 +3401,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1227125472386872043}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6936412188962301252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4121429057971576375}
+  m_Layer: 0
+  m_Name: Spawn2
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4121429057971576375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6936412188962301252}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.2, y: 0.07, z: 17.78}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4681768652757225659}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7032478462074346213
 GameObject:
   m_ObjectHideFlags: 0
@@ -3425,9 +3511,10 @@ MonoBehaviour:
     spawnCount: 2
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 150
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -3453,8 +3540,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 32.13411, y: 13.60068, z: 24.383087}
-  m_Center: {x: -6.6638412, y: -2.7174544, z: 6.4226837}
+  m_Size: {x: 32.13411, y: 19.477749, z: 29.57904}
+  m_Center: {x: -6.6638412, y: 0.22108078, z: 9.02066}
 --- !u!1 &7093172084708538905
 GameObject:
   m_ObjectHideFlags: 0
@@ -3573,7 +3660,7 @@ Transform:
   m_GameObject: {fileID: 7193283359144086871}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.59, y: 1.06, z: -4.255}
+  m_LocalPosition: {x: -1.59, y: 1.06, z: 3.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3673,6 +3760,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1004231951707551417}
+  - {fileID: 4121429057971576375}
   m_Father: {fileID: 127220984150720652}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8413924859507653736
@@ -3711,14 +3799,22 @@ MonoBehaviour:
   zoneData:
   - spawnPoint: {fileID: 1004231951707551417}
     enemyType: 2
-    quantity: 2
+    quantity: 1
     spawnInterval: 3
     spawnCount: 1
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 70
+  - spawnPoint: {fileID: 4121429057971576375}
+    enemyType: 2
+    quantity: 1
+    spawnInterval: 3
+    spawnCount: 1
+    currentTimer: 0
+    totalSpawnedEnemies: 0
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -3812,8 +3908,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 24.861221, y: 0.9137273, z: 32.803406}
-  m_Center: {x: 16.765724, y: -2.3909075, z: -14.135834}
+  m_Size: {x: 49.914963, y: 13.423742, z: 32.803406}
+  m_Center: {x: 4.2388535, y: 3.8641005, z: -14.135834}
 --- !u!114 &6907639594058086762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3855,9 +3951,10 @@ MonoBehaviour:
     spawnCount: 8
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 150
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -3891,7 +3988,7 @@ Transform:
   m_GameObject: {fileID: 8672607769501706262}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.2992203, z: -0, w: 0.9541841}
-  m_LocalPosition: {x: -71.09, y: 0.6999999, z: -34.87}
+  m_LocalPosition: {x: -71.41, y: 0.6999999, z: -34.4}
   m_LocalScale: {x: 0.4363, y: 1, z: 0.123585604}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3942,9 +4039,10 @@ MonoBehaviour:
     spawnCount: 3
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 1000
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -4027,8 +4125,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 25.243073, y: 1, z: 29.741821}
-  m_Center: {x: -4.7621, y: 0, z: -29.464783}
+  m_Size: {x: 36.380276, y: 12.952647, z: 29.741821}
+  m_Center: {x: 0.806522, y: 5.9763236, z: -29.464785}
 --- !u!114 &404352627780326350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4063,9 +4161,10 @@ MonoBehaviour:
     spawnCount: 3
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 150
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
@@ -4126,8 +4225,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 27.836235, y: 1, z: 46.163635}
-  m_Center: {x: 8.881344, y: 0, z: -13.143402}
+  m_Size: {x: 27.836235, y: 1, z: 85.89731}
+  m_Center: {x: 8.881344, y: 0, z: 6.7234344}
 --- !u!114 &7174296534466397148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4152,18 +4251,50 @@ MonoBehaviour:
     enemyType: 1
     quantity: 1
     spawnInterval: 4
-    spawnCount: 1
+    spawnCount: 2
     currentTimer: 0
     totalSpawnedEnemies: 0
-  distanceToSpawn: 0.5
-  maxActiveEnemies: 140
-  minDistanceToRemove: 90
+  distanceToSpawn: 5
+  ignoreTriggerExit: 1
+  maxActiveEnemies: 40
+  minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+--- !u!1 &8981847480167912638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7329310361289876680}
+  m_Layer: 0
+  m_Name: Spawn1 (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7329310361289876680
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981847480167912638}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.2, y: -1.05, z: -7.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 827782480513398416}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9064745961449335508
 GameObject:
   m_ObjectHideFlags: 0

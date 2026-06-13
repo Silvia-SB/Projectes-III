@@ -86,13 +86,9 @@ public class AchievementManager : MonoBehaviour
             if (data != null)
             {
                 unlockedAchievements.Add(id);
-                Debug.Log("Logro Desbloqueado: " + data.title);
                 OnAchievementUnlocked?.Invoke(data);
             }
-            else
-            {
-                Debug.LogWarning($"Trying to get an achivement fail.ID doesnt exist: {id}");
-            }
+
         }
     }
 

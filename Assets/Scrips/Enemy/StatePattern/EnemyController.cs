@@ -222,7 +222,6 @@ public class EnemyController : MonoBehaviour, ISlowable
 
     private void ApplyHitAnimation(BodyPart bodyPart)
     {
-        // BLOQUEO: Si el enemigo ya está muerto, ignoramos los impactos extra para no interrumpir el temporizador del Ragdoll.
         if (stateMachine != null && stateMachine.CurrentState == stateMachine.DeathState) return;
 
         currentHitBodyPart = bodyPart;
@@ -232,7 +231,6 @@ public class EnemyController : MonoBehaviour, ISlowable
     
     public void PrepareDeath()
     {
-        // Apagamos el movimiento y el NavMesh inmediatamente
         if (navMeshAgent != null) navMeshAgent.enabled = false;
         if (enemyMovement != null) enemyMovement.enabled = false;
         if (enemyAttack != null) enemyAttack.enabled = false;
@@ -245,7 +243,6 @@ public class EnemyController : MonoBehaviour, ISlowable
 
         if (mainCollider != null) mainCollider.enabled = false;
 
-        // Desactivamos específicamente las Hitboxes para que no atrapen más flechas
         if (hitboxManager != null && hitboxManager.hitboxGroups != null)
         {
             foreach (var group in hitboxManager.hitboxGroups)
@@ -272,11 +269,14 @@ public class EnemyController : MonoBehaviour, ISlowable
 
         if (enemyContagion != null) enemyContagion.enabled = true;
 
-        if (statusEffectManager != null) statusEffectManager.enabled = true;
+        if (statusEffectManager != null)
+        {
+            statusEffectManager.enabled = true;
+            statusEffectManager.ClearAllStatuses(); 
+        }
 
         if (mainCollider != null) mainCollider.enabled = true;
 
-        // Reactivamos las Hitboxes para el siguiente ciclo
         if (hitboxManager != null && hitboxManager.hitboxGroups != null)
         {
             foreach (var group in hitboxManager.hitboxGroups)

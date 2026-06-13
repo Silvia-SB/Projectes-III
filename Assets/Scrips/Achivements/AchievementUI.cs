@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections.Generic; // Necesario para usar Queue (Colas)
+using System.Collections.Generic; 
 
 public class AchievementUI : MonoBehaviour
 {

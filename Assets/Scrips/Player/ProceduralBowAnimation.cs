@@ -46,7 +46,7 @@ public class ProceduralBowAnimation : MonoBehaviour
 
     public float CurrentRetractionWeight => currentRetractionWeight;
     public bool IsAligningBow => isAligningBow;
-    public float CurrentArrowLength { get; set; } = 1f; // The Shooter sets this when changing arrows
+    public float CurrentArrowLength { get; set; } = 1f;
 
     private void Start()
     {

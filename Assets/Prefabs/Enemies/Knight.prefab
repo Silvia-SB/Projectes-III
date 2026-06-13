@@ -5161,6 +5161,8 @@ GameObject:
   - component: {fileID: 1041451621781544518}
   - component: {fileID: -3233332556817462238}
   - component: {fileID: -7889403462968811545}
+  - component: {fileID: 7481923848003320629}
+  - component: {fileID: -4007839935214137699}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Enemy
@@ -5565,6 +5567,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7481923848003320629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336821644728294434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6effa2c5189f549901cf9d6d02421c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationDesynchronizer
+  randomizeSpeed: 1
+--- !u!114 &-4007839935214137699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336821644728294434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9fa5bafc3ccac4f8832f0e7d0be58c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationSpeedSync
+  baseSpeed: 2
+  minAnimSpeed: 0.1
+  useAnimatorParameter: 1
+  speedMultiplierParam: WalkSpeedMultiplier
 --- !u!1 &2887271817733120471
 GameObject:
   m_ObjectHideFlags: 0

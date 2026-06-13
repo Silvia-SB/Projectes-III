@@ -2028,6 +2028,8 @@ GameObject:
   - component: {fileID: -3836260766351262396}
   - component: {fileID: 8733170655142844865}
   - component: {fileID: 5882120876892395785}
+  - component: {fileID: -314783192522051370}
+  - component: {fileID: 6177704227584796707}
   m_Layer: 11
   m_Name: Desatado
   m_TagString: Enemy
@@ -2491,6 +2493,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-314783192522051370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934897180633351276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6effa2c5189f549901cf9d6d02421c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationDesynchronizer
+  randomizeSpeed: 1
+--- !u!114 &6177704227584796707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934897180633351276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9fa5bafc3ccac4f8832f0e7d0be58c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationSpeedSync
+  baseSpeed: 2
+  minAnimSpeed: 0.1
+  useAnimatorParameter: 1
+  speedMultiplierParam: WalkSpeedMultiplier
 --- !u!1 &1976940937217707329
 GameObject:
   m_ObjectHideFlags: 0

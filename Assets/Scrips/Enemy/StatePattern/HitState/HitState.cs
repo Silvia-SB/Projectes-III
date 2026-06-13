@@ -28,9 +28,8 @@ public class HitState : IEnemyState
                 animator.SetTrigger("Fly");
                 break;
             case EnemyType.Desatado:
-                animator.SetTrigger(enemyController.GetCurrentHitBodyPart().ToString());
-                break;
             case EnemyType.Marchito:
+                if(enemyController.GetCurrentHitBodyPart().Equals(BodyPart.Head)) break;
                 animator.SetTrigger(enemyController.GetCurrentHitBodyPart().ToString());
                 break;
         }

@@ -14667,6 +14667,8 @@ GameObject:
   - component: {fileID: -8047911977466984621}
   - component: {fileID: 637603111147342337}
   - component: {fileID: -8091716852294328811}
+  - component: {fileID: 2780116376789628020}
+  - component: {fileID: -5579543726192320970}
   m_Layer: 11
   m_Name: Marchito
   m_TagString: Enemy
@@ -15113,6 +15115,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2780116376789628020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6051174467063479888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6effa2c5189f549901cf9d6d02421c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationDesynchronizer
+  randomizeSpeed: 1
+--- !u!114 &-5579543726192320970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6051174467063479888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9fa5bafc3ccac4f8832f0e7d0be58c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationSpeedSync
+  baseSpeed: 2
+  minAnimSpeed: 0.1
+  useAnimatorParameter: 1
+  speedMultiplierParam: WalkSpeedMultiplier
 --- !u!1 &6116807658882497431
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Linq;
 
 public class DeactivateOnHits : MonoBehaviour, IDamageable, IResettable
 {
@@ -27,9 +26,18 @@ public class DeactivateOnHits : MonoBehaviour, IDamageable, IResettable
 
     private void ProcessDamage(float amount, DamageType damageType)
     {
-        if (validDamageTypes != null && validDamageTypes.Length > 0 && !validDamageTypes.Contains(damageType))
+        if (validDamageTypes != null && validDamageTypes.Length > 0)
         {
-            return;
+            bool isValid = false;
+            for (int i = 0; i < validDamageTypes.Length; i++)
+            {
+                if (validDamageTypes[i] == damageType)
+                {
+                    isValid = true;
+                    break;
+                }
+            }
+            if (!isValid) return;
         }
 
         currentHealth -= amount;

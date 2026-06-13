@@ -58,6 +58,8 @@ GameObject:
   - component: {fileID: -30758912361601882}
   - component: {fileID: -2474849797567084875}
   - component: {fileID: -7306466577102524366}
+  - component: {fileID: -718284126311511251}
+  - component: {fileID: 8321397794235285982}
   m_Layer: 11
   m_Name: 'Chaman '
   m_TagString: Enemy
@@ -475,6 +477,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-718284126311511251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510362098878087543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6effa2c5189f549901cf9d6d02421c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationDesynchronizer
+  randomizeSpeed: 1
+--- !u!114 &8321397794235285982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510362098878087543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9fa5bafc3ccac4f8832f0e7d0be58c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationSpeedSync
+  baseSpeed: 2
+  minAnimSpeed: 0.1
+  useAnimatorParameter: 1
+  speedMultiplierParam: WalkSpeedMultiplier
 --- !u!1 &904982606931509347
 GameObject:
   m_ObjectHideFlags: 0

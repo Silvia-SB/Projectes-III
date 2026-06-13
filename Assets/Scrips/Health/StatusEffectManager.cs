@@ -88,8 +88,11 @@ public class StatusEffectManager : MonoBehaviour, IResettable
     {
         for (int i = activeKeys.Count - 1; i >= 0; i--)
         {
+            if (i >= activeKeys.Count) continue;
+
             DamageType key = activeKeys[i];
-            DoTInstance dot = activeStatuses[key];
+            
+            if (!activeStatuses.TryGetValue(key, out DoTInstance dot)) continue;
             
             dot.Timer += Time.deltaTime;
             
@@ -101,13 +104,13 @@ public class StatusEffectManager : MonoBehaviour, IResettable
                 
                 if (!gameObject.activeInHierarchy) return;
                 
+                if (!activeStatuses.ContainsKey(key)) continue;
+
                 dot.TicksRemaining--;
                 
                 if (dot.TicksRemaining <= 0)
                 {
-                    activeStatuses.Remove(key);
-                    activeKeys.RemoveAt(i);
-                    OnStatusRemoved?.Invoke(key);
+                    RemoveStatus(key);
                 }
             }
         }

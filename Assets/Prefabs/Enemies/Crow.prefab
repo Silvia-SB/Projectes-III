@@ -9975,6 +9975,7 @@ GameObject:
   - component: {fileID: 5520097545110572398}
   - component: {fileID: 6070992248170698539}
   - component: {fileID: 5344330366952595112}
+  - component: {fileID: -6909051825872830389}
   m_Layer: 11
   m_Name: Crow
   m_TagString: Enemy
@@ -10041,6 +10042,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 8308106485243228034}
   enemyAttack: {fileID: 4054868463231653292}
   wildEnemyHealth: {fileID: 0}
+  enemyAudio: {fileID: -6909051825872830389}
 --- !u!114 &7301223525564569076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10258,7 +10260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
-  profile: {fileID: 0}
+  profile: {fileID: 11400000, guid: 3995f83cec327e749babc92d0730609f, type: 2}
 --- !u!82 &5344330366952595112
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10272,7 +10274,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.33
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -10281,7 +10283,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -10316,7 +10318,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -10356,6 +10358,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-6909051825872830389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7829625633957191571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5018232565de0e743a59d7b7d0221743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAudio
+  source: {fileID: 5344330366952595112}
+  walkSound:
+    clip: {fileID: 8300000, guid: 4211857b4154b454ab911f0370d75127, type: 3}
+    startTime: 0
+    endTime: 0
+    volume: 0.33
+    loop: 1
+  attackSound:
+    clip: {fileID: 0}
+    startTime: 0
+    endTime: 0
+    volume: 0.33
+    loop: 0
+  deathSound:
+    clip: {fileID: 8300000, guid: 2b393acfe5204ac439b086d13b0e9a94, type: 3}
+    startTime: 0
+    endTime: 1
+    volume: 0.33
+    loop: 0
 --- !u!1 &8694612002695990285
 GameObject:
   m_ObjectHideFlags: 0

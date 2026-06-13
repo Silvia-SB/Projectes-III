@@ -294,7 +294,8 @@ public class EnemyController : MonoBehaviour, ISlowable
         if (!IsInAttackRange() || !IsFacingTarget()) return;
 
         PerformAttack(); 
-        enemyAudio.PlayAttackSound();
+        if(EnemyType.Cuervo.Equals(config.type) || EnemyType.Medico.Equals(config.type)) return;
+            enemyAudio.PlayAttackSound();
     }
 
     public bool IsDead()

@@ -5163,6 +5163,7 @@ GameObject:
   - component: {fileID: -7889403462968811545}
   - component: {fileID: 7481923848003320629}
   - component: {fileID: -4007839935214137699}
+  - component: {fileID: -5433995707604106906}
   m_Layer: 11
   m_Name: Knight
   m_TagString: Enemy
@@ -5229,7 +5230,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 1156294259957350239}
   enemyAttack: {fileID: -5975438004140116982}
   wildEnemyHealth: {fileID: 0}
-  enemyAudio: {fileID: 0}
+  enemyAudio: {fileID: -5433995707604106906}
 --- !u!114 &-4195929601694142187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5482,9 +5483,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -929580528450368524, guid: 8d932fa8a05d9d6439281330aa830134, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 671a1c5efebc04e4e94ca0e9dad20835, type: 3}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.31
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5597,6 +5598,37 @@ MonoBehaviour:
   minAnimSpeed: 0.4
   useAnimatorParameter: 1
   speedMultiplierParam: WalkSpeedMultiplier
+--- !u!114 &-5433995707604106906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336821644728294434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5018232565de0e743a59d7b7d0221743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAudio
+  source: {fileID: -7889403462968811545}
+  walkSound:
+    clip: {fileID: 8300000, guid: 671a1c5efebc04e4e94ca0e9dad20835, type: 3}
+    startTime: 0
+    endTime: 0
+    volume: 0.33
+    loop: 1
+  attackSound:
+    clip: {fileID: 8300000, guid: eb72abd5deadf8e4b9b3c9bfd694489f, type: 3}
+    startTime: 0.1
+    endTime: 0
+    volume: 0.33
+    loop: 0
+  deathSound:
+    clip: {fileID: 8300000, guid: 1cb7d2438c4ec714bb7e2a36e5cd924a, type: 3}
+    startTime: 0
+    endTime: 3.5
+    volume: 0.33
+    loop: 0
 --- !u!1 &2887271817733120471
 GameObject:
   m_ObjectHideFlags: 0

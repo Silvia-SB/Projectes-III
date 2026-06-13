@@ -14669,6 +14669,7 @@ GameObject:
   - component: {fileID: -8091716852294328811}
   - component: {fileID: 2780116376789628020}
   - component: {fileID: -5579543726192320970}
+  - component: {fileID: 2338807309182774362}
   m_Layer: 11
   m_Name: Marchito
   m_TagString: Enemy
@@ -14779,7 +14780,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 6322685714864630693}
   enemyAttack: {fileID: 2494810276857505384}
   wildEnemyHealth: {fileID: 0}
-  enemyAudio: {fileID: 0}
+  enemyAudio: {fileID: 2338807309182774362}
 --- !u!114 &1017574838017099679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15018,7 +15019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
-  profile: {fileID: 0}
+  profile: {fileID: 11400000, guid: 3995f83cec327e749babc92d0730609f, type: 2}
 --- !u!82 &-8091716852294328811
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15032,7 +15033,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.33
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -15041,7 +15042,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -15076,7 +15077,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -15145,6 +15146,37 @@ MonoBehaviour:
   minAnimSpeed: 0.4
   useAnimatorParameter: 1
   speedMultiplierParam: WalkSpeedMultiplier
+--- !u!114 &2338807309182774362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6051174467063479888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5018232565de0e743a59d7b7d0221743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAudio
+  source: {fileID: -8091716852294328811}
+  walkSound:
+    clip: {fileID: 8300000, guid: 224f6ef937b709b43ba1ffbca4d5b144, type: 3}
+    startTime: 0
+    endTime: 0
+    volume: 0.33
+    loop: 1
+  attackSound:
+    clip: {fileID: 8300000, guid: 836cf93391c6f2444ae66da6ef786a71, type: 3}
+    startTime: 0.4
+    endTime: 0
+    volume: 0.33
+    loop: 0
+  deathSound:
+    clip: {fileID: 8300000, guid: 1cb7d2438c4ec714bb7e2a36e5cd924a, type: 3}
+    startTime: 0
+    endTime: 3.5
+    volume: 0.33
+    loop: 0
 --- !u!1 &6116807658882497431
 GameObject:
   m_ObjectHideFlags: 0

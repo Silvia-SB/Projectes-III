@@ -54,6 +54,7 @@ public class AudioSFXManager : MonoBehaviour
         if (profileRef == null) return;
 
         AudioConfig audioConfig = profileRef.GetClipFromProfile(arrowType, isFullyCharged);
+        if(audioConfig.clip == null) return;
 
         Instance.PlaySFXAtPosition(audioConfig, position, audioConfig.volume);
     }

@@ -24,7 +24,10 @@ public class AudioProfileReference : MonoBehaviour
                 return isFullyCharged
                     ? profile.ElectricExplosion
                     : profile.ElectricHit;
-
+            case ArrowType.Piercing:
+                return isFullyCharged 
+                ? profile.PiercingHit
+                : profile.NormalHit;
             default:
                 return default;
         }

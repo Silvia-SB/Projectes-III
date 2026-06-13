@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f874412138b7712459ae230c0fe1526d, type: 3}
+  m_Name: Knight
+  m_EditorClassIdentifier: Assembly-CSharp::AudioProfile
+  normalHit:
+    clip: {fileID: 8300000, guid: 572b8f450d607654a96895b7d2634f14, type: 3}
+    startTime: 0
+    endTime: 0
+    volume: 1
+  fireHit:
+    clip: {fileID: 8300000, guid: b775901ecf8b36c4e96b026e65069467, type: 3}
+    startTime: 0
+    endTime: 6
+    volume: 1
+  electricHit:
+    clip: {fileID: 8300000, guid: e7f4eb9f19d086c4d8fa9e224bcdfd23, type: 3}
+    startTime: 0
+    endTime: 0
+    volume: 1
+  fireExplosion:
+    clip: {fileID: 8300000, guid: 2ea2c8c6a43cd2847ade32884abd6427, type: 3}
+    startTime: 1.5
+    endTime: 0
+    volume: 1
+  electricExplosion:
+    clip: {fileID: 8300000, guid: 298e0e0cec2bfb24daccf2a1c24bff0c, type: 3}
+    startTime: 0
+    endTime: 0
+    volume: 1
+  piercingHit:
+    clip: {fileID: 8300000, guid: 902293c72d19fe545b0fb9058c5ed43e, type: 3}
+    startTime: 0
+    endTime: 0
+    volume: 1

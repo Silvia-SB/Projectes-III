@@ -15,7 +15,7 @@ public class DeathState : IEnemyState
 
     public void Enter()
     {
-        //enemyController.EnemyAudio().PlayDeathSound();
+        if(EnemyType.Caballero.Equals(enemyController.Config.type)) enemyController.EnemyAudio().PlayDeathSound();
 
         deathTimer = 0f;
         isAnimatorDisabled = false;

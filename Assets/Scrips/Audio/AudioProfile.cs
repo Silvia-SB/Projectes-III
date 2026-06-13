@@ -21,6 +21,7 @@ public class AudioProfile : ScriptableObject
     [SerializeField] private AudioConfig electricHit;
     [SerializeField] private AudioConfig fireExplosion;
     [SerializeField] private AudioConfig electricExplosion;
+    [SerializeField] private AudioConfig piercingHit;
     
 
     public AudioConfig NormalHit => normalHit;
@@ -32,5 +33,7 @@ public class AudioProfile : ScriptableObject
     public AudioConfig FireExplosion => fireExplosion;
 
     public AudioConfig ElectricExplosion => electricExplosion;
+    
+    public AudioConfig PiercingHit => piercingHit;
 
 }

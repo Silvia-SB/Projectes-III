@@ -31,7 +31,6 @@ public class EnemyZone : MonoBehaviour, IResettable
     [SerializeField] private LayerMask obstacleMask;
     
     [Header("Audio")]
-    //public AudioManagerEnemyZone audioManager;
     [SerializeField] private AudioClip spawnSound;
     [SerializeField] private float volume = 1f;
     [SerializeField] private float pitch = 1f;
@@ -54,7 +53,7 @@ public class EnemyZone : MonoBehaviour, IResettable
         {
             playerTransform = other.transform;
             hasSpawned = true;
-            AudioManagerEnemyZone.AudioManager.PlayClip( spawnSound, volume, pitch);
+            if(spawnSound != null) AudioManagerEnemyZone.AudioManager.PlayClip(spawnSound, volume, pitch);
             ManageEnemiesLimit();
         }
     }

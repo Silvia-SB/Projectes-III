@@ -16,6 +16,8 @@ public class ChaseState : IEnemyState
 
     public void Enter()
     {
+        ResetAttackTriggers();
+
         if (!enemyController.Config.isRanged)
         {
             enemyController.GetNavMeshAgent().isStopped = false;
@@ -63,6 +65,27 @@ public class ChaseState : IEnemyState
 
     public void Exit()
     {
+    }
+
+    private void ResetAttackTriggers()
+    {
+        if (animator == null) return;
+
+        switch (enemyController.Config.type)
+        {
+            case EnemyType.Caballero:
+            case EnemyType.Medico:
+                animator.ResetTrigger("Attack");
+                break;
+
+            case EnemyType.Cuervo:
+                break;
+
+            default:
+                animator.ResetTrigger("AttackRight");
+                animator.ResetTrigger("AttackLeft");
+                break;
+        }
     }
     
     private void TriggerRandomWalk()

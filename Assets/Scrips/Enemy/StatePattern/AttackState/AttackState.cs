@@ -82,6 +82,7 @@ public class AttackState : IEnemyState
     public void Exit()
     {
         recurrentTimer = 0f;
+        ResetAttackTriggers();
 
         var agent = enemyController.GetNavMeshAgent();
         
@@ -126,6 +127,27 @@ public class AttackState : IEnemyState
         else
         {
             animator.SetTrigger("AttackLeft");
+        }
+    }
+
+    private void ResetAttackTriggers()
+    {
+        if (animator == null) return;
+
+        switch (enemyController.Config.type)
+        {
+            case EnemyType.Caballero:
+            case EnemyType.Medico:
+                animator.ResetTrigger("Attack");
+                break;
+
+            case EnemyType.Cuervo:
+                break;
+
+            default:
+                animator.ResetTrigger("AttackRight");
+                animator.ResetTrigger("AttackLeft");
+                break;
         }
     }
 }

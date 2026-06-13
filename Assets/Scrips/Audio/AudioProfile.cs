@@ -3,24 +3,34 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AudioProfile", menuName = "Scriptable Objects/AudioProfile")]
 public class AudioProfile : ScriptableObject
 {
-    [SerializeField] private AudioClip normalHit;
-    [SerializeField] private AudioClip fireHit;
-    [SerializeField] private AudioClip electricHit;
-    [SerializeField] private AudioClip fireExplosion;
-    [SerializeField] private AudioClip electricExplosion;
+    [System.Serializable]
+    public struct AudioConfig
+    {
+        public AudioClip clip;
+        [Min(0f)]
+        public float startTime;
+        [Min(0f)]
+        public float endTime;
+        
+        [Range(0f, 1f)]
+        public float volume;
+    }
     
-    [Range(0f, 1f)]
-    [SerializeField] private float volume = 1f;
+    [SerializeField] private AudioConfig normalHit;
+    [SerializeField] private AudioConfig fireHit;
+    [SerializeField] private AudioConfig electricHit;
+    [SerializeField] private AudioConfig fireExplosion;
+    [SerializeField] private AudioConfig electricExplosion;
+    
 
-    public AudioClip NormalHit => normalHit;
+    public AudioConfig NormalHit => normalHit;
 
-    public AudioClip FireHit => fireHit;
+    public AudioConfig FireHit => fireHit;
 
-    public AudioClip ElectricHit => electricHit;
+    public AudioConfig ElectricHit => electricHit;
 
-    public AudioClip FireExplosion => fireExplosion;
+    public AudioConfig FireExplosion => fireExplosion;
 
-    public AudioClip ElectricExplosion => electricExplosion;
+    public AudioConfig ElectricExplosion => electricExplosion;
 
-    public float Volume => volume;
 }

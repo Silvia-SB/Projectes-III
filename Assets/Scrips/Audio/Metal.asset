@@ -12,9 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f874412138b7712459ae230c0fe1526d, type: 3}
   m_Name: Metal
   m_EditorClassIdentifier: Assembly-CSharp::AudioProfile
-  normalHit: {fileID: 8300000, guid: 8778b9acb1705ba4e991a2f4554985c2, type: 3}
-  fireHit: {fileID: 0}
-  electricHit: {fileID: 8300000, guid: e7f4eb9f19d086c4d8fa9e224bcdfd23, type: 3}
-  fireExplosion: {fileID: 0}
-  electricExplosion: {fileID: 0}
-  volume: 1
+  normalHit:
+    clip: {fileID: 8300000, guid: 572b8f450d607654a96895b7d2634f14, type: 3}
+    startTime: 0
+    endTime: 0
+    volume: 0
+  fireHit:
+    clip: {fileID: 0}
+    startTime: 0
+    endTime: 0
+    volume: 0
+  electricHit:
+    clip: {fileID: 0}
+    startTime: 0
+    endTime: 0
+    volume: 0
+  fireExplosion:
+    clip: {fileID: 0}
+    startTime: 0
+    endTime: 0
+    volume: 0
+  electricExplosion:
+    clip: {fileID: 0}
+    startTime: 0
+    endTime: 0
+    volume: 0

@@ -41,19 +41,24 @@ public class EnemyZone : MonoBehaviour, IResettable
     private int initialQuantity;
     private float initialSpawnInterval;
     private int initialSpawnCount;
+    private AudioManagerEnemyZone audioManager;
 
     private void Awake()
     {
         mainCamera = Camera.main;
+        audioManager = AudioManagerEnemyZone.AudioManager;
+        AudioManagerEnemyZone.PreloadClip(spawnSound);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            if (hasSpawned) return;
+
             playerTransform = other.transform;
             hasSpawned = true;
-            if(spawnSound != null) AudioManagerEnemyZone.AudioManager.PlayClip(spawnSound, volume, pitch);
+            if(spawnSound != null && audioManager != null) audioManager.PlayClip(spawnSound, volume, pitch);
             ManageEnemiesLimit();
         }
     }

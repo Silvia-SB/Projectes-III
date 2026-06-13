@@ -26,8 +26,21 @@ public class AudioManagerEnemyZone : MonoBehaviour
          source = GetComponent<AudioSource>();
 
    }
+
+   public static void PreloadClip(AudioClip clip)
+   {
+      if (clip == null) return;
+      if (clip.loadState == AudioDataLoadState.Loaded) return;
+
+      clip.LoadAudioData();
+   }
+
    public void PlayClip(AudioClip clip, float volume = 1f, float pitch = 1f)
    {
+      if (source == null || clip == null) return;
+
+      PreloadClip(clip);
+
       source.volume = volume;
       source.pitch = pitch;
       source.spatialBlend = 0f;

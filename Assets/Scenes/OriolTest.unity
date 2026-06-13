@@ -49343,7 +49343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
-  profile: {fileID: 11400000, guid: 4746665ef1714314d81762076b246c30, type: 2}
+  profile: {fileID: 11400000, guid: 20e92148002780242b553e89e397c378, type: 2}
 --- !u!1 &628353776
 GameObject:
   m_ObjectHideFlags: 0
@@ -122033,6 +122033,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 927230547217722885, guid: d2c2d26826e1dff699b1698f2f287c6e, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227339648104417607, guid: d2c2d26826e1dff699b1698f2f287c6e, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3396240910240185468, guid: d2c2d26826e1dff699b1698f2f287c6e, type: 3}

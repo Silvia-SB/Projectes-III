@@ -12,9 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f874412138b7712459ae230c0fe1526d, type: 3}
   m_Name: Wood
   m_EditorClassIdentifier: Assembly-CSharp::AudioProfile
-  normalHit: {fileID: 0}
-  fireHit: {fileID: 0}
-  electricHit: {fileID: 0}
-  fireExplosion: {fileID: 0}
-  electricExplosion: {fileID: 0}
-  volume: 1
+  normalHit:
+    clip: {fileID: 8300000, guid: d3aa29da30e912347a77baba3e7b8aff, type: 3}
+    startTime: 0
+    endTime: 1
+    volume: 1
+  fireHit:
+    clip: {fileID: 0}
+    startTime: 0
+    endTime: 0
+    volume: 0
+  electricHit:
+    clip: {fileID: 0}
+    startTime: 0
+    endTime: 0
+    volume: 0
+  fireExplosion:
+    clip: {fileID: 0}
+    startTime: 0
+    endTime: 0
+    volume: 0
+  electricExplosion:
+    clip: {fileID: 0}
+    startTime: 0
+    endTime: 0
+    volume: 0

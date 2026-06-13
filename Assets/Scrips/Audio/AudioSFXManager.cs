@@ -1,4 +1,5 @@
 using UnityEngine;
+using static AudioProfile;
 
 public class AudioSFXManager : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class AudioSFXManager : MonoBehaviour
 
     private void Awake()
     {
-
+        Instance = this;
         CreatePool();
     }
 
@@ -49,14 +50,14 @@ public class AudioSFXManager : MonoBehaviour
 
         if (profileRef == null) return;
 
-        AudioClip clip = profileRef.GetClipFromProfile(arrowType, isFullyCharged);
+        AudioConfig audioConfig = profileRef.GetClipFromProfile(arrowType, isFullyCharged);
 
-        Instance.PlaySFXAtPosition(clip, position, profileRef.Profile.Volume);
+        Instance.PlaySFXAtPosition(audioConfig, position, audioConfig.volume);
     }
 
-    private void PlaySFXAtPosition(AudioClip clip, Vector3 position, float volume)
+    private void PlaySFXAtPosition(AudioConfig audioConfig, Vector3 position, float volume)
     {
-        if (clip == null) return;
+        if (audioConfig.clip == null) return;
 
         AudioSource source = GetSource();
 
@@ -64,8 +65,16 @@ public class AudioSFXManager : MonoBehaviour
         source.volume = volume;
         source.pitch = 1f;
         source.spatialBlend = 1f;
+        source.clip = audioConfig.clip;
+        source.time = audioConfig.startTime;
 
-        source.PlayOneShot(clip);
+        source.Play();
+        Debug.Log("Played SFX");
+
+        if (audioConfig.endTime > audioConfig.startTime)
+        {
+            source.SetScheduledEndTime(AudioSettings.dspTime + audioConfig.endTime - audioConfig.startTime);
+        }
     }
 
     private AudioSource GetSource()

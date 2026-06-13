@@ -1,4 +1,6 @@
 using UnityEngine;
+using static AudioProfile;
+
 
 public class AudioProfileReference : MonoBehaviour
 {
@@ -6,20 +8,26 @@ public class AudioProfileReference : MonoBehaviour
 
     public AudioProfile Profile => profile;
 
-    public AudioClip GetClipFromProfile(ArrowType arrowType, bool isFullyCharged)
+    public AudioConfig GetClipFromProfile(ArrowType arrowType, bool isFullyCharged)
     {
         switch (arrowType)
         {
-            case (ArrowType.Base):
+            case ArrowType.Base:
                 return profile.NormalHit;
-            case (ArrowType.Blood):
-                if (isFullyCharged) return profile.FireExplosion;
-                return profile.FireHit;
-            case (ArrowType.Electric):
-                if (isFullyCharged) return profile.ElectricExplosion;
-                return profile.ElectricHit;
+
+            case ArrowType.Blood:
+                return isFullyCharged
+                    ? profile.FireExplosion
+                    : profile.FireHit;
+
+            case ArrowType.Electric:
+                return isFullyCharged
+                    ? profile.ElectricExplosion
+                    : profile.ElectricHit;
+
+            default:
+                return default;
         }
-        return null;
     }
-    
+
 }

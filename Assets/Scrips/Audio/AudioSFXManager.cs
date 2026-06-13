@@ -48,13 +48,16 @@ public class AudioSFXManager : MonoBehaviour
 
         AudioProfileReference profileRef = collider.GetComponent<AudioProfileReference>();
 
+        if (profileRef == null)
+            profileRef = collider.GetComponentInParent<AudioProfileReference>();
+
         if (profileRef == null) return;
 
         AudioConfig audioConfig = profileRef.GetClipFromProfile(arrowType, isFullyCharged);
 
         Instance.PlaySFXAtPosition(audioConfig, position, audioConfig.volume);
     }
-
+    
     private void PlaySFXAtPosition(AudioConfig audioConfig, Vector3 position, float volume)
     {
         if (audioConfig.clip == null) return;
@@ -69,7 +72,6 @@ public class AudioSFXManager : MonoBehaviour
         source.time = audioConfig.startTime;
 
         source.Play();
-        Debug.Log("Played SFX");
 
         if (audioConfig.endTime > audioConfig.startTime)
         {

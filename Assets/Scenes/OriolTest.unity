@@ -49343,7 +49343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
-  profile: {fileID: 11400000, guid: 20e92148002780242b553e89e397c378, type: 2}
+  profile: {fileID: 11400000, guid: 4746665ef1714314d81762076b246c30, type: 2}
 --- !u!1 &628353776
 GameObject:
   m_ObjectHideFlags: 0
@@ -155374,21 +155374,14 @@ MonoBehaviour:
     spawnCount: 1
     currentTimer: 0
     totalSpawnedEnemies: 0
-  - spawnPoint: {fileID: 1443707831}
-    enemyType: 0
-    quantity: 1
-    spawnInterval: 1
-    spawnCount: 1
-    currentTimer: 0
-    totalSpawnedEnemies: 0
   distanceToSpawn: 2
   maxActiveEnemies: 40
   minDistanceToRemove: 15
   obstacleMask:
     serializedVersion: 2
     m_Bits: 768
-  spawnSound: {fileID: 0}
-  volume: 1
+  spawnSound: {fileID: 8300000, guid: 240981a7fa52275409deee7d96d090d7, type: 3}
+  volume: 0.19
   pitch: 1
 --- !u!1 &1980893872
 GameObject:

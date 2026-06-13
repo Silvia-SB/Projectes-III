@@ -2026,7 +2026,8 @@ GameObject:
   - component: {fileID: 3789623432712797930}
   - component: {fileID: 7781582517739864598}
   - component: {fileID: -3836260766351262396}
-  - component: {fileID: 7453649849188046117}
+  - component: {fileID: 8733170655142844865}
+  - component: {fileID: 5882120876892395785}
   m_Layer: 11
   m_Name: Desatado
   m_TagString: Enemy
@@ -2380,7 +2381,20 @@ CapsuleCollider:
   m_Height: 2.3697677
   m_Direction: 1
   m_Center: {x: 0, y: 0.68488383, z: 0.006399274}
---- !u!82 &7453649849188046117
+--- !u!114 &8733170655142844865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934897180633351276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
+  profile: {fileID: 0}
+--- !u!82 &5882120876892395785
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

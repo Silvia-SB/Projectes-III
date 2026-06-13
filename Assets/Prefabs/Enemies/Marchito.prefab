@@ -14665,7 +14665,8 @@ GameObject:
   - component: {fileID: 699852621797008799}
   - component: {fileID: 8935051056719511146}
   - component: {fileID: -8047911977466984621}
-  - component: {fileID: 2345444877174609441}
+  - component: {fileID: 637603111147342337}
+  - component: {fileID: -8091716852294328811}
   m_Layer: 11
   m_Name: Marchito
   m_TagString: Enemy
@@ -15002,7 +15003,20 @@ CapsuleCollider:
   m_Height: 2.5666866
   m_Direction: 1
   m_Center: {x: 0, y: 0.7833433, z: 0.0020987391}
---- !u!82 &2345444877174609441
+--- !u!114 &637603111147342337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6051174467063479888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
+  profile: {fileID: 0}
+--- !u!82 &-8091716852294328811
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

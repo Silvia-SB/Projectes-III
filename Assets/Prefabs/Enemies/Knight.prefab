@@ -5159,7 +5159,8 @@ GameObject:
   - component: {fileID: 8684215439733813738}
   - component: {fileID: 3698751656161215176}
   - component: {fileID: 1041451621781544518}
-  - component: {fileID: 1193152707111565928}
+  - component: {fileID: -3233332556817462238}
+  - component: {fileID: -7889403462968811545}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Enemy
@@ -5454,7 +5455,20 @@ CapsuleCollider:
   m_Height: 2.5454118
   m_Direction: 1
   m_Center: {x: 0, y: 0.7727059, z: -0.0022107959}
---- !u!82 &1193152707111565928
+--- !u!114 &-3233332556817462238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336821644728294434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
+  profile: {fileID: 11400000, guid: 4746665ef1714314d81762076b246c30, type: 2}
+--- !u!82 &-7889403462968811545
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5465,18 +5479,18 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -929580528450368524, guid: 8d932fa8a05d9d6439281330aa830134, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 671a1c5efebc04e4e94ca0e9dad20835, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.08
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 84
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 100
+  MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

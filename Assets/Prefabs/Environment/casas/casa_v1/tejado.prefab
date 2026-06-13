@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2216052202678822710}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: tejado
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2216052202678822710
 Transform:
@@ -69,24 +69,6 @@ Transform:
   - {fileID: 3825944934441965525}
   - {fileID: 6818526182531379849}
   - {fileID: 5438681433050928878}
-  - {fileID: 6114971906881512754}
-  - {fileID: 1352023677048163993}
-  - {fileID: 2216068081484914616}
-  - {fileID: 2009622718683498270}
-  - {fileID: 6345276677538693928}
-  - {fileID: 2362582030276760556}
-  - {fileID: 8697408093221443338}
-  - {fileID: 3123250460450444137}
-  - {fileID: 6048143272257097340}
-  - {fileID: 2037374630327101299}
-  - {fileID: 295575230715175021}
-  - {fileID: 4857535201878695084}
-  - {fileID: 1325806163197191885}
-  - {fileID: 573725119666767120}
-  - {fileID: 2169388470522465499}
-  - {fileID: 4971360628262839503}
-  - {fileID: 2229011050385165964}
-  - {fileID: 8598512509618485925}
   - {fileID: 2373199739462268606}
   - {fileID: 7448862070607686685}
   - {fileID: 8853388645348989619}
@@ -114,6 +96,10 @@ Transform:
   - {fileID: 8024032298428315622}
   - {fileID: 4876802134777598695}
   - {fileID: 8605341692105095201}
+  - {fileID: 4963001893939754140}
+  - {fileID: 8528123373869823135}
+  - {fileID: 5741643779510263163}
+  - {fileID: 5000976193788443299}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &52005690848827878
@@ -127,6 +113,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -178,68 +176,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
   m_PrefabInstance: {fileID: 52005690848827878}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &134239937346755334
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2216052202678822710}
-    m_Modifications:
-    - target: {fileID: 1644112111175149263, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_Name
-      value: pared_yeso_tejado_LOW (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.5349164
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.2430005
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -180
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
---- !u!4 &2037374630327101299 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-  m_PrefabInstance: {fileID: 134239937346755334}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &231989035390742913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -258,19 +194,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.67167306
       objectReference: {fileID: 0}
     - target: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.3386083
+      value: 6.337319
       objectReference: {fileID: 0}
     - target: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.871
+      value: 5.868304
       objectReference: {fileID: 0}
     - target: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.65831
+      value: 13.2287
       objectReference: {fileID: 0}
     - target: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -304,7 +240,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (41)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -313,130 +254,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
   m_PrefabInstance: {fileID: 231989035390742913}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &242017628729517005
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2216052202678822710}
-    m_Modifications:
-    - target: {fileID: 1644112111175149263, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_Name
-      value: pared_yeso_tejado_LOW (9)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.3539996
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 7.5850005
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 12.975
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
---- !u!4 &2216068081484914616 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-  m_PrefabInstance: {fileID: 242017628729517005}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &252738949911589038
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2216052202678822710}
-    m_Modifications:
-    - target: {fileID: 1644112111175149263, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_Name
-      value: pared_yeso_tejado_LOW (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.237
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8.289
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.025
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
---- !u!4 &2169388470522465499 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-  m_PrefabInstance: {fileID: 252738949911589038}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &289188277364010236
 PrefabInstance:
@@ -502,7 +319,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (45)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -523,6 +345,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -638,7 +472,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (32)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -647,68 +486,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
   m_PrefabInstance: {fileID: 460653609916044062}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &466477543040236395
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2216052202678822710}
-    m_Modifications:
-    - target: {fileID: 1644112111175149263, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_Name
-      value: pared_yeso_tejado_LOW (10)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.237
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 12.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
---- !u!4 &2009622718683498270 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-  m_PrefabInstance: {fileID: 466477543040236395}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &501829515513506922
 PrefabInstance:
@@ -774,7 +551,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (39)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -795,6 +577,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -868,15 +662,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.07760668
+      value: 0.1667217
       objectReference: {fileID: 0}
     - target: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.7400002
+      value: 7.8166823
       objectReference: {fileID: 0}
     - target: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.213308
+      value: 13.218309
       objectReference: {fileID: 0}
     - target: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -910,7 +704,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (43)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -919,68 +718,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
   m_PrefabInstance: {fileID: 533333557067724107}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &802415682651153514
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2216052202678822710}
-    m_Modifications:
-    - target: {fileID: 6018570664643014828, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_Name
-      value: pared_yeso_1,5x3_LOW (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.4109998
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 7.076
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 12.9742
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
---- !u!4 &6048143272257097340 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-  m_PrefabInstance: {fileID: 802415682651153514}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &880175048491618143
 PrefabInstance:
@@ -993,6 +730,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1108,7 +857,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (42)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1140,7 +894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.276612
+      value: 4.28
       objectReference: {fileID: 0}
     - target: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1148,7 +902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.145309
+      value: 13.1454
       objectReference: {fileID: 0}
     - target: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1182,7 +936,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (41)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1203,6 +962,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1254,130 +1025,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
   m_PrefabInstance: {fileID: 1102096865574990403}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1106062189378990828
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2216052202678822710}
-    m_Modifications:
-    - target: {fileID: 1644112111175149263, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_Name
-      value: pared_yeso_tejado_LOW (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.119999886
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.2710004
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 12.975
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
---- !u!4 &1352023677048163993 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-  m_PrefabInstance: {fileID: 1106062189378990828}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1152053181830077112
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2216052202678822710}
-    m_Modifications:
-    - target: {fileID: 1644112111175149263, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_Name
-      value: pared_yeso_tejado_LOW (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.218
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8.31
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -180
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
---- !u!4 &1325806163197191885 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-  m_PrefabInstance: {fileID: 1152053181830077112}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1157436219874446657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1389,6 +1036,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1451,6 +1110,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1566,7 +1237,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (50)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1587,6 +1263,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1650,6 +1338,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: tejado (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.3419995
@@ -1711,6 +1411,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1774,6 +1486,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: tejado (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.28
@@ -1823,254 +1547,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
   m_PrefabInstance: {fileID: 1782648199301248837}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1837688510432009240
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2216052202678822710}
-    m_Modifications:
-    - target: {fileID: 1644112111175149263, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_Name
-      value: pared_yeso_tejado_LOW (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.2389998
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 7.4670005
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -180
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
---- !u!4 &295575230715175021 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-  m_PrefabInstance: {fileID: 1837688510432009240}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1904063977412344165
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2216052202678822710}
-    m_Modifications:
-    - target: {fileID: 1644112111175149263, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_Name
-      value: pared_yeso_tejado_LOW (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.3539996
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 7.584
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
---- !u!4 &573725119666767120 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-  m_PrefabInstance: {fileID: 1904063977412344165}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &2031194538532032217
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2216052202678822710}
-    m_Modifications:
-    - target: {fileID: 6018570664643014828, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_Name
-      value: pared_yeso_1,5x3_LOW
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.1480002
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.2430005
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.019
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
---- !u!4 &4971360628262839503 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-  m_PrefabInstance: {fileID: 2031194538532032217}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &2341577245899898140
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2216052202678822710}
-    m_Modifications:
-    - target: {fileID: 6018570664643014828, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_Name
-      value: pared_yeso_1,5x3_LOW (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.1480002
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.244001
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 12.974
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
---- !u!4 &8697408093221443338 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-  m_PrefabInstance: {fileID: 2341577245899898140}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2361571730628794484
 PrefabInstance:
@@ -2136,7 +1612,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (44)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2210,7 +1691,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (44)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2284,7 +1770,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (38)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2305,6 +1796,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2368,6 +1871,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: tejado (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.95925903
@@ -2430,6 +1945,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: tejado (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.8923187
@@ -2491,6 +2018,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2606,7 +2145,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (38)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2680,7 +2224,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (25)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2689,68 +2238,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
   m_PrefabInstance: {fileID: 3173794020753797518}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &3429947547645218995
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2216052202678822710}
-    m_Modifications:
-    - target: {fileID: 6018570664643014828, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_Name
-      value: pared_yeso_1,5x3_LOW (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.4109998
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 7.075
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.0192
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
---- !u!4 &8598512509618485925 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-  m_PrefabInstance: {fileID: 3429947547645218995}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3452129993034101530
 PrefabInstance:
@@ -2763,6 +2250,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2878,7 +2377,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (24)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2952,7 +2456,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (40)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2973,6 +2482,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3046,15 +2567,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.206612
+      value: 2.106885
       objectReference: {fileID: 0}
     - target: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.624001
+      value: 9.716682
       objectReference: {fileID: 0}
     - target: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.145309
+      value: 13.1454
       objectReference: {fileID: 0}
     - target: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3088,7 +2609,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (42)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3109,6 +2635,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3172,6 +2710,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: tejado (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.099999905
@@ -3234,6 +2784,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: tejado (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.09999895
@@ -3284,68 +2846,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
   m_PrefabInstance: {fileID: 4388774529434748726}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4418959476815392665
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2216052202678822710}
-    m_Modifications:
-    - target: {fileID: 1644112111175149263, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_Name
-      value: pared_yeso_tejado_LOW (8)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.218
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8.311001
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 12.975
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -180
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
---- !u!4 &2362582030276760556 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-  m_PrefabInstance: {fileID: 4418959476815392665}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4443106023863689687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3357,6 +2857,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3472,7 +2984,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (39)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3493,6 +3010,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3608,7 +3137,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (53)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3617,130 +3151,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4997653070246854285, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
   m_PrefabInstance: {fileID: 4982964772893044822}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &5013681116556607325
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2216052202678822710}
-    m_Modifications:
-    - target: {fileID: 1644112111175149263, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_Name
-      value: pared_yeso_tejado_LOW (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.5349164
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.244001
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 12.975
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -180
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
---- !u!4 &6345276677538693928 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-  m_PrefabInstance: {fileID: 5013681116556607325}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &5053772365305128090
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2216052202678822710}
-    m_Modifications:
-    - target: {fileID: 6018570664643014828, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_Name
-      value: pared_yeso_1,5x3_LOW (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.2009997
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.2430005
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.0191
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
---- !u!4 &2229011050385165964 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-  m_PrefabInstance: {fileID: 5053772365305128090}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5177327294963260824
 PrefabInstance:
@@ -3753,6 +3163,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3804,68 +3226,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
   m_PrefabInstance: {fileID: 5177327294963260824}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &5280014680467249479
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2216052202678822710}
-    m_Modifications:
-    - target: {fileID: 1644112111175149263, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_Name
-      value: pared_yeso_tejado_LOW
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.119999886
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
---- !u!4 &6114971906881512754 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-  m_PrefabInstance: {fileID: 5280014680467249479}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5320204028906403966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3877,6 +3237,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3940,6 +3312,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: tejado (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.95925856
@@ -4001,6 +3385,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4116,7 +3512,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (40)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4190,7 +3591,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (20)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4211,6 +3617,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4262,6 +3680,88 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
   m_PrefabInstance: {fileID: 5802091037890091643}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5827985433929645287
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2216052202678822710}
+    m_Modifications:
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8955
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.83442324
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.2741
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219694251519204606, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_Name
+      value: tejado (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219694251519204606, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219694251519204606, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219694251519204606, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+--- !u!4 &5000976193788443299 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+  m_PrefabInstance: {fileID: 5827985433929645287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5833169020410689282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4273,6 +3773,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4324,6 +3836,88 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
   m_PrefabInstance: {fileID: 5833169020410689282}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5865445283737481944
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2216052202678822710}
+    m_Modifications:
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.90375996
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.82925093
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.214
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.247
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.172001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219694251519204606, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_Name
+      value: tejado (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219694251519204606, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219694251519204606, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219694251519204606, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+--- !u!4 &4963001893939754140 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+  m_PrefabInstance: {fileID: 5865445283737481944}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5925668952257335784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4335,6 +3929,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4450,7 +4056,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (46)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4471,6 +4082,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (39)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4521,6 +4144,88 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
   m_PrefabInstance: {fileID: 6441659438700186973}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6496523950929828671
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2216052202678822710}
+    m_Modifications:
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9499
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.9044
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.214
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.2377
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.27999973
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219694251519204606, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_Name
+      value: tejado (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219694251519204606, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219694251519204606, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219694251519204606, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+--- !u!4 &5741643779510263163 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+  m_PrefabInstance: {fileID: 6496523950929828671}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6601659622988067000
 PrefabInstance:
@@ -4586,7 +4291,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (43)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4607,6 +4317,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4658,68 +4380,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
   m_PrefabInstance: {fileID: 6821472825750474677}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &6842007328013426905
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2216052202678822710}
-    m_Modifications:
-    - target: {fileID: 1644112111175149263, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_Name
-      value: pared_yeso_tejado_LOW (11)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.2389998
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 7.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 12.97
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -180
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
---- !u!4 &4857535201878695084 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2133263584916110453, guid: 2afe1374b13d4d24c9827799149ba171, type: 3}
-  m_PrefabInstance: {fileID: 6842007328013426905}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6856949385018426506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4731,6 +4391,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4793,6 +4465,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4908,7 +4592,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (52)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4929,6 +4618,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4992,6 +4693,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: tejado (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.95925903
@@ -5041,6 +4754,88 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
   m_PrefabInstance: {fileID: 7195060020527866385}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7196712087886787291
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2216052202678822710}
+    m_Modifications:
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8882638
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8199849
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.2451
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.862
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219694251519204606, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_Name
+      value: tejado (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219694251519204606, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219694251519204606, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219694251519204606, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+--- !u!4 &8528123373869823135 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1550962880792692292, guid: 358bb393957dcae4fb34a7c9a9ad7bb0, type: 3}
+  m_PrefabInstance: {fileID: 7196712087886787291}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7198480151515069436
 PrefabInstance:
@@ -5106,7 +4901,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (19)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5180,7 +4980,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (25)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5201,6 +5006,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5264,6 +5081,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: tejado (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.3419995
@@ -5325,6 +5154,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5388,6 +5229,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: tejado (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.2519994
@@ -5437,68 +5290,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
   m_PrefabInstance: {fileID: 7918693892347309222}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &8328722737823168895
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2216052202678822710}
-    m_Modifications:
-    - target: {fileID: 6018570664643014828, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_Name
-      value: pared_yeso_1,5x3_LOW (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.2009997
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.244001
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 12.9741
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
---- !u!4 &3123250460450444137 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6398931780439796246, guid: cea54289d4eac1c4e9e288a6516139e1, type: 3}
-  m_PrefabInstance: {fileID: 8328722737823168895}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8560332092531762520
 PrefabInstance:
@@ -5564,7 +5355,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (51)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5638,7 +5434,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: viga_madera_v1 (54)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5625253570346771511, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6420935682846338139, guid: 1cfc808905cf77f4dab339208ef980e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5659,6 +5460,18 @@ PrefabInstance:
     - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_Name
       value: tejado (37)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148353733699580373, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6780318264173816687, guid: 3d009b5938b51d842b6f6db9aa5b91ab, type: 3}
       propertyPath: m_LocalPosition.x

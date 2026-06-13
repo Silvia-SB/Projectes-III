@@ -125,11 +125,11 @@ GameObject:
   - component: {fileID: 3306628139825386680}
   - component: {fileID: 5407994730743582671}
   m_Layer: 0
-  m_Name: Sphere (1)
+  m_Name: Vela
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &7829738002205135705
 Transform:
@@ -241,7 +241,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 126
   m_IsActive: 1
 --- !u!4 &3272615442870874873
 Transform:
@@ -352,7 +352,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 127
   m_IsActive: 1
 --- !u!4 &2691556256802652582
 Transform:
@@ -504,7 +504,7 @@ Transform:
   m_GameObject: {fileID: 6529709422316485495}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.125582, y: 3.54, z: 3.159}
+  m_LocalPosition: {x: 28.125582, y: 3.566, z: 3.159}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -543,7 +543,7 @@ Transform:
   m_GameObject: {fileID: 6642889278505316804}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.968, y: -0.56, z: 0.052}
+  m_LocalPosition: {x: -0.985, y: -0.437, z: 0.052}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -559,9 +559,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 12
   m_Type: 2
-  m_Color: {r: 1, g: 0.7019608, b: 0.41568628, a: 1}
-  m_Intensity: 5
-  m_Range: 10
+  m_Color: {r: 1, g: 0.70980394, b: 0.41960785, a: 1}
+  m_Intensity: 1.8
+  m_Range: 6.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}
@@ -602,14 +602,14 @@ Light:
   m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1.4
+  m_BounceIntensity: 1.2
   m_ColorTemperature: 4029
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0
+  m_ShadowRadius: 0.6
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1

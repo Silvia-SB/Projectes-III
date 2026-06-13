@@ -445,6 +445,7 @@ GameObject:
   - component: {fileID: 5379737142122491761}
   - component: {fileID: 1771637165603951606}
   - component: {fileID: 1819516438857406705}
+  - component: {fileID: 28790303842694576}
   m_Layer: 0
   m_Name: Zone4
   m_TagString: Untagged
@@ -525,6 +526,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 39.642708, y: 1, z: 63.624817}
   m_Center: {x: 11.659122, y: 0, z: -6.4815063}
+--- !u!114 &28790303842694576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868414261078686427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &1049013745000803282
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,6 +767,7 @@ GameObject:
   - component: {fileID: 827782480513398416}
   - component: {fileID: 1064537519842538964}
   - component: {fileID: 2136200448748737967}
+  - component: {fileID: 6488521213944831679}
   m_Layer: 0
   m_Name: Zone8
   m_TagString: Untagged
@@ -864,6 +879,19 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+--- !u!114 &6488521213944831679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870464183672623757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &1890919066874886593
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,6 +1027,7 @@ GameObject:
   - component: {fileID: 7306383822902634219}
   - component: {fileID: 7181670739730968078}
   - component: {fileID: 1854295560767461598}
+  - component: {fileID: 8664853548123612858}
   m_Layer: 0
   m_Name: Zone10
   m_TagString: Untagged
@@ -1079,6 +1108,19 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+--- !u!114 &8664853548123612858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2819285262096426171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &2990617598419217246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,6 +1132,7 @@ GameObject:
   - component: {fileID: 6565790490810540476}
   - component: {fileID: 4449480574533366320}
   - component: {fileID: 3550276405160829313}
+  - component: {fileID: 122922609854904709}
   m_Layer: 0
   m_Name: Zone6
   m_TagString: Untagged
@@ -1178,6 +1221,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 76.02191, y: 1.2537352, z: 21.280273}
   m_Center: {x: -20.61438, y: 0.12686759, z: 6.757202}
+--- !u!114 &122922609854904709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2990617598419217246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &3127628821657523045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,7 +1290,7 @@ Transform:
   m_GameObject: {fileID: 3410527806858253267}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -107.2, y: -0.292, z: -10.4}
+  m_LocalPosition: {x: -107.2, y: -0.02, z: -10.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1282,6 +1338,7 @@ GameObject:
   - component: {fileID: 2036008474901940114}
   - component: {fileID: 4785840851131980988}
   - component: {fileID: 6721289555284543120}
+  - component: {fileID: 5301875449777101111}
   m_Layer: 0
   m_Name: Zone14
   m_TagString: Untagged
@@ -1370,6 +1427,19 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+--- !u!114 &5301875449777101111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3551137463502877133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &3593555534185451990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,6 +1606,7 @@ GameObject:
   - component: {fileID: 786520429543172585}
   - component: {fileID: 4041128276070532635}
   - component: {fileID: 4758966069254458020}
+  - component: {fileID: 8956355331992056253}
   m_Layer: 0
   m_Name: Zone12
   m_TagString: Untagged
@@ -1624,6 +1695,19 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+--- !u!114 &8956355331992056253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3984146247244140527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &3987253693696138342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1728,6 +1812,7 @@ GameObject:
   - component: {fileID: 6914202738448028707}
   - component: {fileID: 3397400520281965730}
   - component: {fileID: 2152434893771323637}
+  - component: {fileID: 5166634317400580874}
   m_Layer: 0
   m_Name: Zone17
   m_TagString: Untagged
@@ -1823,6 +1908,19 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+--- !u!114 &5166634317400580874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4282032454018324468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &4392188082921360091
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,6 +1994,7 @@ GameObject:
   - component: {fileID: 9081654529081994706}
   - component: {fileID: 2405232810847254755}
   - component: {fileID: 5097501072757445199}
+  - component: {fileID: 7277373159270714034}
   m_Layer: 0
   m_Name: Zone18
   m_TagString: Untagged
@@ -2008,6 +2107,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 73.49893, y: 13.60068, z: 33.50641}
   m_Center: {x: 20.421677, y: -2.7174544, z: 2.4640198}
+--- !u!114 &7277373159270714034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4552439995215028368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &4639195993943105905
 GameObject:
   m_ObjectHideFlags: 0
@@ -2064,7 +2176,7 @@ Transform:
   m_GameObject: {fileID: 4646994692123620866}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18, y: 0.199, z: -13.59}
+  m_LocalPosition: {x: 18.78, y: 0.199, z: -13.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2133,6 +2245,7 @@ GameObject:
   - component: {fileID: 217233671363591009}
   - component: {fileID: 4499090222332468759}
   - component: {fileID: 5708116424896027985}
+  - component: {fileID: 2921604603126650615}
   m_Layer: 0
   m_Name: Zone17 (1)
   m_TagString: Untagged
@@ -2229,6 +2342,19 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+--- !u!114 &2921604603126650615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4688026358410008541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &4764897298737576884
 GameObject:
   m_ObjectHideFlags: 0
@@ -2364,6 +2490,7 @@ GameObject:
   - component: {fileID: 5609855662644752445}
   - component: {fileID: 5586453052984794772}
   - component: {fileID: 1006625519167897481}
+  - component: {fileID: 7743291920329767977}
   m_Layer: 0
   m_Name: Zone3
   m_TagString: Untagged
@@ -2460,6 +2587,19 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+--- !u!114 &7743291920329767977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4874723057925442307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &4931456721624334722
 GameObject:
   m_ObjectHideFlags: 0
@@ -2471,6 +2611,7 @@ GameObject:
   - component: {fileID: 4891737870366847745}
   - component: {fileID: 3841762826290238550}
   - component: {fileID: 5219524502246508886}
+  - component: {fileID: 5420301973881549340}
   m_Layer: 0
   m_Name: Zone16
   m_TagString: Untagged
@@ -2551,6 +2692,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 38.7304, y: 17.10345, z: 66.75802}
   m_Center: {x: 12.901456, y: 0.49790955, z: -5.958191}
+--- !u!114 &5420301973881549340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4931456721624334722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &4949233967798762731
 GameObject:
   m_ObjectHideFlags: 0
@@ -2607,7 +2761,7 @@ Transform:
   m_GameObject: {fileID: 5068409429485446120}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.51, y: 0.45, z: -18.87}
+  m_LocalPosition: {x: 9.380316, y: 0.45, z: -18.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2686,6 +2840,7 @@ GameObject:
   - component: {fileID: 7713827463484732179}
   - component: {fileID: 8338230112736800885}
   - component: {fileID: 1622416584061465313}
+  - component: {fileID: 7108277289316415162}
   m_Layer: 0
   m_Name: Zone2
   m_TagString: Untagged
@@ -2758,6 +2913,19 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+--- !u!114 &7108277289316415162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5425851759810552668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &5577146996894246566
 GameObject:
   m_ObjectHideFlags: 0
@@ -2831,6 +2999,7 @@ GameObject:
   - component: {fileID: 27806654317483069}
   - component: {fileID: 8670433445784282806}
   - component: {fileID: 7351994870061360416}
+  - component: {fileID: 7645469864005599330}
   m_Layer: 0
   m_Name: Zone11
   m_TagString: Untagged
@@ -2943,6 +3112,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 31.373718, y: 16.909218, z: 34.045208}
   m_Center: {x: -34.90097, y: 9.516594, z: 10.454218}
+--- !u!114 &7645469864005599330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5693092851294882027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &5726147096931685366
 GameObject:
   m_ObjectHideFlags: 0
@@ -3275,6 +3457,7 @@ GameObject:
   - component: {fileID: 1371123377203498263}
   - component: {fileID: 895614930215681599}
   - component: {fileID: 111642801790377434}
+  - component: {fileID: 7829902069692111116}
   m_Layer: 0
   m_Name: Zone15
   m_TagString: Untagged
@@ -3347,6 +3530,19 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+--- !u!114 &7829902069692111116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6432429778209632904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &6436138247326949075
 GameObject:
   m_ObjectHideFlags: 0
@@ -3358,6 +3554,7 @@ GameObject:
   - component: {fileID: 1844296163197388300}
   - component: {fileID: 1473964606328118171}
   - component: {fileID: 6404398538294578431}
+  - component: {fileID: 7156123072312958495}
   m_Layer: 0
   m_Name: Zone7
   m_TagString: Untagged
@@ -3487,6 +3684,19 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+--- !u!114 &7156123072312958495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6436138247326949075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &6537505991418095303
 GameObject:
   m_ObjectHideFlags: 0
@@ -3622,6 +3832,7 @@ GameObject:
   - component: {fileID: 6671366776807300797}
   - component: {fileID: 1388461309681303371}
   - component: {fileID: 2065698804070819776}
+  - component: {fileID: 4344769179502884060}
   m_Layer: 0
   m_Name: Zone19
   m_TagString: Untagged
@@ -3719,6 +3930,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 32.13411, y: 19.477749, z: 29.57904}
   m_Center: {x: -6.6638412, y: 0.22108078, z: 9.02066}
+--- !u!114 &4344769179502884060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7032478462074346213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &7093172084708538905
 GameObject:
   m_ObjectHideFlags: 0
@@ -3916,6 +4140,7 @@ GameObject:
   - component: {fileID: 4681768652757225659}
   - component: {fileID: 8413924859507653736}
   - component: {fileID: 3920866310752148444}
+  - component: {fileID: 5189598099746544324}
   m_Layer: 0
   m_Name: Zone1
   m_TagString: Untagged
@@ -3996,6 +4221,19 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+--- !u!114 &5189598099746544324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7613401619101869915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &7958330494142605854
 GameObject:
   m_ObjectHideFlags: 0
@@ -4038,6 +4276,7 @@ GameObject:
   - component: {fileID: 2481955761475763632}
   - component: {fileID: 6874350093360601929}
   - component: {fileID: 6907639594058086762}
+  - component: {fileID: 348196005103926472}
   m_Layer: 0
   m_Name: Zone9
   m_TagString: Untagged
@@ -4141,6 +4380,19 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+--- !u!114 &348196005103926472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8063935963692011366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &8672607769501706262
 GameObject:
   m_ObjectHideFlags: 0
@@ -4152,6 +4404,7 @@ GameObject:
   - component: {fileID: 1227125472386872043}
   - component: {fileID: 3953086759432454179}
   - component: {fileID: 3670113455911834786}
+  - component: {fileID: 26729877425123981}
   m_Layer: 0
   m_Name: Zone20
   m_TagString: Untagged
@@ -4248,6 +4501,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 32.13411, y: 13.60068, z: 24.383087}
   m_Center: {x: -6.6638412, y: -2.7174544, z: 6.4226837}
+--- !u!114 &26729877425123981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8672607769501706262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &8705041068362094996
 GameObject:
   m_ObjectHideFlags: 0
@@ -4259,6 +4525,7 @@ GameObject:
   - component: {fileID: 2936449295913682728}
   - component: {fileID: 1370830665487901879}
   - component: {fileID: 404352627780326350}
+  - component: {fileID: 503326581487578486}
   m_Layer: 0
   m_Name: Zone13
   m_TagString: Untagged
@@ -4347,6 +4614,19 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+--- !u!114 &503326581487578486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8705041068362094996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &8922591811853888098
 GameObject:
   m_ObjectHideFlags: 0
@@ -4358,6 +4638,7 @@ GameObject:
   - component: {fileID: 516191046979737880}
   - component: {fileID: 6308112294081053980}
   - component: {fileID: 7174296534466397148}
+  - component: {fileID: 4584789780887619818}
   m_Layer: 0
   m_Name: Zone5
   m_TagString: Untagged
@@ -4438,6 +4719,19 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+--- !u!114 &4584789780887619818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8922591811853888098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56b4479f7433414b985811c77aa901c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
+  source: {fileID: 0}
 --- !u!1 &8981847480167912638
 GameObject:
   m_ObjectHideFlags: 0

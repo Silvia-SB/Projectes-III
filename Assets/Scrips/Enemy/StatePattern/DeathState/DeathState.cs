@@ -15,6 +15,8 @@ public class DeathState : IEnemyState
 
     public void Enter()
     {
+        //enemyController.EnemyAudio().PlayDeathSound();
+
         deathTimer = 0f;
         isAnimatorDisabled = false;
         isDissolvingStarted = false;

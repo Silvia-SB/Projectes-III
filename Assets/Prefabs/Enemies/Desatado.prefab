@@ -2139,6 +2139,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 4124122457124392425}
   enemyAttack: {fileID: 998942607376102746}
   wildEnemyHealth: {fileID: 6929340689296994080}
+  enemyAudio: {fileID: 0}
 --- !u!114 &7542448289591935984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2519,7 +2520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationSpeedSync
   baseSpeed: 2
-  minAnimSpeed: 0.1
+  minAnimSpeed: 0.4
   useAnimatorParameter: 1
   speedMultiplierParam: WalkSpeedMultiplier
 --- !u!1 &1976940937217707329

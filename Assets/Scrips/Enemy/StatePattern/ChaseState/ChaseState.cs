@@ -16,6 +16,7 @@ public class ChaseState : IEnemyState
 
     public void Enter()
     {
+        //enemyController.EnemyAudio().PlayWalkSound();
         ResetAttackTriggers();
 
         if (!enemyController.Config.isRanged)

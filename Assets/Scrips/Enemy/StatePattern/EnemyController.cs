@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour, ISlowable
     [SerializeField] private NavMeshAgent navMeshAgent;
     [SerializeField] private EnemyAttack enemyAttack;
     [SerializeField] private WildEnemyHealth wildEnemyHealth;
-    
+    [SerializeField] private EnemyAudio enemyAudio;
     private HitboxManager hitboxManager;
     private Health health;
     private Animator animator;
@@ -294,6 +294,7 @@ public class EnemyController : MonoBehaviour, ISlowable
         if (!IsInAttackRange() || !IsFacingTarget()) return;
 
         PerformAttack(); 
+        enemyAudio.PlayAttackSound();
     }
 
     public bool IsDead()
@@ -319,6 +320,11 @@ public class EnemyController : MonoBehaviour, ISlowable
         }
     }
 
+    public String ChangeSound(String sound)
+    {
+        return sound;
+    }
+
     public EnemyMovement GetEnemyMovement() => enemyMovement;
     public Transform GetTarget() => target;
     public float GetDamage() => config.damage;
@@ -327,5 +333,6 @@ public class EnemyController : MonoBehaviour, ISlowable
     public Animator GetAnimator() => animator;
     public BodyPart GetCurrentHitBodyPart() => currentHitBodyPart;
     public DissolvingController GetDissolvingController() => dissolvingController;
- 
+    public EnemyAudio EnemyAudio() => enemyAudio;
+
 }

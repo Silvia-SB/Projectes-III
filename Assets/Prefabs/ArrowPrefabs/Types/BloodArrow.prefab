@@ -127,8 +127,7 @@ MonoBehaviour:
   - {fileID: 5264326613523227228}
   - {fileID: 5598893863876003726}
   - {fileID: 2091495067678672108}
-  stuckParticles:
-  - {fileID: 1487420391640037330}
+  stuckParticles: []
   baseDamage: 20
   innerDamage: 20
   outerDamage: 5
@@ -522,11 +521,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 216c48694fe8d2c47a407cde5685e644, type: 3}
---- !u!198 &1487420391640037330 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 602981698108573073, guid: 216c48694fe8d2c47a407cde5685e644, type: 3}
-  m_PrefabInstance: {fileID: 2088078545685492291}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4582075758240682855 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2552580014573871396, guid: 216c48694fe8d2c47a407cde5685e644, type: 3}

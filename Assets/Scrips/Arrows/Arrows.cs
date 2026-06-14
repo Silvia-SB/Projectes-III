@@ -170,7 +170,16 @@ public abstract class Arrow : MonoBehaviour
         if (rb != null && rb.isKinematic) return;
 
         Vector3 tipPosition = transform.position + transform.forward * arrowLength;
-        Vector3 hitPoint = other.ClosestPoint(tipPosition);
+        Vector3 hitPoint;
+        
+        if (other is MeshCollider meshCollider && !meshCollider.convex)
+        {
+            hitPoint = other.ClosestPointOnBounds(tipPosition);
+        }
+        else
+        {
+            hitPoint = other.ClosestPoint(tipPosition);
+        }
         
         Vector3 deviation = hitPoint - tipPosition;
         float forwardDeviation = Vector3.Dot(deviation, transform.forward);

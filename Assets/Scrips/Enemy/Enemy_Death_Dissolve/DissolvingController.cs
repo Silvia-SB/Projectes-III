@@ -6,6 +6,9 @@ public class DissolvingController : MonoBehaviour
 {
     [SerializeField] private Renderer[] targetRenderers;
 
+    [Header("Eyes Settings")]
+    [SerializeField] private GameObject[] eyeObjects;
+
     [SerializeField] private float dissolveSpeed = 0.5f;
     private bool isDissolving = false;
     private float counter = 0f;
@@ -77,11 +80,14 @@ public class DissolvingController : MonoBehaviour
     public void StartDissolve()
     {
         isDissolving = true;
+        SetEyesActive(false);
     }
 
     public void ResetDissolve()
     {
         InitializeMaterials(); 
+        
+        SetEyesActive(true);
         
         isDissolving = false;
         counter = 0f;
@@ -90,4 +96,13 @@ public class DissolvingController : MonoBehaviour
             if (mat != null) mat.SetFloat(DissolveAmountID, counter);
         }
     }   
+
+    private void SetEyesActive(bool isActive)
+    {
+        if (eyeObjects == null) return;
+        foreach (GameObject eye in eyeObjects)
+        {
+            if (eye != null) eye.SetActive(isActive);
+        }
+    }
 }

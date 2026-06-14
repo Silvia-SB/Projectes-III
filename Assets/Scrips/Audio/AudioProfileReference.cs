@@ -10,7 +10,6 @@ public class AudioProfileReference : MonoBehaviour
 
     public AudioConfig GetClipFromProfile(ArrowType arrowType, bool isFullyCharged)
     {
-        Debug.Log(arrowType);
         switch (arrowType)
         {
             case ArrowType.Base:

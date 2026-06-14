@@ -16,7 +16,7 @@ public class ChaseState : IEnemyState
 
     public void Enter()
     {
-        if(EnemyType.Caballero.Equals(enemyController.Config.type)) enemyController.EnemyAudio().PlayWalkSound();
+        enemyController.EnemyAudio().PlayWalkSound();
         ResetAttackTriggers();
 
         if (!enemyController.Config.isRanged)

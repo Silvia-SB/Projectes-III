@@ -30,6 +30,12 @@ public class ProceduralBowAnimation : MonoBehaviour
     [SerializeField] private Transform reloadStartPoint;
     [SerializeField] private float bowAlignmentDuration = 0.2f;
 
+    [Header("Charge Shake (Procedural)")]
+    [SerializeField] private float baseShakeIntensity = 0.005f;
+    [SerializeField] private float maxShakeIntensity = 0.025f;
+    [SerializeField] private float maxRotShakeIntensity = 1.5f;
+    [SerializeField] private float shakeSpeed = 45f;
+
     private Vector3 initialWeaponPos;
     private Quaternion initialWeaponRot;
     private float currentRetractionWeight;
@@ -43,6 +49,9 @@ public class ProceduralBowAnimation : MonoBehaviour
     private float lastCamPitch;
     private float smoothedPitchVelocity;
     private float smoothedYawVelocity;
+    private float currentShakeIntensity;
+    private Vector3 currentChargeShakePos;
+    private Quaternion currentChargeShakeRot = Quaternion.identity;
 
     public float CurrentRetractionWeight => currentRetractionWeight;
     public bool IsAligningBow => isAligningBow;
@@ -89,8 +98,27 @@ public class ProceduralBowAnimation : MonoBehaviour
     {
         if (weaponRoot == null || aimController == null) return;
         
-        Vector3 targetBasePos = initialWeaponPos + currentSwayPos;
-        Quaternion targetBaseRot = initialWeaponRot * currentSwayRot;
+        if (currentShakeIntensity > 0f)
+        {
+            float shakeX = Mathf.Sin(Time.time * shakeSpeed) * currentShakeIntensity;
+            float shakeY = Mathf.Cos(Time.time * shakeSpeed * 1.1f) * currentShakeIntensity;
+            float shakeZ = Mathf.Sin(Time.time * shakeSpeed * 0.9f) * currentShakeIntensity;
+            currentChargeShakePos = new Vector3(shakeX, shakeY, shakeZ);
+
+            float rotIntensity = (currentShakeIntensity / maxShakeIntensity) * maxRotShakeIntensity;
+            float rotX = Mathf.Sin(Time.time * shakeSpeed * 0.8f) * rotIntensity;
+            float rotY = Mathf.Cos(Time.time * shakeSpeed * 1.3f) * rotIntensity;
+            float rotZ = Mathf.Sin(Time.time * shakeSpeed * 1.0f) * rotIntensity;
+            currentChargeShakeRot = Quaternion.Euler(rotX, rotY, rotZ);
+        }
+        else
+        {
+            currentChargeShakePos = Vector3.Lerp(currentChargeShakePos, Vector3.zero, Time.deltaTime * 15f);
+            currentChargeShakeRot = Quaternion.Slerp(currentChargeShakeRot, Quaternion.identity, Time.deltaTime * 15f);
+        }
+
+        Vector3 targetBasePos = initialWeaponPos + currentSwayPos + currentChargeShakePos;
+        Quaternion targetBaseRot = initialWeaponRot * currentSwayRot * currentChargeShakeRot;
 
         weaponRoot.localPosition = targetBasePos;
         weaponRoot.localRotation = targetBaseRot;
@@ -182,5 +210,24 @@ public class ProceduralBowAnimation : MonoBehaviour
         {
             initialLocalAlignDir = bowRestPoint.InverseTransformDirection(stringNockPoint.forward);
         }
+    }
+
+    public void UpdateChargeShake(float currentCharge, float fullCharge, float maxHold)
+    {
+        if (currentCharge < fullCharge)
+        {
+            currentShakeIntensity = 0f;
+        }
+        else
+        {
+            float overchargeTime = currentCharge - fullCharge;
+            float overchargePercent = Mathf.Clamp01(overchargeTime / maxHold);
+            currentShakeIntensity = Mathf.Lerp(baseShakeIntensity, maxShakeIntensity, overchargePercent * overchargePercent);
+        }
+    }
+
+    public void StopChargeShake()
+    {
+        currentShakeIntensity = 0f;
     }
 }

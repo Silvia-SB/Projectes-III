@@ -20,6 +20,7 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private float minChargeTime = 1f;
     [SerializeField] private float fullChargeTime = 4f;
+    [SerializeField] private float maxHoldTime = 6f;
     [SerializeField] private float minShootVelocity = 25f;
     [SerializeField] private float maxShootVelocity = 60f;
     [SerializeField] private ArrowType currentArrowType = ArrowType.Base;
@@ -86,12 +87,24 @@ public class PlayerShooter : MonoBehaviour
         if (isCharging)
         {
             float currentCharge = Time.time - chargeStartTime;
+            
+            if (currentCharge >= fullChargeTime + maxHoldTime)
+            {
+                ReleaseCharge();
+                return;
+            }
+
             if (!hasReachedMinCharge && currentCharge >= minChargeTime)
             {
                 hasReachedMinCharge = true;
                 OnMinChargeReached?.Invoke();
             }
             
+            if (bowAnimation != null)
+            {
+                bowAnimation.UpdateChargeShake(currentCharge, fullChargeTime, maxHoldTime);
+            }
+
             OnChargeUpdate?.Invoke(currentCharge, fullChargeTime);
 
             if (playerCamera != null && aimController != null)
@@ -148,6 +161,7 @@ public class PlayerShooter : MonoBehaviour
                 isFireButtonHeld = false;
                 isCharging = false;
                 isAimMarkerActive = false;
+                if (bowAnimation != null) bowAnimation.StopChargeShake();
                 OnChargeEnd?.Invoke();
                 OnChargeCanceled?.Invoke();
             }
@@ -174,6 +188,7 @@ public class PlayerShooter : MonoBehaviour
     {
         isCharging = false; 
         isAimMarkerActive = false;
+        if (bowAnimation != null) bowAnimation.StopChargeShake();
         OnChargeEnd?.Invoke();
         
         float chargeDuration = Time.time - chargeStartTime;
@@ -337,6 +352,7 @@ public class PlayerShooter : MonoBehaviour
         if (isCharging)
         {
             isCharging = false;
+            if (bowAnimation != null) bowAnimation.StopChargeShake();
             OnChargeEnd?.Invoke();
         }
 
@@ -349,6 +365,7 @@ public class PlayerShooter : MonoBehaviour
     
     public void ResetState()
     {
+        if (bowAnimation != null) bowAnimation.StopChargeShake();
         TryChangeArrowType(ArrowType.Base);
         PrepareArrow();
         OnArrowChanged?.Invoke(ArrowType.Base);

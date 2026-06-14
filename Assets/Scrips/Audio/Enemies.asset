@@ -17,28 +17,34 @@ MonoBehaviour:
     startTime: 0.2
     endTime: 0
     volume: 1
+    maxDistance: 25
   fireHit:
     clip: {fileID: 8300000, guid: b775901ecf8b36c4e96b026e65069467, type: 3}
     startTime: 0
     endTime: 6
     volume: 1
+    maxDistance: 25
   electricHit:
     clip: {fileID: 8300000, guid: e7f4eb9f19d086c4d8fa9e224bcdfd23, type: 3}
     startTime: 0
     endTime: 2
     volume: 1
+    maxDistance: 25
   fireExplosion:
     clip: {fileID: 8300000, guid: 6571641b8ab5fb24090f894160593bcf, type: 3}
     startTime: 0
     endTime: 2
     volume: 1
+    maxDistance: 25
   electricExplosion:
     clip: {fileID: 8300000, guid: 298e0e0cec2bfb24daccf2a1c24bff0c, type: 3}
     startTime: 0
     endTime: 0
     volume: 1
+    maxDistance: 25
   piercingHit:
     clip: {fileID: 8300000, guid: 902293c72d19fe545b0fb9058c5ed43e, type: 3}
     startTime: 0.2
     endTime: 0
     volume: 1
+    maxDistance: 25

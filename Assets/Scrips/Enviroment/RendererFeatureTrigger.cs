@@ -30,31 +30,8 @@ public class RendererFeatureTrigger : MonoBehaviour
 
         if (string.IsNullOrEmpty(targetTag) || other.CompareTag(targetTag))
         {
-            SetRendererFeatureActive(fullScreenFeatureName, activateFeature);
+            URPUtility.SetRendererFeatureActive(pcRendererData, fullScreenFeatureName, activateFeature);
             hasTriggered = true;
         }
-    }
-
-    private void SetRendererFeatureActive(string targetFeatureName, bool active)
-    {
-        if (pcRendererData == null)
-        {
-            Debug.LogWarning("PC Renderer Data no asignado.");
-            return;
-        }
-
-        foreach (ScriptableRendererFeature feature in pcRendererData.rendererFeatures)
-        {
-            if (feature == null) continue;
-
-            if (feature.name == targetFeatureName)
-            {
-                feature.SetActive(active);
-                pcRendererData.SetDirty();
-                return;
-            }
-        }
-
-        Debug.LogWarning("No se encontró el Renderer Feature: " + targetFeatureName);
     }
 }

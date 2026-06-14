@@ -28,7 +28,7 @@ public class MainMenu : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        SetRendererFeatureActive(fullScreenFeatureName, false);
+        URPUtility.SetRendererFeatureActive(pcRendererData, fullScreenFeatureName, false);
     }
 
     public async void PlayGame()
@@ -83,28 +83,5 @@ public class MainMenu : MonoBehaviour
             titleArrow.SalirDisparada();
 
         Application.Quit();
-    }
-    
-    private void SetRendererFeatureActive(string targetFeatureName, bool active)
-    {
-        if (pcRendererData == null)
-        {
-            Debug.LogWarning("PC Renderer Data no asignado.");
-            return;
-        }
-
-        foreach (ScriptableRendererFeature feature in pcRendererData.rendererFeatures)
-        {
-            if (feature == null) continue;
-
-            if (feature.name == targetFeatureName)
-            {
-                feature.SetActive(active);
-                pcRendererData.SetDirty();
-                return;
-            }
-        }
-
-        Debug.LogWarning("No se encontró el Renderer Feature: " + targetFeatureName);
     }
 }

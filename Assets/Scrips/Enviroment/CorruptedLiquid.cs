@@ -16,9 +16,14 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable, IResettable
     [SerializeField] private Collider deactivationCollider;
     [SerializeField] private string deactivatorTag = "Player";
 
+    [Header("Auto Deactivation")]
+    [SerializeField] private bool autoDeactivate = false;
+    [SerializeField] private float activeDuration = 7f;
+
     private Collider[] colliders; 
     [SerializeField] private bool isActive;
     private float nextPulseTime;
+    private float autoDeactivateTime;
     
     private readonly List<IDamageable> targets = new List<IDamageable>();
 
@@ -64,6 +69,11 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable, IResettable
         isActive = true;
         nextPulseTime = Time.time + interval;
 
+        if (autoDeactivate)
+        {
+            autoDeactivateTime = Time.time + activeDuration;
+        }
+
         AchievementManager.UnlockAchievement("environment_oil");
 
         ActivateEffects();
@@ -100,7 +110,14 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable, IResettable
 
     private void Update() 
     {
-        if (!isActive || Time.time < nextPulseTime) return;
+        if (!isActive) return;
+        
+        if (autoDeactivate && Time.time >= autoDeactivateTime)
+        {
+            Deactivate();
+            return;
+        }
+        if (Time.time < nextPulseTime) return;
         
         nextPulseTime = Time.time + interval;
         

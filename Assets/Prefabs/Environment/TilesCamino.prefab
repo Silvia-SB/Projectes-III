@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8839711576181617231}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TilesCamino
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8839711576181617231
 Transform:
@@ -69,6 +69,7 @@ Transform:
   - {fileID: 4497174197852861847}
   - {fileID: 6874433918535360164}
   - {fileID: 562547703640046579}
+  - {fileID: 6418164996973648319}
   - {fileID: 8369691993252766004}
   - {fileID: 8739869386558744706}
   - {fileID: 1720741304269750811}
@@ -92,6 +93,7 @@ Transform:
   - {fileID: 3910704243389439717}
   - {fileID: 574890199524840116}
   - {fileID: 5949076394806520438}
+  - {fileID: 7411992003758400707}
   - {fileID: 5911010048239825579}
   - {fileID: 596615854987663373}
   - {fileID: 4792068843329154823}
@@ -117,6 +119,10 @@ Transform:
   - {fileID: 5051557417754389315}
   - {fileID: 8484837137072547665}
   - {fileID: 1450724497033731539}
+  - {fileID: 3409622078552860281}
+  - {fileID: 5847280585058707444}
+  - {fileID: 636083190023112876}
+  - {fileID: 6132229059067019609}
   - {fileID: 3548980271159525766}
   - {fileID: 3478728642534359204}
   - {fileID: 8081083217562591617}
@@ -135,6 +141,14 @@ PrefabInstance:
     - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_Name
       value: FreeTiles1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -238,6 +252,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -300,6 +322,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -321,6 +351,14 @@ PrefabInstance:
     - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_Name
       value: FreeTiles2 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -384,6 +422,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -125.38
@@ -445,6 +491,14 @@ PrefabInstance:
     - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_Name
       value: FreeTiles1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -508,6 +562,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -69.7595
@@ -557,6 +619,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
   m_PrefabInstance: {fileID: 692693304706866345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &754698579698704096
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8839711576181617231}
+    m_Modifications:
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Name
+      value: FreeTiles1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -46.352
+      objectReference: {fileID: 0}
+    - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.798
+      objectReference: {fileID: 0}
+    - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5632533
+      objectReference: {fileID: 0}
+    - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5973681
+      objectReference: {fileID: 0}
+    - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.41255748
+      objectReference: {fileID: 0}
+    - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.39458004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -93.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -7.028015
+      objectReference: {fileID: 0}
+    - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -62.604004
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+--- !u!4 &6132229059067019609 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+  m_PrefabInstance: {fileID: 754698579698704096}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &921094099095309302
 PrefabInstance:
@@ -610,6 +734,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2 (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -619,6 +751,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 328754829032625147, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
   m_PrefabInstance: {fileID: 921094099095309302}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1084635671418495008
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8839711576181617231}
+    m_Modifications:
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_Name
+      value: FreeTiles2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -46.922043
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.3644793
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.797241
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.4551262
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.525205
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5080327
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5088445
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -84.319
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 226.712
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -494.615
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+--- !u!4 &5847280585058707444 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+  m_PrefabInstance: {fileID: 1084635671418495008}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1086800712384340065
 PrefabInstance:
@@ -671,6 +865,14 @@ PrefabInstance:
     - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
       propertyPath: m_Name
       value: FreeTiles4 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -734,6 +936,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles4 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -743,6 +953,76 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6237503916383695291, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
   m_PrefabInstance: {fileID: 1150963096285660501}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1152030075664279368
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8839711576181617231}
+    m_Modifications:
+    - target: {fileID: 6263717973051899639, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -161.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263717973051899639, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263717973051899639, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -35.910004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263717973051899639, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7068172
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263717973051899639, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7068172
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263717973051899639, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.020236956
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263717973051899639, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.020236952
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263717973051899639, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -86.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263717973051899639, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263717973051899639, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_Name
+      value: BigTiles1 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+--- !u!4 &6418164996973648319 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6263717973051899639, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+  m_PrefabInstance: {fileID: 1152030075664279368}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1278158795548700506
 PrefabInstance:
@@ -755,6 +1035,14 @@ PrefabInstance:
     - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_Name
       value: FreeTiles2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -858,6 +1146,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -879,6 +1175,14 @@ PrefabInstance:
     - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_Name
       value: FreeTiles2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -982,6 +1286,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1044,6 +1356,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1065,6 +1385,14 @@ PrefabInstance:
     - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_Name
       value: FreeTiles2 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1128,6 +1456,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles3 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6180005240139876633, guid: 73f691e222c18644e9b82bf997ce3fbf, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6180005240139876633, guid: 73f691e222c18644e9b82bf997ce3fbf, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 6811723750659543971, guid: 73f691e222c18644e9b82bf997ce3fbf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -150.19598
@@ -1189,6 +1525,14 @@ PrefabInstance:
     - target: {fileID: 6180005240139876633, guid: 73f691e222c18644e9b82bf997ce3fbf, type: 3}
       propertyPath: m_Name
       value: FreeTiles3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6180005240139876633, guid: 73f691e222c18644e9b82bf997ce3fbf, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6180005240139876633, guid: 73f691e222c18644e9b82bf997ce3fbf, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6811723750659543971, guid: 73f691e222c18644e9b82bf997ce3fbf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1252,6 +1596,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles1 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -124.78506
@@ -1312,11 +1664,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6263717973051899639, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -43.11
+      value: -44.9
       objectReference: {fileID: 0}
     - target: {fileID: 6263717973051899639, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.47
+      value: -0.41
       objectReference: {fileID: 0}
     - target: {fileID: 6263717973051899639, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1353,6 +1705,14 @@ PrefabInstance:
     - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
       propertyPath: m_Name
       value: BigTiles1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1416,6 +1776,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1477,6 +1845,14 @@ PrefabInstance:
     - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
       propertyPath: m_Name
       value: FreeTiles4 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1540,6 +1916,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles4 (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1601,6 +1985,14 @@ PrefabInstance:
     - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
       propertyPath: m_Name
       value: FreeTiles4 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1664,6 +2056,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles4
       objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1726,6 +2126,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles4 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1747,6 +2155,14 @@ PrefabInstance:
     - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_Name
       value: FreeTiles1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1850,6 +2266,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles4 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1871,6 +2295,14 @@ PrefabInstance:
     - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_Name
       value: FreeTiles1 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1974,6 +2406,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2036,6 +2476,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2057,6 +2505,14 @@ PrefabInstance:
     - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_Name
       value: FreeTiles1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2160,6 +2616,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2181,6 +2645,14 @@ PrefabInstance:
     - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_Name
       value: FreeTiles1 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2284,6 +2756,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2305,6 +2785,14 @@ PrefabInstance:
     - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_Name
       value: FreeTiles1 (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2408,6 +2896,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2470,6 +2966,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2491,6 +2995,14 @@ PrefabInstance:
     - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_Name
       value: FreeTiles1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2553,6 +3065,14 @@ PrefabInstance:
     - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_Name
       value: FreeTiles2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2656,6 +3176,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2 (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2718,6 +3246,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2739,6 +3275,14 @@ PrefabInstance:
     - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_Name
       value: FreeTiles1 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2842,6 +3386,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2904,6 +3456,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles4 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2925,6 +3485,14 @@ PrefabInstance:
     - target: {fileID: 6180005240139876633, guid: 73f691e222c18644e9b82bf997ce3fbf, type: 3}
       propertyPath: m_Name
       value: FreeTiles3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6180005240139876633, guid: 73f691e222c18644e9b82bf997ce3fbf, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6180005240139876633, guid: 73f691e222c18644e9b82bf997ce3fbf, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6811723750659543971, guid: 73f691e222c18644e9b82bf997ce3fbf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2987,6 +3555,14 @@ PrefabInstance:
     - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_Name
       value: FreeTiles1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3090,6 +3666,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3111,6 +3695,14 @@ PrefabInstance:
     - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_Name
       value: FreeTiles1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3214,6 +3806,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles4 (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3276,6 +3876,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles4 (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3297,6 +3905,14 @@ PrefabInstance:
     - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_Name
       value: FreeTiles2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3359,6 +3975,14 @@ PrefabInstance:
     - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_Name
       value: FreeTiles1 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3462,6 +4086,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles4 (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3524,6 +4156,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2 (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3545,6 +4185,14 @@ PrefabInstance:
     - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_Name
       value: FreeTiles2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3648,6 +4296,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles1
       objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3709,6 +4365,14 @@ PrefabInstance:
     - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
       propertyPath: m_Name
       value: FreeTiles4 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3772,6 +4436,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles4 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3793,6 +4465,14 @@ PrefabInstance:
     - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_Name
       value: FreeTiles2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3896,6 +4576,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles4 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3917,6 +4605,14 @@ PrefabInstance:
     - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_Name
       value: FreeTiles2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4020,6 +4716,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4082,6 +4786,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4091,6 +4803,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 328754829032625147, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
   m_PrefabInstance: {fileID: 6235190340890288464}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6267606163425546104
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8839711576181617231}
+    m_Modifications:
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_Name
+      value: FreeTiles2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -159.03801
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.8100002
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -39.554504
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6903783
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7232291
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.012100554
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.013082808
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -93.354
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -37.514008
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 37.434006
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+--- !u!4 &636083190023112876 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+  m_PrefabInstance: {fileID: 6267606163425546104}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6315724777666074343
 PrefabInstance:
@@ -4103,6 +4877,14 @@ PrefabInstance:
     - target: {fileID: 6180005240139876633, guid: 73f691e222c18644e9b82bf997ce3fbf, type: 3}
       propertyPath: m_Name
       value: FreeTiles3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6180005240139876633, guid: 73f691e222c18644e9b82bf997ce3fbf, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6180005240139876633, guid: 73f691e222c18644e9b82bf997ce3fbf, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6811723750659543971, guid: 73f691e222c18644e9b82bf997ce3fbf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4206,6 +4988,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles4
       objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4268,6 +5058,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4289,6 +5087,14 @@ PrefabInstance:
     - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_Name
       value: FreeTiles2 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4392,6 +5198,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4453,6 +5267,14 @@ PrefabInstance:
     - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
       propertyPath: m_Name
       value: BigTiles1 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4516,6 +5338,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles4 (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4537,6 +5367,14 @@ PrefabInstance:
     - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_Name
       value: FreeTiles1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4587,6 +5425,76 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
   m_PrefabInstance: {fileID: 7073381972134582220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7085103063159093048
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8839711576181617231}
+    m_Modifications:
+    - target: {fileID: 328754829032625147, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -126.88901
+      objectReference: {fileID: 0}
+    - target: {fileID: 328754829032625147, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.9699228
+      objectReference: {fileID: 0}
+    - target: {fileID: 328754829032625147, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.82724
+      objectReference: {fileID: 0}
+    - target: {fileID: 328754829032625147, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6895855
+      objectReference: {fileID: 0}
+    - target: {fileID: 328754829032625147, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7208207
+      objectReference: {fileID: 0}
+    - target: {fileID: 328754829032625147, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.047135226
+      objectReference: {fileID: 0}
+    - target: {fileID: 328754829032625147, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.05164888
+      objectReference: {fileID: 0}
+    - target: {fileID: 328754829032625147, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -87.443
+      objectReference: {fileID: 0}
+    - target: {fileID: 328754829032625147, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -167.771
+      objectReference: {fileID: 0}
+    - target: {fileID: 328754829032625147, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 175.784
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Name
+      value: BigTiles2 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+--- !u!4 &7411992003758400707 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 328754829032625147, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+  m_PrefabInstance: {fileID: 7085103063159093048}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7295265197641858983
 PrefabInstance:
@@ -4639,6 +5547,14 @@ PrefabInstance:
     - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
       propertyPath: m_Name
       value: FreeTiles4 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4702,6 +5618,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4723,6 +5647,14 @@ PrefabInstance:
     - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_Name
       value: FreeTiles1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4826,6 +5758,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles4 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4847,6 +5787,14 @@ PrefabInstance:
     - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_Name
       value: FreeTiles1 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4909,6 +5857,14 @@ PrefabInstance:
     - target: {fileID: 6180005240139876633, guid: 73f691e222c18644e9b82bf997ce3fbf, type: 3}
       propertyPath: m_Name
       value: FreeTiles3 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6180005240139876633, guid: 73f691e222c18644e9b82bf997ce3fbf, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6180005240139876633, guid: 73f691e222c18644e9b82bf997ce3fbf, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6811723750659543971, guid: 73f691e222c18644e9b82bf997ce3fbf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5012,6 +5968,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5073,6 +6037,14 @@ PrefabInstance:
     - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
       propertyPath: m_Name
       value: BigTiles2 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5136,6 +6108,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles4
       objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5197,6 +6177,14 @@ PrefabInstance:
     - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
       propertyPath: m_Name
       value: BigTiles2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5260,6 +6248,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5321,6 +6317,14 @@ PrefabInstance:
     - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
       propertyPath: m_Name
       value: BigTiles1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5384,6 +6388,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles4 (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5405,6 +6417,14 @@ PrefabInstance:
     - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_Name
       value: FreeTiles2 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5455,6 +6475,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
   m_PrefabInstance: {fileID: 8027756579069544018}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8176770989880992173
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8839711576181617231}
+    m_Modifications:
+    - target: {fileID: 6152762062005853550, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_Name
+      value: FreeTiles2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -47.225
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.391
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.291
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.51382256
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.4748946
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.49084455
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5191658
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -93.901
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 170.427
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -261.647
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+--- !u!4 &3409622078552860281 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6784902446510213076, guid: 68e3cc5c6dea0ba498d1df9e601205c5, type: 3}
+  m_PrefabInstance: {fileID: 8176770989880992173}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8183786872076582720
 PrefabInstance:
@@ -5507,6 +6589,14 @@ PrefabInstance:
     - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
       propertyPath: m_Name
       value: BigTiles1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5570,6 +6660,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles1
       objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748330559707849805, guid: 3f24d5445cb60774596637a9d419b800, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5632,6 +6730,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FreeTiles4 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763210849467771649, guid: 37108264a3a82b04a87aea9e73ba19d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5653,6 +6759,14 @@ PrefabInstance:
     - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_Name
       value: FreeTiles1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalScale.x
@@ -5768,6 +6882,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2 (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5830,6 +6952,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTiles2 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136077445630216513, guid: 647550209b3c68148a64364811c2ac4f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5851,6 +6981,14 @@ PrefabInstance:
     - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_Name
       value: FreeTiles1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064351050039166211, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6873398525504937913, guid: 92a9e585ec3c0b343bd7c7faf7de29d9, type: 3}
       propertyPath: m_LocalPosition.x

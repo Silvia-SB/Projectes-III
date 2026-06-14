@@ -34,6 +34,7 @@ public class PlayerShooter : MonoBehaviour,IResettable
     private bool isFireButtonHeld;
     private bool hasReachedMinCharge;
     private bool isAimMarkerActive; 
+    private int weaponLayer;
 
     public event Action OnChargeStart;
     public event Action OnChargeEnd;
@@ -49,6 +50,7 @@ public class PlayerShooter : MonoBehaviour,IResettable
 
     private void Start()
     {
+        weaponLayer = LayerMask.NameToLayer("Weapon");
         if (playerCamera == null) playerCamera = Camera.main;
         if (aimController == null) aimController = GetComponent<PlayerAimController>();
         if (bowAnimation == null) bowAnimation = GetComponent<ProceduralBowAnimation>();
@@ -340,7 +342,7 @@ public class PlayerShooter : MonoBehaviour,IResettable
         currentArrowInstance.transform.SetParent(firePoint);
         currentArrowInstance.transform.localPosition = Vector3.zero;
         currentArrowInstance.transform.localRotation = Quaternion.identity;
-        currentArrowInstance.gameObject.layer = LayerMask.NameToLayer("Weapon");
+        currentArrowInstance.gameObject.layer = weaponLayer;
 
         if (currentArrowInstance.TryGetComponent<Rigidbody>(out var rb))
         {

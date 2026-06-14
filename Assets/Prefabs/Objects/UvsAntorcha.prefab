@@ -137,6 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2511671911587371590}
   - component: {fileID: 7213772906441976509}
+  - component: {fileID: -8967694060731114621}
   m_Layer: 8
   m_Name: UvsAntorcha
   m_TagString: Wall
@@ -177,6 +178,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InteractableHighlighter
   highlightMaterial: {fileID: 2100000, guid: 4f3d2d2c9e5947c46b55c38b5fceb412, type: 2}
   haloObject: {fileID: 0}
+--- !u!114 &-8967694060731114621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2995053075234652412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
+  profile: {fileID: 11400000, guid: 20e92148002780242b553e89e397c378, type: 2}
 --- !u!1 &3088750433197968708
 GameObject:
   m_ObjectHideFlags: 0

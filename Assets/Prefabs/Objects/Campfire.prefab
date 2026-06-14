@@ -586,6 +586,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8541afb7de637674a923f83c21f61e71, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8456579226544716808}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8541afb7de637674a923f83c21f61e71, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3870533615057411306}
   m_SourcePrefab: {fileID: 100100000, guid: 8541afb7de637674a923f83c21f61e71, type: 3}
 --- !u!4 &8464654545314310484 stripped
 Transform:
@@ -638,3 +641,16 @@ MonoBehaviour:
   activationCollider: {fileID: 0}
   deactivationCollider: {fileID: 0}
   targetTag: Player
+--- !u!114 &3870533615057411306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9093804326289847278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
+  profile: {fileID: 11400000, guid: 20e92148002780242b553e89e397c378, type: 2}

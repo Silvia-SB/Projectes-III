@@ -162,6 +162,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 5183308410901801149, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
+      propertyPath: profile
+      value: 
+      objectReference: {fileID: 11400000, guid: 79e3ccfc02fc7234b800a60f97c86f75, type: 2}
     - target: {fileID: 6529709422316485495, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
       propertyPath: m_Name
       value: Street lamp version 4 Variant
@@ -174,8 +178,29 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 70439767771045460, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8005328592622510145}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6529709422316485495, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7063046321964539089}
   m_SourcePrefab: {fileID: 100100000, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
+--- !u!1 &268313314663955154 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6529709422316485495, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
+  m_PrefabInstance: {fileID: 6424118333154296229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-7063046321964539089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268313314663955154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
+  profile: {fileID: 0}
 --- !u!4 &6475416562067136497 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 70439767771045460, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}

@@ -319,8 +319,29 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d15a95dd4a52ede4580f2c0a86983b98, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7514425914124902547}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d15a95dd4a52ede4580f2c0a86983b98, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 145450032698891956}
   m_SourcePrefab: {fileID: 100100000, guid: d15a95dd4a52ede4580f2c0a86983b98, type: 3}
+--- !u!1 &246385393355222321 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d15a95dd4a52ede4580f2c0a86983b98, type: 3}
+  m_PrefabInstance: {fileID: 1128784906651258976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &145450032698891956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246385393355222321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
+  profile: {fileID: 11400000, guid: 79e3ccfc02fc7234b800a60f97c86f75, type: 2}
 --- !u!4 &585615943824586635 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d15a95dd4a52ede4580f2c0a86983b98, type: 3}

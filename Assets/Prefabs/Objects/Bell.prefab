@@ -71,6 +71,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6af168e47507b2544b916a22d0bdb638, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8548306636177156239}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6af168e47507b2544b916a22d0bdb638, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 384691489567863861}
   m_SourcePrefab: {fileID: 100100000, guid: 6af168e47507b2544b916a22d0bdb638, type: 3}
 --- !u!1 &9121660306430977278 stripped
 GameObject:
@@ -89,5 +92,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8954138b863212b4a93b041157a791ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableHighlighter
-  normalMaterial: {fileID: 2100000, guid: 14dd638e2e7d5714796b258be0ff2f04, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 396e1da3ee742e04da7c38c8035aeb44, type: 2}
+  haloObject: {fileID: 0}
+--- !u!114 &384691489567863861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9121660306430977278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
+  profile: {fileID: 11400000, guid: 0c1cade3e67eec74b96c3da971aabbb7, type: 2}

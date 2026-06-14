@@ -15,20 +15,14 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField] private AudioClip walkClip;
     [SerializeField] private AudioClip runClip;
     [SerializeField] private float movementMinVelocity = 0.15f;
-    [SerializeField] private float walkStepDistance = 1.7f;
-    [SerializeField] private float runStepDistance = 2.2f;
     [SerializeField, Range(0f, 1f)] private float walkVolume = 0.7f;
     [SerializeField, Range(0f, 1f)] private float runVolume = 0.9f;
-    [SerializeField, Range(0f, 0.2f)] private float footstepPitchVariation = 0.05f;
 
     [Header("Bow Clips")]
     [SerializeField] private AudioClip bowStringTensionClip;
     [SerializeField] private AudioClip shootClip;
     [SerializeField, Range(0f, 1f)] private float bowStringVolume = 0.8f;
     [SerializeField, Range(0f, 1f)] private float shootVolume = 1f;
-
-    private float distanceSinceLastStep;
-    private bool wasMoving;
 
     private void Awake()
     {
@@ -39,7 +33,7 @@ public class PlayerAudio : MonoBehaviour
         bowStringSource = GetOrCreateAudioSource(bowStringSource);
         oneShotSource = GetOrCreateAudioSource(oneShotSource);
 
-        movementSource.loop = false;
+        movementSource.loop = true;
         bowStringSource.loop = true;
         oneShotSource.loop = false;
     }
@@ -93,36 +87,24 @@ public class PlayerAudio : MonoBehaviour
 
         bool isRunning = playerMovement.IsSprinting && !playerMovement.IsSlowed && !playerMovement.IsChargingArrow;
         AudioClip targetClip = isRunning ? runClip : walkClip;
+
         if (targetClip == null)
         {
             StopMovement();
             return;
         }
 
-        if (!wasMoving)
+        movementSource.volume = isRunning ? runVolume : walkVolume;
+
+        if (movementSource.clip != targetClip)
         {
-            PlayFootstep(targetClip, isRunning);
-            distanceSinceLastStep = 0f;
-            wasMoving = true;
-            return;
+            movementSource.clip = targetClip;
+            movementSource.Play();
         }
-
-        distanceSinceLastStep += horizontalVelocity.magnitude * Time.deltaTime;
-
-        float targetStepDistance = isRunning ? runStepDistance : walkStepDistance;
-        if (distanceSinceLastStep >= targetStepDistance)
+        else if (!movementSource.isPlaying)
         {
-            PlayFootstep(targetClip, isRunning);
-            distanceSinceLastStep = 0f;
+            movementSource.Play();
         }
-    }
-
-    private void PlayFootstep(AudioClip clip, bool isRunning)
-    {
-        if (clip == null || movementSource == null) return;
-
-        movementSource.pitch = Random.Range(1f - footstepPitchVariation, 1f + footstepPitchVariation);
-        movementSource.PlayOneShot(clip, isRunning ? runVolume : walkVolume);
     }
 
     private void PlayBowStringTension()
@@ -150,8 +132,9 @@ public class PlayerAudio : MonoBehaviour
 
     private void StopMovement()
     {
-        distanceSinceLastStep = 0f;
-        wasMoving = false;
+        if (movementSource == null || !movementSource.isPlaying) return;
+
+        movementSource.Stop();
     }
 
     private AudioSource GetOrCreateAudioSource(AudioSource source)

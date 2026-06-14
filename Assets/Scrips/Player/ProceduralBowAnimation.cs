@@ -20,6 +20,11 @@ public class ProceduralBowAnimation : MonoBehaviour
     [SerializeField] private float maxSwayRot = 4.0f;
     [SerializeField] private float swaySmooth = 12f;
 
+    [Header("Movement Bob (Inertia Offset)")]
+    [SerializeField] private HeadBobController headBobController;
+    [SerializeField] private float bobPositionMultiplier = 0.6f;
+    [SerializeField] private float bobPhaseOffset = 1.2f;
+
     [Header("Bow Movement Limits")]
     [SerializeField] private float maxPitchUp = -35f;
     [SerializeField] private float maxPitchDown = 35f;
@@ -52,6 +57,7 @@ public class ProceduralBowAnimation : MonoBehaviour
     private float currentShakeIntensity;
     private Vector3 currentChargeShakePos;
     private Quaternion currentChargeShakeRot = Quaternion.identity;
+    private Vector3 currentWeaponBobPos;
 
     public float CurrentRetractionWeight => currentRetractionWeight;
     public bool IsAligningBow => isAligningBow;
@@ -59,6 +65,8 @@ public class ProceduralBowAnimation : MonoBehaviour
 
     private void Start()
     {
+        if (headBobController == null) headBobController = GetComponentInParent<HeadBobController>();
+
         if (weaponRoot != null)
         {
             initialWeaponPos = weaponRoot.localPosition;
@@ -79,6 +87,7 @@ public class ProceduralBowAnimation : MonoBehaviour
     private void LateUpdate()
     {
         UpdateWeaponSway();
+        UpdateMovementBob();
         ApplyWeaponTransformAndRetraction();
     }
 
@@ -91,6 +100,25 @@ public class ProceduralBowAnimation : MonoBehaviour
         if (bowAlignmentWeight >= 1f)
         {
             isAligningBow = false;
+        }
+    }
+
+    private void UpdateMovementBob()
+    {
+        if (headBobController == null) return;
+        
+        float amount = headBobController.CurrentBobAmount * bobPositionMultiplier;
+        
+        if (amount > 0f)
+        {
+            float timer = headBobController.BobTimer - bobPhaseOffset;
+            float targetX = Mathf.Sin(timer / 2f) * amount;
+            float targetY = Mathf.Sin(timer) * amount;
+            currentWeaponBobPos = Vector3.Lerp(currentWeaponBobPos, new Vector3(targetX, targetY, 0f), Time.deltaTime * 10f);
+        }
+        else
+        {
+            currentWeaponBobPos = Vector3.Lerp(currentWeaponBobPos, Vector3.zero, Time.deltaTime * 5f);
         }
     }
 
@@ -117,7 +145,7 @@ public class ProceduralBowAnimation : MonoBehaviour
             currentChargeShakeRot = Quaternion.Slerp(currentChargeShakeRot, Quaternion.identity, Time.deltaTime * 15f);
         }
 
-        Vector3 targetBasePos = initialWeaponPos + currentSwayPos + currentChargeShakePos;
+        Vector3 targetBasePos = initialWeaponPos + currentSwayPos + currentChargeShakePos + currentWeaponBobPos;
         Quaternion targetBaseRot = initialWeaponRot * currentSwayRot * currentChargeShakeRot;
 
         weaponRoot.localPosition = targetBasePos;

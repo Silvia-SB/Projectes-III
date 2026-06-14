@@ -33,6 +33,9 @@ public class HeadBobController : MonoBehaviour
     private Quaternion baseLocalRotation;
     private float currentTilt;
 
+    public float BobTimer => bobTimer;
+    public float CurrentBobAmount { get; private set; }
+
     private void Start()
     {
         if (playerMovement == null)
@@ -62,6 +65,7 @@ public class HeadBobController : MonoBehaviour
         float horizontalSpeed = new Vector3(playerMovement.Controller.velocity.x, 0, playerMovement.Controller.velocity.z).magnitude;
 
         float targetTilt = 0f;
+        CurrentBobAmount = 0f;
 
         if (playerMovement.IsGrounded && horizontalSpeed > 0.1f)
         {
@@ -78,6 +82,7 @@ public class HeadBobController : MonoBehaviour
             }
 
             bobTimer += Time.deltaTime * speedMultiplier;
+            CurrentBobAmount = amountMultiplier;
 
             float targetX = defaultCameraXPos + Mathf.Sin(bobTimer / 2f) * amountMultiplier;
             float targetY = defaultCameraYPos + Mathf.Sin(bobTimer) * amountMultiplier;

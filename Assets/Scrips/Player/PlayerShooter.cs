@@ -156,19 +156,24 @@ public class PlayerShooter : MonoBehaviour
     {
         if (Time.timeScale == 0f)
         {
-            if (context.canceled)
+            if (!context.ReadValueAsButton())
             {
                 isFireButtonHeld = false;
-                isCharging = false;
-                isAimMarkerActive = false;
-                if (bowAnimation != null) bowAnimation.StopChargeShake();
-                OnChargeEnd?.Invoke();
-                OnChargeCanceled?.Invoke();
+                if (isCharging)
+                {
+                    isCharging = false;
+                    isAimMarkerActive = false;
+                    if (bowAnimation != null) bowAnimation.StopChargeShake();
+                    OnChargeEnd?.Invoke();
+                    OnChargeCanceled?.Invoke();
+                }
             }
             return;
         }
 
-        if (context.started)
+        bool isPressed = context.ReadValueAsButton();
+
+        if (isPressed && !isFireButtonHeld)
         {
             isFireButtonHeld = true;
             bool isAligning = bowAnimation != null && bowAnimation.IsAligningBow;
@@ -177,7 +182,7 @@ public class PlayerShooter : MonoBehaviour
                 StartCharging();
             }
         }
-        else if (context.canceled)
+        else if (!isPressed && isFireButtonHeld)
         {
             isFireButtonHeld = false;
             if (isCharging) ReleaseCharge();

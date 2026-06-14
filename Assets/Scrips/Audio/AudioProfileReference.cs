@@ -36,7 +36,6 @@ public class AudioProfileReference : MonoBehaviour
     public AudioConfig GetClipFromProfile(DamageType type, GameObject target)
     {
         if (target.CompareTag("Explosive") && type == DamageType.Blood) return profile.FireExplosion;
-        
         switch (type)
         {
             case DamageType.Base:

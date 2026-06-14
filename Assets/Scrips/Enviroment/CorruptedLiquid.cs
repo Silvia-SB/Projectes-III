@@ -76,6 +76,7 @@ public class CorruptedLiquid : MonoBehaviour, IDamageable, IResettable
 
         AchievementManager.UnlockAchievement("environment_oil");
 
+        AudioSFXManager.PlayStatus(gameObject, damageType);
         ActivateEffects();
 
         for (int i = targets.Count - 1; i >= 0; i--) 

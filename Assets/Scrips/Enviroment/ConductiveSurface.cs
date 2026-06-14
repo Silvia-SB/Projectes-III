@@ -39,6 +39,7 @@ public class ConductiveSurface : MonoBehaviour
 
         AchievementManager.UnlockAchievement("environment_water");
 
+        AudioSFXManager.PlayStatus(gameObject, DamageType.Electric);
         ActivateEffects();
 
         ApplyToObjectsInBounds();

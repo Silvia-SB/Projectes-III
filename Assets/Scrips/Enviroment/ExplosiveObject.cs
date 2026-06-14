@@ -29,11 +29,13 @@ public class ExplosiveObject : Health, IResettable
 
     public override void TakeDamage(float amount, DamageType incomingDamageType)
     {
+        if (hasExploded || currentHealth <= 0) return;
         if (incomingDamageType != damageType) return;
         
         Ignite();
 
         base.TakeDamage(amount, incomingDamageType);
+        if (hasExploded || currentHealth <= 0) return;
 
         if (statusManager?.HasStatus(damageType) == false)
         {
@@ -44,6 +46,7 @@ public class ExplosiveObject : Health, IResettable
 
     public override void TakeRecurrentDamage(float amount, float interval, int ticks, DamageType incomingDamageType)
     {
+        if (hasExploded || currentHealth <= 0) return;
         if (incomingDamageType != damageType) return;
         
         Ignite();
@@ -99,6 +102,7 @@ public class ExplosiveObject : Health, IResettable
     {
         AchievementManager.UnlockAchievement("environment_barrel");
 
+        AudioSFXManager.PlayExplosion(gameObject, damageType);
         ActivateEffects();
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
@@ -106,9 +110,8 @@ public class ExplosiveObject : Health, IResettable
 
         foreach (Collider col in colliders)
         {
-            if (col.gameObject == gameObject) continue;
-
             IDamageable target = col.GetComponentInParent<IDamageable>();
+            if (ReferenceEquals(target, this)) continue;
             
             if (target != null && damagedTargets.Add(target))
             {

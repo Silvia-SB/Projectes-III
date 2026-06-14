@@ -27,8 +27,6 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] private float hitFlashFadeSpeed = 3f;
     [SerializeField, Range(0f, 1f)] private float hitFlashMaxAlpha = 1f;
 
-    [SerializeField] private Image healthFillImage;
-
     private float targetHealthValue;
     private float currentDisplayedSouls;
     private int targetSoulsValue;
@@ -127,19 +125,6 @@ public class PlayerHUD : MonoBehaviour
             }
         }
 
-        if (healthFillImage != null)
-        {
-            float pulse = 0f;
-
-            if (targetHealthValue <= blinkThreshold)
-            {
-                pulse = Mathf.Abs(Mathf.Sin(Time.time * blinkSpeed));
-            }
-
-            Color c = healthFillImage.color;
-            c.a = Mathf.Lerp(0.85f, 1f, pulse);
-            healthFillImage.color = c;
-        }
         
         if (hitFlashImage != null && hitFlashImage.color.a > 0)
         {

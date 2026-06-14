@@ -143,6 +143,11 @@ public class PlayerDeathController : MonoBehaviour, IResettable
     {
         if (!isDead || cameraTransform == null) return;
 
+        if (look != null && look.PitchController != null)
+        {
+            look.PitchController.localRotation = Quaternion.Slerp(look.PitchController.localRotation, Quaternion.identity, Time.deltaTime * tiltSpeed);
+        }
+
         velocityY -= gravity * Time.deltaTime;
         currentLerpPosition.y += velocityY * Time.deltaTime;
 

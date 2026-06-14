@@ -62,6 +62,12 @@ public class PlayerShooter : MonoBehaviour,IResettable
     {
         if (Time.timeScale == 0f) return;
 
+        //fallback
+        if (currentArrowInstance != null && !currentArrowInstance.gameObject.activeInHierarchy)
+        {
+            currentArrowInstance = null;
+        }
+
         HandleEmergencyReload();
 
         if (currentArrowInstance == null && !isWaitingForReload)
@@ -332,14 +338,20 @@ public class PlayerShooter : MonoBehaviour,IResettable
 
         currentArrowInstance = arrowPool.GetArrow(currentArrowType);
 
-    if (currentArrowInstance == null && currentArrowType != ArrowType.Base)
-    {
-        currentArrowType = ArrowType.Base;
-        OnArrowChanged?.Invoke(currentArrowType);
-        currentArrowInstance = arrowPool.GetArrow(currentArrowType);
-    }
+        if (currentArrowInstance == null && currentArrowType != ArrowType.Base)
+        {
+            currentArrowType = ArrowType.Base;
+            OnArrowChanged?.Invoke(currentArrowType);
+            currentArrowInstance = arrowPool.GetArrow(currentArrowType);
+        }
 
-        if (currentArrowInstance == null) return;
+        if (currentArrowInstance == null)
+        {
+            return;
+        }
+
+        // Failsafe 2: Asegurar que la flecha se vuelve visible al equiparla
+        currentArrowInstance.gameObject.SetActive(true);
 
         if (bowAnimation != null)
             bowAnimation.CurrentArrowLength = currentArrowInstance.ArrowLength;

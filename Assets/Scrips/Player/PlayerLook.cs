@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
-public class PlayerLook : MonoBehaviour
+public class PlayerLook : MonoBehaviour, IResettable
 {
     [Header("Setup Variables")]
     [SerializeField] private Transform mPitchController;
@@ -33,6 +33,8 @@ public class PlayerLook : MonoBehaviour
     private float currentFriction = 1f;
     private Vector3 smoothedAimPoint;
     
+    public Transform PitchController => mPitchController;
+
     void OnEnable()
     {
         SettingsMenuManager.OnSensitivityChanged += SetSensitivity;
@@ -68,7 +70,6 @@ public class PlayerLook : MonoBehaviour
         
         bool isAimingAtEnemy = useAimAssist && aimController != null && aimController.AimAssistTarget != null && playerShooter != null && playerShooter.IsCharging;
         
-        // Fricción: reducimos sensibilidad suavemente al apuntar al enemigo para no dar tirones
         float targetFriction = isAimingAtEnemy ? aimAssistFriction : 1f;
         currentFriction = Mathf.Lerp(currentFriction, targetFriction, Time.deltaTime * 10f);
 
@@ -116,7 +117,6 @@ public class PlayerLook : MonoBehaviour
                     float yawDiff = Mathf.DeltaAngle(mYaw, targetYaw);
                     float pitchDiff = Mathf.DeltaAngle(mPitch, targetPitch);
 
-                    // Evitar el "Gimbal Lock" o tirones violentos si el objetivo pide un ángulo desproporcionado
                     if (Mathf.Abs(yawDiff) < 45f && Mathf.Abs(pitchDiff) < 45f)
                     {
                         mYaw = Mathf.LerpAngle(mYaw, mYaw + yawDiff, Time.deltaTime * aimAssistStrength);
@@ -124,13 +124,13 @@ public class PlayerLook : MonoBehaviour
                     }
                     else
                     {
-                        smoothedAimPoint = Vector3.zero; // Limpiar rastro de interpolación
+                        smoothedAimPoint = Vector3.zero;
                     }
                 }
             }
             else
             {
-                smoothedAimPoint = Vector3.zero; // Limpiar rastro si movemos la cámara rápido
+                smoothedAimPoint = Vector3.zero; 
             }
         }
         else
@@ -151,5 +151,29 @@ public class PlayerLook : MonoBehaviour
     public void SetSensitivity(float speed)
     {
         rotationSpeed = speed;
+    }
+
+    public void SyncRotation()
+    {
+        mYaw = transform.eulerAngles.y;
+        if (mPitchController != null)
+        {
+            float currentX = mPitchController.localEulerAngles.x;
+            if (currentX > 180f) currentX -= 360f;
+            mPitch = currentX * (invertPitch ? -1 : 1);
+        }
+    }
+
+    public void CaptureInitialState()
+    {
+    }
+
+    public void ResetState()
+    {
+        mPitch = 0f;
+        if (mPitchController != null)
+        {
+            mPitchController.localRotation = Quaternion.identity;
+        }
     }
 }

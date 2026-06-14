@@ -54,7 +54,6 @@ public class DeactivateOnHits : MonoBehaviour, IDamageable, IResettable
     }
     public void ResetState()
     {
-        Debug.Log("ResetState DeactivateOnHits: " + gameObject.name);
         currentHealth = maxHealth;
         gameObject.SetActive(true);
     }

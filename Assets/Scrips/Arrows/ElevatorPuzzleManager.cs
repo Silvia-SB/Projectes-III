@@ -5,6 +5,8 @@ public class ElevatorPuzzleManager : MonoBehaviour, IResettable
     [Header("Configuración del Puzle")]
     [SerializeField] private ArrowHitElevator[] elevators; 
     [SerializeField] private GameObject objectToDeactivate; 
+    [SerializeField] AudioSource bellSound;
+
 
     private int activatedCount = 0;
 
@@ -17,6 +19,8 @@ public class ElevatorPuzzleManager : MonoBehaviour, IResettable
                 elevator.OnElevatorActivated += HandleElevatorActivated;
             }
         }
+        
+        if (bellSound != null) bellSound.enabled = false;
     }
 
     private void OnDisable()
@@ -38,6 +42,8 @@ public class ElevatorPuzzleManager : MonoBehaviour, IResettable
         {
             objectToDeactivate.SetActive(false);
             AchievementManager.UnlockAchievement("the_third_toll");
+            
+            if (bellSound != null) bellSound.enabled = true;
         }
     }
 

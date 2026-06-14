@@ -58,10 +58,6 @@ public class EnemyController : MonoBehaviour, ISlowable
         if (config == null || 
             navMeshAgent == null || enemyMovement == null)
         {
-            Debug.LogError(" Falta posar al inpector aquest objecte: " +
-                           (config == null ? "Config " : "") +
-                           (navMeshAgent == null ? "NavMeshAgent" : "") +
-                           (enemyMovement == null ? "EnemyMovement" : ""));
              return;
         }
         if(config.type.Equals(EnemyType.Desatado)) wildEnemyHealth.OnDamaged += IncreaseVelocity;

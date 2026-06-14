@@ -120,7 +120,6 @@ public class EnemyMovement : MonoBehaviour
 
         if (!TryFindPointInsidePlayerSphere(target, out Vector3 teleportPoint))
         {
-            Debug.LogWarning("Medico no encuentra punto dentro de la esfera del player sobre el NavMesh.", this);
             return false;
         }
 

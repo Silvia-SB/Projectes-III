@@ -14,6 +14,8 @@ public class AudioProfile : ScriptableObject
         
         [Range(0f, 1f)]
         public float volume;
+        
+        public float maxDistance;
     }
     
     [SerializeField] private AudioConfig normalHit;

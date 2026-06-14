@@ -94,6 +94,7 @@ public class AudioSFXManager : MonoBehaviour
         source.spatialBlend = 1f;
         source.clip = audioConfig.clip;
         source.time = audioConfig.startTime;
+        source.maxDistance = audioConfig.maxDistance;
 
         source.Play();
 

@@ -49,6 +49,7 @@ MonoBehaviour:
   poolSize: 30
   minDistance: 1
   maxDistance: 25
+  outputMixerGroup: {fileID: 0}
 --- !u!114 &5213077092898471480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,9 +244,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoulManager
   maxSouls: 300
   currentSouls: 50
-  bloodArrowCost: 20
-  piercingArrowCost: 10
-  electricArrowCost: 15
+  bloodArrowCost: 35
+  piercingArrowCost: 15
+  electricArrowCost: 25
 --- !u!114 &2344641617906425251
 MonoBehaviour:
   m_ObjectHideFlags: 0

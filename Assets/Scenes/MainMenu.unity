@@ -129,13 +129,14 @@ GameObject:
   m_Component:
   - component: {fileID: 18607943}
   - component: {fileID: 18607942}
+  - component: {fileID: 18607944}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &18607942
 AudioSource:
   m_ObjectHideFlags: 0
@@ -147,9 +148,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5652641911994402844, guid: 8d932fa8a05d9d6439281330aa830134, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: d0cfd112bce3ba447b3673e9254a41f2, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -248,6 +249,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &18607944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18607941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf13d403cba4c2439dfa59187f9c941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenuMusic
 --- !u!114 &33634196 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3129957958340206249, guid: eacce8db55778e5488728fd1529fdc03, type: 3}
@@ -1285,13 +1298,13 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907954306}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5652641911994402844, guid: 8d932fa8a05d9d6439281330aa830134, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d0cfd112bce3ba447b3673e9254a41f2, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2762,6 +2775,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2898055844995031396, guid: f17aa0a9b98d7fa478a9d456964fb8b2, type: 3}
+      propertyPath: m_Volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2898055844995031396, guid: f17aa0a9b98d7fa478a9d456964fb8b2, type: 3}
       propertyPath: m_Resource
       value: 
       objectReference: {fileID: 8300000, guid: dc653143732e4b2489215032dad96327, type: 3}
@@ -2986,6 +3003,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114205272230495753, guid: eacce8db55778e5488728fd1529fdc03, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1907954311}
+    - target: {fileID: 114205272230495753, guid: eacce8db55778e5488728fd1529fdc03, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeSfxVolume
+      objectReference: {fileID: 0}
     - target: {fileID: 224391642081350645, guid: eacce8db55778e5488728fd1529fdc03, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
       value: 0.2509804
@@ -3025,6 +3050,14 @@ PrefabInstance:
     - target: {fileID: 387150223231996131, guid: eacce8db55778e5488728fd1529fdc03, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 528202038227829630, guid: eacce8db55778e5488728fd1529fdc03, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1907954311}
+    - target: {fileID: 528202038227829630, guid: eacce8db55778e5488728fd1529fdc03, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeMasterVolume
       objectReference: {fileID: 0}
     - target: {fileID: 1096632737542578768, guid: eacce8db55778e5488728fd1529fdc03, type: 3}
       propertyPath: m_fontAsset
@@ -3141,6 +3174,14 @@ PrefabInstance:
     - target: {fileID: 3083291784822677703, guid: eacce8db55778e5488728fd1529fdc03, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3129957958340206249, guid: eacce8db55778e5488728fd1529fdc03, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1907954311}
+    - target: {fileID: 3129957958340206249, guid: eacce8db55778e5488728fd1529fdc03, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeMusicVolume
       objectReference: {fileID: 0}
     - target: {fileID: 3359266669432231934, guid: eacce8db55778e5488728fd1529fdc03, type: 3}
       propertyPath: m_AnchorMax.x

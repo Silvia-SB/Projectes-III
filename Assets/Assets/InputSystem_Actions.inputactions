@@ -351,11 +351,33 @@
                 },
                 {
                     "name": "",
+                    "id": "e91b386e-6fcf-4ab9-bf9f-b54b1e54786f",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e042d6d4-b3d2-4fe7-9ed2-285665a7c1d7",
                     "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
+                    "action": "BaseArrow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "be736560-0dc8-43d4-a645-b85fd4756e44",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
                     "action": "BaseArrow",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -373,11 +395,33 @@
                 },
                 {
                     "name": "",
+                    "id": "e1460a14-665a-4991-8b0d-428cacd84033",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "BloodArrow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "58a7ae88-0f55-4222-8235-d7c6bbbc8407",
                     "path": "<Keyboard>/4",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
+                    "action": "PiercingArrow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "65a2c556-ffb7-4975-a45e-e3b2b6804cf9",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
                     "action": "PiercingArrow",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -395,6 +439,17 @@
                 },
                 {
                     "name": "",
+                    "id": "44526c4e-6730-4c64-b096-7f619472c264",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Heal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f2050190-6fe4-4258-a974-95b26c1eb1e3",
                     "path": "<Keyboard>/3",
                     "interactions": "",
@@ -406,11 +461,33 @@
                 },
                 {
                     "name": "",
+                    "id": "2990f913-ffba-4f66-80a8-0e41e547f924",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "ElectricArrow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e58438e3-7369-40b0-a894-491d4ca6fc7b",
                     "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
+                    "action": "CheatSoul",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cb5d3be4-7613-4885-8fbd-30065d64c0a2",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
                     "action": "CheatSoul",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -794,7 +871,18 @@
                     "path": "*/{Cancel}",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse;Gamepad;Touch;Joystick;XR",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d203e1ea-e498-4ebd-8b68-c9a6df4ecce4",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
                     "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false

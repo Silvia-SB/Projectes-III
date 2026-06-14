@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -37,6 +38,7 @@ public class SettingsMenuManager : MonoBehaviour
     public void OnEnable()
     {
         currentScene = SceneManager.GetActiveScene();
+        SelectFirst(gameObject);
     }
     
     private void Start()
@@ -81,11 +83,28 @@ public class SettingsMenuManager : MonoBehaviour
             optionsImage.gameObject.SetActive(false);
             mainMenuImage.gameObject.SetActive(true);
             titleLogo.SetActive(true);
+            SelectFirst(mainMenuImage.gameObject);
         }
         else
         {
             optionsImage.gameObject.SetActive(false);
             pauseMenuImage.gameObject.SetActive(true);
+            SelectFirst(pauseMenuImage.gameObject);
+        }
+    }
+
+    private void SelectFirst(GameObject root)
+    {
+        if (root == null || EventSystem.current == null) return;
+
+        Selectable[] selectables = root.GetComponentsInChildren<Selectable>(true);
+        foreach (Selectable selectable in selectables)
+        {
+            if (!selectable.gameObject.activeInHierarchy || !selectable.IsInteractable()) continue;
+
+            EventSystem.current.SetSelectedGameObject(selectable.gameObject);
+            selectable.Select();
+            return;
         }
     }
 }

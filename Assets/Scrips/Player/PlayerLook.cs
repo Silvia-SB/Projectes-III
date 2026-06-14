@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 public class PlayerLook : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerLook : MonoBehaviour
 
     [Header("Configurable Variables")]
     [SerializeField] private float rotationSpeed = 10f;
+    [SerializeField] private float gamepadSensitivityMultiplier = 8f;
     [SerializeField] private bool invertPitch;
     [SerializeField] private float maxPitch = 85f;
     [SerializeField] private float minPitch = -85f;
@@ -18,6 +20,7 @@ public class PlayerLook : MonoBehaviour
     private float mYaw;  
     private float mPitch; 
     private Vector2 mLookDirection;
+    private bool isGamepadLook;
     
     void OnEnable()
     {
@@ -45,8 +48,10 @@ public class PlayerLook : MonoBehaviour
     {
         float currentYInput = mLookDirection.y;
         
-        mYaw += mLookDirection.x * rotationSpeed * Time.deltaTime;
-        mPitch -= currentYInput * rotationSpeed * Time.deltaTime;
+        float sensitivity = isGamepadLook ? rotationSpeed * gamepadSensitivityMultiplier : rotationSpeed;
+
+        mYaw += mLookDirection.x * sensitivity * Time.deltaTime;
+        mPitch -= currentYInput * sensitivity * Time.deltaTime;
 
         mPitch = Mathf.Clamp(mPitch, minPitch, maxPitch);
         
@@ -61,7 +66,10 @@ public class PlayerLook : MonoBehaviour
     public void OnLook(InputAction.CallbackContext c)
     {
         if (c.performed || c.canceled)
+        {
             mLookDirection = c.ReadValue<Vector2>();
+            isGamepadLook = c.control?.device is Gamepad || c.control is StickControl;
+        }
     }
     private void SetRotationSpeed(float speed) => rotationSpeed = speed;
     public void SetSensitivity(float speed)

@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.Universal;
@@ -29,6 +30,7 @@ public class MainMenu : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         URPUtility.SetRendererFeatureActive(pcRendererData, fullScreenFeatureName, false);
+        SelectFirst(mainMenuImage.gameObject);
     }
 
     public async void PlayGame()
@@ -61,6 +63,7 @@ public class MainMenu : MonoBehaviour
 
         mainMenuImage.gameObject.SetActive(false);
         optionsImage.gameObject.SetActive(true);
+        SelectFirst(optionsImage.gameObject);
     }
 
     public void Controls()
@@ -68,6 +71,7 @@ public class MainMenu : MonoBehaviour
         titleLogo.SetActive(false);
         mainMenuImage.gameObject.SetActive(false);
         controlsImage.gameObject.SetActive(true);
+        SelectFirst(controlsImage.gameObject);
     }
 
     public void BackFromControls()
@@ -75,6 +79,7 @@ public class MainMenu : MonoBehaviour
         controlsImage.gameObject.SetActive(false);
         mainMenuImage.gameObject.SetActive(true);
         titleLogo.SetActive(true);
+        SelectFirst(mainMenuImage.gameObject);
     }
 
     public void QuitGame()
@@ -83,5 +88,20 @@ public class MainMenu : MonoBehaviour
             titleArrow.SalirDisparada();
 
         Application.Quit();
+    }
+
+    private void SelectFirst(GameObject root)
+    {
+        if (root == null || EventSystem.current == null) return;
+
+        Selectable[] selectables = root.GetComponentsInChildren<Selectable>(true);
+        foreach (Selectable selectable in selectables)
+        {
+            if (!selectable.gameObject.activeInHierarchy || !selectable.IsInteractable()) continue;
+
+            EventSystem.current.SetSelectedGameObject(selectable.gameObject);
+            selectable.Select();
+            return;
+        }
     }
 }

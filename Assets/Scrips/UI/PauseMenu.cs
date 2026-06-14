@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
@@ -29,6 +30,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         pauseMenu.gameObject.SetActive(true);
+        SelectFirst(pauseMenu.gameObject);
     }
 
     public void ResumeGame()
@@ -38,29 +40,48 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         pauseMenu.gameObject.SetActive(false);
+        EventSystem.current?.SetSelectedGameObject(null);
     }
     
     public void Options()
     {
         pauseMenu.gameObject.SetActive(false);
         settingsMenu.gameObject.SetActive(true);
+        SelectFirst(settingsMenu.gameObject);
     }
 
     public void Achievements()
     {
         pauseMenu.gameObject.SetActive(false);
         if (achievementsMenu != null) achievementsMenu.SetActive(true);
+        SelectFirst(achievementsMenu);
     }
 
     public void CloseAchievements()
     {
         if (achievementsMenu != null) achievementsMenu.SetActive(false);
         pauseMenu.gameObject.SetActive(true);
+        SelectFirst(pauseMenu.gameObject);
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    private void SelectFirst(GameObject root)
+    {
+        if (root == null || EventSystem.current == null) return;
+
+        Selectable[] selectables = root.GetComponentsInChildren<Selectable>(true);
+        foreach (Selectable selectable in selectables)
+        {
+            if (!selectable.gameObject.activeInHierarchy || !selectable.IsInteractable()) continue;
+
+            EventSystem.current.SetSelectedGameObject(selectable.gameObject);
+            selectable.Select();
+            return;
+        }
     }
     
 }

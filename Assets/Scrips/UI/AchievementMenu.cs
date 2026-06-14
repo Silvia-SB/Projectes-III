@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class AchievementMenu : MonoBehaviour
 {
@@ -36,6 +38,23 @@ public class AchievementMenu : MonoBehaviour
                 bool isUnlocked = AchievementManager.IsAchievementUnlocked(achievement.id);
                 slotUI.Setup(achievement, isUnlocked);
             }
+        }
+
+        SelectFirst();
+    }
+
+    private void SelectFirst()
+    {
+        if (EventSystem.current == null) return;
+
+        Selectable[] selectables = GetComponentsInChildren<Selectable>(true);
+        foreach (Selectable selectable in selectables)
+        {
+            if (!selectable.gameObject.activeInHierarchy || !selectable.IsInteractable()) continue;
+
+            EventSystem.current.SetSelectedGameObject(selectable.gameObject);
+            selectable.Select();
+            return;
         }
     }
 }

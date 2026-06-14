@@ -8,6 +8,10 @@ public class PlayerMovement : MonoBehaviour, ISlowable, IResettable
     [SerializeField] private float maxSpeed;
     [SerializeField] private float sprintMultiplier = 1.5f;
     [SerializeField] private float jumpSpeed = 5.0f;
+    [SerializeField] private float movementSmoothTime = 0.1f;
+    
+    [Header("Jump Feel")]
+    [SerializeField] private float fallMultiplier = 1.5f;
 
     [Header("Slow Effect")]
     [SerializeField] private float stunnedSpeed = 2.0f;
@@ -21,6 +25,8 @@ public class PlayerMovement : MonoBehaviour, ISlowable, IResettable
 
     private CharacterController controller;
     private Vector2 mDirection;
+    private Vector2 currentDirection;
+    private Vector2 currentDirectionVelocity;
     private float mVerticalSpeed;
     private bool isSprinting;
     private bool isSlowed;
@@ -80,14 +86,17 @@ public class PlayerMovement : MonoBehaviour, ISlowable, IResettable
 
         float currentSpeed = isSlowed ? stunnedSpeed : maxSpeed;
         if (isChargingArrow) currentSpeed *= chargeSpeedMultiplier;
+        
+        currentDirection = Vector2.SmoothDamp(currentDirection, mDirection, ref currentDirectionVelocity, movementSmoothTime);
 
-        Vector3 finalDirection = (transform.forward * mDirection.y + transform.right * mDirection.x) * (currentSpeed * Time.deltaTime);
+        Vector3 finalDirection = (transform.forward * currentDirection.y + transform.right * currentDirection.x) * (currentSpeed * Time.deltaTime);
 
         if (isSprinting && !isSlowed && !isChargingArrow) finalDirection *= sprintMultiplier; 
 
         if (!IsGrounded) 
         {
-            mVerticalSpeed += Physics.gravity.y * Time.deltaTime; 
+            float gravityMultiplier = (mVerticalSpeed < 0.0f) ? fallMultiplier : 1f;
+            mVerticalSpeed += Physics.gravity.y * gravityMultiplier * Time.deltaTime; 
         } 
         else if (mVerticalSpeed < 0.0f) 
         {
@@ -130,6 +139,8 @@ public class PlayerMovement : MonoBehaviour, ISlowable, IResettable
         initialRotation = transform.rotation;
 
         mDirection = Vector2.zero;
+        currentDirection = Vector2.zero;
+        currentDirectionVelocity = Vector2.zero;
         mVerticalSpeed = 0f;
         isSprinting = false;
         isSlowed = false;
@@ -149,6 +160,8 @@ public class PlayerMovement : MonoBehaviour, ISlowable, IResettable
             controller.enabled = true;
 
         mDirection = Vector2.zero;
+        currentDirection = Vector2.zero;
+        currentDirectionVelocity = Vector2.zero;
         mVerticalSpeed = 0f;
         isSprinting = false;
         isSlowed = false;

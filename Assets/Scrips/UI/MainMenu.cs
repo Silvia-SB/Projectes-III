@@ -30,7 +30,7 @@ public class MainMenu : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         URPUtility.SetRendererFeatureActive(pcRendererData, fullScreenFeatureName, false);
-        //SelectFirst(mainMenuImage.gameObject);
+        Invoke(nameof(SelectMainMenuFirst), 0f);
     }
 
     public async void PlayGame()
@@ -63,7 +63,7 @@ public class MainMenu : MonoBehaviour
 
         mainMenuImage.gameObject.SetActive(false);
         optionsImage.gameObject.SetActive(true);
-        SelectFirst(optionsImage.gameObject);
+        FocusSettings(optionsImage.gameObject);
     }
 
     public void Controls()
@@ -99,9 +99,27 @@ public class MainMenu : MonoBehaviour
         {
             if (!selectable.gameObject.activeInHierarchy || !selectable.IsInteractable()) continue;
 
+            EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(selectable.gameObject);
             selectable.Select();
             return;
         }
+    }
+
+    private void SelectMainMenuFirst()
+    {
+        SelectFirst(mainMenuImage.gameObject);
+    }
+
+    private void FocusSettings(GameObject root)
+    {
+        SettingsMenuManager settingsMenuManager = root.GetComponentInChildren<SettingsMenuManager>(true);
+        if (settingsMenuManager != null)
+        {
+            settingsMenuManager.FocusSettings();
+            return;
+        }
+
+        SelectFirst(root);
     }
 }

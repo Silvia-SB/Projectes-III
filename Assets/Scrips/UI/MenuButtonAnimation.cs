@@ -21,6 +21,12 @@ public class MenuButtonAnimation : MonoBehaviour, IPointerEnterHandler, IPointer
         transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.unscaledDeltaTime * speed);
     }
 
+    private void OnDisable()
+    {
+        targetScale = normalScale;
+        transform.localScale = normalScale;
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         targetScale = normalScale * hoverScale;

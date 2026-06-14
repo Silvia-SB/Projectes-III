@@ -55,7 +55,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.gameObject.SetActive(false);
         settingsMenu.gameObject.SetActive(true);
-        SelectFirst(settingsMenu.gameObject);
+        FocusSettings(settingsMenu.gameObject);
     }
 
     public void Achievements()
@@ -90,6 +90,18 @@ public class PauseMenu : MonoBehaviour
             selectable.Select();
             return;
         }
+    }
+
+    private void FocusSettings(GameObject root)
+    {
+        SettingsMenuManager settingsMenuManager = root.GetComponentInChildren<SettingsMenuManager>(true);
+        if (settingsMenuManager != null)
+        {
+            settingsMenuManager.FocusSettings();
+            return;
+        }
+
+        SelectFirst(root);
     }
     
 }

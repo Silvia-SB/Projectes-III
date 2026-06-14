@@ -23,6 +23,7 @@ public class SettingsMenuManager : MonoBehaviour
     public static event Action<float> OnSensitivityChanged;
 
     [SerializeField] private GameObject titleLogo;
+    
 
     
     private Scene currentScene;
@@ -38,13 +39,20 @@ public class SettingsMenuManager : MonoBehaviour
     public void OnEnable()
     {
         currentScene = SceneManager.GetActiveScene();
-        SelectFirst(gameObject);
+        Invoke(nameof(SelectMasterSlider), 0f);
     }
+
+    public void FocusSettings()
+    {
+        Invoke(nameof(SelectMasterSlider), 0f);
+    }
+    
     
     private void Start()
     {
         float savedSensitivity = PlayerPrefs.GetFloat(SensitivityKey, sensitivitySlider.value);
         sensitivitySlider.value = savedSensitivity;
+
     }
 
     public void ChangeGraphicsQuality()
@@ -102,9 +110,19 @@ public class SettingsMenuManager : MonoBehaviour
         {
             if (!selectable.gameObject.activeInHierarchy || !selectable.IsInteractable()) continue;
 
+            EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(selectable.gameObject);
             selectable.Select();
             return;
         }
+    }
+
+    private void SelectMasterSlider()
+    {
+        if (EventSystem.current == null || masterSlider == null) return;
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(masterSlider.gameObject);
+        masterSlider.Select();
     }
 }

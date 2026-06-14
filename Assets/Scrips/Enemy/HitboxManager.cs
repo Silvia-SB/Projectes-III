@@ -72,5 +72,25 @@ public class HitboxManager : MonoBehaviour
         return 1f; 
     }
 
-    
+    public Vector3? GetAimAssistTargetPoint()
+    {
+        Collider fallbackCollider = null;
+
+        foreach (var group in hitboxGroups)
+        {
+            if (group.bodyPart == BodyPart.Head && group.colliders.Count > 0 && group.colliders[0] != null)
+            {
+                return group.colliders[0].bounds.center;
+            }
+            if (group.bodyPart == BodyPart.Body && group.colliders.Count > 0 && group.colliders[0] != null)
+            {
+                fallbackCollider = group.colliders[0];
+            }
+        }
+
+        if (fallbackCollider != null)
+            return fallbackCollider.bounds.center;
+
+        return null;
+    }
 }

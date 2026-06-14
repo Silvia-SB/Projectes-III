@@ -47,6 +47,7 @@ public class PlayerShooter : MonoBehaviour,IResettable
     public event Action OnChargeCanceled;
 
     public float MinChargePercentage => minChargeTime / fullChargeTime;
+    public bool IsCharging => isCharging;
 
     private void Start()
     {
@@ -110,7 +111,14 @@ public class PlayerShooter : MonoBehaviour,IResettable
 
             if (playerCamera != null && aimController != null)
             {
-                var aimData = aimController.CalculateAimData(playerCamera, firePoint, currentArrowInstance != null ? currentArrowInstance.ArrowLength : 0f, IsShotBlocked(), hasReachedMinCharge);
+                float currentVelocity = minShootVelocity;
+                if (currentCharge >= minChargeTime)
+                {
+                    float chargePercent = Mathf.Clamp01((currentCharge - minChargeTime) / (fullChargeTime - minChargeTime));
+                    currentVelocity = Mathf.Lerp(minShootVelocity, maxShootVelocity, chargePercent);
+                }
+
+                var aimData = aimController.CalculateAimData(playerCamera, firePoint, currentArrowInstance != null ? currentArrowInstance.ArrowLength : 0f, IsShotBlocked(), hasReachedMinCharge, currentVelocity);
                 
                 if (aimData.wasIntercepted)
                 {
@@ -287,9 +295,10 @@ public class PlayerShooter : MonoBehaviour,IResettable
 
         Vector3 shootDirection = playerCamera.transform.forward;
         Vector3 startPos = firePoint.position;
+        float shootVelocity = Mathf.Lerp(minShootVelocity, maxShootVelocity, chargePercent);
         if (aimController != null)
         {
-            var aimData = aimController.CalculateAimData(playerCamera, firePoint, currentArrowInstance.ArrowLength, IsShotBlocked(), hasReachedMinCharge);
+            var aimData = aimController.CalculateAimData(playerCamera, firePoint, currentArrowInstance.ArrowLength, IsShotBlocked(), hasReachedMinCharge, shootVelocity);
             shootDirection = aimData.direction;
             startPos = aimController.CalculateArrowStartPos(firePoint, shootDirection, currentArrowInstance.ArrowLength);
         }
@@ -297,7 +306,6 @@ public class PlayerShooter : MonoBehaviour,IResettable
         currentArrowInstance.transform.position = startPos;
         currentArrowInstance.transform.rotation = Quaternion.LookRotation(shootDirection, firePoint.up);
 
-        float shootVelocity = Mathf.Lerp(minShootVelocity, maxShootVelocity, chargePercent);
         currentArrowInstance.Launch(shootVelocity);
         currentArrowInstance = null;
 

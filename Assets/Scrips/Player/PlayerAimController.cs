@@ -17,7 +17,11 @@ public class PlayerAimController : MonoBehaviour
     private readonly Vector3 viewportCenter = new Vector3(0.5f, 0.5f, 0f); 
     private Collider[] blockCheckColliders = new Collider[5];
 
-    public (Vector3 point, Vector3 direction, bool wasIntercepted) CalculateAimData(Camera playerCamera, Transform firePoint, float arrowLength, bool isShotBlocked, bool hasReachedMinCharge)
+    public Transform AimAssistTarget { get; private set; }
+    public Vector3 AimAssistPoint { get; private set; }
+    public float LastAimAssistUpdateTime { get; private set; }
+
+    public (Vector3 point, Vector3 direction, bool wasIntercepted) CalculateAimData(Camera playerCamera, Transform firePoint, float arrowLength, bool isShotBlocked, bool hasReachedMinCharge, float initialVelocity = 60f)
     {
         if (playerCamera == null || firePoint == null) return (Vector3.zero, Vector3.forward, false);
 
@@ -30,7 +34,7 @@ public class PlayerAimController : MonoBehaviour
             shootDirection = firePoint.forward;
         }
 
-        var arrowData = GetArrowHitData(firePoint, shootDirection, arrowLength);
+        var arrowData = GetArrowHitData(firePoint, shootDirection, arrowLength, initialVelocity);
         bool isSignificantDeviation = CalculateAimDeviation(playerCamera, firePoint, camData, arrowData, angleDifference, isShotBlocked, hasReachedMinCharge, arrowLength);
 
         return (arrowData.hitPoint, shootDirection, isSignificantDeviation);
@@ -67,7 +71,7 @@ public class PlayerAimController : MonoBehaviour
         return (targetPoint - firePoint.position).normalized;
     }
 
-    private (Vector3 hitPoint, bool hit) GetArrowHitData(Transform firePoint, Vector3 shootDirection, float arrowLength)
+    private (Vector3 hitPoint, bool hit) GetArrowHitData(Transform firePoint, Vector3 shootDirection, float arrowLength, float initialVelocity)
     {
         float lengthOffset = arrowLength > 0 ? arrowLength : 1f;
         Vector3 rayStart = firePoint.position + shootDirection * lengthOffset;
@@ -76,7 +80,7 @@ public class PlayerAimController : MonoBehaviour
         int arrowHitsCount = Physics.RaycastNonAlloc(rayStart, shootDirection, aimHits, 100f, aimLayerMask, QueryTriggerInteraction.Ignore);
         float closestArrowDist = float.MaxValue;
         bool arrowHit = false;
-        
+
         for (int i = 0; i < arrowHitsCount; i++)
         {
             if (aimHits[i].collider.CompareTag("Player")) continue;
@@ -87,6 +91,87 @@ public class PlayerAimController : MonoBehaviour
                 arrowHit = true;
             }
         }
+        
+        //gravity simulation to find aim assist target
+        Vector3 currentVel = shootDirection * initialVelocity;
+        Transform currentTarget = null;
+        Vector3 targetPoint = Vector3.zero;
+
+        float timeStep = 0.05f; 
+        float maxTime = 3f; 
+
+        for (float t = 0; t < maxTime; t += timeStep)
+        {
+            Vector3 nextPos = currentPos + currentVel * timeStep;
+            Vector3 segmentDir = nextPos - currentPos;
+            float segmentDist = segmentDir.magnitude;
+
+            int gravityHitsCount = Physics.RaycastNonAlloc(currentPos, segmentDir.normalized, aimHits, segmentDist, aimLayerMask, QueryTriggerInteraction.Ignore);
+            float closestGravityDist = float.MaxValue;
+            int closestGravityIndex = -1;
+
+            for (int i = 0; i < gravityHitsCount; i++)
+            {
+                if (aimHits[i].collider.CompareTag("Player")) continue;
+                if (aimHits[i].distance < closestGravityDist)
+                {
+                    closestGravityDist = aimHits[i].distance;
+                    closestGravityIndex = i;
+                }
+            }
+
+            if (closestGravityIndex != -1)
+            {
+                if (aimHits[closestGravityIndex].collider.CompareTag("Enemy"))
+                {
+                    currentTarget = aimHits[closestGravityIndex].collider.transform;
+                    
+                    HitboxManager hitboxManager = null;
+                    if (aimHits[closestGravityIndex].collider.attachedRigidbody != null)
+                        aimHits[closestGravityIndex].collider.attachedRigidbody.TryGetComponent(out hitboxManager);
+                    else
+                        aimHits[closestGravityIndex].collider.TryGetComponent(out hitboxManager);
+
+                    if (hitboxManager != null)
+                    {
+                        Vector3? bestPoint = hitboxManager.GetAimAssistTargetPoint();
+                        targetPoint = bestPoint.HasValue ? bestPoint.Value : aimHits[closestGravityIndex].collider.bounds.center;
+                    }
+                    else
+                    {
+                        targetPoint = aimHits[closestGravityIndex].collider.bounds.center;
+                    }
+                }
+                break;
+            }
+
+            currentPos = nextPos;
+            currentVel += Physics.gravity * timeStep; 
+        }
+
+        if (currentTarget != null)
+        {
+            AimAssistTarget = currentTarget;
+            AimAssistPoint = targetPoint;
+            LastAimAssistUpdateTime = Time.time;
+        }
+        else if (Time.time - LastAimAssistUpdateTime > 0.15f || (AimAssistTarget != null && !AimAssistTarget.gameObject.activeInHierarchy))
+        {
+            AimAssistTarget = null;
+        }
+        else if (AimAssistTarget != null)
+        {
+            if (AimAssistTarget.TryGetComponent(out HitboxManager hm))
+            {
+                Vector3? bestPoint = hm.GetAimAssistTargetPoint();
+                if (bestPoint.HasValue) AimAssistPoint = bestPoint.Value;
+            }
+            else
+            {
+                AimAssistPoint = AimAssistTarget.position;
+            }
+        }
+
         return (actualHitPoint, arrowHit);
     }
 

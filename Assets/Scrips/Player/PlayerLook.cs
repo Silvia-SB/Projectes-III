@@ -14,6 +14,15 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] private bool invertPitch;
     [SerializeField] private float maxPitch = 85f;
     [SerializeField] private float minPitch = -85f;
+
+    [Header("Aim Assist")]
+    [SerializeField] private PlayerAimController aimController;
+    [SerializeField] private PlayerShooter playerShooter;
+    [SerializeField] private bool useAimAssist = true;
+    [SerializeField] private float aimAssistStrength = 2f;
+    [SerializeField] private float aimAssistFriction = 0.6f;
+    [SerializeField] private float slowMovementThresholdGamepad = 0.5f;
+    [SerializeField] private float slowMovementThresholdMouse = 5f;
     
     private const string SensitivityKey = "MouseSensitivity";
 
@@ -21,6 +30,8 @@ public class PlayerLook : MonoBehaviour
     private float mPitch; 
     private Vector2 mLookDirection;
     private bool isGamepadLook;
+    private float currentFriction = 1f;
+    private Vector3 smoothedAimPoint;
     
     void OnEnable()
     {
@@ -41,17 +52,33 @@ public class PlayerLook : MonoBehaviour
         if (mPitchController != null)
             mPitch = mPitchController.localEulerAngles.x;
 
+        if (aimController == null)
+            aimController = GetComponent<PlayerAimController>();
+
+        if (playerShooter == null)
+            playerShooter = GetComponent<PlayerShooter>();
+
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
         float currentYInput = mLookDirection.y;
+        float currentXInput = mLookDirection.x;
         
-        float sensitivity = isGamepadLook ? rotationSpeed * gamepadSensitivityMultiplier : rotationSpeed;
+        bool isAimingAtEnemy = useAimAssist && aimController != null && aimController.AimAssistTarget != null && playerShooter != null && playerShooter.IsCharging;
+        
+        // Fricción: reducimos sensibilidad suavemente al apuntar al enemigo para no dar tirones
+        float targetFriction = isAimingAtEnemy ? aimAssistFriction : 1f;
+        currentFriction = Mathf.Lerp(currentFriction, targetFriction, Time.deltaTime * 10f);
 
-        mYaw += mLookDirection.x * sensitivity * Time.deltaTime;
+        float sensitivity = (isGamepadLook ? rotationSpeed * gamepadSensitivityMultiplier : rotationSpeed) * currentFriction;
+        float inputMagnitude = mLookDirection.magnitude;
+
+        mYaw += currentXInput * sensitivity * Time.deltaTime;
         mPitch -= currentYInput * sensitivity * Time.deltaTime;
+
+        ApplyAimAssist(isAimingAtEnemy, inputMagnitude);
 
         mPitch = Mathf.Clamp(mPitch, minPitch, maxPitch);
         
@@ -60,6 +87,55 @@ public class PlayerLook : MonoBehaviour
         if (mPitchController != null)
         {
             mPitchController.localRotation = Quaternion.Euler(mPitch * (invertPitch ? -1 : 1), 0.0f, 0.0f);
+        }
+    }
+
+    private void ApplyAimAssist(bool isAimingAtEnemy, float inputMagnitude)
+    {
+        if (isAimingAtEnemy)
+        {
+            float threshold = isGamepadLook ? slowMovementThresholdGamepad : slowMovementThresholdMouse;
+
+            if (inputMagnitude > 0.01f && inputMagnitude < threshold)
+            {
+                if (smoothedAimPoint == Vector3.zero) smoothedAimPoint = aimController.AimAssistPoint;
+                smoothedAimPoint = Vector3.Lerp(smoothedAimPoint, aimController.AimAssistPoint, Time.deltaTime * 15f);
+
+                Vector3 origin = mPitchController != null ? mPitchController.position : transform.position;
+                Vector3 dirToTarget = smoothedAimPoint - origin;
+                
+                if (dirToTarget.sqrMagnitude > 0.1f)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(dirToTarget);
+                    
+                    float targetYaw = targetRotation.eulerAngles.y;
+                    float targetPitch = targetRotation.eulerAngles.x;
+                    if (targetPitch > 180f) targetPitch -= 360f;
+                    if (invertPitch) targetPitch = -targetPitch;
+
+                    float yawDiff = Mathf.DeltaAngle(mYaw, targetYaw);
+                    float pitchDiff = Mathf.DeltaAngle(mPitch, targetPitch);
+
+                    // Evitar el "Gimbal Lock" o tirones violentos si el objetivo pide un ángulo desproporcionado
+                    if (Mathf.Abs(yawDiff) < 45f && Mathf.Abs(pitchDiff) < 45f)
+                    {
+                        mYaw = Mathf.LerpAngle(mYaw, mYaw + yawDiff, Time.deltaTime * aimAssistStrength);
+                        mPitch = Mathf.Lerp(mPitch, mPitch + pitchDiff, Time.deltaTime * aimAssistStrength);
+                    }
+                    else
+                    {
+                        smoothedAimPoint = Vector3.zero; // Limpiar rastro de interpolación
+                    }
+                }
+            }
+            else
+            {
+                smoothedAimPoint = Vector3.zero; // Limpiar rastro si movemos la cámara rápido
+            }
+        }
+        else
+        {
+            smoothedAimPoint = Vector3.zero;
         }
     }
 

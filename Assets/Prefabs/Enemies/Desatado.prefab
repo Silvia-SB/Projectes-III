@@ -2306,6 +2306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyContagion
   contagiousDamageTypes: 01000000
+  reinfectionCooldown: 1
   knightMultiplier: 1.5
   knightAoERadius: 4
 --- !u!114 &6929340689296994080
@@ -2380,14 +2381,14 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.38924766
+  m_Radius: 0.5142671
   m_Height: 2.3697677
   m_Direction: 1
-  m_Center: {x: -0.008162975, y: 0.68488383, z: 0.0051671863}
+  m_Center: {x: -0.008163035, y: 0.68488383, z: -0.003299117}
 --- !u!114 &8733170655142844865
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,6 +13,9 @@ public class ElectricArrow : Arrow
     [Header("Knight Bonus")]
     [SerializeField] private float knightMultiplier = 1.5f;
 
+    [Header("Player Interaction")]
+    [SerializeField, Range(0f, 1f)] private float playerDamageMultiplier = 0.5f;
+
     public override ArrowType type => ArrowType.Electric;
     public override DamageType damageType => DamageType.Electric;
 
@@ -44,7 +47,10 @@ public class ElectricArrow : Arrow
             float multiplier = GetDamageMultiplier(other);
             float bonus = GetKnightBonus(enemy);
             
-            target.TakeDamage(quickDamage * multiplier * bonus, damageType);
+            float finalDamage = quickDamage * multiplier * bonus;
+            if (other.CompareTag("Player")) finalDamage *= playerDamageMultiplier;
+
+            target.TakeDamage(finalDamage, damageType);
             ApplySlow(other.gameObject);
 
             float markerDuration = enemy != null && enemy.Config != null ? enemy.Config.timeStunned : 3f;
@@ -67,7 +73,10 @@ public class ElectricArrow : Arrow
                 EnemyController enemy = col.GetComponentInParent<EnemyController>();
                 float bonus = GetKnightBonus(enemy);
                 
-                target.TakeDamage(chargedDamage * bonus, damageType);
+                float finalDamage = chargedDamage * bonus;
+                if (col.CompareTag("Player")) finalDamage *= playerDamageMultiplier;
+
+                target.TakeDamage(finalDamage, damageType);
                 ApplySlow(col.gameObject);
 
                 float markerDuration = enemy != null && enemy.Config != null ? enemy.Config.timeStunned : 3f;

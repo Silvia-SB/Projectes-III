@@ -8,6 +8,10 @@ public class EnemyContagion : MonoBehaviour
     private StatusEffectManager myStatusManager;
     private List<IDamageable> touchingTargets = new List<IDamageable>();
     private Dictionary<DamageType, bool> previouslyInfected = new Dictionary<DamageType, bool>();
+    private Dictionary<DamageType, float> immunityEndTime = new Dictionary<DamageType, float>();
+
+    [Header("Settings")]
+    [SerializeField] private float reinfectionCooldown = 1f;
 
     [Header("Knight Contagion Bonus")]
     [SerializeField] private float knightMultiplier = 1.5f;
@@ -28,6 +32,7 @@ public class EnemyContagion : MonoBehaviour
     {
         touchingTargets.Clear();
         previouslyInfected.Clear();
+        immunityEndTime.Clear();
     }
 
     private void Update()
@@ -37,7 +42,12 @@ public class EnemyContagion : MonoBehaviour
             bool isCurrentlyInfected = myStatusManager.HasStatus(damageType);
             bool wasInfected = previouslyInfected.ContainsKey(damageType) && previouslyInfected[damageType];
 
-            if (isCurrentlyInfected && !wasInfected)
+            if (wasInfected && !isCurrentlyInfected)
+            {
+                immunityEndTime[damageType] = Time.time + reinfectionCooldown;
+            }
+
+            if (isCurrentlyInfected)
             {
                 InfectTouchingTargets(damageType);
             }
@@ -66,12 +76,28 @@ public class EnemyContagion : MonoBehaviour
         }
     }
 
+    public bool CanBeInfected(DamageType damageType)
+    {
+        if (myStatusManager != null && myStatusManager.HasStatus(damageType)) return false;
+
+        if (immunityEndTime.TryGetValue(damageType, out float endTime))
+        {
+            if (Time.time < endTime) return false;
+        }
+
+        return true;
+    }
+
     private void ApplyContagion(IDamageable target, MonoBehaviour targetObj, DamageType damageType, DoTInstance dot, bool isFromAoE = false)
     {
         bool canInfect = true;
         int ticksToApply = dot.TicksRemaining;
 
-        if (targetObj != null && targetObj.TryGetComponent(out StatusEffectManager targetStatus))
+        if (targetObj != null && targetObj.TryGetComponent(out EnemyContagion targetContagion))
+        {
+            canInfect = targetContagion.CanBeInfected(damageType);
+        }
+        else if (targetObj != null && targetObj.TryGetComponent(out StatusEffectManager targetStatus))
         {
             canInfect = !targetStatus.HasStatus(damageType);
         }

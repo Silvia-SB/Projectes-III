@@ -15,6 +15,9 @@ public class BloodArrow : Arrow
     [SerializeField] private float innerAoeRadius = 2.5f;
     [SerializeField] private float outerAoeRadius = 5f;
 
+    [Header("Player Interaction")]
+    [SerializeField, Range(0f, 1f)] private float playerDamageMultiplier = 0.5f;
+
     [Header("Damage over time (DoT)")]
     [SerializeField] private int dotTicks = 5;
     [SerializeField] private float dotInterval = 0.4f; 
@@ -30,10 +33,10 @@ public class BloodArrow : Arrow
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, outerAoeRadius);
             Dictionary<IDamageable, float> minTargetDistances = new Dictionary<IDamageable, float>();
+            HashSet<IDamageable> playerTargets = new HashSet<IDamageable>();
                 
             foreach (Collider col in colliders)
             {
-                if (col.CompareTag("Player")) continue; 
                 if (col.CompareTag("Liquid"))
                 {
                     CorruptTarget(col);
@@ -43,6 +46,8 @@ public class BloodArrow : Arrow
                 IDamageable target = col.GetComponentInParent<IDamageable>();
                 if (target != null)
                 {
+                    if (col.CompareTag("Player")) playerTargets.Add(target);
+
                     float distance = Vector3.Distance(transform.position, col.ClosestPoint(transform.position));
                     
                     if (!minTargetDistances.ContainsKey(target) || distance < minTargetDistances[target])
@@ -55,6 +60,8 @@ public class BloodArrow : Arrow
             foreach (var kvp in minTargetDistances)
             {
                 float damageToApply = (kvp.Value <= innerAoeRadius) ? innerDamage:outerDamage;
+                if (playerTargets.Contains(kvp.Key)) damageToApply *= playerDamageMultiplier;
+
                 kvp.Key.TakeDamage(damageToApply, damageType);
                 kvp.Key.TakeRecurrentDamage(recurrentDamage, dotInterval, dotTicks, damageType);
             }
@@ -65,7 +72,10 @@ public class BloodArrow : Arrow
             if (directTarget != null) 
             {
                 float multiplier = GetDamageMultiplier(other);
-                directTarget.TakeDamage(baseDamage * multiplier, damageType);
+                float finalDamage = baseDamage * multiplier;
+                if (other.CompareTag("Player")) finalDamage *= playerDamageMultiplier;
+
+                directTarget.TakeDamage(finalDamage, damageType);
                 directTarget.TakeRecurrentDamage(recurrentDamage, dotInterval, dotTicks, damageType);
             }
         }

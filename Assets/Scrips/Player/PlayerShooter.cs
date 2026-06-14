@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 [DefaultExecutionOrder(100)]
 [RequireComponent(typeof(PlayerAimController))]
 [RequireComponent(typeof(ProceduralBowAnimation))]
-public class PlayerShooter : MonoBehaviour
+public class PlayerShooter : MonoBehaviour,IResettable
 {
     [Header("References")]
     [SerializeField] private ArrowPool arrowPool;
@@ -52,8 +52,7 @@ public class PlayerShooter : MonoBehaviour
         if (playerCamera == null) playerCamera = Camera.main;
         if (aimController == null) aimController = GetComponent<PlayerAimController>();
         if (bowAnimation == null) bowAnimation = GetComponent<ProceduralBowAnimation>();
-        PrepareArrow();
-        OnArrowChanged?.Invoke(currentArrowType);
+        ResetState();
     }
 
     private void Update()
@@ -367,12 +366,31 @@ public class PlayerShooter : MonoBehaviour
         isWaitingForReload = true;
         emergencySpawnTime = Time.time + 2.0f;
     }
+
+    public void CaptureInitialState()
+    {
+        //No need to implement
+    }
     
     public void ResetState()
     {
+        isCharging = false;
+        isWaitingForReload = false;
+        isFireButtonHeld = false;
+        hasReachedMinCharge = false;
+        isAimMarkerActive = false;
+
         if (bowAnimation != null) bowAnimation.StopChargeShake();
-        TryChangeArrowType(ArrowType.Base);
-        PrepareArrow();
+        OnChargeEnd?.Invoke();
+
+        if (currentArrowInstance != null)
+        {
+            currentArrowInstance.ReturnToPool();
+            currentArrowInstance = null;
+        }
+
+        currentArrowType = ArrowType.Base;
+        PrepareArrow(); 
         OnArrowChanged?.Invoke(ArrowType.Base);
     }
 }

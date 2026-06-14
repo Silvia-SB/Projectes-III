@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Threading.Tasks;
 
 public class PlayerDeathController : MonoBehaviour, IResettable
 {
@@ -19,6 +20,7 @@ public class PlayerDeathController : MonoBehaviour, IResettable
     [SerializeField] private float impactShakeIntensity = 0.6f; 
 
     [Header("Death Screen")]
+    [SerializeField] private float delayBeforeScreen = 4.0f;
     [SerializeField] private float delayBeforeReset = 4f;
     [SerializeField] private string deathTitle = "YOU DIED";
     [SerializeField] private string[] deathPhrases = new string[]
@@ -92,7 +94,7 @@ public class PlayerDeathController : MonoBehaviour, IResettable
         }
     }
 
-    private void HandleDeath()
+    private async void HandleDeath()
     {
         if (isDead) return;
         isDead = true;
@@ -119,6 +121,9 @@ public class PlayerDeathController : MonoBehaviour, IResettable
             currentShake = 0f;
             velocityY = 0f;
         }
+
+        await Task.Delay(Mathf.RoundToInt(delayBeforeScreen * 1000));
+        if (!isDead) return;
 
         if (TransitionManager.Instance != null)
         {

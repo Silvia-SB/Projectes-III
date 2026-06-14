@@ -30,20 +30,20 @@ public class TransitionManager : MonoBehaviour
         }
     }
 
-    public void PlayTransition(string title, string description, float displayDuration, bool autoFadeOut = true, Action onMidPoint = null, Action onComplete = null)
+    public void PlayTransition(string title, string description, float displayDuration, bool autoFadeOut = true, Action onMidPoint = null, Action onComplete = null, bool startFullyVisible = false)
     {
         if (isTransitioning) return;
-        _ = TransitionSequence(title, description, displayDuration, autoFadeOut, onMidPoint, onComplete);
+        _ = TransitionSequence(title, description, displayDuration, autoFadeOut, onMidPoint, onComplete, startFullyVisible);
     }
 
 
-    public void PlayFadeOnly(float displayDuration, bool autoFadeOut = true, Action onMidPoint = null, Action onComplete = null)
+    public void PlayFadeOnly(float displayDuration, bool autoFadeOut = true, Action onMidPoint = null, Action onComplete = null, bool startFullyVisible = false)
     {
         if (isTransitioning) return;
-        _ = TransitionSequence(null, null, displayDuration, autoFadeOut, onMidPoint, onComplete);
+        _ = TransitionSequence(null, null, displayDuration, autoFadeOut, onMidPoint, onComplete, startFullyVisible);
     }
 
-    private async Task TransitionSequence(string title, string desc, float displayDuration, bool autoFadeOut, Action onMidPoint, Action onComplete)
+    private async Task TransitionSequence(string title, string desc, float displayDuration, bool autoFadeOut, Action onMidPoint, Action onComplete, bool startFullyVisible)
     {
         isTransitioning = true;
 
@@ -63,9 +63,15 @@ public class TransitionManager : MonoBehaviour
             backgroundPanel.gameObject.SetActive(true);
         }
 
-        SetAlpha(0f);
-        
-        await Fade(0f, 1f, fadeDuration);
+        if (startFullyVisible)
+        {
+            SetAlpha(1f);
+        }
+        else
+        {
+            SetAlpha(0f);
+            await Fade(0f, 1f, fadeDuration);
+        }
 
         onMidPoint?.Invoke();
 

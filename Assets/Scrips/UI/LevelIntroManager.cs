@@ -10,6 +10,10 @@ public class LevelIntroManager : MonoBehaviour
     [SerializeField, TextArea(3, 6)] 
     private string descriptionString = "You awaken in a village consumed by madness and plague. They hunger for your sacrifice, but you must flee. Seek out the three iron bells hidden within these cursed grounds and strike them with your arrows. Only when the third bell tolls will the ancient mechanism awaken, opening the great gate to your salvation.";
 
+    private void Awake()
+    {
+        gameObject.SetActive(true);
+    }
     private void Start()
     {
         if (TransitionManager.Instance != null)
@@ -20,7 +24,8 @@ public class LevelIntroManager : MonoBehaviour
                 onComplete: () => {
                     Time.timeScale = 1f;
                     AchievementManager.UnlockAchievement("level_start");
-                });
+                },
+                startFullyVisible: true);
         }
     }
 }

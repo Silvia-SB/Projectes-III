@@ -14,8 +14,13 @@ public class PauseMenu : MonoBehaviour
     
     public void PauseGame()
     {
-        if (musicMenu != null) musicMenu.SetActive(true);
+        if (musicMenu != null)
+        {
+            musicMenu.SetActive(true);
+            SetMusicMenuUnpaused();
+        }
         audioManagerEnemyZone?.PauseAudio();
+        
         if (settingsMenu.gameObject.activeSelf)
         {
             settingsMenu.gameObject.SetActive(false);
@@ -102,6 +107,23 @@ public class PauseMenu : MonoBehaviour
         }
 
         SelectFirst(root);
+    }
+    
+    private void SetMusicMenuUnpaused()
+    {
+        if (musicMenu == null) return;
+
+        AudioSource[] audioSources = musicMenu.GetComponentsInChildren<AudioSource>(true);
+        foreach (AudioSource audioSource in audioSources)
+        {
+            audioSource.ignoreListenerPause = true;
+        }
+
+        Animator[] animators = musicMenu.GetComponentsInChildren<Animator>(true);
+        foreach (Animator animator in animators)
+        {
+            animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+        }
     }
     
 }

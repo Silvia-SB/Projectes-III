@@ -1412,6 +1412,7 @@ GameObject:
   - component: {fileID: 3605493032886274167}
   - component: {fileID: 407174834558732242}
   - component: {fileID: 2468645579145278232}
+  - component: {fileID: -5497318774387671567}
   m_Layer: 0
   m_Name: pared_concreto_ventana
   m_TagString: Wall
@@ -1499,6 +1500,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-5497318774387671567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4126027759927775949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
+  profile: {fileID: 11400000, guid: de21874cf282ece498c220b43e12f7ee, type: 2}
 --- !u!1 &4158034407368912935
 GameObject:
   m_ObjectHideFlags: 0

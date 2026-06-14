@@ -92,7 +92,7 @@ public class AudioSFXManager : MonoBehaviour
         if (Instance == null) return;
 
         AudioProfileReference profileRef = collider.GetComponent<AudioProfileReference>();
-
+        
         if (profileRef == null)
             profileRef = collider.GetComponentInParent<AudioProfileReference>();
 

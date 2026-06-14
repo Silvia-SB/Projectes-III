@@ -71,6 +71,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 84b98440254708748b4389cdd523d861, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7392409065966620810}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 84b98440254708748b4389cdd523d861, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 340553819228841263}
   m_SourcePrefab: {fileID: 100100000, guid: 84b98440254708748b4389cdd523d861, type: 3}
 --- !u!1 &668035719779967094 stripped
 GameObject:
@@ -99,3 +102,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 78954555533164182, guid: 84b98440254708748b4389cdd523d861, type: 3}
+--- !u!114 &340553819228841263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668035719779967094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
+  profile: {fileID: 11400000, guid: de21874cf282ece498c220b43e12f7ee, type: 2}

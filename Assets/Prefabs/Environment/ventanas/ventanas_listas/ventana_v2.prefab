@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8440265328220045418}
   - component: {fileID: 8468350210600868764}
+  - component: {fileID: -6666836575808354915}
   m_Layer: 9
   m_Name: ventana_v2
   m_TagString: Wall
@@ -82,6 +83,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.53643596, y: 1.3830453, z: 0.058693696}
   m_Center: {x: -0.24661756, y: 0.67585355, z: -0.013439944}
+--- !u!114 &-6666836575808354915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4730960679560682892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
+  profile: {fileID: 11400000, guid: 20e92148002780242b553e89e397c378, type: 2}
 --- !u!1001 &212568098027179935
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5227216764078224295}
   - component: {fileID: 6151676332659002880}
+  - component: {fileID: 973700858128247910}
   m_Layer: 8
   m_Name: Wall_3x9
   m_TagString: Wall
@@ -56,6 +57,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.2423084, y: 9.380606, z: 1}
   m_Center: {x: -0.10883212, y: 4.190303, z: -2.2975896e-16}
+--- !u!114 &973700858128247910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5808866060436853128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
+  profile: {fileID: 11400000, guid: de21874cf282ece498c220b43e12f7ee, type: 2}
 --- !u!1001 &5395157565974723514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64,6 +78,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5227216764078224295}
     m_Modifications:
+    - target: {fileID: 7281159507612072995, guid: 302ea9a6df14a1343a4d001a1dbec755, type: 3}
+      propertyPath: profile
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8133352046254904976, guid: 302ea9a6df14a1343a4d001a1dbec755, type: 3}
       propertyPath: m_Name
       value: pared_piedra_3x3 (2)
@@ -135,6 +153,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5227216764078224295}
     m_Modifications:
+    - target: {fileID: 7281159507612072995, guid: 302ea9a6df14a1343a4d001a1dbec755, type: 3}
+      propertyPath: profile
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8133352046254904976, guid: 302ea9a6df14a1343a4d001a1dbec755, type: 3}
       propertyPath: m_Name
       value: pared_piedra_3x3 (1)
@@ -206,6 +228,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5227216764078224295}
     m_Modifications:
+    - target: {fileID: 7281159507612072995, guid: 302ea9a6df14a1343a4d001a1dbec755, type: 3}
+      propertyPath: profile
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8133352046254904976, guid: 302ea9a6df14a1343a4d001a1dbec755, type: 3}
       propertyPath: m_Name
       value: pared_piedra_3x3

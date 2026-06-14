@@ -71,6 +71,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: edfd4445ea6d2bc449f07d4b0a355337, type: 3}
       insertIndex: -1
       addedObject: {fileID: 439243920571827695}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: edfd4445ea6d2bc449f07d4b0a355337, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6888967138845688689}
   m_SourcePrefab: {fileID: 100100000, guid: edfd4445ea6d2bc449f07d4b0a355337, type: 3}
 --- !u!1 &1640525980576832136 stripped
 GameObject:
@@ -98,3 +101,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.29464492, y: 0.06816968, z: 1.8979588}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6888967138845688689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640525980576832136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
+  profile: {fileID: 11400000, guid: 20e92148002780242b553e89e397c378, type: 2}

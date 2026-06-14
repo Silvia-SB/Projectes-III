@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Oil
   m_EditorClassIdentifier: Assembly-CSharp::AudioProfile
   normalHit:
-    clip: {fileID: 8300000, guid: c064de81aee1ab64fa976fd39c8fed7c, type: 3}
-    startTime: 0.2
-    endTime: 0.7
-    volume: 0.6
+    clip: {fileID: 8300000, guid: 1b75568890b14be4b8a84c0a323e3e14, type: 3}
+    startTime: 0
+    endTime: 0
+    volume: 0.4
     maxDistance: 25
   fireHit:
     clip: {fileID: 8300000, guid: b775901ecf8b36c4e96b026e65069467, type: 3}
@@ -43,8 +43,8 @@ MonoBehaviour:
     volume: 1
     maxDistance: 25
   piercingHit:
-    clip: {fileID: 8300000, guid: c064de81aee1ab64fa976fd39c8fed7c, type: 3}
-    startTime: 0.2
-    endTime: 0.7
-    volume: 1
+    clip: {fileID: 8300000, guid: 1b75568890b14be4b8a84c0a323e3e14, type: 3}
+    startTime: 0
+    endTime: 0
+    volume: 0.8
     maxDistance: 25

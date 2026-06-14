@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1126283104142450805}
   - component: {fileID: 2901914436044297407}
   - component: {fileID: 8036552765934641672}
+  - component: {fileID: -180606082075558149}
   m_Layer: 9
   m_Name: pared_yeso_3x3_LOW
   m_TagString: Wall
@@ -112,3 +113,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.946448, y: 0.2028592, z: 2.9346702}
   m_Center: {x: 0, y: 0, z: 1.4673351}
+--- !u!114 &-180606082075558149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3694455542049158506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
+  profile: {fileID: 11400000, guid: de21874cf282ece498c220b43e12f7ee, type: 2}

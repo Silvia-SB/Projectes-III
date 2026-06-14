@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7145226075304501687}
   - component: {fileID: 764433928884179362}
   - component: {fileID: 2549243444021364686}
+  - component: {fileID: 4043192841435703020}
   m_Layer: 0
   m_Name: Tejado
   m_TagString: Untagged
@@ -112,3 +113,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5, y: 0.59580725, z: 0.46869406}
   m_Center: {x: 0, y: -0.015915422, z: 0.5632394}
+--- !u!114 &4043192841435703020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015408189003958419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
+  profile: {fileID: 11400000, guid: 20e92148002780242b553e89e397c378, type: 2}

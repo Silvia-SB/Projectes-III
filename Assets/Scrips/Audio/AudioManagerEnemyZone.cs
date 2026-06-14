@@ -46,4 +46,15 @@ public class AudioManagerEnemyZone : MonoBehaviour
       source.spatialBlend = 0f;
       source.PlayOneShot(clip, volume);
    }
+   public void PauseAudio()
+   {
+      if (source == null) return;
+      source.Pause();
+   }
+
+   public void ResumeAudio()
+   {
+      if (source == null) return;
+      source.UnPause();
+   }
 }

@@ -12,6 +12,7 @@ public class TransitionManager : MonoBehaviour
     [SerializeField] private Image backgroundPanel;
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private TextMeshProUGUI descriptionText;
+    [SerializeField] private GameObject musicMenu;
     
     [Header("Settings")]
     [SerializeField] private float fadeDuration = 1f;
@@ -90,6 +91,7 @@ public class TransitionManager : MonoBehaviour
         }
 
         onComplete?.Invoke();
+        if (musicMenu != null) musicMenu.SetActive(false);
         isTransitioning = false;
     }
 

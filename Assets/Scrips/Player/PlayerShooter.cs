@@ -63,6 +63,11 @@ public class PlayerShooter : MonoBehaviour,IResettable
         if (Time.timeScale == 0f) return;
 
         HandleEmergencyReload();
+
+        if (currentArrowInstance == null && !isWaitingForReload)
+        {
+            PrepareArrow(); //fallback
+        }
         CheckAutoCharge();
         UpdateChargingState();
     }
@@ -385,7 +390,6 @@ public class PlayerShooter : MonoBehaviour,IResettable
     public void ResetState()
     {
         isCharging = false;
-        isWaitingForReload = false;
         isFireButtonHeld = false;
         hasReachedMinCharge = false;
         isAimMarkerActive = false;
@@ -400,7 +404,8 @@ public class PlayerShooter : MonoBehaviour,IResettable
         }
 
         currentArrowType = ArrowType.Base;
-        PrepareArrow(); 
         OnArrowChanged?.Invoke(ArrowType.Base);
+        isWaitingForReload = true;
+        emergencySpawnTime = Time.time;
     }
 }

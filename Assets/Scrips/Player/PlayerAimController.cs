@@ -92,7 +92,7 @@ public class PlayerAimController : MonoBehaviour
             }
         }
         
-        //gravity simulation to find aim assist target
+        Vector3 currentPos = firePoint.position;
         Vector3 currentVel = shootDirection * initialVelocity;
         Transform currentTarget = null;
         Vector3 targetPoint = Vector3.zero;

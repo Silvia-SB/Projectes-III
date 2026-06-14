@@ -30,7 +30,7 @@ public class MainMenu : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         URPUtility.SetRendererFeatureActive(pcRendererData, fullScreenFeatureName, false);
-        SelectFirst(mainMenuImage.gameObject);
+        //SelectFirst(mainMenuImage.gameObject);
     }
 
     public async void PlayGame()

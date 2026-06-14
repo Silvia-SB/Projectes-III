@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MenuButtonAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
+public class MenuButtonAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, ISelectHandler, IDeselectHandler
 {
     private Vector3 normalScale;
     public float hoverScale = 1.05f;
@@ -39,5 +39,14 @@ public class MenuButtonAnimation : MonoBehaviour, IPointerEnterHandler, IPointer
     public void OnPointerUp(PointerEventData eventData)
     {
         targetScale = normalScale * hoverScale;
+    }
+    public void OnSelect(BaseEventData eventData)
+    {
+        targetScale = normalScale * hoverScale;
+    }
+
+    public void OnDeselect(BaseEventData eventData)
+    {
+        targetScale = normalScale;
     }
 }

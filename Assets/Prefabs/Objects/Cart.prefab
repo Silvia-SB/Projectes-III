@@ -722,6 +722,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e0d1c025f1de6db459c4ec0ab665dcce, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2839581716382379450}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e0d1c025f1de6db459c4ec0ab665dcce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 632599346698287229}
     - targetCorrespondingSourceObject: {fileID: 6835908549233101305, guid: e0d1c025f1de6db459c4ec0ab665dcce, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8571612361643613458}
@@ -731,6 +734,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 901897122485332503, guid: e0d1c025f1de6db459c4ec0ab665dcce, type: 3}
       insertIndex: -1
       addedObject: {fileID: 621075197467150136}
+    - targetCorrespondingSourceObject: {fileID: 901897122485332503, guid: e0d1c025f1de6db459c4ec0ab665dcce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8678694594540881814}
   m_SourcePrefab: {fileID: 100100000, guid: e0d1c025f1de6db459c4ec0ab665dcce, type: 3}
 --- !u!1 &2821890279345413115 stripped
 GameObject:
@@ -779,6 +785,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.93595654, y: 0.9264286, z: 0.21159007}
   m_Center: {x: 0, y: 0, z: -0.6581589}
+--- !u!114 &8678694594540881814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2821890279345413115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
+  profile: {fileID: 11400000, guid: 79e3ccfc02fc7234b800a60f97c86f75, type: 2}
 --- !u!1 &2840673177739234493 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e0d1c025f1de6db459c4ec0ab665dcce, type: 3}
@@ -826,6 +845,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.16747475, y: 0.12612343, z: 1.7550683}
   m_Center: {x: 0.9840193, y: 1.0330608, z: 2.2172787}
+--- !u!114 &632599346698287229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2840673177739234493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
+  profile: {fileID: 11400000, guid: 20e92148002780242b553e89e397c378, type: 2}
 --- !u!4 &3181733320602998279 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e0d1c025f1de6db459c4ec0ab665dcce, type: 3}

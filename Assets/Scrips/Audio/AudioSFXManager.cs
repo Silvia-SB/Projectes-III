@@ -42,6 +42,23 @@ public class AudioSFXManager : MonoBehaviour
         }
     }
 
+    public static void PlayStatus(GameObject gameObject, DamageType type)
+    {
+        if (Instance == null || gameObject == null) return;
+
+        AudioProfileReference profileRef = gameObject.GetComponent<AudioProfileReference>();
+
+        if (profileRef == null)
+            profileRef = gameObject.GetComponentInParent<AudioProfileReference>();
+
+        if (profileRef == null) return;
+
+        AudioConfig audioConfig = profileRef.GetClipFromProfile(type, gameObject);
+        if(audioConfig.clip == null) return;
+
+        Instance.PlaySFXAtPosition(audioConfig, gameObject.transform.position, audioConfig.volume);
+    }
+
     public static void PlaySFX(Collider collider, Vector3 position, ArrowType arrowType, bool isFullyCharged)
     {
         if (Instance == null) return;

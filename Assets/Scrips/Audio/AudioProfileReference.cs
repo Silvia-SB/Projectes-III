@@ -10,6 +10,7 @@ public class AudioProfileReference : MonoBehaviour
 
     public AudioConfig GetClipFromProfile(ArrowType arrowType, bool isFullyCharged)
     {
+        Debug.Log(arrowType);
         switch (arrowType)
         {
             case ArrowType.Base:
@@ -28,6 +29,29 @@ public class AudioProfileReference : MonoBehaviour
                 return isFullyCharged 
                 ? profile.PiercingHit
                 : profile.NormalHit;
+            default:
+                return default;
+        }
+    }
+
+    public AudioConfig GetClipFromProfile(DamageType type, GameObject target)
+    {
+        if (target.CompareTag("Explosive") && type == DamageType.Blood) return profile.FireExplosion;
+        
+        switch (type)
+        {
+            case DamageType.Base:
+                return profile.NormalHit;
+
+            case DamageType.Blood:
+                return profile.FireHit;
+
+            case DamageType.Electric:
+                return profile.ElectricHit;
+
+            case DamageType.Piercing:
+                return profile.PiercingHit;
+
             default:
                 return default;
         }

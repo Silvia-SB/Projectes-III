@@ -28,6 +28,8 @@ public class PiercingArrow : Arrow
 
         IDamageable target = other.GetComponentInParent<IDamageable>();
         bool isConductive = other.GetComponent<ConductiveSurface>() != null;
+        AudioSFXManager.PlaySFX(other, hitPoint, type, isFullyCharged);
+
         
         if (other.CompareTag("Liquid") || other.CompareTag("Surface") || isConductive)
         {
@@ -53,13 +55,14 @@ public class PiercingArrow : Arrow
                 target.TakeDamage(damage * multiplier, damageType);
                 PlayImpactParticles();
             }
-
             if (!isFullyCharged)
             {
                 transform.position = hitPoint - transform.forward * (arrowLength - penetrationDepth);
                 StickToTarget(other);
                 return true;
             }
+
+            
         }
         
         return false;

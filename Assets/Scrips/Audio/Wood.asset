@@ -16,7 +16,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: d3aa29da30e912347a77baba3e7b8aff, type: 3}
     startTime: 0
     endTime: 1
-    volume: 1
+    volume: 0.6
   fireHit:
     clip: {fileID: 8300000, guid: b775901ecf8b36c4e96b026e65069467, type: 3}
     startTime: 0
@@ -30,10 +30,15 @@ MonoBehaviour:
   fireExplosion:
     clip: {fileID: 8300000, guid: 2ea2c8c6a43cd2847ade32884abd6427, type: 3}
     startTime: 0
-    endTime: 0
+    endTime: 1
     volume: 1
   electricExplosion:
     clip: {fileID: 0}
     startTime: 0
     endTime: 0
+    volume: 1
+  piercingHit:
+    clip: {fileID: 8300000, guid: d3aa29da30e912347a77baba3e7b8aff, type: 3}
+    startTime: 0
+    endTime: 1
     volume: 1

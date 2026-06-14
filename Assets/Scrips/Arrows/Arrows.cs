@@ -192,6 +192,8 @@ public abstract class Arrow : MonoBehaviour
         IDamageable target = other.GetComponentInParent<IDamageable>();
         IArrowInteractable interactable = other.GetComponentInParent<IArrowInteractable>();
         bool isConductive = other.GetComponent<ConductiveSurface>() != null;
+        AudioSFXManager.PlaySFX(other, hitPoint, type, isFullyCharged);
+
         
         if (other.CompareTag("Liquid") || other.CompareTag("Surface") || isConductive)
         {
@@ -205,7 +207,6 @@ public abstract class Arrow : MonoBehaviour
             transform.position = hitPoint - transform.forward * (arrowLength - penetrationDepth);
 
             PlayImpactParticles();
-            AudioSFXManager.PlaySFX(other, hitPoint, type, isFullyCharged);
             OnHit(other);
             if (interactable != null) interactable.OnArrowHit(this);
             StickToTarget(other);

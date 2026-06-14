@@ -55,6 +55,7 @@ public class StatusEffectManager : MonoBehaviour, IResettable
 
         if (isNew)
         {
+            ApplySoundStatus(gameObject, damageType);
             OnStatusApplied?.Invoke(damageType);
 
             if (HasStatus(DamageType.Blood) && HasStatus(DamageType.Electric))
@@ -65,6 +66,11 @@ public class StatusEffectManager : MonoBehaviour, IResettable
                 }
             }
         }
+    }
+
+    public void ApplySoundStatus(GameObject gameObject, DamageType damageType)
+    {
+        AudioSFXManager.PlayStatus(gameObject, damageType);
     }
 
     public void RemoveStatus(DamageType damageType)

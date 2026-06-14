@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using static AudioProfile;
 
 public class AudioSFXManager : MonoBehaviour
@@ -11,9 +12,13 @@ public class AudioSFXManager : MonoBehaviour
     [Header("3D Settings")]
     [SerializeField] private float minDistance = 1f;
     [SerializeField] private float maxDistance = 25f;
+    
+    [SerializeField] private AudioMixerGroup outputMixerGroup;
 
     private AudioSource[] sfxPool;
     private int index;
+
+    public AudioMixerGroup OutputMixerGroup => outputMixerGroup;
 
     private void Awake()
     {
@@ -37,6 +42,7 @@ public class AudioSFXManager : MonoBehaviour
             source.rolloffMode = AudioRolloffMode.Logarithmic;
             source.minDistance = minDistance;
             source.maxDistance = maxDistance;
+            source.outputAudioMixerGroup = outputMixerGroup;
 
             sfxPool[i] = source;
         }
@@ -97,7 +103,7 @@ public class AudioSFXManager : MonoBehaviour
         }
     }
 
-    private AudioSource GetSource()
+    public AudioSource GetSource()
     {
         AudioSource source = sfxPool[index];
 

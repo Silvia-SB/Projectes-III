@@ -2190,7 +2190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a5aafe5bd72c230b4e5ba43aabf4cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 40
+  maxHealth: 50
   currentHealth: 0
   OnDeath:
     m_PersistentCalls:
@@ -2207,7 +2207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b855487188cde9faedebc2a5291386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoulDropper
-  soulsToDrop: 15
+  soulsToDrop: 8
 --- !u!114 &2486294874453222963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2384,10 +2384,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.58978546
+  m_Radius: 0.38924766
   m_Height: 2.3697677
   m_Direction: 1
-  m_Center: {x: 0, y: 0.68488383, z: 0.006399274}
+  m_Center: {x: -0.008162975, y: 0.68488383, z: 0.0051671863}
 --- !u!114 &8733170655142844865
 MonoBehaviour:
   m_ObjectHideFlags: 0

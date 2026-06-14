@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a5aafe5bd72c230b4e5ba43aabf4cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 50
+  maxHealth: 65
   currentHealth: 0
   OnDeath:
     m_PersistentCalls:
@@ -326,6 +326,7 @@ MonoBehaviour:
   targetRenderers:
   - {fileID: 5787574664605306743}
   - {fileID: 7486807959035159251}
+  eyeObjects: []
   dissolveSpeed: 0.5
 --- !u!114 &3334038611966704686
 MonoBehaviour:
@@ -365,10 +366,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.7890947
+  m_Radius: 0.612803
   m_Height: 2.5893803
   m_Direction: 1
-  m_Center: {x: -0.0051139593, y: 0.8208473, z: 0}
+  m_Center: {x: 0.023814797, y: 0.8208473, z: 0}
 --- !u!114 &-2474849797567084875
 MonoBehaviour:
   m_ObjectHideFlags: 0

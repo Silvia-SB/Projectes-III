@@ -8,6 +8,8 @@ public class BloodArrow : Arrow
     
     [Header("Hit damage")]
     [SerializeField] private float baseDamage = 5f;
+    [SerializeField] private float recurrentDamage = 5f;
+
     [SerializeField] private float innerDamage= 10f;
     [SerializeField] private float outerDamage = 30f;
     [SerializeField] private float innerAoeRadius = 2.5f;
@@ -54,7 +56,7 @@ public class BloodArrow : Arrow
             {
                 float damageToApply = (kvp.Value <= innerAoeRadius) ? innerDamage:outerDamage;
                 kvp.Key.TakeDamage(damageToApply, damageType);
-                kvp.Key.TakeRecurrentDamage(damageToApply, dotInterval, dotTicks, damageType);
+                kvp.Key.TakeRecurrentDamage(recurrentDamage, dotInterval, dotTicks, damageType);
             }
         }
         else if (other != null && !other.CompareTag("Liquid")) 
@@ -64,7 +66,7 @@ public class BloodArrow : Arrow
             {
                 float multiplier = GetDamageMultiplier(other);
                 directTarget.TakeDamage(baseDamage * multiplier, damageType);
-                directTarget.TakeRecurrentDamage(baseDamage, dotInterval, dotTicks, damageType);
+                directTarget.TakeRecurrentDamage(recurrentDamage, dotInterval, dotTicks, damageType);
             }
         }
     }

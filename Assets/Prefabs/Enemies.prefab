@@ -397,7 +397,7 @@ Transform:
   m_GameObject: {fileID: 814365957030555086}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.55, y: -1.05, z: -29.44}
+  m_LocalPosition: {x: 8.88, y: -1.05, z: -27.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -524,8 +524,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 39.642708, y: 1, z: 63.624817}
-  m_Center: {x: 11.659122, y: 0, z: -6.4815063}
+  m_Size: {x: 26.976997, y: 1, z: 63.624817}
+  m_Center: {x: 5.3262672, y: 0, z: -6.4815063}
 --- !u!114 &28790303842694576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1154,6 +1154,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3342176412194649113}
+  - {fileID: 6745955338071182319}
   - {fileID: 5292470200840976720}
   - {fileID: 6050164275450532853}
   m_Father: {fileID: 127220984150720652}
@@ -1173,9 +1174,16 @@ MonoBehaviour:
   zoneData:
   - spawnPoint: {fileID: 3342176412194649113}
     enemyType: 1
-    quantity: 2
+    quantity: 1
     spawnInterval: 3
     spawnCount: 2
+    currentTimer: 0
+    totalSpawnedEnemies: 0
+  - spawnPoint: {fileID: 6745955338071182319}
+    enemyType: 2
+    quantity: 1
+    spawnInterval: 4
+    spawnCount: 3
     currentTimer: 0
     totalSpawnedEnemies: 0
   - spawnPoint: {fileID: 5292470200840976720}
@@ -1764,7 +1772,7 @@ Transform:
   m_GameObject: {fileID: 4254699773195180573}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.93, y: -0.41, z: -29}
+  m_LocalPosition: {x: 7.49, y: -0.86, z: -27.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2536,8 +2544,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 91.25834, y: 1.2594603, z: 49.65912}
-  m_Center: {x: -30.218334, y: 0.5610613, z: -6.564728}
+  m_Size: {x: 91.25834, y: 1.2594603, z: 33.008606}
+  m_Center: {x: -30.218334, y: 0.5610613, z: 1.7605286}
 --- !u!114 &1006625519167897481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2730,7 +2738,7 @@ Transform:
   m_GameObject: {fileID: 4949233967798762731}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.8, y: 0, z: 3.5}
+  m_LocalPosition: {x: -34.49, y: 0, z: 8.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2926,6 +2934,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManagerEnemyZone
   source: {fileID: 0}
+--- !u!1 &5444751925047582225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6745955338071182319}
+  m_Layer: 0
+  m_Name: Spawn1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6745955338071182319
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5444751925047582225}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -20.83, y: -0.54, z: -0.22}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6565790490810540476}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5577146996894246566
 GameObject:
   m_ObjectHideFlags: 0
@@ -3150,7 +3189,7 @@ Transform:
   m_GameObject: {fileID: 5726147096931685366}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.36, y: -0.512, z: -12}
+  m_LocalPosition: {x: -23.36, y: -0.726, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3243,7 +3282,7 @@ Transform:
   m_GameObject: {fileID: 6001098241389893055}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.64, y: -1.27, z: 9.61}
+  m_LocalPosition: {x: 7.28, y: -1.27, z: 10.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4707,8 +4746,8 @@ MonoBehaviour:
   - spawnPoint: {fileID: 4870794475620961393}
     enemyType: 1
     quantity: 1
-    spawnInterval: 4
-    spawnCount: 3
+    spawnInterval: 6
+    spawnCount: 2
     currentTimer: 0
     totalSpawnedEnemies: 0
   distanceToSpawn: 5
@@ -4757,7 +4796,7 @@ Transform:
   m_GameObject: {fileID: 8981847480167912638}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.2, y: -1.05, z: -7.7}
+  m_LocalPosition: {x: -6.2, y: -0.84, z: -7.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

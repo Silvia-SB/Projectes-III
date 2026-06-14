@@ -128,13 +128,14 @@ MonoBehaviour:
   - {fileID: 5598893863876003726}
   - {fileID: 2091495067678672108}
   stuckParticles: []
-  baseDamage: 20
-  innerDamage: 20
+  baseDamage: 40
+  recurrentDamage: 5
+  innerDamage: 50
   outerDamage: 5
   innerAoeRadius: 2
   outerAoeRadius: 4
-  dotTicks: 3
-  dotInterval: 2
+  dotTicks: 4
+  dotInterval: 3
 --- !u!54 &7591157102281329915
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -5297,7 +5297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b855487188cde9faedebc2a5291386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoulDropper
-  soulsToDrop: 30
+  soulsToDrop: 40
 --- !u!114 &5291874987496265434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5416,6 +5416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DissolvingController
   targetRenderers:
   - {fileID: 8921252960938019615}
+  eyeObjects: []
   dissolveSpeed: 0.5
 --- !u!114 &3698751656161215176
 MonoBehaviour:
@@ -5455,10 +5456,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5754213
+  m_Radius: 0.48453647
   m_Height: 2.5454118
   m_Direction: 1
-  m_Center: {x: 0, y: 0.7727059, z: -0.0022107959}
+  m_Center: {x: -0.001847446, y: 0.7727059, z: -0.0022107959}
 --- !u!114 &-3233332556817462238
 MonoBehaviour:
   m_ObjectHideFlags: 0

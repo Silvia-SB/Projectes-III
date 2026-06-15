@@ -78,9 +78,7 @@ public class AudioSFXManager : MonoBehaviour
 
         if (profileRef == null) return;
 
-        AudioConfig audioConfig = type == DamageType.Blood
-            ? profileRef.Profile.FireExplosion
-            : profileRef.GetClipFromProfile(type, gameObject);
+        AudioConfig audioConfig = profileRef.GetClipFromProfile(type, gameObject);
 
         if (audioConfig.clip == null) return;
 

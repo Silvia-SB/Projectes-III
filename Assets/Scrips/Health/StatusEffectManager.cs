@@ -14,6 +14,7 @@ public class StatusEffectManager : MonoBehaviour, IResettable
 {
     public event Action<DamageType> OnStatusApplied;
     public event Action<DamageType> OnStatusRemoved;
+    public event Action<DamageType> OnStatusTick;
     public event Action OnAllStatusesCleared;
 
     private readonly Dictionary<DamageType, DoTInstance> activeStatuses = new Dictionary<DamageType, DoTInstance>();
@@ -106,7 +107,8 @@ public class StatusEffectManager : MonoBehaviour, IResettable
             {
                 dot.Timer -= dot.Interval;
                 
-                damageable?.TakeDamage(dot.Amount, key); 
+                damageable?.TakeDamage(dot.Amount, key);
+                OnStatusTick?.Invoke(key);
                 
                 if (!gameObject.activeInHierarchy) return;
                 

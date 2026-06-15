@@ -27,16 +27,39 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] private float hitFlashFadeSpeed = 3f;
     [SerializeField, Range(0f, 1f)] private float hitFlashMaxAlpha = 1f;
 
+    [Header("Status Visuals")]
+    [SerializeField] private Image fireOverlayImage;
+    [SerializeField] private Image electricOverlayImage;
+    [SerializeField] private float electricFlashSpeed = 15f;
+    [SerializeField] private float fireFlashFadeSpeed = 5f;
+    [SerializeField, Range(0f, 1f)] private float fireFlashMaxAlpha = 0.8f;
+    [SerializeField, Range(0f, 1f)] private float fireBaseAlpha = 0.3f;
+    [SerializeField, Range(0f, 1f)] private float electricBaseAlpha = 0.4f;
+
     private float targetHealthValue;
     private float currentDisplayedSouls;
     private int targetSoulsValue;
     private float extraVignetteAlpha;
+
+    private StatusEffectManager playerStatusManager;
+    private float fireCurrentAlpha;
+    private bool isBurning;
+    private bool isElectrocuted;
 
     private void OnEnable()
     {
         if (playerHealth != null)
         {
             playerHealth.OnHealthChanged += OnHealthChanged;
+            
+            playerStatusManager = playerHealth.GetComponent<StatusEffectManager>();
+            if (playerStatusManager != null)
+            {
+                playerStatusManager.OnStatusApplied += OnStatusApplied;
+                playerStatusManager.OnStatusRemoved += OnStatusRemoved;
+                playerStatusManager.OnStatusTick += OnStatusTick;
+                playerStatusManager.OnAllStatusesCleared += OnAllStatusesCleared;
+            }
             
             if (playerHealth.MaxHealth > 0)
             {
@@ -56,6 +79,21 @@ public class PlayerHUD : MonoBehaviour
             Color c = lowHealthVignette.color;
             c.a = 0f;
             lowHealthVignette.color = c;
+        }
+        
+        if (fireOverlayImage != null)
+        {
+            Color c = fireOverlayImage.color;
+            c.a = 0f;
+            fireOverlayImage.color = c;
+            fireOverlayImage.gameObject.SetActive(false);
+        }
+        if (electricOverlayImage != null)
+        {
+            Color c = electricOverlayImage.color;
+            c.a = 0f;
+            electricOverlayImage.color = c;
+            electricOverlayImage.gameObject.SetActive(false);
         }
     }
 
@@ -79,6 +117,14 @@ public class PlayerHUD : MonoBehaviour
         if (playerHealth != null)
         {
             playerHealth.OnHealthChanged -= OnHealthChanged;
+        }
+        
+        if (playerStatusManager != null)
+        {
+            playerStatusManager.OnStatusApplied -= OnStatusApplied;
+            playerStatusManager.OnStatusRemoved -= OnStatusRemoved;
+            playerStatusManager.OnStatusTick -= OnStatusTick;
+            playerStatusManager.OnAllStatusesCleared -= OnAllStatusesCleared;
         }
 
         if (SoulManager.Instance != null)
@@ -172,6 +218,26 @@ public class PlayerHUD : MonoBehaviour
         }
         
         UpdateArrowFillUI();
+        UpdateStatusOverlays();
+    }
+
+    private void UpdateStatusOverlays()
+    {
+        if (isBurning && fireOverlayImage != null)
+        {
+            fireCurrentAlpha = Mathf.MoveTowards(fireCurrentAlpha, fireBaseAlpha, Time.deltaTime * fireFlashFadeSpeed);
+            Color c = fireOverlayImage.color;
+            c.a = fireCurrentAlpha;
+            fireOverlayImage.color = c;
+        }
+
+        if (isElectrocuted && electricOverlayImage != null)
+        {
+            float targetAlpha = electricBaseAlpha + (Mathf.Abs(Mathf.Sin(Time.time * electricFlashSpeed)) * (1f - electricBaseAlpha));
+            Color c = electricOverlayImage.color;
+            c.a = targetAlpha;
+            electricOverlayImage.color = c;
+        }
     }
 
     private void UpdateArrowFillUI()
@@ -198,5 +264,60 @@ public class PlayerHUD : MonoBehaviour
     private void UpdateSoulsUI(int currentSouls, int maxSouls)
     {
         targetSoulsValue = currentSouls;
+    }
+
+    private void OnStatusApplied(DamageType type)
+    {
+        if (type == DamageType.Blood)
+        {
+            isBurning = true;
+            fireCurrentAlpha = fireFlashMaxAlpha; 
+            if (fireOverlayImage != null) fireOverlayImage.gameObject.SetActive(true);
+        }
+        else if (type == DamageType.Electric)
+        {
+            isElectrocuted = true;
+            if (electricOverlayImage != null) electricOverlayImage.gameObject.SetActive(true);
+        }
+    }
+
+    private void OnStatusRemoved(DamageType type)
+    {
+        if (type == DamageType.Blood)
+        {
+            isBurning = false;
+            if (fireOverlayImage != null)
+            {
+                Color c = fireOverlayImage.color;
+                c.a = 0f;
+                fireOverlayImage.color = c;
+                fireOverlayImage.gameObject.SetActive(false);
+            }
+        }
+        else if (type == DamageType.Electric)
+        {
+            isElectrocuted = false;
+            if (electricOverlayImage != null)
+            {
+                Color c = electricOverlayImage.color;
+                c.a = 0f;
+                electricOverlayImage.color = c;
+                electricOverlayImage.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void OnStatusTick(DamageType type)
+    {
+        if (type == DamageType.Blood && isBurning)
+        {
+            fireCurrentAlpha = fireFlashMaxAlpha; 
+        }
+    }
+
+    private void OnAllStatusesCleared()
+    {
+        OnStatusRemoved(DamageType.Blood);
+        OnStatusRemoved(DamageType.Electric);
     }
 }

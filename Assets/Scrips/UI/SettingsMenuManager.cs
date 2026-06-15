@@ -93,10 +93,20 @@ public class SettingsMenuManager : MonoBehaviour
 
     public void ChangeAimAssist(bool isEnabled)
     {
-        PlayerPrefs.SetInt(AimAssistKey, isEnabled ? 1 : 0);
+        bool state = aimAssistToggle != null ? aimAssistToggle.isOn : isEnabled;
+        PlayerPrefs.SetInt(AimAssistKey, state ? 1 : 0);
         PlayerPrefs.Save();
         
-        OnAimAssistChanged?.Invoke(isEnabled);
+        OnAimAssistChanged?.Invoke(state);
+    }
+
+    public void ChangeAimAssist()
+    {
+        if (aimAssistToggle == null) return;
+        PlayerPrefs.SetInt(AimAssistKey, aimAssistToggle.isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        
+        OnAimAssistChanged?.Invoke(aimAssistToggle.isOn);
     }
 
     public void CloseSettingsMenu()

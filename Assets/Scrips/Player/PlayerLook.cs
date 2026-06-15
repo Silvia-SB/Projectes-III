@@ -45,6 +45,9 @@ public class PlayerLook : MonoBehaviour, IResettable
     {
         SettingsMenuManager.OnSensitivityChanged += SetSensitivity;
         SettingsMenuManager.OnAimAssistChanged += SetAimAssist;
+        
+        rotationSpeed = PlayerPrefs.GetFloat(SensitivityKey, rotationSpeed);
+        useAimAssist = PlayerPrefs.GetInt(AimAssistKey, useAimAssist ? 1 : 0) == 1;
     }
 
     void OnDisable()
@@ -55,9 +58,6 @@ public class PlayerLook : MonoBehaviour, IResettable
 
     void Start()
     {
-        rotationSpeed = PlayerPrefs.GetFloat(SensitivityKey, rotationSpeed);
-        useAimAssist = PlayerPrefs.GetInt(AimAssistKey, useAimAssist ? 1 : 0) == 1;
-
         mYaw = transform.eulerAngles.y;
 
         if (mPitchController != null)

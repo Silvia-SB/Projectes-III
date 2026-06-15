@@ -34,6 +34,7 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] private float electricFlashSpeed = 15f;
     [SerializeField] private float fireFlashFadeSpeed = 5f;
     [SerializeField, Range(0f, 1f)] private float fireFlashMaxAlpha = 0.8f;
+    [SerializeField, Range(0f, 1f)] private float electricMaxAlpha = 0.8f;
     [SerializeField, Range(0f, 1f)] private float fireBaseAlpha = 0.3f;
     [SerializeField, Range(0f, 1f)] private float electricBaseAlpha = 0.4f;
 
@@ -261,7 +262,7 @@ public class PlayerHUD : MonoBehaviour
         {
             if (isElectrocuted)
             {
-                float targetAlpha = electricBaseAlpha + (Mathf.Abs(Mathf.Sin(Time.time * electricFlashSpeed)) * (1f - electricBaseAlpha));
+                float targetAlpha = electricBaseAlpha + (Mathf.Abs(Mathf.Sin(Time.time * electricFlashSpeed)) * (electricMaxAlpha - electricBaseAlpha));
                 Color c = electricOverlayImage.color;
                 c.a = targetAlpha;
                 electricOverlayImage.color = c;

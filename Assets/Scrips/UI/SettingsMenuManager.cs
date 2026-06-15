@@ -25,8 +25,6 @@ public class SettingsMenuManager : MonoBehaviour
     [Header("Aim Assist Settings")]
     [SerializeField] private Toggle aimAssistToggle;
     public static event Action<bool> OnAimAssistChanged;
-
-    [SerializeField] private GameObject titleLogo;
     
 
     
@@ -107,7 +105,6 @@ public class SettingsMenuManager : MonoBehaviour
         {
             optionsImage.gameObject.SetActive(false);
             mainMenuImage.gameObject.SetActive(true);
-            titleLogo.SetActive(true);
             SelectFirst(mainMenuImage.gameObject);
         }
         else

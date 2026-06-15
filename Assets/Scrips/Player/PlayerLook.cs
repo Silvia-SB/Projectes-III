@@ -25,6 +25,7 @@ public class PlayerLook : MonoBehaviour, IResettable
     [SerializeField] private float slowMovementThresholdMouse = 5f;
     
     private const string SensitivityKey = "MouseSensitivity";
+    private const string AimAssistKey = "AimAssistEnabled";
 
     private float mYaw;  
     private float mPitch; 
@@ -38,16 +39,19 @@ public class PlayerLook : MonoBehaviour, IResettable
     void OnEnable()
     {
         SettingsMenuManager.OnSensitivityChanged += SetSensitivity;
+        SettingsMenuManager.OnAimAssistChanged += SetAimAssist;
     }
 
     void OnDisable()
     {
         SettingsMenuManager.OnSensitivityChanged -= SetSensitivity;
+        SettingsMenuManager.OnAimAssistChanged -= SetAimAssist;
     }
 
     void Start()
     {
         rotationSpeed = PlayerPrefs.GetFloat(SensitivityKey, rotationSpeed);
+        useAimAssist = PlayerPrefs.GetInt(AimAssistKey, useAimAssist ? 1 : 0) == 1;
 
         mYaw = transform.eulerAngles.y;
 
@@ -151,6 +155,11 @@ public class PlayerLook : MonoBehaviour, IResettable
     public void SetSensitivity(float speed)
     {
         rotationSpeed = speed;
+    }
+
+    public void SetAimAssist(bool enabled)
+    {
+        useAimAssist = enabled;
     }
 
     public void SyncRotation()

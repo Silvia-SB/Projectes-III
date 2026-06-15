@@ -22,6 +22,10 @@ public class SettingsMenuManager : MonoBehaviour
     [SerializeField] private Slider sensitivitySlider;
     public static event Action<float> OnSensitivityChanged;
 
+    [Header("Aim Assist Settings")]
+    [SerializeField] private Toggle aimAssistToggle;
+    public static event Action<bool> OnAimAssistChanged;
+
     [SerializeField] private GameObject titleLogo;
     
 
@@ -34,6 +38,7 @@ public class SettingsMenuManager : MonoBehaviour
     [SerializeField] private Image pauseMenuImage;
     
     private const string SensitivityKey = "MouseSensitivity";
+    private const string AimAssistKey = "AimAssistEnabled";
 
 
     public void OnEnable()
@@ -53,6 +58,10 @@ public class SettingsMenuManager : MonoBehaviour
         float savedSensitivity = PlayerPrefs.GetFloat(SensitivityKey, sensitivitySlider.value);
         sensitivitySlider.value = savedSensitivity;
 
+        if (aimAssistToggle != null)
+        {
+            aimAssistToggle.isOn = PlayerPrefs.GetInt(AimAssistKey, 1) == 1;
+        }
     }
 
     public void ChangeGraphicsQuality()
@@ -82,6 +91,14 @@ public class SettingsMenuManager : MonoBehaviour
         if (currentScene.name == "SampleScene") OnSensitivityChanged?.Invoke(value);
 
 
+    }
+
+    public void ChangeAimAssist(bool isEnabled)
+    {
+        PlayerPrefs.SetInt(AimAssistKey, isEnabled ? 1 : 0);
+        PlayerPrefs.Save();
+        
+        OnAimAssistChanged?.Invoke(isEnabled);
     }
 
     public void CloseSettingsMenu()

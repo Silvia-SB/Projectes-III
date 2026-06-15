@@ -210,7 +210,7 @@ public class PlayerAimController : MonoBehaviour
     public Vector3 CalculateArrowStartPos(Transform firePoint, Vector3 shootDirection, float arrowLength)
     {
         Vector3 startPos = firePoint.position;
-        float backOffset = 2.0f;
+        float backOffset = 0.5f;
         Vector3 rayOrigin = firePoint.position - shootDirection * backOffset;
         float rayDistance = backOffset + arrowLength;
 
@@ -220,6 +220,8 @@ public class PlayerAimController : MonoBehaviour
         for (int i = 0; i < hitCount; i++)
         {
             if (aimHits[i].collider.CompareTag("Player")) continue;
+            
+            if (aimHits[i].distance < backOffset - 0.1f) continue;
             
             if (aimHits[i].distance < closestValidDist)
             {

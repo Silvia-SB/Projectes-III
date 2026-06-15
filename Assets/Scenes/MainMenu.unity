@@ -4776,7 +4776,7 @@ MonoBehaviour:
   optionsImage: {fileID: 637070767}
   mainMenuImage: {fileID: 135014030}
   loadingSceneName: Loading
-  controlsImage: {fileID: 3754201787270195106}
+  controlsImage: {fileID: 0}
   pcRendererData: {fileID: 11400000, guid: f288ae1f4751b564a96ac7587541f7a2, type: 2}
   fullScreenFeatureName: FullScreenPassRendererFeature
 --- !u!114 &1907954313
@@ -6056,6 +6056,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5803258962764600275, guid: db22c1f311ec8ef4b91840f56507221a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5803258962764600275, guid: db22c1f311ec8ef4b91840f56507221a, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5803258962764600275, guid: db22c1f311ec8ef4b91840f56507221a, type: 3}
       propertyPath: m_Color.b
       value: 0.02641511
       objectReference: {fileID: 0}
@@ -6197,6 +6205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3340943425841906793, guid: db22c1f311ec8ef4b91840f56507221a, type: 3}
+    - {fileID: 5803258962764600275, guid: db22c1f311ec8ef4b91840f56507221a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4287856669760367428, guid: db22c1f311ec8ef4b91840f56507221a, type: 3}
@@ -6213,17 +6222,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1721056324}
   m_SourcePrefab: {fileID: 100100000, guid: db22c1f311ec8ef4b91840f56507221a, type: 3}
---- !u!114 &3754201787270195106 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5803258962764600275, guid: db22c1f311ec8ef4b91840f56507221a, type: 3}
-  m_PrefabInstance: {fileID: 3754201787270195105}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!224 &3754201787270195107 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3169406095129893308, guid: db22c1f311ec8ef4b91840f56507221a, type: 3}

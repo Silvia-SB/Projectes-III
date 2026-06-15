@@ -5,6 +5,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(DissolvingController))]
 public class EnemyController : MonoBehaviour, ISlowable
 {
+    private const float SlopeHeightTolerancePerMeter = 0.75f;
+
     [Header("References")]
     [SerializeField] private EnemyConfig config;
     [SerializeField] private Transform target;
@@ -164,14 +166,18 @@ public class EnemyController : MonoBehaviour, ISlowable
     
     public bool IsInAttackRange()
     {
+        if (target == null || config == null) return false;
+
         Vector3 enemyPosition = transform.position;
         Vector3 targetPosition = target.position;
-        float heightDifference = Mathf.Abs(enemyPosition.y - targetPosition.y);
-        if (heightDifference > config.attackHeightTolerance) return false;
 
         enemyPosition.y = 0f;
         targetPosition.y = 0f;
         float distanceToTarget = Vector3.Distance(enemyPosition, targetPosition);
+        float heightDifference = Mathf.Abs(transform.position.y - target.position.y);
+        float allowedHeightDifference = config.attackHeightTolerance + distanceToTarget * SlopeHeightTolerancePerMeter;
+
+        if (heightDifference > allowedHeightDifference) return false;
 
         if (distanceToTarget > config.attackRange) return false;
         if (config.isRanged) return HasCompletePathToTarget();

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[DefaultExecutionOrder(-100)]
 public class ArrowHitElevator : MonoBehaviour, IArrowInteractable, IResettable
 {
     [SerializeField] private float distanceToMove = 5f; 

@@ -8,7 +8,7 @@ public class RendererFeatureTrigger : MonoBehaviour
     [Header("Trigger Settings")]
     [SerializeField] private string targetTag = "Player";
     
-    [SerializeField, InspectorName("Deactivate Feature")] private bool activateFeature = false;
+    [SerializeField] private bool activateFeature = false;
 
     [Header("URP Full Screen Pass")]
     [SerializeField] private ScriptableRendererData pcRendererData;
@@ -21,7 +21,6 @@ public class RendererFeatureTrigger : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float inactiveStrength = 0f;
     [SerializeField, Range(0f, 1f)] private float activeStrength = 1f;
 
-    private bool hasTriggered = false;
     private int fogStrengthID;
     private bool isFading;
     private bool deactivateFeatureAfterFade;
@@ -53,7 +52,7 @@ public class RendererFeatureTrigger : MonoBehaviour
 
         if (normalizedTime < 1f) return;
 
-        isFading = !isFading;
+        isFading = false;
 
         if (deactivateFeatureAfterFade)
         {
@@ -63,21 +62,19 @@ public class RendererFeatureTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (hasTriggered) return;
-
         if (string.IsNullOrEmpty(targetTag) || other.CompareTag(targetTag))
         {
             if (activateFeature)
             {
+                activateFeature = false;
                 StartFogFade(inactiveStrength, true);
             }
             else
             {
+                activateFeature = true;
                 URPUtility.SetRendererFeatureActive(pcRendererData, fullScreenFeatureName, true);
                 StartFogFade(activeStrength, false);
             }
-
-            hasTriggered = true;
         }
     }
 
@@ -87,7 +84,7 @@ public class RendererFeatureTrigger : MonoBehaviour
 
         if (!HasFogStrengthProperty())
         {
-            URPUtility.SetRendererFeatureActive(pcRendererData, fullScreenFeatureName, !activateFeature);
+            URPUtility.SetRendererFeatureActive(pcRendererData, fullScreenFeatureName, !turnFeatureOffWhenDone);
             return;
         }
 

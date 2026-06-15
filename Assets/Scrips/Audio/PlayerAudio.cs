@@ -10,6 +10,7 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField] private AudioSource movementSource;
     [SerializeField] private AudioSource bowStringSource;
     [SerializeField] private AudioSource oneShotSource;
+    
 
     [Header("Movement Clips")]
     [SerializeField] private AudioClip walkClip;
@@ -139,14 +140,30 @@ public class PlayerAudio : MonoBehaviour
 
     private AudioSource GetOrCreateAudioSource(AudioSource source)
     {
-        if (source != null) return source;
-
-        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+        AudioSource audioSource = source != null ? source : gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake = false;
 
-        if (AudioSFXManager.Instance != null)
-            audioSource.outputAudioMixerGroup = AudioSFXManager.Instance.OutputMixerGroup;
+        AssignSfxOutputMixerGroup(audioSource);
 
         return audioSource;
+    }
+
+    private void AssignSfxOutputMixerGroup(AudioSource audioSource)
+    {
+        if (audioSource == null) return;
+
+        AudioSFXManager sfxManager = AudioSFXManager.EnsureInstance();
+        if (sfxManager == null)
+        {
+            Debug.LogError("AudioSFXManager is missing in the scene. PlayerAudio cannot assign the SFX mixer group.", this);
+            return;
+        }
+
+        audioSource.outputAudioMixerGroup = AudioSFXManager.Instance.OutputMixerGroup;
+
+        if (audioSource.outputAudioMixerGroup == null)
+        {
+            Debug.LogError("AudioSFXManager Output Mixer Group is not assigned in the inspector.", sfxManager);
+        }
     }
 }

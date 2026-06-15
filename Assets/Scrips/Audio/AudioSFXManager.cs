@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using static AudioProfile;
 
+[DefaultExecutionOrder(-100)]
 public class AudioSFXManager : MonoBehaviour
 {
     public static AudioSFXManager Instance { get; private set; }
@@ -20,6 +21,14 @@ public class AudioSFXManager : MonoBehaviour
     private int index;
 
     public AudioMixerGroup OutputMixerGroup => outputMixerGroup;
+
+    public static AudioSFXManager EnsureInstance()
+    {
+        if (Instance != null) return Instance;
+
+        Instance = FindFirstObjectByType<AudioSFXManager>();
+        return Instance;
+    }
 
     private void Awake()
     {

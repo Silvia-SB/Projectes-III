@@ -29,6 +29,7 @@ public class PlayerHUD : MonoBehaviour
 
     [Header("Status Visuals")]
     [SerializeField] private Image fireOverlayImage;
+    [SerializeField] private Image fireOverlayImage2;
     [SerializeField] private Image electricOverlayImage;
     [SerializeField] private float electricFlashSpeed = 15f;
     [SerializeField] private float fireFlashFadeSpeed = 5f;
@@ -86,14 +87,18 @@ public class PlayerHUD : MonoBehaviour
             Color c = fireOverlayImage.color;
             c.a = 0f;
             fireOverlayImage.color = c;
-            fireOverlayImage.gameObject.SetActive(false);
+        }
+        if (fireOverlayImage2 != null)
+        {
+            Color c = fireOverlayImage2.color;
+            c.a = 0f;
+            fireOverlayImage2.color = c;
         }
         if (electricOverlayImage != null)
         {
             Color c = electricOverlayImage.color;
             c.a = 0f;
             electricOverlayImage.color = c;
-            electricOverlayImage.gameObject.SetActive(false);
         }
     }
 
@@ -131,6 +136,9 @@ public class PlayerHUD : MonoBehaviour
         {
             SoulManager.Instance.OnSoulsChanged -= UpdateSoulsUI;
         }
+
+        isBurning = false;
+        isElectrocuted = false;
     }
 
     private void OnHealthChanged(float currentHealth, float maxHealth)
@@ -223,20 +231,47 @@ public class PlayerHUD : MonoBehaviour
 
     private void UpdateStatusOverlays()
     {
-        if (isBurning && fireOverlayImage != null)
+        if (fireOverlayImage != null || fireOverlayImage2 != null)
         {
-            fireCurrentAlpha = Mathf.MoveTowards(fireCurrentAlpha, fireBaseAlpha, Time.deltaTime * fireFlashFadeSpeed);
-            Color c = fireOverlayImage.color;
-            c.a = fireCurrentAlpha;
-            fireOverlayImage.color = c;
+            if (isBurning)
+            {
+                fireCurrentAlpha = Mathf.MoveTowards(fireCurrentAlpha, fireBaseAlpha, Time.deltaTime * fireFlashFadeSpeed);
+            }
+            else if (fireCurrentAlpha > 0f)
+            {
+                fireCurrentAlpha = Mathf.MoveTowards(fireCurrentAlpha, 0f, Time.deltaTime * fireFlashFadeSpeed);
+            }
+            
+            if (fireOverlayImage != null)
+            {
+                Color c = fireOverlayImage.color;
+                c.a = fireCurrentAlpha;
+                fireOverlayImage.color = c;
+            }
+            
+            if (fireOverlayImage2 != null)
+            {
+                Color c = fireOverlayImage2.color;
+                c.a = fireCurrentAlpha;
+                fireOverlayImage2.color = c;
+            }
         }
 
-        if (isElectrocuted && electricOverlayImage != null)
+        if (electricOverlayImage != null)
         {
-            float targetAlpha = electricBaseAlpha + (Mathf.Abs(Mathf.Sin(Time.time * electricFlashSpeed)) * (1f - electricBaseAlpha));
-            Color c = electricOverlayImage.color;
-            c.a = targetAlpha;
-            electricOverlayImage.color = c;
+            if (isElectrocuted)
+            {
+                float targetAlpha = electricBaseAlpha + (Mathf.Abs(Mathf.Sin(Time.time * electricFlashSpeed)) * (1f - electricBaseAlpha));
+                Color c = electricOverlayImage.color;
+                c.a = targetAlpha;
+                electricOverlayImage.color = c;
+            }
+            else if (electricOverlayImage.color.a > 0f)
+            {
+                Color c = electricOverlayImage.color;
+                c.a = Mathf.MoveTowards(c.a, 0f, Time.deltaTime * fireFlashFadeSpeed);
+                electricOverlayImage.color = c;
+            }
         }
     }
 
@@ -272,12 +307,10 @@ public class PlayerHUD : MonoBehaviour
         {
             isBurning = true;
             fireCurrentAlpha = fireFlashMaxAlpha; 
-            if (fireOverlayImage != null) fireOverlayImage.gameObject.SetActive(true);
         }
         else if (type == DamageType.Electric)
         {
             isElectrocuted = true;
-            if (electricOverlayImage != null) electricOverlayImage.gameObject.SetActive(true);
         }
     }
 
@@ -286,24 +319,10 @@ public class PlayerHUD : MonoBehaviour
         if (type == DamageType.Blood)
         {
             isBurning = false;
-            if (fireOverlayImage != null)
-            {
-                Color c = fireOverlayImage.color;
-                c.a = 0f;
-                fireOverlayImage.color = c;
-                fireOverlayImage.gameObject.SetActive(false);
-            }
         }
         else if (type == DamageType.Electric)
         {
             isElectrocuted = false;
-            if (electricOverlayImage != null)
-            {
-                Color c = electricOverlayImage.color;
-                c.a = 0f;
-                electricOverlayImage.color = c;
-                electricOverlayImage.gameObject.SetActive(false);
-            }
         }
     }
 

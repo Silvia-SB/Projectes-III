@@ -7,6 +7,7 @@ Shader "Custom/MasterShader"
         _DistanceFogStart("Distance fog start", float) = 15
         _DistanceFogEnd("Distance fog end", float) = 40
         _DistanceFogIntensity("Distance fog intensity", Range(0, 50)) = 45
+        _FogStrength("Fog strength", Range(0, 1)) = 1
         _StepSize("Step size", Range(0.1, 20)) = 1.3
         _DensityMultiplier("Density multiplier", Range(0, 10)) = 0.3
         _NoiseOffset("Noise offset", float) = 1
@@ -40,6 +41,7 @@ Shader "Custom/MasterShader"
             float _DistanceFogStart;
             float _DistanceFogEnd;
             float _DistanceFogIntensity;
+            float _FogStrength;
             float _DensityMultiplier;
             float _StepSize;
             float _NoiseOffset;
@@ -97,9 +99,11 @@ Shader "Custom/MasterShader"
                     distTravelled += _StepSize;
                 }
                 
-                return lerp(col, fogCol, 1.0 - saturate(transmittance));
+                float fogAmount = (1.0 - saturate(transmittance)) * saturate(_FogStrength);
+                return lerp(col, fogCol, fogAmount);
             }
             ENDHLSL
         }
     }
 }
+

@@ -35,7 +35,6 @@ public class PlayerMovement : MonoBehaviour, ISlowable, IResettable
     private Vector3 initialPosition;
     private Quaternion initialRotation;
 
-
     public CharacterController Controller => controller;
     public bool IsGrounded { get; private set; }
     public bool IsSprinting => isSprinting;
@@ -45,6 +44,10 @@ public class PlayerMovement : MonoBehaviour, ISlowable, IResettable
     private void Awake()
     {
         if (playerShooter == null) playerShooter = GetComponent<PlayerShooter>();
+        if (controller == null) controller = GetComponent<CharacterController>();
+        initialPosition = transform.position;
+        initialRotation = transform.rotation;
+
     }
 
     private void OnEnable()
@@ -65,10 +68,7 @@ public class PlayerMovement : MonoBehaviour, ISlowable, IResettable
         }
     }
 
-    void Start()
-    {
-        controller = GetComponent<CharacterController>();
-    }
+
 
     private void OnChargeStart() => isChargingArrow = true;
     private void OnChargeEnd() => isChargingArrow = false;
@@ -135,9 +135,6 @@ public class PlayerMovement : MonoBehaviour, ISlowable, IResettable
 
     public void CaptureInitialState()
     {
-        initialPosition = transform.position;
-        initialRotation = transform.rotation;
-
         mDirection = Vector2.zero;
         currentDirection = Vector2.zero;
         currentDirectionVelocity = Vector2.zero;

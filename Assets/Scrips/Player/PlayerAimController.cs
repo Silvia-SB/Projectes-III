@@ -211,6 +211,7 @@ public class PlayerAimController : MonoBehaviour
     {
         Vector3 startPos = firePoint.position;
         float backOffset = 2.0f;
+        float backOffset = 0.5f; 
         Vector3 rayOrigin = firePoint.position - shootDirection * backOffset;
         float rayDistance = backOffset + arrowLength;
 
@@ -221,9 +222,19 @@ public class PlayerAimController : MonoBehaviour
         {
             if (aimHits[i].collider.CompareTag("Player")) continue;
             
+            if (aimHits[i].distance < backOffset - 0.1f) continue;
+            
             if (aimHits[i].distance < closestValidDist)
             {
                 closestValidDist = aimHits[i].distance;
+                if (aimHits[i].distance <= backOffset)
+                {
+                    startPos = aimHits[i].point + shootDirection * 0.15f;
+                }
+                else
+                {
+                    startPos = aimHits[i].point - shootDirection * arrowLength;
+                }
                 startPos = aimHits[i].point - shootDirection * arrowLength;
             }
         }

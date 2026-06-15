@@ -376,6 +376,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5697290507168286609}
+  - component: {fileID: 5665571932757240443}
   m_Layer: 9
   m_Name: Casa_v8 1
   m_TagString: Wall
@@ -429,6 +430,19 @@ Transform:
   - {fileID: 1950105814947932261}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5665571932757240443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382646736399678332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f48893fb2ab3b45a861f4c0ac5d07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
+  profile: {fileID: 11400000, guid: de21874cf282ece498c220b43e12f7ee, type: 2}
 --- !u!1 &1719353121541793907
 GameObject:
   m_ObjectHideFlags: 0

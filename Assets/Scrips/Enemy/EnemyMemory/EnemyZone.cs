@@ -41,6 +41,9 @@ public class EnemyZone : MonoBehaviour, IResettable
     private float initialSpawnInterval;
     private int initialSpawnCount;
     private AudioManagerEnemyZone audioManager;
+    
+    private static List<EnemyZone> triggeredZones = new List<EnemyZone>();
+    [HideInInspector] public List<GameObject> spawnedEnemies = new List<GameObject>();
 
     private void Awake()
     {
@@ -58,6 +61,20 @@ public class EnemyZone : MonoBehaviour, IResettable
             playerTransform = other.transform;
             hasSpawned = true;
             if(spawnSound != null && audioManager != null) audioManager.PlayClip(spawnSound, volume, pitch);
+            
+            if (!triggeredZones.Contains(this))
+            {
+                triggeredZones.RemoveAll(z => z == null); 
+                triggeredZones.Add(this);
+                
+                if (triggeredZones.Count > 3)
+                {
+                    for (int i = 0; i < triggeredZones.Count - 3; i++)
+                    {
+                        triggeredZones[i].DeactivateDistantEnemies(40f, playerTransform.position);
+                    }
+                }
+            }
         }
     }
 
@@ -129,6 +146,8 @@ public class EnemyZone : MonoBehaviour, IResettable
                 enemy.transform.position = data.spawnPoint.position + randomOffset;
                 enemy.SetActive(true);
 
+                spawnedEnemies.Add(enemy);
+
                 data.totalSpawnedEnemies++;
                 spawnedAny = true;
             }
@@ -168,6 +187,32 @@ public class EnemyZone : MonoBehaviour, IResettable
         return true;
     }
 
+    public void DeactivateDistantEnemies(float distance, Vector3 playerPos)
+    {
+        for (int i = spawnedEnemies.Count - 1; i >= 0; i--)
+        {
+            GameObject enemyObj = spawnedEnemies[i];
+            if (enemyObj == null || !enemyObj.activeInHierarchy)
+            {
+                spawnedEnemies.RemoveAt(i);
+                continue;
+            }
+
+            if (Vector3.Distance(playerPos, enemyObj.transform.position) > distance)
+            {
+                if (enemyObj.TryGetComponent<EnemyController>(out var controller))
+                {
+                    controller.Despawn();
+                }
+                else
+                {
+                    enemyObj.SetActive(false);
+                }
+                spawnedEnemies.RemoveAt(i);
+            }
+        }
+    }
+
     public void CaptureInitialState()
     {
         //Dont need to capture initial state
@@ -182,6 +227,12 @@ public class EnemyZone : MonoBehaviour, IResettable
         {
             data.currentTimer = 0f;
             data.totalSpawnedEnemies = 0;
+        }
+        
+        spawnedEnemies.Clear();
+        if (triggeredZones.Contains(this))
+        {
+            triggeredZones.Remove(this);
         }
     }
 }

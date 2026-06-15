@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour, ISlowable, IResettable
@@ -12,6 +13,10 @@ public class PlayerMovement : MonoBehaviour, ISlowable, IResettable
     
     [Header("Jump Feel")]
     [SerializeField] private float fallMultiplier = 1.5f;
+
+    [Header("Stamina System")]
+    [SerializeField] private float maxStamina = 5f;
+    [SerializeField] private float staminaRecoveryRate = 1f;
 
     [Header("Slow Effect")]
     [SerializeField] private float stunnedSpeed = 2.0f;
@@ -34,10 +39,12 @@ public class PlayerMovement : MonoBehaviour, ISlowable, IResettable
     private bool isChargingArrow;
     private Vector3 initialPosition;
     private Quaternion initialRotation;
+    private float currentStamina;
+    private bool isExhausted;
 
     public CharacterController Controller => controller;
     public bool IsGrounded { get; private set; }
-    public bool IsSprinting => isSprinting;
+    public bool IsSprinting => isSprinting && !isExhausted;
     public bool IsSlowed => isSlowed;
     public bool IsChargingArrow => isChargingArrow;
 
@@ -47,6 +54,7 @@ public class PlayerMovement : MonoBehaviour, ISlowable, IResettable
         if (controller == null) controller = GetComponent<CharacterController>();
         initialPosition = transform.position;
         initialRotation = transform.rotation;
+        currentStamina = maxStamina;
 
     }
 
@@ -89,9 +97,29 @@ public class PlayerMovement : MonoBehaviour, ISlowable, IResettable
         
         currentDirection = Vector2.SmoothDamp(currentDirection, mDirection, ref currentDirectionVelocity, movementSmoothTime);
 
+        bool isMoving = currentDirection.magnitude > 0.05f;
+        bool actuallySprinting = IsSprinting && isMoving && !isSlowed && !isChargingArrow;
+
+        if (actuallySprinting)
+        {
+            currentStamina -= Time.deltaTime;
+            if (currentStamina <= 0f) 
+            {
+                currentStamina = 0f;
+                isExhausted = true;
+                isSprinting = false; 
+            }
+        }
+        else
+        {
+            currentStamina += Time.deltaTime * staminaRecoveryRate;
+            if (currentStamina >= maxStamina * 0.25f) isExhausted = false;
+            if (currentStamina > maxStamina) currentStamina = maxStamina;
+        }
+
         Vector3 finalDirection = (transform.forward * currentDirection.y + transform.right * currentDirection.x) * (currentSpeed * Time.deltaTime);
 
-        if (isSprinting && !isSlowed && !isChargingArrow) finalDirection *= sprintMultiplier; 
+        if (actuallySprinting) finalDirection *= sprintMultiplier; 
 
         if (!IsGrounded) 
         {
@@ -143,6 +171,8 @@ public class PlayerMovement : MonoBehaviour, ISlowable, IResettable
         isSlowed = false;
         slowTimer = 0f;
         isChargingArrow = false;
+        currentStamina = maxStamina;
+        isExhausted = false;
     }
 
     public void ResetState()
@@ -165,5 +195,7 @@ public class PlayerMovement : MonoBehaviour, ISlowable, IResettable
         slowTimer = 0f;
         isChargingArrow = false;
         IsGrounded = false;
+        currentStamina = maxStamina;
+        isExhausted = false;
     }
 }

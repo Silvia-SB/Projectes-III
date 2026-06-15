@@ -12,7 +12,6 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Image mainMenuImage;
     [SerializeField] private string loadingSceneName;
 
-    [SerializeField] private GameObject titleLogo;
     [SerializeField] private Image controlsImage;
     
     [Header("URP Full Screen Pass")]
@@ -50,8 +49,6 @@ public class MainMenu : MonoBehaviour
 
     public void Options()
     {
-        titleLogo.SetActive(false);
-
         mainMenuImage.gameObject.SetActive(false);
         optionsImage.gameObject.SetActive(true);
         FocusSettings(optionsImage.gameObject);
@@ -59,7 +56,6 @@ public class MainMenu : MonoBehaviour
 
     public void Controls()
     {
-        titleLogo.SetActive(false);
         mainMenuImage.gameObject.SetActive(false);
         controlsImage.gameObject.SetActive(true);
         SelectFirst(controlsImage.gameObject);
@@ -68,7 +64,6 @@ public class MainMenu : MonoBehaviour
     public void BackFromControls()
     {
         controlsImage.gameObject.SetActive(false);
-        titleLogo.SetActive(true);
         mainMenuImage.gameObject.SetActive(true);
         SelectFirst(mainMenuImage.gameObject);
     }

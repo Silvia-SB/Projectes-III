@@ -91,6 +91,7 @@ public class PauseMenu : MonoBehaviour
         {
             if (!selectable.gameObject.activeInHierarchy || !selectable.IsInteractable()) continue;
 
+            EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(selectable.gameObject);
             selectable.Select();
             return;

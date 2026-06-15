@@ -67,7 +67,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.gameObject.SetActive(false);
         if (achievementsMenu != null) achievementsMenu.SetActive(true);
-        SelectFirst(achievementsMenu);
+        FocusAchievements();
     }
 
     public void CloseAchievements()
@@ -108,6 +108,20 @@ public class PauseMenu : MonoBehaviour
         }
 
         SelectFirst(root);
+    }
+
+    private void FocusAchievements()
+    {
+        if (achievementsMenu == null) return;
+
+        AchievementMenu achievementMenu = achievementsMenu.GetComponentInChildren<AchievementMenu>(true);
+        if (achievementMenu != null)
+        {
+            achievementMenu.FocusAchievements();
+            return;
+        }
+
+        SelectFirst(achievementsMenu);
     }
     
     private void SetMusicMenuUnpaused()

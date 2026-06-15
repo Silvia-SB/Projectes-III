@@ -3,7 +3,10 @@ using UnityEngine;
 public class LevelIntroManager : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private float displayDuration = 6f; 
+    [SerializeField] private float displayDuration = 6f;
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private PlayerLook playerLook;
+    [SerializeField] private PlayerAudio playerAudio;
 
     [Header("Text Content")]
     [SerializeField] private string titleString = "Echoes of the Accursed";
@@ -18,14 +21,21 @@ public class LevelIntroManager : MonoBehaviour
     {
         if (TransitionManager.Instance != null)
         {
-            Time.timeScale = 0f;
+            SetActivePlayer(false);
             
             TransitionManager.Instance.PlayTransition(titleString, descriptionString, displayDuration, true, 
                 onComplete: () => {
-                    Time.timeScale = 1f;
+                    SetActivePlayer(true);
                     AchievementManager.UnlockAchievement("level_start");
                 },
                 startFullyVisible: true);
         }
+    }
+
+    private void SetActivePlayer(bool isActive)
+    {
+        playerMovement.enabled = isActive;
+        playerLook.enabled = isActive;
+        playerAudio.enabled = isActive;
     }
 }

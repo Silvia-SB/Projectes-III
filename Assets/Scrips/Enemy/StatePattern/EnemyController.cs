@@ -23,6 +23,7 @@ public class EnemyController : MonoBehaviour, ISlowable
     private Collider mainCollider;
     private DissolvingController dissolvingController;
     private EnemyStateMachine stateMachine;
+    private NavMeshPath navMeshPath;
     private float slowTimer;
     private bool isSlowed;
     private BodyPart currentHitBodyPart;
@@ -30,6 +31,7 @@ public class EnemyController : MonoBehaviour, ISlowable
     public EnemyConfig Config => config;
     public void Awake()
     {
+        navMeshPath = new NavMeshPath();
         ResolveTarget();
         
         statusContagion = GetComponent<StatusContagion>();
@@ -172,7 +174,11 @@ public class EnemyController : MonoBehaviour, ISlowable
         enemyPosition.y = 0f;
         targetPosition.y = 0f;
         float distanceToTarget = Vector3.Distance(enemyPosition, targetPosition);
-        return distanceToTarget <= config.attackRange;
+
+        if (distanceToTarget > config.attackRange) return false;
+        if (config.isRanged) return HasCompletePathToTarget();
+
+        return true;
     }
 
     public bool IsFacingTarget()
@@ -193,11 +199,11 @@ public class EnemyController : MonoBehaviour, ISlowable
         {
             stateMachine.TransitionTo(stateMachine.DeathState);
             enemyAttack.MeleeAttack(target, attackDamageType, config.damage);
-            
+            return;
         }
         if(config.isRanged)
         {
-            enemyAttack.PlagueDoctorAttack();
+            enemyAttack.PlagueDoctorAttack(target);
         }
         else
         {
@@ -287,6 +293,7 @@ public class EnemyController : MonoBehaviour, ISlowable
     
     public void HitPlayer()
     {
+        if (stateMachine == null || stateMachine.CurrentState != stateMachine.AttackState) return;
         if (!IsInAttackRange() || !IsFacingTarget()) return;
 
         PerformAttack(); 
@@ -297,6 +304,29 @@ public class EnemyController : MonoBehaviour, ISlowable
     public bool IsDead()
     {
         return stateMachine != null && stateMachine.CurrentState == stateMachine.DeathState;
+    }
+
+    public bool HasCompletePathToTarget()
+    {
+        if (navMeshAgent == null || target == null) return false;
+        if (!navMeshAgent.isActiveAndEnabled || !navMeshAgent.isOnNavMesh) return false;
+
+        float sampleRadius = config != null ? Mathf.Max(1f, config.rangedTeleportNavMesh) : 3f;
+
+        if (!EnemyNavMeshUtility.TrySamplePosition(
+                target.position,
+                sampleRadius,
+                navMeshAgent.areaMask,
+                out Vector3 targetNavMeshPosition))
+        {
+            return false;
+        }
+
+        return EnemyNavMeshUtility.HasCompletePath(
+            navMeshAgent.nextPosition,
+            targetNavMeshPosition,
+            navMeshAgent.areaMask,
+            navMeshPath);
     }
 
     public void Despawn()

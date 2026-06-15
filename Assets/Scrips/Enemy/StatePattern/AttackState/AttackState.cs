@@ -20,11 +20,13 @@ public class AttackState : IEnemyState
     {
         var agent = enemyController.GetNavMeshAgent();
 
-        
-        agent.isStopped = true;
-        agent.velocity = Vector3.zero;
-        agent.ResetPath();
-        agent.updateRotation = false;
+        if (agent != null && agent.isActiveAndEnabled && agent.isOnNavMesh)
+        {
+            agent.isStopped = true;
+            agent.velocity = Vector3.zero;
+            agent.ResetPath();
+            agent.updateRotation = false;
+        }
     
 
         recurrentTimer = enemyController.GetDamageInterval();
@@ -32,6 +34,8 @@ public class AttackState : IEnemyState
 
     public void Update()
     {
+        if (enemyController.GetTarget() == null) return;
+
         Vector3 lookDirection = enemyController.GetTarget().position - enemyController.transform.position;
         lookDirection.y = 0f; 
 
@@ -47,6 +51,7 @@ public class AttackState : IEnemyState
         if (EnemyType.Cuervo.Equals(enemyController.Config.type))
         {
             enemyController.PerformAttack();
+            return;
         }
         if(!enemyController.IsInAttackRange())
         {
@@ -90,7 +95,7 @@ public class AttackState : IEnemyState
         {
             if (!EnemyType.Medico.Equals(enemyController.Config.type)) agent.isStopped = false;
 
-            agent.updateRotation = true;
+            agent.updateRotation = !enemyController.Config.isRanged;
             agent.velocity = Vector3.zero;
         }
     }

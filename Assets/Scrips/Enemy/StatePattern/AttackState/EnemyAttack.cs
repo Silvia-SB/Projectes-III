@@ -4,9 +4,10 @@ public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private ShootCrow shootCrow;
     
-    public void PlagueDoctorAttack()
+    public void PlagueDoctorAttack(Transform target)
     {
-        shootCrow.ShootingCrow();
+        if (shootCrow == null) return;
+        shootCrow.ShootingCrow(target);
     }
     
     public void MeleeAttack(Transform target, DamageType damageType, float damage)

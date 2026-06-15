@@ -7,7 +7,12 @@ public class EnemyMovement : MonoBehaviour
     private float nextRefreshTime;
     private float nextTeleportTime;
     private Transform debugTarget;
+    private NavMeshPath navMeshPath;
 
+    private void Awake()
+    {
+        navMeshPath = new NavMeshPath();
+    }
 
     public void Configure(EnemyConfig config)
     {
@@ -31,7 +36,12 @@ public class EnemyMovement : MonoBehaviour
 
         if (EnemyType.Cuervo.Equals(enemyController.Config.type))
         {
-            enemyController.GetNavMeshAgent().SetDestination(enemyController.GetTarget().position);
+            if (TryGetReachableTargetPosition(agent, target, out Vector3 destination))
+            {
+                agent.isStopped = false;
+                agent.SetDestination(destination);
+            }
+
             return;
         }
         if (config.isRanged)
@@ -94,8 +104,9 @@ public class EnemyMovement : MonoBehaviour
 
         bool tooClose = distanceToTarget < config.rangedMinDistance;
         bool tooFar = distanceToTarget > config.rangedMaxDistance;
+        bool hasPathToTarget = agent.isOnNavMesh && HasCompletePathToTarget(agent, enemyTransform.position, target);
 
-        if (!tooClose && !tooFar) return;
+        if (!tooClose && !tooFar && hasPathToTarget) return;
 
         TryTeleportInsidePlayerSphere(enemyTransform, agent, target);
     }
@@ -118,7 +129,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (Time.time < nextTeleportTime) return false;
 
-        if (!TryFindPointInsidePlayerSphere(target, out Vector3 teleportPoint))
+        if (!TryFindPointInsidePlayerSphere(agent, target, out Vector3 teleportPoint))
         {
             return false;
         }
@@ -129,7 +140,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (!warped)
         {
-            enemyTransform.position = teleportPoint;
+            return false;
         }
 
         LookAtTarget(enemyTransform, target.position);
@@ -140,13 +151,24 @@ public class EnemyMovement : MonoBehaviour
         return true;
     }
 
-    private bool TryFindPointInsidePlayerSphere(Transform target, out Vector3 result)
+    private bool TryFindPointInsidePlayerSphere(NavMeshAgent agent, Transform target, out Vector3 result)
     {
         Vector3 targetPosition = target.position;
         float minDistance = Mathf.Max(0.1f, config.rangedTeleportMinDistance);
         float maxDistance = Mathf.Max(minDistance, config.rangedTeleportMaxDistance);
         float navMeshSampleRadius = Mathf.Max(1f, config.rangedTeleportNavMesh);
         int attempts = Mathf.Max(config.rangedTeleportAttempts, 64);
+        int areaMask = agent.areaMask;
+
+        if (!EnemyNavMeshUtility.TrySamplePosition(
+                targetPosition,
+                navMeshSampleRadius,
+                areaMask,
+                out Vector3 targetNavMeshPosition))
+        {
+            result = Vector3.zero;
+            return false;
+        }
 
         for (int i = 0; i < attempts; i++)
         {
@@ -166,7 +188,7 @@ public class EnemyMovement : MonoBehaviour
                     candidate,
                     out NavMeshHit hit,
                     navMeshSampleRadius,
-                    NavMesh.AllAreas))
+                    areaMask))
             {
                 continue;
             }
@@ -183,6 +205,9 @@ public class EnemyMovement : MonoBehaviour
                 continue;
 
             if (!HasPlayerLineOfSight(target, hit.position))
+                continue;
+
+            if (!EnemyNavMeshUtility.HasCompletePath(hit.position, targetNavMeshPosition, areaMask, navMeshPath))
                 continue;
 
             result = hit.position;
@@ -220,6 +245,50 @@ public class EnemyMovement : MonoBehaviour
         Vector3 destination = candidate + Vector3.up;
 
         return !Physics.Linecast(origin, destination, config.obstacleMask);
+    }
+
+    private bool TryGetReachableTargetPosition(NavMeshAgent agent, Transform target, out Vector3 destination)
+    {
+        destination = Vector3.zero;
+
+        if (agent == null || target == null) return false;
+        if (!agent.isActiveAndEnabled || !agent.isOnNavMesh) return false;
+
+        float sampleRadius = Mathf.Max(1f, config.rangedTeleportNavMesh);
+
+        if (!EnemyNavMeshUtility.TrySamplePosition(target.position, sampleRadius, agent.areaMask, out Vector3 targetNavMeshPosition))
+        {
+            return false;
+        }
+
+        if (!EnemyNavMeshUtility.HasCompletePath(agent.nextPosition, targetNavMeshPosition, agent.areaMask, navMeshPath))
+        {
+            return false;
+        }
+
+        destination = targetNavMeshPosition;
+        return true;
+    }
+
+    private bool HasCompletePathToTarget(NavMeshAgent agent, Vector3 sourcePosition, Transform target)
+    {
+        if (agent == null || target == null) return false;
+
+        float sampleRadius = Mathf.Max(1f, config.rangedTeleportNavMesh);
+
+        if (!EnemyNavMeshUtility.TrySampleReachablePosition(
+                sourcePosition,
+                target.position,
+                sampleRadius,
+                sampleRadius,
+                agent.areaMask,
+                navMeshPath,
+                out _))
+        {
+            return false;
+        }
+
+        return true;
     }
 
     private void LookAtTarget(Transform enemyTransform, Vector3 targetPosition)

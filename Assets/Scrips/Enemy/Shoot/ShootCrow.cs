@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ShootCrow : MonoBehaviour
 {
@@ -6,25 +7,54 @@ public class ShootCrow : MonoBehaviour
     [SerializeField] private Transform spawnPoint; 
     [SerializeField] private int maxActiveCrows = 5;
     [SerializeField] private float recoverTime = 3f;
+    [SerializeField] private float spawnNavMeshRadius = 3f;
+    [SerializeField] private float targetNavMeshRadius = 3f;
     
     private float timer = 0f;
     private int activeCrows = 0;
+    private NavMeshPath spawnPath;
 
-    public void ShootingCrow()
+    private void Awake()
+    {
+        spawnPath = new NavMeshPath();
+    }
+
+    public void ShootingCrow(Transform target)
     {
         if (activeCrows >= maxActiveCrows) return;
+        if (spawnPoint == null || target == null) return;
+        if (EnemyPool.Instance == null) return;
         
-        activeCrows++;
-
         GameObject cuervo = EnemyPool.Instance.GetEnemy(EnemyType.Cuervo);
         
-        if (cuervo != null)
+        if (cuervo == null) return;
+
+        cuervo.SetActive(false);
+
+        if (!TryGetValidSpawnPosition(cuervo, target, out Vector3 spawnPosition))
         {
-            cuervo.transform.position = spawnPoint.position;
-            cuervo.transform.rotation = spawnPoint.rotation;
-            
-            cuervo.SetActive(true);
+            EnemyPool.Instance.ReturnEnemyToPool(EnemyType.Cuervo, cuervo);
+            return;
         }
+
+        cuervo.transform.position = spawnPosition;
+        cuervo.transform.rotation = spawnPoint.rotation;
+        cuervo.SetActive(true);
+
+        NavMeshAgent agent = cuervo.GetComponent<NavMeshAgent>();
+
+        if (agent != null && agent.isActiveAndEnabled && !agent.Warp(spawnPosition))
+        {
+            EnemyPool.Instance.ReturnEnemyToPool(EnemyType.Cuervo, cuervo);
+            return;
+        }
+
+        if (agent != null && agent.isActiveAndEnabled && agent.isOnNavMesh)
+        {
+            agent.ResetPath();
+        }
+
+        activeCrows++;
     }
 
     private void Update()
@@ -38,5 +68,22 @@ public class ShootCrow : MonoBehaviour
             activeCrows--;
             timer = 0f;
         }
+    }
+
+    private bool TryGetValidSpawnPosition(GameObject cuervo, Transform target, out Vector3 spawnPosition)
+    {
+        spawnPosition = Vector3.zero;
+
+        NavMeshAgent agent = cuervo.GetComponent<NavMeshAgent>();
+        if (agent == null) return false;
+
+        return EnemyNavMeshUtility.TrySampleReachablePosition(
+            spawnPoint.position,
+            target.position,
+            spawnNavMeshRadius,
+            targetNavMeshRadius,
+            agent.areaMask,
+            spawnPath,
+            out spawnPosition);
     }
 }

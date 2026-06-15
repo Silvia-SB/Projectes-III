@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6389379899709500648}
   - component: {fileID: 7220832840220115403}
+  - component: {fileID: 1765148382833602336}
   m_Layer: 9
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,8 +52,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5732727, y: 0.3623147, z: 0.09158325}
-  m_Center: {x: -0.0070495605, y: 0.21392417, z: 0.02357483}
+  m_Size: {x: 0.21334839, y: 0.3623147, z: 0.09158325}
+  m_Center: {x: -0.00076293945, y: 0.21392417, z: 0.02357483}
+--- !u!65 &1765148382833602336
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628712495732524137}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5392914, y: 0.1288166, z: 0.09158325}
+  m_Center: {x: 0.0011825562, y: 0.21972895, z: 0.02357483}
 --- !u!1001 &3704649053179108744
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -106,15 +106,15 @@ public class EnemyContagion : MonoBehaviour
         {
             if (damageType == DamageType.Electric)
             {
-                EnemyController enemy = targetObj.GetComponentInParent<EnemyController>();
-                float contagionDamage = enemy != null && enemy.Config != null ? enemy.Config.electricContagionDamage : 15f;
-                float markerDuration = enemy != null && enemy.Config != null ? enemy.Config.timeStunned : 3f;
+                EnemyController infector = GetComponentInParent<EnemyController>();
+                float contagionDamage = infector != null && infector.Config != null ? infector.Config.electricContagionDamage : 15f;
+                float markerDuration = infector != null && infector.Config != null ? infector.Config.timeStunned : 3f;
 
                 float bonus = 1f;
                 bool isKnight = false;
-                if (enemy != null && enemy.Config != null)
+                if (infector != null && infector.Config != null)
                 {
-                    string typeName = enemy.Config.type.ToString().ToLower();
+                    string typeName = infector.Config.type.ToString().ToLower();
                     if (typeName.Contains("caballero") || typeName.Contains("knight"))
                     {
                         bonus = knightMultiplier;

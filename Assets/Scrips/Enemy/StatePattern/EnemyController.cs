@@ -17,7 +17,6 @@ public class EnemyController : MonoBehaviour, ISlowable
     private Health health;
     private Animator animator;
     private DamageType attackDamageType = DamageType.Base;
-    private StatusContagion statusContagion;
     private EnemyContagion enemyContagion;
     private StatusEffectManager statusEffectManager;
     private Collider mainCollider;
@@ -34,7 +33,6 @@ public class EnemyController : MonoBehaviour, ISlowable
         navMeshPath = new NavMeshPath();
         ResolveTarget();
         
-        statusContagion = GetComponent<StatusContagion>();
         enemyContagion = GetComponent<EnemyContagion>();
         statusEffectManager = GetComponent<StatusEffectManager>();
         mainCollider = GetComponent<Collider>();
@@ -237,7 +235,6 @@ public class EnemyController : MonoBehaviour, ISlowable
         if (enemyMovement != null) enemyMovement.enabled = false;
         if (enemyAttack != null) enemyAttack.enabled = false;
 
-        if (statusContagion != null) statusContagion.enabled = false;
 
         if (enemyContagion != null) enemyContagion.enabled = false;
 
@@ -267,8 +264,6 @@ public class EnemyController : MonoBehaviour, ISlowable
         if (enemyMovement != null) enemyMovement.enabled = true;
         if (enemyAttack != null) enemyAttack.enabled = true;
         
-        if (statusContagion != null) statusContagion.enabled = true;
-
         if (enemyContagion != null) enemyContagion.enabled = true;
 
         if (statusEffectManager != null)

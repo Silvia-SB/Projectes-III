@@ -350,7 +350,7 @@ public class PlayerShooter : MonoBehaviour,IResettable
             return;
         }
 
-        // Failsafe 2: Asegurar que la flecha se vuelve visible al equiparla
+        //fallback
         currentArrowInstance.gameObject.SetActive(true);
 
         if (bowAnimation != null)

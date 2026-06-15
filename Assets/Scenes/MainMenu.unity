@@ -233,7 +233,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 88
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -2397,6 +2397,30 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5391665680869395836, guid: f79350e91cb7a4d4688701a49804f519, type: 3}
   m_PrefabInstance: {fileID: 523661120216501650}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &794721126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794721125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 608783eec1345a847af6376f7c8fa896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenuLogoImageIntro
+  eternal: {fileID: 523661120216501656}
+  agony: {fileID: 523661120216501652}
+  arrow: {fileID: 523661120216501654}
+  eternalDelay: 0.15
+  agonyDelay: 0.45
+  arrowDelay: 0.75
+  duration: 0.6
+  startScale: 1.25
+  arrowIdleBounce: 1
+  bounceHeight: 3
+  bounceSpeed: 2.5
+  bounceDuration: 2.5
 --- !u!1 &920287512
 GameObject:
   m_ObjectHideFlags: 0
@@ -4998,6 +5022,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1907954310}
     m_Modifications:
+    - target: {fileID: 62664816849484091, guid: f79350e91cb7a4d4688701a49804f519, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6882805
+      objectReference: {fileID: 0}
+    - target: {fileID: 62664816849484091, guid: f79350e91cb7a4d4688701a49804f519, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6882805
+      objectReference: {fileID: 0}
+    - target: {fileID: 62664816849484091, guid: f79350e91cb7a4d4688701a49804f519, type: 3}
+      propertyPath: m_Color.r
+      value: 0.78113204
+      objectReference: {fileID: 0}
     - target: {fileID: 440156712762264885, guid: f79350e91cb7a4d4688701a49804f519, type: 3}
       propertyPath: m_Name
       value: MainMenu
@@ -5170,6 +5206,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7517544193739584689, guid: f79350e91cb7a4d4688701a49804f519, type: 3}
+      propertyPath: m_Name
+      value: Arrow
+      objectReference: {fileID: 0}
     - target: {fileID: 8126101315595052826, guid: f79350e91cb7a4d4688701a49804f519, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5190,8 +5230,44 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 4742172677379863042, guid: f79350e91cb7a4d4688701a49804f519, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5391665680869395836, guid: f79350e91cb7a4d4688701a49804f519, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 794721126}
   m_SourcePrefab: {fileID: 100100000, guid: f79350e91cb7a4d4688701a49804f519, type: 3}
+--- !u!114 &523661120216501652 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5836306319293425184, guid: f79350e91cb7a4d4688701a49804f519, type: 3}
+  m_PrefabInstance: {fileID: 523661120216501650}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &523661120216501654 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 62664816849484091, guid: f79350e91cb7a4d4688701a49804f519, type: 3}
+  m_PrefabInstance: {fileID: 523661120216501650}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &523661120216501656 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3204622413728421116, guid: f79350e91cb7a4d4688701a49804f519, type: 3}
+  m_PrefabInstance: {fileID: 523661120216501650}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &3754201787270195105
 PrefabInstance:
   m_ObjectHideFlags: 0

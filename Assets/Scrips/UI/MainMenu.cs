@@ -12,10 +12,6 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Image mainMenuImage;
     [SerializeField] private string loadingSceneName;
 
-    [Header("Title Arrow")]
-    [SerializeField] private TitleArrowShot titleArrow;
-    [SerializeField] private float delayAfterArrowExit = 0.35f;
-
     [SerializeField] private GameObject titleLogo;
     [SerializeField] private Image controlsImage;
     
@@ -38,11 +34,6 @@ public class MainMenu : MonoBehaviour
         if (loadingScene) return;
 
         loadingScene = true;
-
-        if (titleArrow != null)
-            titleArrow.SalirDisparada();
-
-        await Task.Delay(Mathf.RoundToInt(delayAfterArrowExit * 1000f));
 
         await LoadSceneAsync();
     }
@@ -77,15 +68,13 @@ public class MainMenu : MonoBehaviour
     public void BackFromControls()
     {
         controlsImage.gameObject.SetActive(false);
-        mainMenuImage.gameObject.SetActive(true);
         titleLogo.SetActive(true);
+        mainMenuImage.gameObject.SetActive(true);
         SelectFirst(mainMenuImage.gameObject);
     }
 
     public void QuitGame()
     {
-        if (titleArrow != null)
-            titleArrow.SalirDisparada();
 
         Application.Quit();
     }

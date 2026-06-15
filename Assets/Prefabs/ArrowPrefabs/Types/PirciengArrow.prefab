@@ -145,6 +145,7 @@ MonoBehaviour:
   - {fileID: 4960348319101616565}
   - {fileID: 2622838752269775135}
   chargedImpactParticles: []
+  stuckParticles: []
   damage: 70
 --- !u!65 &454863362016595772
 BoxCollider:
@@ -165,8 +166,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.03240537, y: 0.03039717, z: 0.79999995}
-  m_Center: {x: -9.313226e-10, y: 0.002629796, z: 0.39999998}
+  m_Size: {x: 0.054914676, y: 0.05745504, z: 0.79999995}
+  m_Center: {x: -0.0013625138, y: 0.0049591474, z: 0.39999998}
 --- !u!96 &4763320018006217134
 TrailRenderer:
   serializedVersion: 4

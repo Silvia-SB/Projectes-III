@@ -86,7 +86,6 @@ Shader "Custom/MasterShader"
                     float3 rayPos = entryPoint + rayDir * distTravelled;
                     float baseDensity = get_density(rayPos);
                     
-                    // Transición suave y controlada entre los dos puntos exactos
                     float smoothFactor = smoothstep(_DistanceFogStart, _DistanceFogEnd, distTravelled);
                     float absorptionDensity = baseDensity + (smoothFactor * _DistanceFogIntensity);
 

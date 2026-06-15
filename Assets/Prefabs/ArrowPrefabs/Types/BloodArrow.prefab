@@ -129,14 +129,14 @@ MonoBehaviour:
   - {fileID: 2091495067678672108}
   stuckParticles: []
   baseDamage: 40
-  recurrentDamage: 5
+  recurrentDamage: 2
   innerDamage: 50
   outerDamage: 5
   innerAoeRadius: 2
   outerAoeRadius: 4
   playerDamageMultiplier: 0.5
-  dotTicks: 4
-  dotInterval: 2
+  dotTicks: 8
+  dotInterval: 1
 --- !u!54 &7591157102281329915
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -19,8 +19,13 @@ public class PlayerLook : MonoBehaviour, IResettable
     [SerializeField] private PlayerAimController aimController;
     [SerializeField] private PlayerShooter playerShooter;
     [SerializeField] private bool useAimAssist = true;
-    [SerializeField] private float aimAssistStrength = 2f;
-    [SerializeField] private float aimAssistFriction = 0.6f;
+    [Space(10)]
+    [SerializeField] private float mouseAimAssistStrength = 2f;
+    [SerializeField] private float mouseAimAssistFriction = 0.8f;
+    [Space(5)]
+    [SerializeField] private float gamepadAimAssistStrength = 4f;
+    [SerializeField] private float gamepadAimAssistFriction = 0.5f;
+    [Space(10)]
     [SerializeField] private float slowMovementThresholdGamepad = 0.5f;
     [SerializeField] private float slowMovementThresholdMouse = 5f;
     
@@ -74,7 +79,8 @@ public class PlayerLook : MonoBehaviour, IResettable
         
         bool isAimingAtEnemy = useAimAssist && aimController != null && aimController.AimAssistTarget != null && playerShooter != null && playerShooter.IsCharging;
         
-        float targetFriction = isAimingAtEnemy ? aimAssistFriction : 1f;
+        float friction = isGamepadLook ? gamepadAimAssistFriction : mouseAimAssistFriction;
+        float targetFriction = isAimingAtEnemy ? friction : 1f;
         currentFriction = Mathf.Lerp(currentFriction, targetFriction, Time.deltaTime * 10f);
 
         float sensitivity = (isGamepadLook ? rotationSpeed * gamepadSensitivityMultiplier : rotationSpeed) * currentFriction;
@@ -100,6 +106,7 @@ public class PlayerLook : MonoBehaviour, IResettable
         if (isAimingAtEnemy)
         {
             float threshold = isGamepadLook ? slowMovementThresholdGamepad : slowMovementThresholdMouse;
+            float strength = isGamepadLook ? gamepadAimAssistStrength : mouseAimAssistStrength;
 
             if (inputMagnitude > 0.01f && inputMagnitude < threshold)
             {
@@ -123,8 +130,8 @@ public class PlayerLook : MonoBehaviour, IResettable
 
                     if (Mathf.Abs(yawDiff) < 45f && Mathf.Abs(pitchDiff) < 45f)
                     {
-                        mYaw = Mathf.LerpAngle(mYaw, mYaw + yawDiff, Time.deltaTime * aimAssistStrength);
-                        mPitch = Mathf.Lerp(mPitch, mPitch + pitchDiff, Time.deltaTime * aimAssistStrength);
+                        mYaw = Mathf.LerpAngle(mYaw, mYaw + yawDiff, Time.deltaTime * strength);
+                        mPitch = Mathf.Lerp(mPitch, mPitch + pitchDiff, Time.deltaTime * strength);
                     }
                     else
                     {

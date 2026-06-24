@@ -39,7 +39,7 @@ public class PlayerHealth : Health, IResettable
 
     public void OnHeal(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && currentHealth > 0)
         {
             TryHealWithSouls();
         }

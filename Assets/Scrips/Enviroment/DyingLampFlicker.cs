@@ -48,7 +48,6 @@ public class DyingLampFlicker : MonoBehaviour
 
         float mixed = Mathf.Lerp(slowNoise, pulse, 0.55f);
 
-        // Hace que pase más tiempo casi apagada
         float dyingFlame = Mathf.Pow(mixed, dipPower);
 
         float flare = 0f;

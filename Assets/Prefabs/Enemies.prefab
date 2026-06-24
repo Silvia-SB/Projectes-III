@@ -504,6 +504,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+  spawnedEnemies: []
 --- !u!65 &1819516438857406705
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -895,6 +896,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+  spawnedEnemies: []
 --- !u!1 &1890919066874886593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,6 +1112,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+  spawnedEnemies: []
 --- !u!1 &2990617598419217246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,6 +1199,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+  spawnedEnemies: []
 --- !u!65 &3550276405160829313
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1416,6 +1420,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+  spawnedEnemies: []
 --- !u!1 &3593555534185451990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,6 +1675,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+  spawnedEnemies: []
 --- !u!1 &3987253693696138342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,6 +1875,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+  spawnedEnemies: []
 --- !u!1 &4392188082921360091
 GameObject:
   m_ObjectHideFlags: 0
@@ -2033,6 +2040,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+  spawnedEnemies: []
 --- !u!65 &5097501072757445199
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2052,8 +2060,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 73.49893, y: 13.60068, z: 33.50641}
-  m_Center: {x: 20.421677, y: -2.7174544, z: 2.4640198}
+  m_Size: {x: 38.73973, y: 13.60068, z: 33.50641}
+  m_Center: {x: 3.042076, y: -2.7174544, z: 2.4640198}
 --- !u!1 &4639195993943105905
 GameObject:
   m_ObjectHideFlags: 0
@@ -2275,6 +2283,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+  spawnedEnemies: []
 --- !u!1 &4764897298737576884
 GameObject:
   m_ObjectHideFlags: 0
@@ -2506,6 +2515,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+  spawnedEnemies: []
 --- !u!1 &4931456721624334722
 GameObject:
   m_ObjectHideFlags: 0
@@ -2576,6 +2586,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+  spawnedEnemies: []
 --- !u!65 &5219524502246508886
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2804,6 +2815,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+  spawnedEnemies: []
 --- !u!1 &5444751925047582225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2999,6 +3011,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+  spawnedEnemies: []
 --- !u!65 &7351994870061360416
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3352,7 +3365,6 @@ GameObject:
   - component: {fileID: 1371123377203498263}
   - component: {fileID: 895614930215681599}
   - component: {fileID: 111642801790377434}
-  - component: {fileID: 1588871900741423540}
   m_Layer: 0
   m_Name: Zone15
   m_TagString: Untagged
@@ -3425,103 +3437,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
---- !u!82 &1588871900741423540
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6432429778209632904}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 5652641911994402844, guid: 8d932fa8a05d9d6439281330aa830134, type: 2}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 1e99c4a01f238494fa0478dc889e2de2, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  spawnedEnemies: []
 --- !u!1 &6436138247326949075
 GameObject:
   m_ObjectHideFlags: 0
@@ -3662,6 +3578,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+  spawnedEnemies: []
 --- !u!1 &6537505991418095303
 GameObject:
   m_ObjectHideFlags: 0
@@ -3873,6 +3790,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+  spawnedEnemies: []
 --- !u!65 &2065698804070819776
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4091,7 +4009,6 @@ GameObject:
   - component: {fileID: 4681768652757225659}
   - component: {fileID: 8413924859507653736}
   - component: {fileID: 3920866310752148444}
-  - component: {fileID: 461884423692322761}
   m_Layer: 0
   m_Name: Zone1
   m_TagString: Untagged
@@ -4172,103 +4089,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
---- !u!82 &461884423692322761
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7613401619101869915}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 5652641911994402844, guid: 8d932fa8a05d9d6439281330aa830134, type: 2}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 7ffa00dbfc06dc84aab606a895597b4a, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  spawnedEnemies: []
 --- !u!1 &7958330494142605854
 GameObject:
   m_ObjectHideFlags: 0
@@ -4422,6 +4243,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+  spawnedEnemies: []
 --- !u!1 &8672607769501706262
 GameObject:
   m_ObjectHideFlags: 0
@@ -4449,7 +4271,7 @@ Transform:
   m_GameObject: {fileID: 8672607769501706262}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.2992203, z: -0, w: 0.9541841}
-  m_LocalPosition: {x: -71.41, y: 0.6999999, z: -34.4}
+  m_LocalPosition: {x: -70.84, y: 0.6999999, z: -35.15}
   m_LocalScale: {x: 0.4363, y: 1, z: 0.123585604}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4508,6 +4330,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+  spawnedEnemies: []
 --- !u!65 &3670113455911834786
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4628,6 +4451,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+  spawnedEnemies: []
 --- !u!1 &8922591811853888098
 GameObject:
   m_ObjectHideFlags: 0
@@ -4719,6 +4543,7 @@ MonoBehaviour:
   spawnSound: {fileID: 0}
   volume: 1
   pitch: 1
+  spawnedEnemies: []
 --- !u!1 &8981847480167912638
 GameObject:
   m_ObjectHideFlags: 0

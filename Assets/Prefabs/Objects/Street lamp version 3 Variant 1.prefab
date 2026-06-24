@@ -828,7 +828,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 0.70980394, b: 0.41960785, a: 1}
   m_Intensity: 3
-  m_Range: 6
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}
@@ -923,9 +923,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LampFlickerNoParticles
   flickerLight: {fileID: 4412726959329849187}
-  baseIntensity: 3.5
-  flickerAmount: 2.5
-  flickerSpeed: 12
+  baseIntensity: 2.5
+  flickerAmount: 1
+  flickerSpeed: 1.5
   baseRange: 6
   rangeFlicker: 2.5
   warmColor: {r: 1, g: 0.75, b: 0.4, a: 1}
@@ -933,6 +933,9 @@ MonoBehaviour:
   lampVisual: {fileID: 7778211423906371294}
   swayAmount: 5
   swaySpeed: 2
+  useSpikes: 1
+  spikeChance: 0.025
+  spikePower: 2
 --- !u!1 &7955710010926710403
 GameObject:
   m_ObjectHideFlags: 0

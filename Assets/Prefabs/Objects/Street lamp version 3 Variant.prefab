@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 70439767771045460, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -77.22156
+      value: -87.54234
       objectReference: {fileID: 0}
     - target: {fileID: 70439767771045460, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.310287
+      value: -8.628039
       objectReference: {fileID: 0}
     - target: {fileID: 70439767771045460, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.134277
+      value: -2.0427246
       objectReference: {fileID: 0}
     - target: {fileID: 70439767771045460, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
       propertyPath: m_LocalRotation.w
@@ -62,15 +62,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4553485533448623788, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
+    - {fileID: 8418667750800187435, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2355961981422567103, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
     - {fileID: 6273713198174997841, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
+    - {fileID: 6642889278505316804, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6529709422316485495, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2865183769110835104}
+    - targetCorrespondingSourceObject: {fileID: 4199110678916093994, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4738530589196665988}
   m_SourcePrefab: {fileID: 100100000, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
+--- !u!1 &2452583003364293149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4199110678916093994, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
+  m_PrefabInstance: {fileID: 1751741742516249143}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4738530589196665988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2452583003364293149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f5771fd4e6ec04c9e59966e7856305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DyingLampFlicker
+  flickerLight: {fileID: 5772893525334604377}
+  minIntensity: 0.1
+  maxIntensity: 2.2
+  flickerSpeed: 1.2
+  minRange: 1.5
+  maxRange: 5
+  weakColor: {r: 0.45, g: 0.18, b: 0.05, a: 1}
+  hotColor: {r: 1, g: 0.45, b: 0.12, a: 1}
+  dipPower: 2.8
+  flareChance: 0.008
+  flareStrength: 1.5
 --- !u!1 &4814734801168128320 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6529709422316485495, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
@@ -89,3 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
   profile: {fileID: 0}
+--- !u!108 &5772893525334604377 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 5211262655483811950, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
+  m_PrefabInstance: {fileID: 1751741742516249143}
+  m_PrefabAsset: {fileID: 0}

@@ -6,7 +6,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6475416562067136497}
+    m_TransformParent: {fileID: 6635059859085701951}
     m_Modifications:
     - target: {fileID: 230425078417734438, guid: 5e940d28acd76264e91f1a86af35145f, type: 3}
       propertyPath: m_TagString
@@ -42,15 +42,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6826724727892385131, guid: 5e940d28acd76264e91f1a86af35145f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.9007339
+      value: 0.06626612
       objectReference: {fileID: 0}
     - target: {fileID: 6826724727892385131, guid: 5e940d28acd76264e91f1a86af35145f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.4960008
+      value: 1.0880008
       objectReference: {fileID: 0}
     - target: {fileID: 6826724727892385131, guid: 5e940d28acd76264e91f1a86af35145f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.04517919
+      value: -0.0018208101
       objectReference: {fileID: 0}
     - target: {fileID: 6826724727892385131, guid: 5e940d28acd76264e91f1a86af35145f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -170,12 +170,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street lamp version 4 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8418667750800187435, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
+      propertyPath: lampVisual
+      value: 
+      objectReference: {fileID: 6635059859085701951}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2355961981422567103, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
     - {fileID: 6273713198174997841, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 70439767771045460, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 374777745780847258, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8005328592622510145}
     m_AddedComponents:
@@ -201,8 +205,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioProfileReference
   profile: {fileID: 0}
---- !u!4 &6475416562067136497 stripped
+--- !u!4 &6635059859085701951 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 70439767771045460, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
+  m_CorrespondingSourceObject: {fileID: 374777745780847258, guid: 585540f8ebcfa7143b59f5bb064176ef, type: 3}
   m_PrefabInstance: {fileID: 6424118333154296229}
   m_PrefabAsset: {fileID: 0}

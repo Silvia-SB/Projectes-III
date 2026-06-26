@@ -336,6 +336,56 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4480469, y: 0.45320174, z: 0.78753364}
   m_Center: {x: -0.0009765625, y: 1.8555796e-10, z: 0.45468134}
+--- !u!1 &5516532126960345118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4221897539176887260}
+  - component: {fileID: 6162737679729281486}
+  m_Layer: 8
+  m_Name: LampGlassEmissionFlicker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4221897539176887260
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5516532126960345118}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 70439767771045460}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6162737679729281486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5516532126960345118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8847c09846747499a7d0371031661a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LampGlassEmissionFlicker
+  glassRenderer: {fileID: 1278660768458205777}
+  baseEmissionColor: {r: 0.9245283, g: 0.5645907, b: 0.2703808, a: 1}
+  minEmission: 0.7
+  maxEmission: 2.5
+  flickerSpeed: 1.2
+  randomizeOnStart: 1
 --- !u!1 &6032579959950030017
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,6 +563,7 @@ Transform:
   - {fileID: 1300308975840042863}
   - {fileID: 8540458980036400579}
   - {fileID: 374777745780847258}
+  - {fileID: 4221897539176887260}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5183308410901801149

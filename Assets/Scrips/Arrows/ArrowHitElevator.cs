@@ -5,7 +5,11 @@ using UnityEngine;
 public class ArrowHitElevator : MonoBehaviour, IArrowInteractable, IResettable
 {
     [SerializeField] private float distanceToMove = 5f; 
-    [SerializeField] private float moveDuration = 1f;  
+    [SerializeField] private float moveDuration = 1f; 
+    [SerializeField] private MeshRenderer bell;
+    [SerializeField] private GameObject  pointLight;
+    [SerializeField] private GameObject  dobleTwister;
+    [SerializeField] private GameObject  cain;
 
     private bool isMoving = false;
     private Vector3 startPosition;
@@ -26,6 +30,10 @@ public class ArrowHitElevator : MonoBehaviour, IArrowInteractable, IResettable
             {
                 transform.position = targetPosition;
                 isMoving = false;
+                bell.enabled = false;
+                dobleTwister.SetActive(false);
+                cain.SetActive(false);
+                
             }
             else
             {
@@ -37,6 +45,7 @@ public class ArrowHitElevator : MonoBehaviour, IArrowInteractable, IResettable
     public void OnArrowHit(Arrow arrow)
     {
         if (isMoving || hasBeenActivated) return;
+        pointLight.SetActive(false);
         StartMovement();
     }
 
@@ -57,8 +66,13 @@ public class ArrowHitElevator : MonoBehaviour, IArrowInteractable, IResettable
     }
     public void ResetState()
     {
+        pointLight.SetActive(true);
         transform.position = initialPosition;
         isMoving = false;
         hasBeenActivated = false;
+        bell.enabled = true;
+        dobleTwister.SetActive(true);
+        cain.SetActive(true);
+        pointLight.SetActive(true);
     }
 }

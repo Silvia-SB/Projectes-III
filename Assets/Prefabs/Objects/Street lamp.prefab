@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LampGlassEmissionFlicker
   glassRenderer: {fileID: 1904834810954766896}
   baseEmissionColor: {r: 0.79622644, g: 0.47962636, b: 0.22084016, a: 1}
-  minEmission: 0.7
-  maxEmission: 2.5
+  minEmission: 0.2
+  maxEmission: 0.8
   flickerSpeed: 1.2
   randomizeOnStart: 1
 --- !u!1 &2718370645619530982
@@ -345,19 +345,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6082428475273563719, guid: 9e1ada89a8bfc7148960ba43e3c067c6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.62287
+      value: 0.60525525
       objectReference: {fileID: 0}
     - target: {fileID: 6082428475273563719, guid: 9e1ada89a8bfc7148960ba43e3c067c6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.62287
+      value: 0.60525525
       objectReference: {fileID: 0}
     - target: {fileID: 6082428475273563719, guid: 9e1ada89a8bfc7148960ba43e3c067c6, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.9435143
+      value: 2.8602717
       objectReference: {fileID: 0}
     - target: {fileID: 6082428475273563719, guid: 9e1ada89a8bfc7148960ba43e3c067c6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.233
+      value: -1.237
       objectReference: {fileID: 0}
     - target: {fileID: 6082428475273563719, guid: 9e1ada89a8bfc7148960ba43e3c067c6, type: 3}
       propertyPath: m_LocalPosition.y

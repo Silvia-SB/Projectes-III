@@ -382,9 +382,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LampGlassEmissionFlicker
   glassRenderer: {fileID: 1278660768458205777}
   baseEmissionColor: {r: 0.9245283, g: 0.5645907, b: 0.2703808, a: 1}
-  minEmission: 0.7
-  maxEmission: 2.5
-  flickerSpeed: 1.2
+  minEmission: 0.2
+  maxEmission: 0.8
+  flickerSpeed: 1
   randomizeOnStart: 1
 --- !u!1 &6032579959950030017
 GameObject:

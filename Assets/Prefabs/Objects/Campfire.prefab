@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4649209927599103100, guid: b3ca3b40b11b391ffa2cdce1becba030, type: 3}
       propertyPath: m_Range
-      value: 15
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4649209927599103100, guid: b3ca3b40b11b391ffa2cdce1becba030, type: 3}
       propertyPath: m_Color.b
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4649209927599103100, guid: b3ca3b40b11b391ffa2cdce1becba030, type: 3}
       propertyPath: m_Intensity
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4649209927599103100, guid: b3ca3b40b11b391ffa2cdce1becba030, type: 3}
       propertyPath: m_Lightmapping
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TorchFlicker
   torchLight: {fileID: 4740769643946051393}
-  baseIntensity: 7
+  baseIntensity: 9
   flickerAmount: 1.5
   flickerSpeed: 12
   baseRange: 15
